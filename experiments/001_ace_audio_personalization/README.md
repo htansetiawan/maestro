@@ -161,6 +161,11 @@ deterministic template turns that into the draft, so the same evidence always pr
 the same words. The per-clip analysis lands in `data/analysis/<clip_id>.json` and the
 workbench shows it as a timeline under the player.
 
+Default captions describe detected instrumentation and the measured loudness arc. They
+do not infer a lead instrument from tag frequency, invent piano when no instrument is
+detected, or treat the first detection window as an exact instrument entrance. Genre,
+musical roles, mood and actual entrances can be refined by the listener.
+
 Drafts are written as `TODO: <draft>` and keep failing the training gate until someone
 listens, corrects and saves. Human captions are never overwritten unless `--force` is
 given. Expect the drafts to be right about tempo range, loud and quiet sections and

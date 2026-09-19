@@ -66,14 +66,26 @@ def test_caption_template_is_deterministic_and_uses_vocabulary():
                              {"start": 60, "end": 90, "level_db": -10, "dynamics": "quiet"}]}
     caption = draft_caption(analysis)
     assert caption == draft_caption(analysis)
-    assert caption.startswith("Instrumental piece led by piano with strings, drums.")
-    assert "Drums from 0:20" in caption and "builds to a full peak around 0:30" in caption
+    assert "Instrumentation includes piano, strings, drums." in caption
+    assert "loudest section starts around 0:30" in caption
+    assert "lead" not in caption and "from 0:20" not in caption
     assert caption.endswith("Slow tempo, 72 BPM, Eb major.")
     vocal = summarise_tags({"windows": [
         {"start": 0.0, "probs": {"piano": 0.5, "female vocals": 0.4}},
         {"start": 10.0, "probs": {"piano": 0.5, "female vocals": 0.4}}]})
     assert vocal["vocals"] == ["female vocals"]
-    assert draft_caption({**analysis, "tags": vocal}).startswith("Pop ballad with female vocals, piano lead.")
+    assert draft_caption({**analysis, "tags": vocal}).startswith("Music with female vocals.")
+
+
+@pytest.mark.parametrize("vocals", [[], ["female vocals"]])
+def test_caption_does_not_invent_instruments_genre_or_vocal_absence(vocals):
+    analysis = {"tempo": {"bpm": 80}, "key": {"keyscale": ""}, "sections": [],
+                "tags": {"instruments": [], "vocals": vocals, "first_seen": {}}}
+    caption = draft_caption(analysis)
+    assert "piano" not in caption
+    assert "ballad" not in caption
+    assert "Instrumental" not in caption
+    assert ("female vocals" in caption) == bool(vocals)
 
 
 def test_autolabel_writes_drafts_and_keeps_human_captions(tmp_path):
@@ -93,7 +105,7 @@ def test_autolabel_writes_drafts_and_keeps_human_captions(tmp_path):
     result = autolabel(tmp_path, cfg, use_clap=False, log=lambda *_: None)
     assert result == {"labelled": ["a"], "skipped_human": ["b"]}
     updated = {r["id"]: r for r in (json.loads(line) for line in manifest.read_text().splitlines())}
-    assert updated["a"]["caption"].startswith("TODO: Instrumental piece led by piano")
+    assert updated["a"]["caption"].startswith("TODO: Music recording.")
     assert updated["a"]["bpm"] > 0 and updated["a"]["keyscale"] and updated["a"]["timesignature"] == "4"
     assert updated["b"]["caption"] == "Human wrote this one already, keep it."
     assert (tmp_path / "data/analysis/a.json").is_file()

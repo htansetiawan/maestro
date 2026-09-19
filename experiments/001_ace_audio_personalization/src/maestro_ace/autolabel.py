@@ -234,33 +234,33 @@ def tempo_word(bpm: int) -> str:
 
 
 def draft_caption(analysis: dict) -> str:
+    """Describe analysis evidence without inferring musical roles or genre.
+
+    Tag frequency cannot identify the lead instrument, and the first matching
+    window is not necessarily an entrance. These remain human refinements.
+    """
     tags = analysis["tags"]
     instruments = tags["instruments"]
     vocals = tags["vocals"]
     sections = analysis["sections"]
     parts = []
-    lead = instruments[0] if instruments else "piano"
-    others = [i for i in instruments if i != lead]
     if vocals:
         voice = " and ".join(vocals)
-        parts.append(f"Pop ballad with {voice}, {lead} lead" +
-                     (f" with {', '.join(others)}" if others else "") + ".")
+        parts.append(f"Music with {voice}.")
     else:
-        parts.append(f"Instrumental piece led by {lead}" +
-                     (f" with {', '.join(others)}" if others else "") + ".")
-    entrances = [(w, t) for w, t in tags["first_seen"].items()
-                 if t >= 20 and w in instruments and w != lead]
-    if entrances:
-        parts.append("; ".join(f"{w} from {_mmss(t)}" for w, t in sorted(entrances, key=lambda x: x[1]))
-                     .capitalize() + ".")
+        # An empty detector result also occurs with --no-clap. Absence of
+        # detected vocals alone is not evidence that a recording is instrumental.
+        parts.append("Music recording.")
+    if instruments:
+        parts.append(f"Instrumentation includes {', '.join(instruments)}.")
     if sections:
         opening = sections[0]["dynamics"]
         loudest = max(sections, key=lambda s: s["level_db"])
         closing = sections[-1]["dynamics"]
-        arc = f"Opens {opening}"
+        arc = f"{opening.capitalize()} opening"
         if loudest is not sections[0] and loudest is not sections[-1]:
-            arc += f", builds to a {loudest['dynamics']} peak around {_mmss(loudest['start'])}"
-        arc += f", ends {closing}."
+            arc += f"; loudest section starts around {_mmss(loudest['start'])}"
+        arc += f"; {closing} ending."
         parts.append(arc)
     bpm = analysis["tempo"]["bpm"]
     key = analysis["key"]["keyscale"]
