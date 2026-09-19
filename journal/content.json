@@ -168,6 +168,10 @@
           "url": "https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/results/README.md"
         },
         {
+          "label": "Two baseline clips",
+          "url": "https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/results/ace-music-playground-2026-09-12.md"
+        },
+        {
           "label": "ACE paper",
           "url": "https://arxiv.org/abs/2602.00744"
         },

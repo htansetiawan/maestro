@@ -15,7 +15,9 @@ class JournalPublishing(unittest.TestCase):
     def test_drafts_and_snapshots(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / "site"
-            shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", "__pycache__"))
+            shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(
+                ".git", "__pycache__", ".venv", "node_modules", ".pytest_cache", ".ruff_cache",
+                "data", "artifacts", "wandb"))  # experiment trees are large and irrelevant here
             def run(*args, success=True):
                 result = subprocess.run([sys.executable, str(root / "scripts/build_journal.py"), *args],
                                         capture_output=True, text=True)
