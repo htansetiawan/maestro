@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maestro dataset workbench</title>
+<meta name="description" content="Listen, caption and shape the training set for Music Kitchen's ACE experiment. Private research build.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F2F3EF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:title" content="Maestro dataset workbench">
+<meta property="og:description" content="Listen, caption and shape the training set for Music Kitchen's ACE experiment. Private research build.">
+<meta property="og:url" content="https://maestro.enrica.ai/">
+<meta property="og:image" content="https://maestro.enrica.ai/og-card.png">
+<meta property="og:image:secure_url" content="https://maestro.enrica.ai/og-card.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Maestro dataset workbench: listen, caption, tap tempo, prepare.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maestro dataset workbench">
+<meta name="twitter:description" content="Listen, caption and shape the training set for Music Kitchen's ACE experiment.">
+<meta name="twitter:image" content="https://maestro.enrica.ai/og-card.png">
+
+<style>
+:root{
+  --bg:#f6f4ef;--panel:#fffdf8;--fg:#1e1c19;--muted:#6b665d;--line:#e2ddd2;
+  --accent:#8a2f1c;--accent-soft:#f3e3dc;--ok:#2f6b3a;--ok-soft:#e1efe3;--warn:#8a6a1c;--warn-soft:#f5ecd3;
+  --bad:#9b2a2a;--bad-soft:#f6e0e0;--chip:#ece8df;--focus:#2f5f8a;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161513;--panel:#1f1d1a;--fg:#ece8df;--muted:#9a948a;--line:#33302b;
+  --accent:#e08a6e;--accent-soft:#3a251e;--ok:#8fcf9b;--ok-soft:#1f3324;--warn:#e2c072;--warn-soft:#3a3018;
+  --bad:#e08a8a;--bad-soft:#3a1f1f;--chip:#2a2723;--focus:#7fb0e0;
+}}
+:root[data-theme="dark"]{
+  --bg:#161513;--panel:#1f1d1a;--fg:#ece8df;--muted:#9a948a;--line:#33302b;
+  --accent:#e08a6e;--accent-soft:#3a251e;--ok:#8fcf9b;--ok-soft:#1f3324;--warn:#e2c072;--warn-soft:#3a3018;
+  --bad:#e08a8a;--bad-soft:#3a1f1f;--chip:#2a2723;--focus:#7fb0e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--accent)}
+header{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5}
+header h1{font-size:1.05rem;margin:0;font-weight:600}
+header h1 span{color:var(--muted);font-weight:normal}
+.progress{display:flex;align-items:center;gap:10px;flex:1;min-width:220px}
+.bar{flex:1;height:8px;background:var(--chip);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.82rem;background:var(--chip);color:var(--muted);white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.bad{background:var(--bad-soft);color:var(--bad)}
+main{display:grid;grid-template-columns:320px 1fr;min-height:calc(100vh - 56px)}
+@media (max-width:900px){main{grid-template-columns:1fr}aside{max-height:40vh}}
+aside{border-right:1px solid var(--line);overflow:auto;background:var(--panel)}
+aside h2, section h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0;padding:12px 16px 6px}
+.group{padding:0 8px 8px}
+.group .title{padding:6px 8px 2px;font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.clip{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:7px 8px;border:0;background:none;border-radius:6px;cursor:pointer}
+.clip:hover{background:var(--chip)} .clip.active{background:var(--accent-soft)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--warn);flex:none}
+.dot.done{background:var(--ok)} .dot.ref{background:var(--muted)}
+.clip .id{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;color:var(--muted)}
+.clip .len{margin-left:auto;font-size:.78rem;color:var(--muted)}
+.content{padding:16px;display:grid;gap:16px;align-content:start;max-width:960px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.card h3{margin:0 0 8px;font-size:1rem}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.row > *{min-width:0}
+label.f{display:grid;gap:4px;font-size:.82rem;color:var(--muted)}
+input[type=text],input[type=number],input[type=url],select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+textarea{min-height:88px;resize:vertical;line-height:1.4}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+button.b{padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:var(--chip);cursor:pointer}
+button.b.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+button.b.danger{color:var(--bad)}
+button.b:disabled{opacity:.5;cursor:default}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:4px 10px;border-radius:999px;background:var(--chip);border:1px solid transparent;cursor:pointer;font-size:.85rem}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+audio{width:100%}
+.meta{font-size:.85rem;color:var(--muted)}
+.meta code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem}
+.readiness{padding:10px 12px;border-radius:8px;font-size:.9rem}
+.readiness.ok{background:var(--ok-soft);color:var(--ok)} .readiness.bad{background:var(--warn-soft);color:var(--warn)}
+details summary{cursor:pointer;color:var(--muted);font-size:.9rem}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500}
+.log{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px;max-height:160px;overflow:auto}
+.hint{font-size:.82rem;color:var(--muted)}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+kbd{font-family:ui-monospace,monospace;font-size:.8rem;background:var(--chip);padding:1px 5px;border-radius:4px}
+.empty{color:var(--muted);padding:24px 16px}
+.timeline{margin:10px 0 4px;display:grid;gap:6px}
+.tl-row{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted)}
+.tl-row .lab{width:78px;flex:none;text-align:right}
+.tl-track{position:relative;flex:1;height:18px;background:var(--chip);border-radius:4px;overflow:hidden}
+.tl-seg{position:absolute;top:0;bottom:0;border-right:1px solid var(--panel);cursor:pointer;font-size:.68rem;line-height:18px;padding-left:4px;overflow:hidden;white-space:nowrap;color:var(--fg)}
+.tl-seg.quiet{background:color-mix(in srgb,var(--ok) 18%,transparent)} .tl-seg.moderate{background:color-mix(in srgb,var(--warn) 30%,transparent)} .tl-seg.full{background:color-mix(in srgb,var(--accent) 38%,transparent)}
+.tl-tag{position:absolute;top:2px;bottom:2px;background:var(--accent);opacity:.55;border-radius:2px}
+.tl-cursor{position:absolute;top:0;bottom:0;width:2px;background:var(--fg);pointer-events:none}
+.draft{border-color:var(--warn)!important;background:color-mix(in srgb,var(--warn-soft) 60%,var(--bg))!important}
+</style>
+</head>
+<body>
+<header>
+  <h1>Maestro <span>· dataset workbench</span></h1>
+  <div class="progress"><div class="bar"><i id="bar"></i></div><span id="progressText" class="pill">loading…</span></div>
+  <span id="rightsPill" class="pill"></span>
+  <button class="b" id="toggleTools">Sources &amp; jobs</button>
+</header>
+
+<main>
+  <aside id="list"><div class="empty">Loading manifest…</div></aside>
+
+  <div class="content">
+    <div id="readiness" class="readiness bad">…</div>
+
+    <section class="card" id="editor" hidden>
+      <div class="row" style="justify-content:space-between">
+        <h3 id="clipTitle">clip</h3>
+        <span id="clipRights" class="pill"></span>
+      </div>
+      <p class="meta" id="clipMeta"></p>
+      <div class="row"><audio id="player" controls preload="metadata" style="flex:1"></audio>
+        <select id="speed" title="playback speed" style="width:auto"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5" selected>1.5×</option><option value="2">2×</option></select></div>
+      <div id="timeline" class="timeline" hidden></div>
+      <p class="hint" id="analysisHint"></p>
+      <p class="hint">Listen through (1.5× is fine). <kbd>space</kbd> play/pause · <kbd>[</kbd> <kbd>]</kbd> skip 15 s · <kbd>1</kbd>–<kbd>9</kbd> jump to 10%–90% · <kbd>ctrl</kbd>+<kbd>enter</kbd> save and next</p>
+
+      <label class="f">Caption — what is audible: instruments, texture, motion, mood. No artist names.
+        <textarea id="caption" placeholder="Pop ballad duet, male and female vocals trading verses, grand piano, warm string pad, soft brushed drums, fretless bass. Slow build to a big final chorus."></textarea>
+      </label>
+
+      <div class="row" style="margin-top:10px">
+        <label class="f" style="width:130px">BPM
+          <input type="number" id="bpm" min="30" max="300" placeholder="e.g. 72">
+        </label>
+        <label class="f" style="width:150px">&nbsp;
+          <button class="b" id="tap" title="Tap along on the beat; 8 taps or more">Tap tempo</button>
+        </label>
+        <label class="f" style="width:150px">Key
+          <select id="keyRoot"><option value="">—</option></select>
+        </label>
+        <label class="f" style="width:130px">&nbsp;
+          <select id="keyMode"><option value="major">major</option><option value="minor">minor</option></select>
+        </label>
+        <label class="f" style="width:110px">Time sig.
+          <select id="tsig"><option value="">—</option><option>4</option><option>3</option><option>6</option><option>2</option><option>5</option><option>7</option></select>
+        </label>
+        <label class="f" style="width:150px">Role
+          <select id="role"><option value="train">train</option><option value="reference">reference</option></select>
+        </label>
+      </div>
+
+      <label class="f" style="margin-top:10px">Instruments</label>
+      <div class="chips" id="instruments"></div>
+      <div class="row" style="margin-top:6px">
+        <input type="text" id="instrumentAdd" placeholder="add another instrument and press enter" style="max-width:320px">
+      </div>
+
+      <div class="row" style="margin-top:14px;justify-content:space-between">
+        <div class="row">
+          <button class="b primary" id="save">Save</button>
+          <button class="b" id="saveNext">Save and next TODO</button>
+          <button class="b" id="skip">Next</button>
+        </div>
+        <button class="b danger" id="remove">Remove from manifest</button>
+      </div>
+    </section>
+
+    <section class="card" id="tools" hidden>
+      <h3>Sources</h3>
+      <table id="sourcesTable"><thead><tr><th>Source</th><th>Length</th><th>Audible</th><th>Clips</th><th>In manifest</th><th></th></tr></thead><tbody></tbody></table>
+
+      <details style="margin-top:14px"><summary>Segment a source into clips</summary>
+        <div class="row" style="margin-top:8px">
+          <label class="f" style="min-width:260px">Source <select id="segSource"></select></label>
+          <label class="f" style="width:120px">Clip seconds <input type="number" id="segSeconds" value="90" min="10" max="180"></label>
+          <label class="f" style="width:130px">Role <select id="segRole"><option value="train">train</option><option value="reference">reference</option></select></label>
+          <label class="f" style="min-width:200px">Instruments <input type="text" id="segInstruments" value="piano"></label>
+          <label class="f"><span>Compilation</span><span class="row"><input type="checkbox" id="segTracks"> split at gaps</span></label>
+          <label class="f"><span>&nbsp;</span><button class="b primary" id="segRun">Segment and merge</button></label>
+        </div>
+        <p class="hint">Re-segmenting a source rewrites its clip files. Rows already in the manifest with the same IDs are kept, so remove old rows first if you change clip length.</p>
+      </details>
+
+      <details style="margin-top:10px"><summary>Fetch from YouTube</summary>
+        <div class="row" style="margin-top:8px">
+          <input type="url" id="fetchUrl" placeholder="https://www.youtube.com/watch?v=…" style="max-width:480px">
+          <label class="row"><input type="checkbox" id="fetchVideo"> keep video</label>
+          <button class="b primary" id="fetchRun">Fetch</button>
+        </div>
+      </details>
+
+      <details style="margin-top:10px"><summary>Import a local folder or file (path on the server)</summary>
+        <div class="row" style="margin-top:8px">
+          <input type="text" id="importPath" placeholder="/home/henrytan/git/datasets/maestro/david_foster_musics" style="max-width:520px">
+          <button class="b primary" id="importRun">Import</button>
+        </div>
+        <p class="hint">MP3/FLAC/WAV/M4A are decoded to 48 kHz WAV under data/sources/local/. Originals are not modified. Then segment each imported source above.</p>
+      </details>
+
+      <div class="row" style="margin-top:14px;justify-content:space-between">
+        <h3 style="margin:0">Jobs</h3>
+        <span class="row">
+          <button class="b" id="autolabelRun">Auto-label all TODO clips</button>
+          <button class="b" id="prepareRun">Run prepare (freeze split)</button>
+        </span>
+      </div>
+      <div id="jobs"></div>
+    </section>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const state = { data: null, current: null, taps: [], instruments: new Set() };
+const DEFAULT_INSTRUMENTS = ["piano","vocals","strings","drums","bass","electric guitar","acoustic guitar","synth","brass","saxophone","choir","orchestra","percussion","organ","flute"];
+const ROOTS = ["C","C#","Db","D","D#","Eb","E","F","F#","Gb","G","G#","Ab","A","A#","Bb","B"];
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),2200); }
+function mmss(s){ s=Math.round(s||0); return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`; }
+async function api(path, opts={}){
+  const r = await fetch(path, {headers:{"content-type":"application/json"}, ...opts});
+  if(!r.ok){ let m=r.statusText; try{ m=(await r.json()).detail||m }catch(e){} throw new Error(m); }
+  return r.json();
+}
+
+async function load(keepCurrent=true){
+  state.data = await api("/api/state");
+  render();
+  if(keepCurrent && state.current){ const c = state.data.clips.find(x=>x.id===state.current.id); if(c) select(c.id, false); }
+  else if(!state.current && state.data.clips.length){ const first = state.data.clips.find(c=>c.todo) || state.data.clips[0]; select(first.id, false); }
+}
+
+function render(){
+  const d = state.data;
+  const done = d.progress.total - d.progress.todo;
+  $("#bar").style.width = d.progress.total ? `${100*done/d.progress.total}%` : "0";
+  $("#progressText").textContent = `${done} / ${d.progress.total} captioned · ${d.progress.compositions} training compositions`;
+  $("#progressText").className = "pill " + (d.progress.todo===0 && d.progress.total ? "ok" : "warn");
+  $("#rightsPill").textContent = d.allow_unverified_rights ? "unverified rights: training allowed" : "unverified rights: reference only";
+  $("#rightsPill").className = "pill " + (d.allow_unverified_rights ? "warn" : "");
+  const r = $("#readiness"); r.textContent = d.readiness.message; r.className = "readiness " + (d.readiness.ok ? "ok":"bad");
+
+  // sidebar grouped by composition
+  const list = $("#list"); list.innerHTML = "";
+  if(!d.clips.length){ list.innerHTML = '<div class="empty">No clips yet. Open “Sources &amp; jobs” to fetch or import, then segment.</div>'; }
+  const groups = {};
+  d.clips.forEach(c => (groups[c.composition_id] ||= []).push(c));
+  Object.entries(groups).forEach(([comp, clips]) => {
+    const g = document.createElement("div"); g.className="group";
+    const todo = clips.filter(c=>c.todo).length;
+    g.innerHTML = `<div class="title"><span>${comp}</span><span>${clips.length - todo}/${clips.length}</span></div>`;
+    clips.forEach(c => {
+      const b = document.createElement("button"); b.className = "clip" + (state.current && state.current.id===c.id ? " active":"");
+      const len = (c.source_end!=null && c.source_start!=null) ? mmss(c.source_end - c.source_start) : "";
+      b.innerHTML = `<span class="dot ${c.todo ? "" : "done"} ${c.role==="reference" ? "ref":""}"></span><span class="id">${c.id.replace(/^(yt|loc)-/,"")}</span><span class="len">${len}</span>`;
+      b.onclick = () => select(c.id);
+      g.appendChild(b);
+    });
+    list.appendChild(g);
+  });
+
+  // sources
+  const tb = $("#sourcesTable tbody"); tb.innerHTML = "";
+  const sel = $("#segSource"); sel.innerHTML = "";
+  d.sources.forEach(s => {
+    const tr = document.createElement("tr");
+    const title = s.kind==="youtube" ? `<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>` : `${s.title}<div class="hint">${[s.artist, s.album].filter(Boolean).join(" · ")}</div>`;
+    tr.innerHTML = `<td>${title}<div class="hint"><code>${s.video_id}</code></div></td><td>${mmss(s.duration)}</td><td>${s.audible_seconds!=null ? mmss(s.audible_seconds) : "—"}</td><td>${s.clips}</td><td>${s.merged}</td><td><button class="b" data-seg="${s.video_id}">Segment…</button></td>`;
+    tb.appendChild(tr);
+    const o = document.createElement("option"); o.value = s.video_id; o.textContent = `${s.title} (${s.video_id})`; sel.appendChild(o);
+  });
+  tb.querySelectorAll("button[data-seg]").forEach(b => b.onclick = () => { $("#segSource").value = b.dataset.seg; $("#tools details").open = true; $("#segSource").focus(); });
+
+  // jobs
+  const jobs = $("#jobs"); jobs.innerHTML = "";
+  d.jobs.forEach(j => {
+    const el = document.createElement("details"); el.open = j.status==="running";
+    el.innerHTML = `<summary><span class="pill ${j.status==="done"?"ok":j.status==="failed"?"bad":"warn"}">${j.status}</span> ${j.kind} <span class="hint">${JSON.stringify(j.args)}</span></summary><div class="log">${(j.log||[]).join("\n")}</div>`;
+    jobs.appendChild(el);
+  });
+  if(d.jobs.some(j=>j.status==="running")) setTimeout(()=>load(true), 2000);
+}
+
+function select(id, scroll=true){
+  const c = state.data.clips.find(x=>x.id===id); if(!c) return;
+  state.current = c;
+  document.querySelectorAll(".clip").forEach(b => b.classList.toggle("active", b.querySelector(".id").textContent === id.replace(/^(yt|loc)-/,"")));
+  $("#editor").hidden = false;
+  $("#clipTitle").textContent = c.id;
+  $("#clipRights").textContent = `${c.role} · rights ${c.rights}`;
+  $("#clipRights").className = "pill " + (c.rights==="own" ? "ok" : "warn");
+  const src = state.data.sources.find(s => s.video_id===c.source_id);
+  let link = "";
+  if(src && src.kind==="youtube" && c.source_start!=null) link = ` · <a href="${src.url}&t=${Math.floor(c.source_start)}" target="_blank" rel="noopener">open on YouTube at ${mmss(c.source_start)}</a>`;
+  $("#clipMeta").innerHTML = `${c.composition_id} · ${c.source_start!=null ? `${mmss(c.source_start)}–${mmss(c.source_end)} of source` : ""}${link}<br><span class="hint">${c.provenance||""}</span>`;
+  const p = $("#player"); p.src = `/api/audio/${encodeURIComponent(c.id)}`; p.load();
+  const isDraft = c.todo && !/^TODO: describe what is audible/.test(c.caption||"");
+  $("#caption").value = isDraft ? c.caption.replace(/^TODO:\s*/,"") : (c.todo ? "" : (c.caption||""));
+  $("#caption").classList.toggle("draft", isDraft);
+  $("#caption").placeholder = c.todo && !isDraft ? c.caption.replace(/^TODO: describe what is audible in this clip\.\s*/,"") + "\n\nDescribe what you hear, or run auto-label for a draft." : "";
+  loadAnalysis(c);
+  $("#bpm").value = c.bpm || "";
+  const [root, mode] = (c.keyscale||"").split(" ");
+  $("#keyRoot").value = ROOTS.includes(root) ? root : "";
+  $("#keyMode").value = mode==="minor" ? "minor" : "major";
+  $("#tsig").value = c.timesignature || "";
+  $("#role").value = c.role || "train";
+  state.instruments = new Set(c.instruments||[]);
+  renderInstruments();
+  state.taps = [];
+  if(scroll) $("#editor").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+async function loadAnalysis(c){
+  const tl = $("#timeline"), hint = $("#analysisHint");
+  tl.hidden = true; tl.innerHTML = ""; hint.textContent = "";
+  let a; try { a = await api(`/api/analysis/${encodeURIComponent(c.id)}`); } catch(e){ hint.textContent = "No analysis yet. Open “Sources & jobs” and run auto-label to get a draft caption, tempo, key and timeline."; return; }
+  if(state.current.id !== c.id) return;
+  const dur = a.duration || 1;
+  const row = (label, inner) => `<div class="tl-row"><span class="lab">${label}</span><div class="tl-track">${inner}</div></div>`;
+  let html = row("sections", a.sections.map(s => `<div class="tl-seg ${s.dynamics}" style="left:${100*s.start/dur}%;width:${100*(s.end-s.start)/dur}%" data-t="${s.start}" title="${s.dynamics}, ${s.level_db} dB">${s.dynamics}</div>`).join("") + '<div class="tl-cursor" id="tlCursor" style="left:0"></div>');
+  const words = [...(a.tags.instruments||[]), ...(a.tags.vocals||[])];
+  const raw = a.tags_raw; // stripped server-side; use first_seen + counts instead
+  words.forEach(w => {
+    const first = a.tags.first_seen[w] ?? 0;
+    html += row(w, `<div class="tl-tag" style="left:${100*first/dur}%;right:0" title="first heard around ${mmss(first)}"></div>`);
+  });
+  tl.innerHTML = html; tl.hidden = false;
+  tl.querySelectorAll(".tl-seg").forEach(el => el.onclick = () => { const p=$("#player"); p.currentTime = parseFloat(el.dataset.t); p.play(); });
+  const k = a.key || {}; const t = a.tempo || {};
+  hint.innerHTML = `Draft from analysis: ${t.bpm} BPM${t.note ? " ("+t.note+")" : ""}, ${k.keyscale || "key unclear"}${k.runner_up ? " (or "+k.runner_up+")" : ""}, key confidence ${k.confidence}.` + (a.tags.vocals && a.tags.vocals.length ? ` <b>Vocals detected (${a.tags.vocals.join(", ")})</b> — consider role “reference” for an instrumental model.` : "") + ` Tempo and key are estimates; tap or correct before saving.`;
+}
+$("#player").addEventListener("timeupdate", () => { const c=$("#tlCursor"); const p=$("#player"); if(c && p.duration) c.style.left = `${100*p.currentTime/p.duration}%`; });
+
+function renderInstruments(){
+  const box = $("#instruments"); box.innerHTML = "";
+  const all = [...new Set([...DEFAULT_INSTRUMENTS, ...state.instruments])];
+  all.forEach(name => {
+    const b = document.createElement("button"); b.type="button"; b.className = "chip" + (state.instruments.has(name) ? " on":""); b.textContent = name;
+    b.onclick = () => { state.instruments.has(name) ? state.instruments.delete(name) : state.instruments.add(name); renderInstruments(); };
+    box.appendChild(b);
+  });
+}
+
+function payload(){
+  const cap = $("#caption").value.trim();
+  const root = $("#keyRoot").value;
+  return {
+    caption: cap || null,
+    bpm: $("#bpm").value ? parseInt($("#bpm").value,10) : null,
+    keyscale: root ? `${root} ${$("#keyMode").value}` : null,
+    timesignature: $("#tsig").value || null,
+    instruments: [...state.instruments],
+    role: $("#role").value,
+  };
+}
+
+async function save(next=false){
+  if(!state.current) return;
+  const p = payload();
+  if(!p.caption){ toast("Write a caption first"); $("#caption").focus(); return; }
+  if(p.caption.length < 15){ toast("Caption is too short"); return; }
+  try{
+    await api(`/api/clip/${encodeURIComponent(state.current.id)}`, {method:"POST", body: JSON.stringify(p)});
+    toast("Saved");
+    const id = state.current.id;
+    await load(true);
+    if(next){ const n = state.data.clips.find(c => c.todo && c.id!==id); if(n) select(n.id); else toast("All captions written"); }
+  }catch(e){ toast(e.message); }
+}
+
+$("#speed").onchange = () => { $("#player").playbackRate = parseFloat($("#speed").value); };
+$("#player").addEventListener("loadedmetadata", () => { $("#player").playbackRate = parseFloat($("#speed").value); });
+$("#save").onclick = () => save(false);
+$("#saveNext").onclick = () => save(true);
+$("#skip").onclick = () => { const i = state.data.clips.findIndex(c=>c.id===state.current.id); const n = state.data.clips[(i+1)%state.data.clips.length]; select(n.id); };
+$("#remove").onclick = async () => {
+  if(!state.current) return;
+  if(!confirm(`Remove ${state.current.id} from the manifest? The clip file stays on disk.`)) return;
+  try{ await api(`/api/clip/${encodeURIComponent(state.current.id)}`, {method:"DELETE"}); state.current=null; await load(false); toast("Removed"); }catch(e){ toast(e.message); }
+};
+$("#tap").onclick = () => {
+  const now = performance.now(); state.taps.push(now);
+  state.taps = state.taps.filter(t => now - t < 12000);
+  if(state.taps.length >= 3){
+    const iv = []; for(let i=1;i<state.taps.length;i++) iv.push(state.taps[i]-state.taps[i-1]);
+    const bpm = 60000 / (iv.reduce((a,b)=>a+b,0)/iv.length);
+    $("#bpm").value = Math.round(bpm); $("#tap").textContent = `Tap tempo (${state.taps.length} taps)`;
+  } else $("#tap").textContent = `Tap tempo (${state.taps.length})`;
+};
+$("#instrumentAdd").addEventListener("keydown", e => { if(e.key==="Enter"){ e.preventDefault(); const v=e.target.value.trim().toLowerCase(); if(v){ state.instruments.add(v); e.target.value=""; renderInstruments(); } } });
+$("#toggleTools").onclick = () => { $("#tools").hidden = !$("#tools").hidden; if(!$("#tools").hidden) $("#tools").scrollIntoView({behavior:"smooth"}); };
+
+$("#segRun").onclick = async () => {
+  try{ await api("/api/jobs/segment", {method:"POST", body: JSON.stringify({source_id: $("#segSource").value, clip_seconds: parseFloat($("#segSeconds").value), role: $("#segRole").value, instruments: $("#segInstruments").value, tracks: $("#segTracks").checked, merge: true})}); toast("Segmenting…"); load(true); }catch(e){ toast(e.message); }
+};
+$("#fetchRun").onclick = async () => {
+  try{ await api("/api/jobs/fetch", {method:"POST", body: JSON.stringify({url: $("#fetchUrl").value, keep_video: $("#fetchVideo").checked})}); toast("Fetching…"); load(true); }catch(e){ toast(e.message); }
+};
+$("#importRun").onclick = async () => {
+  try{ await api("/api/jobs/import", {method:"POST", body: JSON.stringify({path: $("#importPath").value})}); toast("Importing…"); load(true); }catch(e){ toast(e.message); }
+};
+$("#autolabelRun").onclick = async () => {
+  try{ await api("/api/jobs/autolabel", {method:"POST", body: JSON.stringify({})}); toast("Auto-labelling… this takes a few minutes"); load(true); }catch(e){ toast(e.message); }
+};
+$("#prepareRun").onclick = async () => {
+  if(!confirm("Prepare freezes the dataset and split for this experiment ID. Continue?")) return;
+  try{ await api("/api/jobs/prepare", {method:"POST"}); toast("Preparing…"); load(true); }catch(e){ toast(e.message); }
+};
+
+document.addEventListener("keydown", e => {
+  const typing = ["TEXTAREA","INPUT","SELECT"].includes(document.activeElement.tagName);
+  const p = $("#player");
+  if(e.key===" " && !typing){ e.preventDefault(); p.paused ? p.play() : p.pause(); }
+  if(e.key==="[" && !typing){ p.currentTime = Math.max(0, p.currentTime-15); }
+  if(e.key==="]" && !typing){ p.currentTime = Math.min(p.duration||0, p.currentTime+15); }
+  if(/^[1-9]$/.test(e.key) && !typing && p.duration){ p.currentTime = p.duration * parseInt(e.key,10) / 10; }
+  if(e.key==="Enter" && (e.ctrlKey||e.metaKey)){ e.preventDefault(); save(true); }
+});
+
+ROOTS.forEach(r => { const o=document.createElement("option"); o.value=r; o.textContent=r; $("#keyRoot").appendChild(o); });
+load(false).catch(e => { $("#list").innerHTML = `<div class="empty">${e.message}</div>`; });
+</script>
+</body>
+</html>

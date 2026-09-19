@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import math
 from pathlib import Path
+from typing import Literal
 
 import numpy as np
 import soundfile as sf
@@ -21,6 +22,18 @@ class Recording(StrictModel):
     bpm: int | None = Field(default=None, gt=0, le=300)
     keyscale: str = ""
     timesignature: str = ""
+    # "train" rows enter the composition-level split. "reference" rows are validated,
+    # hashed and staged for listening, analysis and audio-conditioned generation, but
+    # never reach the SFT or preference tensors.
+    role: Literal["train", "reference"] = "train"
+    # "own": composer's original material (the default, matching the example manifest).
+    # "licensed"/"cc": a documented right to train. "unverified": external audio whose
+    # training rights have not been established; gated by data.allow_unverified_rights.
+    rights: Literal["own", "licensed", "cc", "unverified"] = "own"
+    source_url: str = ""
+    source_id: str = ""
+    source_start: float | None = Field(default=None, ge=0)
+    source_end: float | None = Field(default=None, gt=0)
 
 
 class Prompt(StrictModel):
@@ -73,6 +86,18 @@ def validate_recordings(root: Path, cfg: Config) -> list[dict]:
     rows, ids, hashes = [], set(), set()
     for raw in read_jsonl(root / cfg.data.manifest):
         item = Recording.model_validate(raw)
+        if item.source_start is not None and item.source_end is not None \
+                and item.source_end <= item.source_start:
+            raise ValueError(f"{item.id}: source_end must be after source_start")
+        if item.role == "train":
+            if "TODO" in item.caption:
+                raise ValueError(f"{item.id}: finish the caption before training on this clip "
+                                 "(describe what is audible; drop the TODO marker)")
+            if item.rights == "unverified" and not cfg.data.allow_unverified_rights:
+                raise ValueError(
+                    f"{item.id}: rights are unverified. Set role = \"reference\" to keep it as "
+                    "listening/analysis material, or set data.allow_unverified_rights = true "
+                    "in the config to train on it knowingly.")
         path = (root / item.audio_path).resolve()
         if path.suffix.lower() not in {".wav", ".flac"}:
             raise ValueError(f"Use lossless WAV or FLAC for this experiment: {path}")
@@ -91,8 +116,8 @@ def validate_recordings(root: Path, cfg: Config) -> list[dict]:
         rows.append({**item.model_dump(), "audio_path": str(path), "sha256": sha, **metrics})
         ids.add(item.id)
         hashes.add(sha)
-    if len({r["composition_id"] for r in rows}) < 2:
-        raise ValueError("Need at least two distinct compositions for a held-out split")
+    if len({r["composition_id"] for r in rows if r["role"] == "train"}) < 2:
+        raise ValueError("Need at least two distinct training compositions for a held-out split")
     return rows
 
 
@@ -127,7 +152,9 @@ def prepare(root: Path, cfg: Config, output: Path) -> dict:
         if old.get("fingerprint") != fingerprint:
             raise ValueError("Prepared experiment inputs changed. Start a new exp-id.")
         return old
-    splits = split_recordings(rows, cfg.data.validation_fraction, cfg.seed)
+    train_rows = [r for r in rows if r["role"] == "train"]
+    reference_rows = [r for r in rows if r["role"] == "reference"]
+    splits = split_recordings(train_rows, cfg.data.validation_fraction, cfg.seed)
     # Stage uniquely named lossless copies: upstream caches by basename.
     # Keep audio unchanged, including channels, sample rate and expressive timing.
     import shutil
@@ -142,8 +169,12 @@ def prepare(root: Path, cfg: Config, output: Path) -> dict:
         samples = [ace_sample(r, staged / (r["id"] + Path(r["audio_path"]).suffix.lower()))
                    for r in selected]
         write_json(output / f"{split}.json", {"metadata": {"genre_ratio": 0}, "samples": samples})
+    # Reference material is staged and listed but is not a training split.
+    reference = [ace_sample(r, staged / (r["id"] + Path(r["audio_path"]).suffix.lower()))
+                 for r in reference_rows]
+    write_json(output / "reference.json", {"metadata": {"genre_ratio": 0}, "samples": reference})
     write_json(output / "recordings.json", rows)
     write_json(output / "prompts.json", prompts)
     return {"recordings": len(rows), "train": len(splits["train"]),
-            "validation": len(splits["validation"]), "dataset_sha256": digest(rows),
-            "fingerprint": fingerprint}
+            "validation": len(splits["validation"]), "reference": len(reference_rows),
+            "dataset_sha256": digest(rows), "fingerprint": fingerprint}

@@ -53,8 +53,15 @@
       "id": "ace-audio-personalization",
       "title": "ACE audio-personalization experiment",
       "source": "experiments/001_ace_audio_personalization/README.md",
-      "description": "An experiment-scoped ACE-Step 1.5 pipeline for original piano and violin audio, SFT, preference branches, and matched listening evaluation.",
-      "status": "Code · synthetic CPU end-to-end smoke passed; ACE GPU run pending"
+      "description": "An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.",
+      "status": "Code · 28-song corpus assembled and drafted; captions being confirmed; ACE GPU run pending"
+    },
+    {
+      "id": "dataset-intake-2026-09-19",
+      "title": "Dataset intake record",
+      "source": "experiments/001_ace_audio_personalization/results/youtube-sources-2026-09-19.md",
+      "description": "What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.",
+      "status": "Results record · September 19, 2026"
     }
   ],
   "entries": [
@@ -128,6 +135,47 @@
         "studio-experiment"
       ],
       "published": true
+    },
+    {
+      "date": "2026-09-19",
+      "title": "From data to a labelled dataset: the David Foster corpus",
+      "summary": "The ACE experiment gets its corpus: 28 David Foster songs from two albums and a YouTube compilation, cut as whole songs, with captions drafted from the audio and confirmed by ear in a private web workbench.",
+      "stage": "Corpus assembled and auto-drafted; captions being confirmed; instrumental subset of 14 songs is the training set. No ACE checkpoint loaded, no GPU run yet.",
+      "focus": "Which of Foster's expressive qualities can ACE learn from whole instrumental songs, and which still need the musician's hand.",
+      "next_step": "Confirm captions and freeze the split, install the pinned ACE checkout, run the real-ACE GPU smoke, train the first SFT adapter, and listen blind against the base model.",
+      "artifacts": [
+        "ace-audio-personalization",
+        "dataset-intake-2026-09-19",
+        "music-kitchen-product",
+        "studio-experiment"
+      ],
+      "published": true,
+      "links": [
+        {
+          "label": "Intake and labeling code",
+          "url": "https://github.com/henryatharvard/maestro/tree/main/experiments/001_ace_audio_personalization/src/maestro_ace"
+        },
+        {
+          "label": "How to run it",
+          "url": "https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/README.md"
+        },
+        {
+          "label": "Dataset intake record",
+          "url": "https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/results/youtube-sources-2026-09-19.md"
+        },
+        {
+          "label": "Public results index",
+          "url": "https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/results/README.md"
+        },
+        {
+          "label": "ACE paper",
+          "url": "https://arxiv.org/abs/2602.00744"
+        },
+        {
+          "label": "ACE demo",
+          "url": "https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5"
+        }
+      ]
     }
   ]
 }

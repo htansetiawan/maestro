@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dataset intake record — Maestro</title>
+<meta name="description" content="What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://henryatharvard.github.io/maestro/journal/snapshots/2026-09-19/dataset-intake-2026-09-19.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dataset intake record — Maestro">
+<meta property="og:description" content="What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.">
+<meta property="og:url" content="https://henryatharvard.github.io/maestro/journal/snapshots/2026-09-19/dataset-intake-2026-09-19.html">
+<meta property="og:image" content="https://henryatharvard.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dataset intake record — Maestro">
+<meta name="twitter:description" content="What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.">
+<meta name="twitter:image" content="https://henryatharvard.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../../../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
+      <a href="https://github.com/henryatharvard/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Dated artifact snapshot</p>
+      <h1>Dataset intake record</h1>
+      <p class="journal-description">What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.</p>
+      <p class="journal-meta">September 19, 2026 · Results record · September 19, 2026 · <a href="dataset-intake-2026-09-19.md">Snapshot source</a></p>
+      <div class="share-actions">
+        <a href="https://henryatharvard.github.io/maestro/journal/snapshots/2026-09-19/dataset-intake-2026-09-19.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://henryatharvard.github.io/maestro/journal/snapshots/2026-09-19/dataset-intake-2026-09-19.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <aside class="snapshot-note"><strong>Snapshot from September 19, 2026.</strong> This preserves the artifact for <a href="../../2026-09-19.html">this journal entry</a>. <a href="../../../artifacts/dataset-intake-2026-09-19.html">Read the current version</a>.</aside><div class="journal-prose"><p><strong>Outcome:</strong> <code>fetch</code>, <code>segment</code>, <code>sources</code>, <code>caption</code> and <code>pending</code> stages added to
+<code>maestro-ace</code>, with unit tests for the segmenter, track splitting, the reference/train
+roles, caption editing and the rights gate (13 tests pass). No model was trained and no
+listening evaluation was run.</p>
+<h2 id="what-the-tools-do">What the tools do</h2>
+<ul>
+<li><code>fetch URL</code> downloads a YouTube video's audio as 48 kHz stereo WAV under the ignored
+<code>data/sources/youtube/&lt;id&gt;/</code> directory and writes a <code>source.json</code> sidecar: URL, title,
+uploader, upload date, platform-reported licence, downloader version, fetch time,
+chapters, and the audible span. <code>--keep-video</code> also stores an mp4.</li>
+<li><code>segment ID</code> trims silence, cuts fixed or per-chapter windows inside the configured
+10–180 s range, drops mostly silent windows, and writes manifest rows with
+<code>role = &quot;reference&quot;</code>, <code>rights = &quot;unverified&quot;</code>, source offsets and a <code>TODO</code> caption.
+<code>--tracks</code> splits a compilation at quiet gaps so each song is its own composition.</li>
+<li><code>caption ID --text ...</code> fills in a row; <code>pending</code> lists rows still marked <code>TODO</code>.</li>
+<li><code>prepare</code> now stages reference rows separately (<code>reference.json</code>) and keeps them out
+of the train/validation split. A <code>train</code> row with unverified rights is refused unless
+<code>allow_unverified_rights = true</code> is set in the frozen config.</li>
+</ul>
+<h2 id="first-source">First source</h2>
+<p>The first fetched source was a fan-uploaded compilation titled &quot;David Foster Greatest
+Hits Full Album - Best Duets Male and Female Songs&quot; (video <code>q-73jqLVu3Y</code>, 50 min 42 s,
+no chapters, no licence stated). Both the Opus and the AAC audio streams are digital
+silence from about 19 minutes onward, which is consistent with a partial rights mute
+on the platform. Track splitting found five songs in the audible part (boundaries near
+221, 474, 681 and 884 s; 3.3–4.3 min each) and produced 15 clips of 25–90 s as
+<code>train</code> rows, one composition per song. The material is vocal duets with band and
+orchestra, not solo piano.</p>
+<h2 id="decision-recorded">Decision recorded</h2>
+<p>Henry chose to use this material for the first ACE fine-tuning trial. The config now
+sets <code>allow_unverified_rights = true</code>; the rows keep <code>rights = &quot;unverified&quot;</code> and their
+full YouTube provenance, so the adapter's training data can be audited. Any adapter
+trained on it is a private experiment; it is not to be published or shared without
+clearing the rights to the underlying recordings. Captions were still <code>TODO</code> at the
+time of writing, and <code>prepare</code> refuses to freeze the split until they are written.</p>
+<h2 id="not-public">Not public</h2>
+<p>The downloaded audio, the clips, and any adapter trained on them stay on Henry's machine.</p>
+<h2 id="later-the-same-day-local-albums-and-the-workbench">Later the same day: local albums and the workbench</h2>
+<p>Two albums Henry owns (24 MP3s, 102 minutes; catalogue in
+<code>~/git/datasets/maestro/david_foster_musics/CATALOG.md</code>) were imported with the new
+<code>import</code> stage: 23 sources after one byte-identical duplicate was skipped, decoded to
+48 kHz WAV, cut into 74 clips of 90 s as <code>train</code> rows, one composition per song. With the
+YouTube clips the manifest holds 89 clips in 28 training compositions, all captions
+still <code>TODO</code>. A web workbench (<code>maestro-ace web</code>) now serves the clips for listening and
+captioning behind a token cookie; the hostname <code>maestro.enrica.ai</code> was created as a CNAME
+to the existing tunnel. Tests: 15 pass.</p>
+<h2 id="whole-song-units-and-auto-label-evening">Whole-song units and auto-label (evening)</h2>
+<p>The 90-second windows were dropped in favour of one clip per song: <code>data.max_seconds</code>
+went to 360, and the 23 album tracks plus the 5 YouTube tracks became 28 clips of 196 to
+328 s in 28 compositions. Reason: complete pieces carry real intros, entrances and
+endings, and one caption per song is a third of the labeling. An <code>autolabel</code> stage now
+drafts caption, BPM, key and instruments from the audio (librosa tempo and
+Krumhansl-Schmuckler key, z-scored MFCC/chroma/loudness segmentation with 12 s minimum
+sections, CLAP zero-shot instrument tags on 10 s windows kept only when persistent).
+Drafts stay <code>TODO:</code>-prefixed until a listener confirms them in the workbench, which now
+shows the section and instrument timeline under the player. Tests: 19 pass.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/henryatharvard/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

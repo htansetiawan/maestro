@@ -1,0 +1,16 @@
+[Unit]
+Description=Maestro dataset workbench for maestro.enrica.ai
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/henrytan/git/maestro/experiments/001_ace_audio_personalization
+EnvironmentFile=/home/henrytan/.config/maestro/web.env
+ExecStart=/home/henrytan/git/maestro/experiments/001_ace_audio_personalization/.venv/bin/maestro-ace web --host 127.0.0.1 --port 8090
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

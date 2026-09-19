@@ -10,8 +10,10 @@ precision = "bf16"
 [data]
 manifest = "data/recordings.jsonl"
 min_seconds = 10.0
-max_seconds = 180.0
+max_seconds = 360.0
 validation_fraction = 0.2
+# Rows with rights = "unverified" (YouTube/commercial audio) train only if this is true.
+allow_unverified_rights = true
 
 [lora]
 rank = 16

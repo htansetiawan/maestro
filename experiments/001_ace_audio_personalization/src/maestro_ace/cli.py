@@ -32,6 +32,53 @@ def parser() -> argparse.ArgumentParser:
     tr = sub.add_parser("preference", help="Train experimental offline flow-DPO adapter")
     tr.add_argument("--source", choices=["human", "ai"], required=True)
     sub.add_parser("report", help="Build a matched-seed blind listening index")
+    fetch = sub.add_parser("fetch", help="Download YouTube audio (48 kHz WAV) into data/sources/")
+    fetch.add_argument("urls", nargs="+", help="YouTube URLs or video IDs")
+    fetch.add_argument("--keep-video", action="store_true", help="Also keep an mp4 for viewing")
+    fetch.add_argument("--overwrite", action="store_true")
+    seg = sub.add_parser("segment", help="Cut a fetched source into clips and draft manifest rows")
+    seg.add_argument("video_ids", nargs="+", help="Video IDs or URLs already fetched")
+    seg.add_argument("--clip-seconds", type=float, default=90.0)
+    seg.add_argument("--overlap-seconds", type=float, default=0.0)
+    seg.add_argument("--chapters", action="store_true", help="Cut per YouTube chapter")
+    seg.add_argument("--tracks", action="store_true",
+                     help="Split a compilation at quiet gaps; one composition per track")
+    seg.add_argument("--gap-db", type=float, default=-35.0, help="Gap threshold below peak")
+    seg.add_argument("--min-gap-seconds", type=float, default=0.3)
+    seg.add_argument("--min-track-seconds", type=float, default=90.0)
+    seg.add_argument("--role", choices=["reference", "train"], default="reference",
+                     help="train rows still pass the rights gate in prepare")
+    seg.add_argument("--instruments", default="piano", help="Comma-separated, e.g. piano,strings")
+    seg.add_argument("--silence-db", type=float, default=-45.0)
+    seg.add_argument("--min-active", type=float, default=0.6)
+    seg.add_argument("--merge", action="store_true",
+                     help="Append the clip rows to data/recordings.jsonl")
+    sub.add_parser("sources", help="List fetched sources and their clip counts")
+    cap = sub.add_parser("caption", help="Set caption/metadata on one manifest row")
+    cap.add_argument("clip_id")
+    cap.add_argument("--text", help="What is audible: instruments, texture, motion, mood")
+    cap.add_argument("--bpm", type=int)
+    cap.add_argument("--keyscale", help='e.g. "Eb major"')
+    cap.add_argument("--timesignature", help='e.g. "4"')
+    cap.add_argument("--instruments", help="Comma-separated")
+    cap.add_argument("--role", choices=["reference", "train"])
+    sub.add_parser("pending", help="List manifest rows whose captions are still TODO")
+    imp = sub.add_parser("import", help="Decode local audio files/folders into data/sources/local/")
+    imp.add_argument("paths", nargs="+", type=Path)
+    imp.add_argument("--overwrite", action="store_true")
+    imp.add_argument("--segment", action="store_true", help="Also cut clips for each file")
+    imp.add_argument("--clip-seconds", type=float, default=90.0)
+    imp.add_argument("--role", choices=["reference", "train"], default="reference")
+    imp.add_argument("--instruments", default="piano")
+    imp.add_argument("--merge", action="store_true", help="Append clip rows to the manifest")
+    al = sub.add_parser("autolabel", help="Draft captions/BPM/key/instruments from the audio")
+    al.add_argument("--ids", nargs="*", help="Only these clip IDs (default: every TODO row)")
+    al.add_argument("--force", action="store_true", help="Also overwrite human captions")
+    al.add_argument("--no-clap", action="store_true", help="Skip CLAP instrument tagging")
+    al.add_argument("--device", help="cuda or cpu for CLAP (default: auto)")
+    web = sub.add_parser("web", help="Serve the dataset workbench (local web UI)")
+    web.add_argument("--host", default="127.0.0.1")
+    web.add_argument("--port", type=int, default=8090)
     return p
 
 
@@ -75,11 +122,96 @@ def main() -> None:
 
         print(json.dumps(run_smoke(cfg), indent=2))
         return
+    if stage == "fetch":
+        from .sources import fetch
+
+        for url in args.urls:
+            meta = fetch(root, url, keep_video=args.keep_video, overwrite=args.overwrite)
+            print(json.dumps({k: meta[k] for k in ("video_id", "title", "uploader", "duration",
+                                                    "rights", "platform_license", "audio_path",
+                                                    "video_path")}, indent=2))
+        return
+    if stage == "segment":
+        from .sources import merge_into_manifest, segment, video_id
+
+        instruments = [i.strip() for i in args.instruments.split(",") if i.strip()]
+        for item in args.video_ids:
+            summary = segment(root, cfg, video_id(item), clip_seconds=args.clip_seconds,
+                              overlap_seconds=args.overlap_seconds, use_chapters=args.chapters,
+                              role=args.role, instruments=instruments,
+                              silence_db=args.silence_db, min_active=args.min_active,
+                              use_tracks=args.tracks, gap_db=args.gap_db,
+                              min_gap_seconds=args.min_gap_seconds,
+                              min_track_seconds=args.min_track_seconds)
+            print(json.dumps(summary, indent=2))
+            if args.merge and summary["manifest"]:
+                print(json.dumps(merge_into_manifest(root, cfg, Path(summary["manifest"]))))
+        return
+    if stage == "sources":
+        from .sources import list_sources
+
+        print(json.dumps(list_sources(root), indent=2))
+        return
+    if stage == "caption":
+        from .sources import set_caption
+
+        instruments = [i.strip() for i in (args.instruments or "").split(",") if i.strip()]
+        row = set_caption(root, cfg, args.clip_id, text=args.text, bpm=args.bpm,
+                          keyscale=args.keyscale, timesignature=args.timesignature,
+                          instruments=instruments or None, role=args.role)
+        print(json.dumps(row, indent=2))
+        return
+    if stage == "import":
+        from .sources import import_local, merge_into_manifest, segment
+
+        metas = import_local(root, args.paths, overwrite=args.overwrite)
+        print(f"Imported {len(metas)} source(s)")
+        instruments = [i.strip() for i in args.instruments.split(",") if i.strip()]
+        for meta in metas:
+            line = {"id": meta["video_id"], "title": meta["title"], "artist": meta["artist"],
+                    "album": meta["album"], "seconds": round(meta["duration"], 1)}
+            if args.segment:
+                summary = segment(root, cfg, meta["video_id"], clip_seconds=args.clip_seconds,
+                                  role=args.role, instruments=instruments)
+                line["clips"] = summary["clips"]
+                if args.merge and summary["manifest"]:
+                    line["merged"] = merge_into_manifest(root, cfg, Path(summary["manifest"]))["added"]
+            print(json.dumps(line))
+        return
+    if stage == "autolabel":
+        from .autolabel import autolabel
+
+        result = autolabel(root, cfg, ids=args.ids or None, force=args.force,
+                           use_clap=not args.no_clap, device=args.device)
+        print(json.dumps({k: len(v) for k, v in result.items()}))
+        return
+    if stage == "web":
+        from .web import serve
+
+        serve(root, args.config.resolve(), host=args.host, port=args.port)
+        return
+    if stage == "pending":
+        from .sources import pending_captions
+
+        rows = pending_captions(root, cfg)
+        print(json.dumps(rows, indent=2))
+        print(f"{len(rows)} caption(s) still TODO")
+        return
     if stage == "doctor":
+        import shutil
+
         from .data import load_prompts
 
+        try:
+            import yt_dlp
+
+            downloader = f"yt-dlp {yt_dlp.version.__version__}"
+        except ImportError:
+            downloader = None
         prompts = load_prompts(root, cfg)
         status = {"experiment": root.name, "config": str(args.config.resolve()),
+                  "ffmpeg": shutil.which("ffmpeg"), "yt_dlp": downloader,
+                  "allow_unverified_rights": cfg.data.allow_unverified_rights,
                   "ace_revision": cfg.runtime.ace_revision,
                   "recordings_manifest": (root / cfg.data.manifest).is_file(),
                   "prepared": (artifacts / "prepared/train.json").is_file(),

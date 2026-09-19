@@ -26,6 +26,10 @@ class Data(StrictModel):
     min_seconds: float = Field(default=10, gt=0)
     max_seconds: float = Field(default=180, gt=0, le=600)
     validation_fraction: float = Field(default=0.2, gt=0, lt=1)
+    # External material (e.g. YouTube) enters the manifest with rights="unverified".
+    # It can be staged as listening/analysis reference by default; putting it into the
+    # training split requires this explicit opt-in, which is recorded in the frozen config.
+    allow_unverified_rights: bool = False
 
 
 class LoRA(StrictModel):
