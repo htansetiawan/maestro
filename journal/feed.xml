@@ -1,33 +1,33 @@
 <?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Maestro weekly journal</title>
-  <id>https://henryatharvard.github.io/maestro/journal/</id>
-  <link href="https://henryatharvard.github.io/maestro/journal/" rel="alternate" />
-  <link href="https://henryatharvard.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
+  <id>https://htansetiawan.github.io/maestro/journal/</id>
+  <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
+  <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
   <updated>2026-09-19T00:00:00-07:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
   <entry>
     <title>From data to a labelled dataset: the David Foster corpus</title>
-    <id>https://henryatharvard.github.io/maestro/journal/2026-09-19.html</id>
-    <link href="https://henryatharvard.github.io/maestro/journal/2026-09-19.html" />
+    <id>https://htansetiawan.github.io/maestro/journal/2026-09-19.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-09-19.html" />
     <updated>2026-09-19T00:00:00-07:00</updated>
     <published>2026-09-19T00:00:00-07:00</published>
     <summary>The ACE experiment gets its corpus: 28 David Foster songs from two albums and a YouTube compilation, cut as whole songs, with captions drafted from the audio and confirmed by ear in a private web workbench.</summary>
   </entry>
   <entry>
     <title>ACE moves from idea to runnable experiment</title>
-    <id>https://henryatharvard.github.io/maestro/journal/2026-09-12.html</id>
-    <link href="https://henryatharvard.github.io/maestro/journal/2026-09-12.html" />
+    <id>https://htansetiawan.github.io/maestro/journal/2026-09-12.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-09-12.html" />
     <updated>2026-09-12T00:00:00-07:00</updated>
     <published>2026-09-12T00:00:00-07:00</published>
     <summary>An ACE-Step 1.5 fine-tuning pipeline now passes a synthetic end-to-end CPU smoke. Real ACE weights, the RTX PRO 5000 run, and original piano data are next.</summary>
   </entry>
   <entry>
     <title>From a research agenda to a product musicians can use</title>
-    <id>https://henryatharvard.github.io/maestro/journal/2026-09-10.html</id>
-    <link href="https://henryatharvard.github.io/maestro/journal/2026-09-10.html" />
+    <id>https://htansetiawan.github.io/maestro/journal/2026-09-10.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-09-10.html" />
     <updated>2026-09-10T00:00:00-07:00</updated>
     <published>2026-09-10T00:00:00-07:00</published>
     <summary>Music Kitchen takes shape as a personal arranging studio. The key question becomes how a musician directs the second and third revision through sound, examples, and gestures.</summary>

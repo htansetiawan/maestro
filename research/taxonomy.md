@@ -5,7 +5,7 @@ author: "Henry Tan · Maestro"
 date: "2026-09-07"
 bibliography: references.bib
 description: "Forty-nine nodes and ten coding dimensions for placing any music-AI system inside a composer's workflow — and for seeing exactly where the field is thin."
-canonical: "https://henryatharvard.github.io/maestro/survey/taxonomy.html"
+canonical: "https://htansetiawan.github.io/maestro/survey/taxonomy.html"
 ---
 
 # 1. Purpose and organizing principle

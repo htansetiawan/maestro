@@ -23,7 +23,7 @@ csl-refs: true
 link-citations: true
 reference-section-title: "References"
 description: "A 43,900-word survey of AI for music composition — 398 works cited, organized by the composer's loop rather than by model architecture, closing with twelve open research directions."
-canonical: "https://henryatharvard.github.io/maestro/survey/literature-review.html"
+canonical: "https://htansetiawan.github.io/maestro/survey/literature-review.html"
 ---
 
 ## 1. Introduction

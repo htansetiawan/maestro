@@ -8,45 +8,57 @@ Bring piano, lyrics, and musical ideas; direct the rest of the arrangement throu
 examples, and gestures. The product comes first. Research follows the problems encountered
 while making that experience work.
 
-- **[Try the studio](https://henryatharvard.github.io/maestro/studio/)** — a playable browser
+- **[Try the studio](https://htansetiawan.github.io/maestro/studio/)** — a playable browser
   experiment with phrase selection, contour drawing, rhythm tapping, an editable recipe,
   before/after comparison, undo, and WAV/project export. It uses procedural synthesis;
   trained multimodal generation and humming transcription are not connected.
-- **[Weekly journal](https://henryatharvard.github.io/maestro/journal/)** — dated decisions,
+- **[Weekly journal](https://htansetiawan.github.io/maestro/journal/)** — dated decisions,
   positioning, findings, open questions, experiments, and frozen artifact snapshots.
-- **[Current product brief](https://henryatharvard.github.io/maestro/artifacts/music-kitchen-product.html)**
+- **[Current product brief](https://htansetiawan.github.io/maestro/artifacts/music-kitchen-product.html)**
   — the intended experience and first product milestone.
-- **[Maestro landing page](https://henryatharvard.github.io/maestro/)** — current state and
-  the full set of working artifacts. **[Atom feed](https://henryatharvard.github.io/maestro/journal/feed.xml)**.
+- **[Maestro landing page](https://htansetiawan.github.io/maestro/)** — current state and
+  the full set of working artifacts. **[Atom feed](https://htansetiawan.github.io/maestro/journal/feed.xml)**.
 
-To add the next week, follow **[the journal publishing guide](journal/README.md)**.
-Source entries live in `journal/entries/`; `journal/content.json` records their metadata
-and artifact links. Publishing an entry freezes its attached documents, renders readable
-pages, and updates the landing page and feed. It does not automatically write weekly entries.
+## Run the prototype locally
+
+The studio is plain HTML, CSS, and JavaScript. From the repository root, run:
 
 ```bash
-python3 -m pip install -r requirements-site.txt
-./build.sh --journal        # journal, artifacts, snapshots, landing page; no pandoc needed
-python3 scripts/check_site.py
-python3 scripts/test_journal.py
+python3 -m http.server 8000
 ```
 
-The studio is plain HTML, CSS, and JavaScript. Serve the repository with
-`python3 -m http.server 8000` to try it locally. Generated web pages are committed for
-GitHub Pages; the older survey build still uses pandoc.
+Open [the studio](http://localhost:8000/studio/) or [the landing page](http://localhost:8000/).
+Generated pages are committed, so previewing the existing site requires no build step.
 
----
+## Project structure
 
-## What's here
+| Path | Purpose |
+|---|---|
+| `studio/` | Playable browser prototype with procedural synthesis |
+| `research/MUSIC-KITCHEN-PRODUCT.md` | Current product brief |
+| `research/STUDIO-EXPERIMENT.md` | Implemented prototype behavior and limitations |
+| `journal/entries/` | Source for dated progress updates |
+| `journal/content.json` | Journal metadata and artifact registry |
+| `journal/snapshots/` | Frozen artifacts attached to published entries |
+| `artifacts/` | Generated pages for current working documents |
+| `research/` | Research sources, evidence notes, and generation scripts |
+| `survey/` | Generated literature survey pages |
+| `scripts/` | Journal builder and site checks |
+
+To publish an update, follow **[the journal publishing guide](journal/README.md)**.
+Publishing an entry freezes its attached documents, renders pages, and updates the landing
+page and feed. It does not automatically write weekly entries.
+
+## Research foundation
 
 The project began with the following literature survey. It remains a research foundation;
 the product brief and weekly journal carry the current direction.
 
-| | |
+| Resource | Contents |
 |---|---|
-| **[Literature review](https://henryatharvard.github.io/maestro/survey/literature-review.html)** | 43,900 words · 398 works cited · thirteen sections following the loop |
-| **[Taxonomy](https://henryatharvard.github.io/maestro/survey/taxonomy.html)** | 49 nodes, 10 coding dimensions — the frame the review follows |
-| **[Annotated bibliography](https://henryatharvard.github.io/maestro/survey/annotated-bibliography.html)** | 394 records with evidence and verification level |
+| **[Literature review](https://htansetiawan.github.io/maestro/survey/literature-review.html)** | 43,900 words · 398 works cited · thirteen sections following the loop |
+| **[Taxonomy](https://htansetiawan.github.io/maestro/survey/taxonomy.html)** | 49 nodes, 10 coding dimensions — the frame the review follows |
+| **[Annotated bibliography](https://htansetiawan.github.io/maestro/survey/annotated-bibliography.html)** | 394 records with evidence and verification level |
 | **[references.bib](research/references.bib)** | 398 BibTeX entries; every key resolves through pandoc citeproc |
 
 Corpus: **463 annotated entries, 1957–2026**, assembled across eight research clusters in
@@ -66,7 +78,7 @@ September 2026.
 - `research/CHANGELOG.md` — exactly which of the 56 fixes were applied, and which were left.
 - `research/bib/` — per-cluster BibTeX before merging.
 
-## Earlier survey findings
+### Earlier survey findings
 
 These are historical survey conclusions, not the current product specification. Some broad
 claims below were challenged by later evidence; consult the [positioning evidence](research/AI-MUSIC-POSITIONING-EVIDENCE.md)
@@ -88,11 +100,12 @@ and the [product brief](research/MUSIC-KITCHEN-PRODUCT.md) for the updated frami
 5. **Symbolic-first, human-authored work sits on materially better legal ground** than
    prompt-to-audio, and licence-clean symbolic training data genuinely exists.
 
-## Open directions
+### Earlier research directions
 
-Twelve gaps, each naming the nearest prior art so none starts from nothing —
-**[full list on the site](https://henryatharvard.github.io/maestro/#directions)**. The ones
-most worth someone's time:
+The original survey identified twelve gaps, each naming the nearest prior art —
+**[full list on the site](https://htansetiawan.github.io/maestro/#directions)**.
+These are historical research questions; the product brief carries the current priorities.
+Examples from that survey:
 
 - **G1** Annotations as a compilable instruction set on notation *(S2.4 — 4 entries in the
   corpus, none of them music)*
@@ -102,11 +115,9 @@ most worth someone's time:
 - **G7** Composer-controllable audio rendering *(no commercial system takes MIDI or chords as
   a generation condition)*
 
-Take them. They are worth more to the field than to any one person.
-
 ## Link previews
 
-`index.html` and the three survey pages carry a full Open Graph + Twitter card set, so links
+`index.html` and the survey pages carry a full Open Graph + Twitter card set, so links
 unfurl properly in iMessage, WhatsApp, Signal, Slack, Discord, LinkedIn and X.
 
 - **Card image:** `assets/og-cover.png` — 1200×630, 62 KB (comfortably under WhatsApp's limit).
@@ -114,7 +125,7 @@ unfurl properly in iMessage, WhatsApp, Signal, Slack, Discord, LinkedIn and X.
 - **Regenerate:** `./build-og.sh` (needs `npm i playwright` and ImageMagick).
 
 Two things to know. `og:image` **must be an absolute URL** — scrapers do not resolve relative
-paths — so it is hard-coded to `https://henryatharvard.github.io/maestro/`; change it in
+paths — so it is hard-coded to `https://htansetiawan.github.io/maestro/`; change it in
 `index.html` and `assets/doc.template.html` if the site ever moves. And the shipped PNG was
 rendered without network access, so it uses Charter rather than Newsreader; re-running
 `./build-og.sh` on a machine that can reach Google Fonts produces the card in the real faces.
@@ -126,16 +137,31 @@ and [opengraph.xyz](https://www.opengraph.xyz/) is a quick way to see what a scr
 
 ## Building the site
 
-The site is plain HTML with no build step for the landing page. The document pages are rendered
-from the markdown in `research/` with pandoc:
+The site is served as static HTML through GitHub Pages. To rebuild the journal and current
+artifact pages, install the Python dependency and run:
 
 ```bash
-./build.sh          # research/*.md → survey/*.html   (requires pandoc ≥ 3)
+python3 -m pip install -r requirements-site.txt
+./build.sh --journal
+python3 scripts/check_site.py
+python3 scripts/test_journal.py
 ```
 
-`assets/site.css` carries the shared identity; `assets/doc.template.html` is the pandoc
-template. GitHub Pages serves from the repository root (`.nojekyll` is present so nothing is
-filtered).
+This also rebuilds the journal archive, dated entries, snapshot pages, Atom feed, and the
+marked current-state block in `index.html`. It requires no pandoc. The studio has no build step.
+
+To additionally render the literature review, taxonomy, annotated bibliography, and positioning
+document into `survey/`, install pandoc 3 or later and run:
+
+```bash
+./build.sh
+```
+
+`assets/site.css` carries the shared identity; `assets/doc.template.html` is the survey's
+pandoc template. GitHub Pages serves from the repository root (`.nojekyll` is present so
+nothing is filtered). Review and commit generated pages along with their source changes.
+
+Browser regression setup and commands are in the [journal guide](journal/README.md).
 
 To regenerate the research artefacts themselves from the source notes:
 
@@ -144,6 +170,7 @@ cd research
 python3 merge_bib.py       # bib/*.bib     → references.bib + bib_aliases.json
 python3 build_map.py       # notes/*.md    → taxonomy-map.{md,csv}
 python3 build_annobib.py   # notes/*.md    → annotated-bibliography.md
+python3 assemble.py        # sections/*.md → literature-review.md
 ```
 
 ## Contributing
@@ -164,7 +191,7 @@ See [`CITATION.cff`](CITATION.cff).
   author = {Tan, Henry},
   title  = {Maestro: Human-Centered {AI} for Composition --- A Literature Review and Taxonomy},
   year   = {2026},
-  url    = {https://henryatharvard.github.io/maestro/},
+  url    = {https://htansetiawan.github.io/maestro/},
   note   = {Survey of 463 works, 1957--2026}
 }
 ```

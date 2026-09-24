@@ -4,7 +4,7 @@ subtitle: "394 unique works, organized by taxonomy node"
 author: "Henry Tan · Maestro"
 date: "7 September 2026"
 description: "394 works in AI music research, each with what it does, what evidence backs it, and how it was verified — organized by taxonomy node rather than alphabetically."
-canonical: "https://henryatharvard.github.io/maestro/survey/annotated-bibliography.html"
+canonical: "https://htansetiawan.github.io/maestro/survey/annotated-bibliography.html"
 ---
 
 Records merged from the eight research clusters in `notes/`. Each entry gives provenance, what the system does, its evidence, and why it matters for a composer-centered studio. **Verification** records how the entry was checked in September 2026: *verified* = a primary source was fetched; *partial* = secondary pages or search snippets only; *unverified* = recall, not re-confirmed. Treat figures in partial and unverified entries as indicative. Cluster numbers refer to the source notes files. Citation keys match `references.bib`.

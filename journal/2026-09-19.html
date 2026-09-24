@@ -7,18 +7,18 @@
 <meta name="description" content="The ACE experiment gets its corpus: 28 David Foster songs from two albums and a YouTube compilation, cut as whole songs, with captions drafted from the audio and confirmed by ear in a private web workbench.">
 <meta name="author" content="Henry Tan">
 <meta name="color-scheme" content="light dark">
-<link rel="canonical" href="https://henryatharvard.github.io/maestro/journal/2026-09-19.html">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-09-19.html">
 <link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
 <meta property="og:site_name" content="Maestro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="From data to a labelled dataset: the David Foster corpus — Maestro">
 <meta property="og:description" content="The ACE experiment gets its corpus: 28 David Foster songs from two albums and a YouTube compilation, cut as whole songs, with captions drafted from the audio and confirmed by ear in a private web workbench.">
-<meta property="og:url" content="https://henryatharvard.github.io/maestro/journal/2026-09-19.html">
-<meta property="og:image" content="https://henryatharvard.github.io/maestro/assets/og-cover.png">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-09-19.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="From data to a labelled dataset: the David Foster corpus — Maestro">
 <meta name="twitter:description" content="The ACE experiment gets its corpus: 28 David Foster songs from two albums and a YouTube compilation, cut as whole songs, with captions drafted from the audio and confirmed by ear in a private web workbench.">
-<meta name="twitter:image" content="https://henryatharvard.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
 <link rel="icon" href="../assets/favicon.ico">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/site.css">
@@ -35,7 +35,7 @@
       <a href="../journal/">Journal</a>
       <a href="../#artifacts">Artifacts</a>
       <a href="../survey/literature-review.html">Research</a>
-      <a href="https://github.com/henryatharvard/maestro">GitHub</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
     </nav>
   </header>
   <main id="content">
@@ -45,17 +45,17 @@
       <p class="journal-description">The ACE experiment gets its corpus: 28 David Foster songs from two albums and a YouTube compilation, cut as whole songs, with captions drafted from the audio and confirmed by ear in a private web workbench.</p>
       <p class="journal-meta"><time datetime="2026-09-19">September 19, 2026</time> · Henry Tan · <a href="entries/2026-09-19.md">Entry source</a></p>
       <div class="share-actions">
-        <a href="https://henryatharvard.github.io/maestro/journal/2026-09-19.html">Permalink</a>
-        <button type="button" class="share-button" data-share-url="https://henryatharvard.github.io/maestro/journal/2026-09-19.html" hidden>Copy link</button>
+        <a href="https://htansetiawan.github.io/maestro/journal/2026-09-19.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/2026-09-19.html" hidden>Copy link</button>
         <span class="share-status" role="status" aria-live="polite"></span>
       </div>
     </header>
     <dl class="state-grid"><div><dt>Stage</dt><dd>Corpus assembled and auto-drafted; captions being confirmed; instrumental subset of 14 songs is the training set. No ACE checkpoint loaded, no GPU run yet.</dd></div><div><dt>Current focus</dt><dd>Which of Foster&#x27;s expressive qualities can ACE learn from whole instrumental songs, and which still need the musician&#x27;s hand.</dd></div><div><dt>Next experiment</dt><dd>Confirm captions and freeze the split, install the pinned ACE checkout, run the real-ACE GPU smoke, train the first SFT adapter, and listen blind against the base model.</dd></div></dl><div class="journal-prose"><p>This week the ACE-Step experiment got its data. The target is the sound of David Foster: sixteen Grammy awards, decades of chart records as composer, arranger and producer for Celine Dion, All-4-One, Babyface, James Ingram and Olivia Newton-John, and a smaller body of work released under his own name. The question the experiment asks is narrow and testable: which of his expressive qualities can a music model learn from audio, and which still need the musician's hand in the studio. To ask it, I first needed a corpus, a way to cut and describe it, and a place to do the describing.</p>
 <h2 id="find-the-work-links-added-september-19-2026">Find the work (links added September 19, 2026)</h2>
 <ul>
-<li><strong>Intake and labeling code:</strong> <a href="https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/src/maestro_ace/sources.py">sources.py</a> (YouTube fetch, local import, segmentation, captions) · <a href="https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/src/maestro_ace/autolabel.py">autolabel.py</a> (draft captions from the audio) · <a href="https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/src/maestro_ace/web.py">web.py</a> (the dataset workbench).</li>
-<li><strong>How to run it:</strong> <a href="https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/README.md">experiment README</a>, sections on external sources, local albums, whole songs, auto-label and the workbench.</li>
-<li><strong>What happened with the data:</strong> <a href="https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/results/youtube-sources-2026-09-19.md">dated results record</a> · <a href="https://github.com/henryatharvard/maestro/blob/main/experiments/001_ace_audio_personalization/results/README.md">public results index</a>.</li>
+<li><strong>Intake and labeling code:</strong> <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/src/maestro_ace/sources.py">sources.py</a> (YouTube fetch, local import, segmentation, captions) · <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/src/maestro_ace/autolabel.py">autolabel.py</a> (draft captions from the audio) · <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/src/maestro_ace/web.py">web.py</a> (the dataset workbench).</li>
+<li><strong>How to run it:</strong> <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/README.md">experiment README</a>, sections on external sources, local albums, whole songs, auto-label and the workbench.</li>
+<li><strong>What happened with the data:</strong> <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/results/youtube-sources-2026-09-19.md">dated results record</a> · <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/results/README.md">public results index</a>.</li>
 <li><strong>Tests:</strong> 19 pass (<code>uv run pytest</code>), covering segmentation, track splitting, the rights gate, import, the caption template and the workbench API.</li>
 </ul>
 <h2 id="what-changed">What changed</h2>
@@ -85,13 +85,13 @@
 </ul>
 <h2 id="next-experiment">Next experiment</h2>
 <p>Confirm the 28 captions in the workbench, marking the sung tracks as reference, and freeze the split with <code>prepare</code>. Install the pinned ACE-Step 1.5 checkout and base checkpoint, run the real-ACE GPU smoke, then preprocess and train the first SFT adapter on the instrumental songs. Generate the frozen evaluation prompts with the same seeds from the base model and the adapter, and listen blind before drawing any conclusion about what was learned.</p>
-</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"><article class="artifact-item"><p class="artifact-status">Current direction · product concept</p><h3><a href="snapshots/2026-09-19/music-kitchen-product.html">Music Kitchen product brief</a></h3><p>A personal arranging studio: play piano, write lyrics, and direct the rest of the band through musical examples.</p><p class="artifact-source"><a href="https://github.com/henryatharvard/maestro/blob/main/journal/snapshots/2026-09-19/music-kitchen-product.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Working prototype · procedural synthesis</p><h3><a href="snapshots/2026-09-19/studio-experiment.html">Studio experiment 01</a></h3><p>The first playable canvas: phrase selection, drawn contours, tapped rhythm, reversible edits, and an executable musical recipe.</p><p class="artifact-source"><a href="https://github.com/henryatharvard/maestro/blob/main/journal/snapshots/2026-09-19/studio-experiment.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Code · 28-song corpus assembled and drafted; captions being confirmed; ACE GPU run pending</p><h3><a href="snapshots/2026-09-19/ace-audio-personalization.html">ACE audio-personalization experiment</a></h3><p>An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.</p><p class="artifact-source"><a href="https://github.com/henryatharvard/maestro/blob/main/journal/snapshots/2026-09-19/ace-audio-personalization.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Results record · September 19, 2026</p><h3><a href="snapshots/2026-09-19/dataset-intake-2026-09-19.html">Dataset intake record</a></h3><p>What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.</p><p class="artifact-source"><a href="https://github.com/henryatharvard/maestro/blob/main/journal/snapshots/2026-09-19/dataset-intake-2026-09-19.md">Frozen source on GitHub ↗</a></p></article></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-09-12.html">← Earlier: ACE moves from idea to runnable experiment</a><a href="./">All entries</a></nav>
+</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"><article class="artifact-item"><p class="artifact-status">Current direction · product concept</p><h3><a href="snapshots/2026-09-19/music-kitchen-product.html">Music Kitchen product brief</a></h3><p>A personal arranging studio: play piano, write lyrics, and direct the rest of the band through musical examples.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-09-19/music-kitchen-product.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Working prototype · procedural synthesis</p><h3><a href="snapshots/2026-09-19/studio-experiment.html">Studio experiment 01</a></h3><p>The first playable canvas: phrase selection, drawn contours, tapped rhythm, reversible edits, and an executable musical recipe.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-09-19/studio-experiment.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Code · 28-song corpus assembled and drafted; captions being confirmed; ACE GPU run pending</p><h3><a href="snapshots/2026-09-19/ace-audio-personalization.html">ACE audio-personalization experiment</a></h3><p>An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-09-19/ace-audio-personalization.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Results record · September 19, 2026</p><h3><a href="snapshots/2026-09-19/dataset-intake-2026-09-19.html">Dataset intake record</a></h3><p>What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-09-19/dataset-intake-2026-09-19.md">Frozen source on GitHub ↗</a></p></article></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-09-12.html">← Earlier: ACE moves from idea to runnable experiment</a><a href="./">All entries</a></nav>
   </main>
   <footer class="journal-footer">
     <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
       <a href="../journal/feed.xml">Subscribe via Atom</a></p>
     <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-      <a href="https://github.com/henryatharvard/maestro">Source and history</a>.</p>
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
   </footer>
 </div>
 </body>

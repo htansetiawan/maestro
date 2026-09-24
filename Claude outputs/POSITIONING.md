@@ -5,7 +5,7 @@ author: "Henry Tan · Maestro"
 date: "2026-09-07"
 bibliography: references.bib
 description: "What AI music generation has solved, what it is still arguing about, and three thesis-shaped projects that fit a 6–12 month timeline."
-canonical: "https://henryatharvard.github.io/maestro/survey/positioning.html"
+canonical: "https://htansetiawan.github.io/maestro/survey/positioning.html"
 ---
 
 # 1. The state of the field in one paragraph

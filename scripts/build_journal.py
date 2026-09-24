@@ -21,8 +21,8 @@ from markdown_it import MarkdownIt
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "journal/content.json"
-BASE = "https://henryatharvard.github.io/maestro/"
-GITHUB_BLOB = "https://github.com/henryatharvard/maestro/blob/main/"
+BASE = "https://htansetiawan.github.io/maestro/"
+GITHUB_BLOB = "https://github.com/htansetiawan/maestro/blob/main/"
 BEGIN = "<!-- JOURNAL:START -->"
 END = "<!-- JOURNAL:END -->"
 
