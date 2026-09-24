@@ -181,6 +181,10 @@ a loudness label each; instruments from zero-shot CLAP scores on a fixed vocabul
 deterministic template turns that into the draft, so the same evidence always produces
 the same words. The per-clip analysis lands in <code>data/analysis/&lt;clip_id&gt;.json</code> and the
 workbench shows it as a timeline under the player.</p>
+<p>Default captions describe detected instrumentation and the measured loudness arc. They
+do not infer a lead instrument from tag frequency, invent piano when no instrument is
+detected, or treat the first detection window as an exact instrument entrance. Genre,
+musical roles, mood and actual entrances can be refined by the listener.</p>
 <p>Drafts are written as <code>TODO: &lt;draft&gt;</code> and keep failing the training gate until someone
 listens, corrects and saves. Human captions are never overwritten unless <code>--force</code> is
 given. Expect the drafts to be right about tempo range, loud and quiet sections and
