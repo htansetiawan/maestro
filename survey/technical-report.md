@@ -1,0 +1,451 @@
+# Music to Score, Score to Music
+
+*An anatomy of text-and-audio song generators, and a methodology for making the score the shared representation between them*
+
+Henry Tan · Harvard University · Maestro project · October 4, 2026
+
+Canonical page: https://htansetiawan.github.io/maestro/survey/technical-report.html
+
+## Abstract
+
+Commercial song generators now accept a recording and return a transformed one — a solo piano track comes back with a vocal, an orchestra, or as a clean instrumental — without ever showing the musician a score. This report asks what such systems represent internally, why that representation keeps the musician out, and how to build the inverse: a system whose shared representation *is* the score, so that audio can be transcribed into it and notation rendered out of it under human control. We dissect the Suno-class architecture through four lenses from outside music — next-token prediction over a learned vocabulary (text transformers), hierarchical discrete codes (VQ-VAE), patch-based universal features (ViT), and unsupervised latent actions (Genie) — and assemble a comparative anatomy of Bark, YuE, ACE-Step, Magenta RealTime, MusicGen and Jukebox from primary sources. We then specify the two directions. Music → score is a two-stage problem — note events, then notation — whose second stage (meter, quantisation, staff assignment, spelling) is where current systems stop and where a single human annotation can lift alignment accuracy from 33% to 82%. Score → music splits into expressive rendering and synthesis, and no production generator today accepts a score as its condition. Grounding in MusicVAE, PianoTree-VAE and CLaMP 3, we specify what would be new: a notation-native variational latent, aligned contrastively to a frozen audio encoder, with decoders in both directions — and, borrowing Genie’s latent action model, edit operations learned without labels from pairs of musical versions, for which a composer’s annotations are the human-readable names. A case study of three real Suno outputs from one piano recording shows what such a system would surface at each step that today’s tools hide, and an evaluation plan is given.
+
+
+## 1. Introduction
+
+In September 2026 the author recorded a solo piano piece and uploaded it to Suno three times. The first time he asked for a vocal line over it; the second, for an orchestral arrangement; the third, for a clean instrumental version. Each request succeeded, in the sense that a plausible recording came back. None of the three returned anything a musician could *read*: no lead sheet for the melody the vocalist sang, no short score for the strings, no indication of which of his own voicings had been kept and which quietly re-harmonised. The system had demonstrably built an internal representation rich enough to add a singer in the right key and an orchestra on the right chords. It kept that representation to itself.
+
+This report is about that representation — what it is, why it is opaque, and how to build a system in which the shared representation is instead a *score*: something a human can open, correct, annotate, and hand back.
+
+The framing matters because it inverts the field’s default. The dominant paradigm is text-to-song: a prompt in, a mixed master out (Suno Inc. 2026; Universal Music Group and Udio 2025; Google DeepMind 2025c). Even its open-weights descendants — YuE, ACE-Step, DiffRhythm, SongGen — keep that shape (Yuan et al. 2025; J. Gong et al. 2026; Ning et al. 2025; Z. Liu et al. 2025). The editing features these products have added since 2024 (Covers, Replace Section, Add Vocals, stem export) are concessions to the same complaint the author made above, retrofitted onto architectures that never had a human-readable intermediate (Suno Inc. 2025; Music Business Worldwide 2025). A survey of 465 works organised by where each sits in a composer’s working loop found 125 primary entries on *compiling* music and 27 on *annotating* it; the nodes concerning machine-readable score annotation and machine-to-human explanation hold four and two works respectively (C.-Z. A. Huang et al. 2017; Rezwana and Maher 2023). The field optimised generation and left the interface to the musician nearly empty.
+
+Two questions organise what follows.
+
+**What is inside a Suno-class system?** Suno’s own architecture is not public. But Suno released Bark in 2023, its founder has described the design philosophy on record, and four open systems — YuE, ACE-Step, Magenta RealTime, MusicGen — implement the same family of ideas with their weights and papers available (Suno AI 2023; Shulman, Fan, and Hsu 2024; Yuan et al. 2025; J. Gong et al. 2025; Lyria Team et al. 2025; Copet et al. 2023). Section 3 reads this family through four lenses borrowed from outside music, because each lens names one load-bearing idea that the music papers inherited rather than invented: from text transformers, that everything is next-token prediction over a discrete vocabulary; from VQ-VAE, that the vocabulary can be learned, and learned hierarchically; from ViT, that universal features come from patches and transfer across domains; and from Genie, that the *actions* which transform one state into the next can be discovered without labels.
+
+**How do you build the inverse?** Sections 4–8 specify a bidirectional methodology. Music → score (§5) is two problems that are usually conflated: audio to note events, which is largely solved, and note events to notation — meter, quantisation, voice and staff assignment, enharmonic spelling, articulation — which is where today’s systems stop and where human annotation has the highest leverage. Score → music (§6) is expressive rendering followed by synthesis, and the striking fact is that no production generator accepts a score as its condition. Section 7 asks what representation could sit between them, and finds that the pieces exist — a variational latent over symbolic music (Roberts et al. 2018; Z. Wang et al. 2020), a contrastive space aligning sheet music, performance MIDI and audio (S. Wu, Guo, et al. 2025) — but that nothing yet both *transcribes into* and *renders out of* one latent. We specify that object and call it, for lack of a better name, a notation-native latent. Section 8 applies the Genie lens: edit operations as latent actions learned from version pairs, for which a composer’s annotations become the human-readable vocabulary.
+
+The author’s three Suno outputs return in §9 as the worked example: what each operation *is* in this framework, and what a notation-first system would have shown him at each step. Section 10 gives an evaluation plan; §11 states limitations plainly.
+
+A note on method. Every architectural claim about a specific system below was checked against a primary source — the paper, the model card, the repository, or a first-party interview — in October 2026, and the verification notes are published alongside this report. Where only inference is possible (Suno’s model size, Lyria’s architecture), the text says so. The report does not pretend to know what a closed model does.
+
+## 2. Background and related work
+
+The literature this report draws on is surveyed at length elsewhere by the same author; here we fix only the vocabulary and the three strands the methodology depends on.
+
+**Representations.** Symbolic music reaches a model as one of four families: MIDI-like performance events — note-on, note-off, time-shift, velocity — as in Music Transformer’s 388-token vocabulary (C.-Z. A. Huang et al. 2019); metrically structured event tokens such as REMI and Compound Word that make bars and beats explicit (Y.-S. Huang and Yang 2020; Hsiao et al. 2021); text-native notation, chiefly ABC, which every recent “music LLM” has adopted (Sturm et al. 2016; Yuan et al. 2024; Qu et al. 2024; Y. Wang et al. 2025); and image-like piano rolls used by diffusion models (Min et al. 2023; Z. Wang, Min, and Xia 2024). None of these is a *score* in the engraver’s sense. No verified system generates MusicXML or MEI natively; MetaScore, the largest score-origin dataset, converts MuseScore files *out* to event tokens for training (Xu et al. 2025). This absence is the problem the report addresses.
+
+**Generation under constraint.** The generative primitive the composer’s loop needs is infilling: regenerate a region while everything the human wrote stays fixed. Coconet framed it in 2017 as modelling how composers “write music in a nonlinear fashion, scribbling motifs here and there, often revisiting choices previously made” (C.-Z. A. Huang et al. 2017); it is mature today at bar × track granularity (Ens and Pasquier 2020; Pasquier et al. 2025; Malandro 2024), and the Anticipatory Music Transformer makes any subset of notes a hard constraint by interleaving them as control tokens (Thickstun et al. 2024). On the audio side, inpainting is native to diffusion and flow models (P. Li et al. 2023; Prajwal et al. 2024; Tsai et al. 2025), and inference-time optimisation turns any differentiable musical feature into a constraint on a frozen model (Novack et al. 2024).
+
+**Human–AI co-creation.** The empirical record is consistent. Steering interfaces raise a composer’s sense of control and ownership even when the model is held fixed, and interface and model gains are complementary rather than substitutable (Louie et al. 2020; Louie, Engel, and Huang 2022). A single slider is not control (Tchemeube et al. 2023). Practitioners decompose songs into layers, generate into those layers, and curate by hand (C.-Z. A. Huang et al. 2020); they accept transformations of their own material and reject automatic completion (Krol, Llano, and McCormack 2025); and they want to stay inside the tools they already use, with MIDI and MusicXML interoperability as the price of adoption (Deruty et al. 2022; Newman, Morris, and Lee 2023). The one deployment with public telemetry — a lead-sheet copilot inside a notation editor — reports roughly 23% of 318,000 span-level suggestions accepted (Donahue et al. 2024). Everything in §§5–8 is designed to be evaluated against these findings, not against Fréchet distances, which correlate weakly with human preference in any case (Chung et al. 2025; Grötschla et al. 2025).
+
+## 3. The anatomy of a Suno-class system, through four lenses
+
+What Suno runs in production is not public. Three kinds of evidence constrain it. Suno released **Bark** in April 2023 under the MIT licence: a “fully generative text-to-audio model” that, per its README, “follows a GPT style architecture similar to AudioLM and Vall-E and a quantized audio representation from EnCodec,” with no phoneme stage (Suno AI 2023). In a March 2024 interview the co-founder said the company “prefer\[s\] transformers,” that “you have some abstract notion of a token and you train a model to predict the probability over all of the next token — so it’s a language model,” that audio is discretised “similar to how it’s done in the open source stuff,” and declined to give a parameter count, noting that a 175B model “would be technologically difficult” at the tokens-per-second a song requires (Shulman, Fan, and Hsu 2024). And the product’s own release notes show the surface area expanding from prompt → song toward editing: audio upload (June 2024), stems (July 2024), Covers (September 2024), Replace Section (October 2024), Add Vocals and Add Instrumentals (July 2025), Suno Studio with stem and MIDI export (September 2025), Studio 2.0 with in-timeline MIDI editing (August 2026) (Suno Inc. 2025, 2026; Music Business Worldwide 2025). The reasonable inference — and it is an inference — is that production Suno is a scaled descendant of Bark: a codec-token language model, probably multi-stage, conditioned on text and on encoded audio.
+
+That inference is testable against four open systems that publish what they are. We read all five through lenses from outside music, because the lenses expose the shared skeleton more clearly than any one paper does.
+
+### 3.1 Lens one — text transformers: everything is next-token prediction over a discrete vocabulary
+
+The first idea the music systems inherited is the simplest: if you can turn the signal into a sequence of tokens from a finite vocabulary, a decoder-only transformer trained to predict the next token will model it. Bark’s README says it directly; so does Shulman. The distinctive music-specific question is then only *what the tokens are and in what order they are emitted*.
+
+MusicGen is the cleanest demonstration (Copet et al. 2023). EnCodec compresses 32 kHz audio into four parallel streams of discrete codes at 50 Hz (Défossez et al. 2022); MusicGen is a single-stage transformer over those codes with a *delay pattern* that offsets each codebook by one step, so one autoregressive pass models all four streams without a second model. Three sizes — 300M, 1.5B, 3.3B — condition on T5 text embeddings and, optionally, a chromagram of a reference melody. It is a language model in Shulman’s exact sense, with the vocabulary supplied by a codec.
+
+YuE is what that idea looks like scaled to full songs with lyrics (Yuan et al. 2025). It is two language models: a 7B Stage-1 model over the *semantic* codebook of X-Codec, conditioned on lyrics and interleaving vocal and accompaniment tracks, followed by a 1B Stage-2 model that fills in the remaining acoustic codebooks. The semantic/acoustic split is the same decomposition Bark uses — semantic → coarse → fine — and it matters for this report because the semantic layer is the natural place a *score* could sit. YuE is Apache-2.0 and is the open system closest to what Suno does.
+
+Magenta RealTime shows the same skeleton pointed at a different target — live performance rather than finished song (Lyria Team et al. 2025). Its codec, SpectroStream, is a full-band 48 kHz residual-VQ codec at 25 Hz with up to 64 quantiser levels, of which live generation uses sixteen; the model is an encoder-decoder transformer whose encoder receives acoustic history plus style tokens and whose decoder is an RQ-Transformer-style pair (temporal, then depth) over the codes. The paper gives sizes of 220M and 770M; the second version is decoder-only at 230M and 2.4B and accepts MIDI notes as a live control (Google DeepMind 2025b). It generates two-second chunks with ten seconds of history, in real time on a laptop GPU.
+
+ACE-Step is the dissent within the family (J. Gong et al. 2025, 2026). Version 1.0 abandons autoregression for a diffusion transformer over a *continuous* compressed latent (Sana’s deep-compression autoencoder), trained with flow matching and with a semantic-alignment term — REPA — that pulls its internal representations toward frozen MERT and mHuBERT features. Version 1.5 restores a language model, but as a *planner*: a 0.6–4B LM turns the user’s request into a structured “song blueprint,” and a 2–4B DiT renders it. The result generates a full song in under two seconds and natively supports repainting a region and editing lyrics in place — which the autoregressive systems have to approximate. ACE-Step 1.0 is Apache-2.0; 1.5 is MIT.
+
+The lesson of the first lens is that “Suno-class” names a family, not a model: a codec that makes audio discrete (or compactly continuous), a transformer that models the codes, and text — increasingly, text plus audio — as condition. Every design choice that matters to a musician lives in *what is between the condition and the codes*, and in the open systems that is either nothing or a semantic token stream that no human can read.
+
+### 3.2 Lens two — VQ-VAE: the vocabulary is learned, and learned hierarchically
+
+The second idea is that the vocabulary need not be designed. A vector-quantised variational autoencoder learns a codebook of discrete embeddings and maps continuous input to the nearest code, trained with a reconstruction loss, a codebook loss, and a commitment term, with gradients passed straight through the quantiser (Oord, Vinyals, and Kavukcuoglu 2017). Audio codecs are VQ-VAEs with one further idea: *residual* quantisation, in which each successive codebook quantises the error left by the previous one. SoundStream introduced it for audio — fully convolutional encoder and decoder, stride 320 for 75 Hz frames at 24 kHz, 1024-entry codebooks, and quantiser dropout so one model serves bitrates from 3 to 18 kbps (Zeghidour et al. 2021). EnCodec is its streaming, multi-scale-discriminator successor: 24 kHz at 75 Hz with two to thirty-two codebooks for 1.5 to 24 kbps, or 48 kHz stereo at 150 Hz, plus an optional small transformer for entropy coding (Défossez et al. 2022).
+
+What RVQ gives a generative model is a *hierarchy for free*. The first codebook carries the most information; later codebooks refine it. Bark’s semantic → coarse → fine, YuE’s codebook-0 Stage 1 → codebooks-1–7 Stage 2, Magenta RT’s sixteen-of-sixty-four live levels, and the RQ-Transformer’s temporal-then-depth decoding are all the same move: model the coarse codes first, the fine codes conditioned on them.
+
+Jukebox made the hierarchy explicit before RVQ codecs existed (Dhariwal et al. 2020). It trained three separate VQ-VAEs at hop lengths of 8, 32 and 128 samples — three temporal resolutions of the same audio — and three sparse-transformer priors, the top-level one at 5B parameters conditioned on artist, genre and lyrics, with upsamplers filling in the levels below. The top level is coarse enough to carry phrase and structure; the bottom carries timbre. It is, in retrospect, a three-level latent that nobody could read.
+
+That phrase is the point of the second lens. Every system in this family already has a hierarchical latent whose upper level is “the coarse structure of the music.” In YuE that level is a semantic token stream from a speech-and-music codec; in Jukebox it is a learned code at 128-sample hops; in ACE-Step 1.5 it is a text *blueprint* the planner writes. None of them is a score. The question §7 asks is whether the upper level of this hierarchy can be *made* a score — a notation-native latent — without losing the generative machinery below it.
+
+### 3.3 Lens three — ViT: universal features come from patches, and transfer
+
+The third idea is that a transformer over fixed-size patches of a signal, pre-trained at scale, yields features that transfer to tasks it never saw. ViT cut images into 16 × 16 patches, linearly projected each into a token, prepended a learnable class token, and showed that with enough pre-training data this plain transformer matched convolutional networks (Dosovitskiy et al. 2021). The Audio Spectrogram Transformer applied it unchanged to 128-bin log-Mel spectrograms — 16 × 16 patches with overlap, a class token, and *ImageNet-pretrained weights* adapted by averaging the RGB patch-embedding channels — and set state of the art on AudioSet and ESC-50 (Y. Gong, Chung, and Glass 2021). That an image model’s weights transfer to spectrograms is the clearest evidence that “universal audio features” are the same kind of object as “universal visual features.”
+
+Music’s version of the universal feature is MERT: a masked-prediction model trained with two teachers — an acoustic teacher (an RVQ codec) and a *musical* teacher (a constant-Q transform) — at 95M and 330M parameters, evaluated on fourteen music-understanding tasks (Y. Li et al. 2024). MuQ refines the recipe with Mel-RVQ targets (Zhu et al. 2025). These encoders are now load-bearing inside the generators. ACE-Step’s REPA aligns its diffusion features to MERT during training. Magenta RT’s MusicCoCa is a two-tower contrastive captioner — a 12-layer ViT audio tower and a 12-layer text tower into a shared 768-dimensional space — whose quantised style embedding is the model’s conditioning vocabulary. CLaMP 3’s audio tower is frozen MERT-95M (S. Wu, Guo, et al. 2025).
+
+The lesson for §7 is structural: the family already routes audio through a frozen universal encoder to get a semantic condition. The question is what sits *on the other side* of that encoder. In every current system it is text. Nothing prevents it being notation, if a notation encoder can be trained into the same space — and CLaMP 3 has shown it can.
+
+### 3.4 Lens four — Genie: actions can be learned without labels
+
+The fourth lens is the least obvious and, for the Maestro thesis, the most consequential. Genie learned to make *playable* 2D worlds from unlabelled gameplay video — no action labels, no reward, only frames (Bruce et al. 2024). Three components: a spatiotemporal video tokeniser (ST-ViViT, a VQ-VAE of 200M parameters, patch size 4, codebook 1024); a *latent action model* that, given two consecutive frames, infers which of eight discrete latent actions carried the world from one to the other, trained purely to help predict the next frame; and a MaskGIT dynamics model of 10.1B parameters that predicts the next frame’s tokens from history and action. 10.7B parameters in total; 30,000 hours of curated platformer video. The emergent fact is that the eight learned actions turn out to correspond to the things a player can do — left, right, jump — without anyone labelling them. Genie 2 replaced MaskGIT with an autoregressive latent diffusion dynamics model trained with a causal mask; Genie 3 reached real-time 720p at 24 fps with minute-scale consistency and “promptable world events” (Parker-Holder et al. 2024; Google DeepMind 2025a).
+
+The analogy to music is this. A multitrack piano roll is a video: pitch × track is the spatial frame, time is the frame index. Two versions of a piece — a sketch and its arrangement, an original and its cover, the piano solo and the version with a vocal line — are two “frames” separated by an action. Genie’s latent action model, applied to such pairs, would learn a discrete vocabulary of *musical edit operations* without anyone labelling them. The author’s three Suno requests — add a voice, orchestrate, make it instrumental — are candidates for exactly three such actions. We develop this in §8, with the caveats it deserves: Genie’s actions were low-dimensional and joystick-like, its data was visually regular to a degree music is not, and the LAM’s success depended on 30,000 curated hours.
+
+### 3.5 Comparative anatomy
+
+The table collects what the primary sources confirm. Blank cells mean “not public.”
+
+| System                               | Tokeniser / latent                      | Prior                                           | Condition                                | Region edit                | Symbolic input                                   | Weights    |
+|--------------------------------------|-----------------------------------------|-------------------------------------------------|------------------------------------------|----------------------------|--------------------------------------------------|------------|
+| Suno (inferred from Bark)            | EnCodec codes, semantic→coarse→fine     | GPT-style LM                                    | text; audio (upload, Covers)             | Replace Section (product)  | MIDI import in Studio 2.0, not a model condition | closed     |
+| Bark (Suno AI 2023)                  | EnCodec RVQ                             | 3-stage GPT LM                                  | text                                     | —                          | —                                                | MIT        |
+| YuE (Yuan et al. 2025)               | X-Codec; cb-0 semantic, cb-1–7 acoustic | 7B LM + 1B LM                                   | lyrics, genre tags, audio ref            | —                          | —                                                | Apache-2.0 |
+| ACE-Step 1.5 (J. Gong et al. 2026)   | DCAE continuous latent                  | LM planner (0.6–4B) + DiT (2–4B), flow matching | text, lyrics, audio ref                  | repaint, lyric edit, cover | —                                                | MIT        |
+| Magenta RT 2 (Google DeepMind 2025b) | SpectroStream RVQ, 48 kHz/25 Hz         | decoder-only 230M / 2.4B, streaming             | text, audio style, **live MIDI**         | n/a (streaming)            | yes (notes as control)                           | open       |
+| MusicGen (Copet et al. 2023)         | EnCodec 4 × 50 Hz, delay pattern        | LM 300M–3.3B                                    | T5 text, chromagram                      | —                          | melody as chroma, not notes                      | CC-BY-NC   |
+| Jukebox (Dhariwal et al. 2020)       | 3-level VQ-VAE, hops 8/32/128           | sparse transformers, 5B top                     | artist, genre, lyrics                    | —                          | —                                                | open       |
+| JASCO (Tal et al. 2024)              | EnCodec continuous 50 Hz                | flow matching, 330M–1B                          | text, **chords**, melody salience, drums | —                          | yes (chords)                                     | code MIT   |
+
+Two patterns stand out. First, *symbolic input is the exception*: only Magenta RT 2 (live notes) and JASCO (chord labels) accept anything a musician would call notation, and both are research systems. Second, *region editing arrived from the product side*, not the architecture side — Suno’s Replace Section is a feature; ACE-Step’s repainting is the first design in this family where editing a region is what the model natively does.
+
+### 3.6 What the case study reveals
+
+Return to the three uploads. In every case Suno’s condition was *audio* — the encoded piano recording — plus a short text instruction. “Add vocals” asked the model to continue the song with a new track given the existing one; “orchestral” asked for a re-arrangement conditioned on the original; “instrumental” asked for a version with one track removed. Each is, in the vocabulary above, a transformation from one point in codec-token space to another, with the instruction selecting *which* transformation.
+
+What the system never produced is what the musician actually needed next: the melody the singer sang, as a line he could edit; the chords the orchestra played, as symbols he could check against his own; the diff between his voicings and the model’s. The representation that made the three operations possible — necessarily rich enough to carry key, harmony, and form — was discarded on the way to the WAV. The rest of this report is about not discarding it.
+
+## 4. Problem statement: bidirectional music ↔ score
+
+### 4.1 Why the score, and not MIDI
+
+“Symbolic” is too coarse a word for what the musician needs. A performance MIDI file — the output of every transcription model and the input to every symbolic generator — records *what sounded*: pitch, onset in milliseconds, duration, velocity. A score records *what was meant*: a quarter note on beat three of a 3/4 bar in E♭, in the right hand, with a tenuto. Four kinds of information separate them, and all four are what makes notation readable and editable by a human:
+
+1.  **Meter and quantisation.** Beat, downbeat, time signature, and the mapping of expressive onsets onto a rhythmic grid.
+2.  **Voice and staff assignment.** Which notes belong to which hand, which voice within a hand, which instrument in an ensemble.
+3.  **Spelling.** The same MIDI pitch is D♯ or E♭ depending on key and harmonic function; the choice is semantic, not acoustic.
+4.  **Markings.** Dynamics, articulation, phrasing, pedal, repeats — the layer an editor’s red pencil lives on.
+
+A system that stops at MIDI has transcribed the performance and not the music. The Maestro loop — compose, annotate, compile, edit — depends on the fourth category above being first-class, because annotations *are* markings.
+
+### 4.2 The asymmetry
+
+The two directions are not mirror images. **Audio → score** is many-to-one and lossy by design: infinitely many performances reduce to one score, and the reduction deliberately discards timing, dynamics and timbre. It is an *abstraction* problem — recovering intent from realisation — and its errors are errors of interpretation (was that a triplet or a swung eighth?), which a human resolves in a glance and a model resolves badly. **Score → audio** is one-to-many: one score admits infinitely many valid performances. It is a *realisation* problem, and its errors are errors of taste, which only a listening test can detect. The shared representation proposed in §7 has to be the hinge between an abstraction decoder and a realisation decoder, which is a stronger requirement than either alone.
+
+## 5. Methodology I — music to score
+
+### 5.1 Stage A: audio to note events
+
+This stage is largely solved for piano and well advanced elsewhere. Onsets and Frames introduced the dual-objective design — a dedicated onset detector gating a frame-wise pitch detector — that still underlies piano transcription (Hawthorne et al. 2018), trained on MAESTRO’s 200 hours of aligned Disklavier audio and MIDI (Hawthorne et al. 2019). MT3 cast transcription as sequence-to-sequence over a MIDI-like token vocabulary and extended it to multiple instruments in one model (Gardner et al. 2022). Basic Pitch is a lightweight, instrument-agnostic model that ships as a plugin (Bittner et al. 2022). Aria-MIDI demonstrates the recipe at scale: 1.19 million piano files, roughly 100,000 hours, transcribed from recordings (Bradshaw and Colton 2025).
+
+The important fact for this report is what these systems *emit*. Every one of them outputs note events — pitch, onset time, offset time, sometimes velocity. None outputs a bar line.
+
+### 5.2 Stage B: performance MIDI to score
+
+The second stage is where the field thins. PM2S frames it as *neural beat tracking*: given performance MIDI, predict beats and downbeats, then quantise onsets to the inferred grid, with further modules for time signature, key signature and hand assignment (L. Liu et al. 2022). Beyer and Dai replace the pipeline with a single sequence-to-sequence transformer over compound tokens that predicts note values, rhythm, staff assignment and notational details such as trills and stem direction, evaluated with the MUSTER metrics designed for this task (Beyer and Dai 2024). Two systems now go end-to-end from *audio* to a score encoding: Zeng, He and Wang decode polyphonic piano audio hierarchically — a bar-level decoder predicts time and key signatures over five-bar windows, two note-level decoders fill the upper and lower staves — and emit `**kern`, pre-training on synthetic scores rendered to audio through an expressive-performance model (W. Zeng, He, and Wang 2024); Cummins and colleagues extend the approach (Cummins et al. 2026). The unified cross-modal translation model of Jung et al. covers score images, symbolic music and audio, though its audio-to-symbolic path emits MIDI-like tokens rather than notation (Jung et al. 2025).
+
+Three observations. The target encoding is `**kern` or score-MIDI, not MusicXML or MEI — the formats a notation editor opens; the round-trip into engraving-grade notation remains an engineering gap. The training recipe that works is *synthesis*: render clean scores to audio through a performance model, because aligned real-world audio–score pairs are scarce. And the hardest sub-problems — meter, voice separation — are precisely the ones a musician resolves instantly and a model does not.
+
+### 5.3 Where the human has the most leverage
+
+The strongest result in this area is not a model. Bukey and colleagues showed that asking a human to click the repeat signs — one targeted annotation — lifted in-the-wild audio-to-score alignment from 33% to 82% (Bukey, Feffer, and Donahue 2024). The lesson generalises: the ambiguities that defeat Stage B (is this bar in 3 or 6? is this the second ending?) are cheap for a human and expensive for a model, so the pipeline should be designed to *ask* at exactly those points rather than to guess. Lead-sheet transcription has the same structure — Sheet Sage produces melody and chords, which is what a songwriter reads, and leaves the arrangement to the human (Donahue, Thickstun, and Liang 2022).
+
+### 5.4 The proposed pipeline
+
+Audio → note events (Stage A, MT3-class) → *proposed* meter, key and staff assignment (Stage B, PM2S/Beyer-class) → **human confirmation of the ambiguous decisions** (meter, repeats, voice splits), surfaced as a short list rather than a dialogue → quantised, spelled score in an engraving-grade encoding → rendered through a standard engine (Pugin, Zitellini, and Roland 2014). The novelty is not in any stage but in the second-to-last: treating Stage B’s low-confidence decisions as a work queue for the musician, and feeding the confirmations back as training signal. For the author’s piano recording, this would have produced — before any generation — the score he was never shown.
+
+## 6. Methodology II — score to music
+
+### 6.1 Expressive rendering
+
+A score played literally sounds mechanical; the first realisation step adds timing, dynamics and articulation. VirtuosoNet models expressive piano performance hierarchically from score features (Jeong et al. 2019); ScorePerformer adds fine-grained control over the rendering (Borovik and Viro 2023); DExter frames it as diffusion over expressive parameters (Zhang et al. 2024). MIDI-DDSP makes the hierarchy explicit — notes → performance parameters → synthesis — with each level editable, which is the clearest existing instance of “a compiler with intermediate representations” in this space (Y. Wu et al. 2022). Performance MIDI from this stage is exactly what a Music Transformer trained on MAESTRO emits, which is why the author’s Nord captures — performances, not scores — are already at this level.
+
+### 6.2 Synthesis, or generation conditioned on symbols
+
+From performance MIDI there are two routes to audio. **Synthesis** is deterministic and solved: a sampled or modelled instrument plays the notes. For piano, a good sample library or physical model — or the instrument the data came from — is the quality ceiling, and nothing neural beats it yet. **Symbolic-conditioned generation** is the route that gives you an orchestra you did not write. JASCO conditions a flow-matching model on chord labels, a melody salience matrix and a drum stem simultaneously (Tal et al. 2024); Coco-Mulla adapts MusicGen to chords, a piano roll and drums through a parameter-efficient prefix (Lin et al. 2023); Music ControlNet imposes time-varying melody, dynamics and rhythm curves on a spectrogram diffusion model (S.-L. Wu et al. 2024); MuseControlLite does the same with 85M-parameter adapters and native inpainting (Tsai et al. 2025). Magenta RealTime 2 accepts live MIDI notes as a streaming control (Google DeepMind 2025b).
+
+### 6.3 The gap
+
+Every system in §6.2 is research-grade, and every one conditions on *features derived from* symbols — chord labels, a chroma vector, a salience matrix — rather than on a score. No production generator accepts notation as its condition. Suno Studio 2.0 can import and edit MIDI in its timeline, but the generator underneath is still prompt-and-audio-driven (Suno Inc. 2026). The orchestral arrangement the author received was conditioned on his *recording*; had it been conditioned on his *score*, the system could have reported which voicings it preserved. That is the capability §7 is designed to make possible.
+
+## 7. Toward a notation-native latent
+
+### 7.1 What exists
+
+Three bodies of prior work supply the parts.
+
+**Variational latents over symbolic music.** MusicVAE is a hierarchical recurrent VAE — a “conductor” network emits per-bar latent codes that a lower-level decoder expands into notes — trained on two- and sixteen-bar segments, with the latent space smooth enough to interpolate between melodies (Roberts et al. 2018). PianoTree VAE gives polyphonic music a tree-structured latent that respects simultaneity (Z. Wang et al. 2020). MidiMe showed such a latent can be personalised to one user’s material (Dinculescu, Engel, and Roberts 2019). Polyffusion and the whole-song cascade operate on piano-roll latents at bar and phrase scale, with the cascade exposing form → lead sheet → accompaniment as separately editable levels (Min et al. 2023; Z. Wang, Min, and Xia 2024).
+
+**Contrastive alignment across modalities.** CLaMP aligned ABC notation with text, using *bar patching* to cut sequence length by an order of magnitude (S. Wu et al. 2023); CLaMP 2 added MIDI through a text format and 101 languages (S. Wu, Wang, et al. 2025); CLaMP 3 aligns four modalities in one 768-dimensional space — sheet music as interleaved ABC, performance signals as MIDI text, audio through frozen MERT-95M, and multilingual text — trained on 2.31 million pairs, and shows *emergent* cross-modal retrieval between modalities that were never paired in training, sheet → audio at MRR 0.058 (S. Wu, Guo, et al. 2025). That number is low in absolute terms and remarkable in kind: the space knows that a score and a recording are the same piece without having been told.
+
+**Universal encoders on both sides.** MERT and MuQ for audio (Y. Li et al. 2024; Zhu et al. 2025); MusicBERT, MuPT and NotaGen for symbolic sequences (M. Zeng et al. 2021; Qu et al. 2024; Y. Wang et al. 2025).
+
+### 7.2 What is missing
+
+Each part lacks what the others have. CLaMP 3 aligns but cannot generate — it is contrastive, with no decoder; it answers “which score matches this audio?” and not “what is the score of this audio?” MusicVAE reconstructs symbolic music but has no audio tower and no notion of notation beyond quantised note sequences. The audio generators of §6.2 accept features derived from symbols but have no symbolic *latent* to condition on. And every symbolic latent in the literature is a latent over *MIDI-like events or piano rolls*, never over notation in the sense of §4.1 — meter, voices, spelling, markings are not in the representation, so they cannot be in the latent.
+
+Nothing yet both transcribes *into* a representation and renders *out of* it, with that representation being a score.
+
+### 7.3 The proposal
+
+We specify the missing object. Call it a **notation-native latent**: a variational latent space whose encoder and decoder operate on an engraving-grade notation encoding, aligned contrastively to a frozen universal audio encoder, with conditioning interfaces to the generators of §6.2.
+
+*Representation.* The notation side uses a text encoding of the score with meter, voices, spelling and markings explicit — interleaved ABC as in CLaMP 3, or `**kern` as in the audio-to-score systems — tokenised by bar patching so that one token sequence spans a full piece (S. Wu et al. 2023; W. Zeng, He, and Wang 2024). The requirement that drives everything else: the encoding must round-trip losslessly to MusicXML or MEI, so that what the latent decodes is what a notation editor opens.
+
+*Architecture.* A hierarchical VAE in the MusicVAE and whole-song pattern: a form-level latent over sections, a bar-level latent over the bar sequence, an event-level decoder (Roberts et al. 2018; Z. Wang, Min, and Xia 2024). The bar level is the *notation-native latent proper* — it is the level a human edits at, and the level that aligns to audio. The hierarchy mirrors the codec hierarchy of §3.2 deliberately: Jukebox’s three resolutions, Bark’s three stages, and this VAE’s three levels are the same shape, with the difference that here the middle level is readable.
+
+*Alignment.* A contrastive objective between the bar-level latent and frozen MERT or MuQ embeddings of the corresponding audio, exactly as CLaMP 3 aligns its symbolic and audio towers (S. Wu, Guo, et al. 2025; Y. Li et al. 2024). This gives the two directions. **Transcription**: audio → MERT → nearest point in the aligned latent → notation decoder → score, with the Stage B decisions of §5.2 emerging from the decoder rather than a separate pipeline, and low-confidence bars surfaced for the human as in §5.4. **Rendering**: score → notation encoder → latent → a conditioning interface for a symbolic-conditioned generator — the latent replaces JASCO’s chord labels or Coco-Mulla’s piano-roll prefix as the condition — or, for piano, the expressive-rendering stage of §6.1.
+
+*Data.* Paired score–audio at scale does not exist, so the recipe is the one that worked for Zeng et al.: render clean scores to audio through an expressive-performance model (W. Zeng, He, and Wang 2024). PDMX supplies 250,000 public-domain MusicXML scores under CC-BY (Long et al. 2025); OpenScore’s critical editions are CC0 (Gotham and Jonas 2022); MAESTRO’s 200 hours of aligned performance MIDI and audio anchor the real-world end (Hawthorne et al. 2019). The licence story is clean by construction.
+
+*What would be new.* Not the VAE, not the contrastive alignment, not the bar patching. What is new is the *conjunction*: a single latent that a transcription decoder reads into and a rendering generator reads out of, over a representation that is notation rather than events. The test is in §10: does the aligned latent transcribe better than a pipeline, render more faithfully than chord labels, and — the Maestro question — let a composer edit the middle?
+
+### 7.4 The objective, stated
+
+Let $x$ be a bar-patched notation sequence, $a$ the audio of a performance of it, $E_s$ and $D_s$ the notation encoder and decoder, $E_a$ a frozen audio encoder (MERT or MuQ), and $z = (z_{\text{form}}, z_{\text{bar}}, z_{\text{event}})$ the hierarchical latent. The training objective is a sum of four terms.
+
+*Reconstruction* is the standard variational bound on the notation, $\mathcal{L}_{\text{rec}} = -\mathbb{E}_{q(z\mid x)}\log p(x \mid z) + \beta\,\mathrm{KL}\!\left(q(z\mid x)\,\|\,p(z)\right)$, with the prior factored across the three levels as in the conductor–decoder design of MusicVAE (Roberts et al. 2018) and the free-bits schedule that keeps the bar level from collapsing.
+
+*Alignment* is a symmetric InfoNCE loss between the pooled bar-level latent and the audio embedding, $\mathcal{L}_{\text{align}} = \mathrm{InfoNCE}\!\left(g(z_{\text{bar}}),\, E_a(a)\right)$, with $g$ a learned projection into the audio encoder’s space — the CLaMP 3 objective with the symbolic tower replaced by the VAE’s posterior mean (S. Wu, Guo, et al. 2025). Because $E_a$ is frozen, the alignment is anchored to a representation that already transfers across music-understanding tasks (Y. Li et al. 2024).
+
+*Transcription* makes the audio path explicit rather than relying on nearest-neighbour retrieval: a small bridge $h$ maps $E_a(a)$ into the latent and the decoder is trained to reconstruct the score from it, $\mathcal{L}_{\text{trans}} = -\log p\!\left(x \mid D_s(h(E_a(a)))\right)$. This is the term CLaMP lacks and the reason the system can answer “what is the score of this audio?” rather than only “which score matches?”
+
+*Notation consistency* penalises decodes that are not valid notation — unbalanced bars, voices that cross staves, spellings inconsistent with the inferred key — with differentiable surrogates where available and a rejection-sampling filter at inference where not, following the “LLM proposes, music prior filters” pattern that worked for chord generation (Kim, Lee, and Donahue 2025).
+
+The total is $\mathcal{L} = \mathcal{L}_{\text{rec}} + \lambda_1 \mathcal{L}_{\text{align}} + \lambda_2 \mathcal{L}_{\text{trans}} + \lambda_3 \mathcal{L}_{\text{cons}}$. Rendering requires no additional loss: the trained bar-level latent is fed to a symbolic-conditioned generator in place of its existing condition, and that generator is fine-tuned on (latent, audio) pairs with its own objective, exactly as Coco-Mulla fine-tunes MusicGen on a condition prefix (Lin et al. 2023).
+
+### 7.5 The obvious baseline, and why it is not enough
+
+A reviewer will ask why not simply bolt a decoder onto CLaMP 3. It is the right first experiment and the methodology should report it. Two reasons it is unlikely to suffice. CLaMP 3’s symbolic encoder is contrastively trained, so its embedding is optimised to *discriminate* pieces, not to *reconstruct* them; retrieval-grade embeddings routinely discard the within-piece detail a decoder needs, and the emergent sheet → audio MRR of 0.058 suggests the space is coarse (S. Wu, Guo, et al. 2025). And CLaMP 3 has no hierarchy: a single pooled vector per 512-bar segment cannot support bar-level editing, which is the operation the composer’s loop is built on. The VAE’s bar-level posterior exists precisely so that a human can select bars 17–24 and have the system act there. The baseline will tell us how much of the transcription and rendering performance comes from alignment alone; the hierarchy and the reconstruction term are what the Maestro use case adds on top.
+
+## 8. Latent actions as the edit primitive
+
+### 8.1 The Genie construction, transposed
+
+Genie’s latent action model learned eight discrete actions from pairs of consecutive video frames, with no labels, by asking: what minimal code, given the previous frame, best predicts the next? (Bruce et al. 2024) The music analogue needs two things Genie had: a tokeniser for the state, and pairs of states separated by an action.
+
+The state tokeniser is the notation-native latent of §7, or — more directly, following Genie — a spatiotemporal VQ-VAE over the *multitrack piano roll*, where pitch × track is the spatial frame and time is the frame index. The pairs are **versions**: a sketch and its arrangement; a lead sheet and its realisation; an original and its cover; a piano solo and the same piece with a vocal line; consecutive saves in a notation editor’s history (Tutteo Ltd (Flat.io) 2026). Such pairs exist in quantity — every cover, every arrangement, every edit history — and are almost never used as training data because nobody has framed them as (state, action, state′) triples.
+
+A latent action model trained on them would learn a discrete vocabulary of *edit operations*: the thing that carries a piano reduction to an orchestration, a melody to a harmonised melody, a sketch to a finished part. The author’s three Suno requests — add a voice, orchestrate, make it instrumental — are, in this frame, three latent actions he happened to be able to name in English.
+
+### 8.2 Why this is the right primitive for Maestro
+
+The composer’s loop needs the machine to *transform* what the human wrote rather than generate from nothing, because that is the operation musicians accept and the one that preserves ownership (Krol, Llano, and McCormack 2025). A latent action is precisely a learned transformation. And the loop’s missing layer — annotations as machine instructions — is exactly a *naming* problem: the composer writes “build here,” “thin this out,” “give the inner voice to the viola,” and the system has to map the mark to an operation. A learned action vocabulary gives the operations; the annotation gives each one a human-readable name; and the build log — reporting which action was applied, to which region, with what confidence — closes the loop that §3.6 found open in every current system. This is the construction that connects the Genie lens to the two emptiest nodes of the survey: annotation as instruction, and machine-to-human explanation.
+
+### 8.3 Caveats, stated plainly
+
+Genie’s actions were eight, discrete, and joystick-like; musical edits are compositional (orchestrate *and* transpose *and* thin) and would need a factored or continuous action space, which Genie 2 moved toward with diffusion dynamics (Parker-Holder et al. 2024). Genie’s 30,000 hours were visually regular platformers; music version pairs are sparser and heterogeneous. Genie’s dynamics model was 10.1B parameters; nothing here requires that scale, but the LAM’s success was not independent of the data volume. And the piano-roll-as-video analogy is exact in form and loose in semantics: adjacent pixels in a frame are similar, adjacent pitches in a roll are not, so the tokeniser’s inductive bias needs revisiting. The proposal in this section is a research direction with prior art in another field, not a result.
+
+## 9. Case study revisited: three operations on one recording
+
+The author’s three Suno outputs are reproducible instances of three distinct operations, and each maps onto the framework above differently.
+
+**Add vocals.** In Suno, an audio-conditioned continuation: the model, given the encoded piano track, emits a new track in the same codec space and mixes it. In the proposed system it is a *rendering* step on an augmented score: transcribe the piano (§5), have the composer confirm meter and key, add a vocal staff whose melody the generator proposes as *notation* — a lead sheet line over the existing chords, in the manner of Hookpad Aria’s span suggestions (Donahue et al. 2024) — and only then render. What the composer would see that Suno hid: the melody as notes, singable range checked against the key, every chord the singer implies written over the bar, and a diff showing where the proposed line clashes with his own voicings.
+
+**Orchestral version.** In Suno, a re-arrangement conditioned on the source audio — closest in kind to a Cover. In the proposed system it is a latent action — *orchestrate* — applied to the transcribed score: assign the piano’s voices to sections, add idiomatic doublings, and produce a short score. The arrangement literature already does this from a lead sheet to a multitrack with explicit structure (Zhao et al. 2024; Zhao, Xia, and Wang 2023); the contribution would be doing it from a *performance*, through the score, with the orchestration readable. What the composer would see: a short score with his original piano part shown as the source, each new line attributed to the action that produced it, and the places where the model relaxed his voicing to fit a string range flagged in the build log.
+
+**Instrumental.** In Suno, source separation plus regeneration, or simply the instrumental stem. In the proposed system it is the *trivial* case — the score minus the vocal staff — and it is instructive precisely because it is trivial: in a notation-first system, “give me the instrumental” is a one-line edit with no model call. The operations that are expensive in codec-token space are cheap on a score, and the ones cheap on a score (deleting a staff) are what Suno needed a feature for.
+
+Across all three, the pattern is the one §3.6 identified: the current system’s internal representation was adequate to the operation and inadequate to the musician. The proposed system’s cost is a transcription step with human confirmation up front; its return is that every subsequent operation is inspectable, attributable and reversible.
+
+## 10. Evaluation plan
+
+Each component has an established metric; the system as a whole needs a study.
+
+**Transcription (§5).** Note-level F-measures with and without offsets and velocity on MAESTRO, as in Onsets and Frames (Hawthorne et al. 2018); score-level MV2H and the MUSTER metrics for meter, voice and spelling (Beyer and Dai 2024); and, for the human-confirmation step, the Bukey protocol — alignment accuracy as a function of the number of annotations requested (Bukey, Feffer, and Donahue 2024). The hypothesis is that an aligned latent decoder beats the two-stage pipeline on score-level metrics at equal note-level F.
+
+**Rendering (§6).** Fréchet distances only as sanity checks, given their weak correlation with preference (Chung et al. 2025; Grötschla et al. 2025); paired listener comparisons against synthesis and against JASCO-class generation on the same scores (Tal et al. 2024); and the decisive test, *faithfulness to the score* — did the rendered audio, re-transcribed, recover the input? This is the round-trip metric the shared latent makes natural.
+
+**The latent (§7).** CLaMP 3’s WikiMT-X benchmark gives retrieval MRR across sheet music, audio and text; a notation-native latent should match CLaMP 3 on retrieval *and* reconstruct, which CLaMP cannot (S. Wu, Guo, et al. 2025). Report reconstruction loss by hierarchy level and the proportion of Stage B decisions the decoder gets right unaided.
+
+**Edits (§8).** Annotation compliance measured programmatically — duration-weighted chord-tone agreement, key, register, density, and a hard constraint that pinned material survives verbatim — using the reward module already published with this project; and latent-action interpretability as in Genie: do the learned actions cluster into operations a musician would name?
+
+**The system.** The instruments the co-creation literature has settled on: the Creativity Support Index (Cherry and Latulipe 2014); ownership, control and self-efficacy items as in Cococo (Louie et al. 2020); the Karimi framework’s warning against measuring only user experience (Karimi et al. 2018); suggestion-acceptance telemetry of the Hookpad Aria kind (Donahue et al. 2024); and paired expert listening on the author’s own Foster material, which supplies the control condition this report has argued every style claim needs.
+
+## 11. Limitations
+
+This report proposes; it does not demonstrate. The notation-native latent is specified, not trained, and the honest expectation is that the first version will transcribe worse than a tuned two-stage pipeline and render worse than a sampled piano, because it is doing both at once. The Genie analogy is structural and may not survive contact with the irregularity of musical version pairs. Suno’s internals remain inferred from Bark and one interview; if production Suno has diverged — toward diffusion, say — §3’s inference about it is wrong, though the comparative anatomy of the open systems stands. Lossless round-trip from a text notation encoding to MusicXML or MEI is asserted as a requirement and is an unsolved engineering problem; `**kern` and interleaved ABC each lose layout and some markings today. Finally, every evaluation in §10 that involves people is a study the author has not yet run, and the literature is clear that co-creative systems are over-evaluated on experience and under-evaluated on the music (Karimi et al. 2018).
+
+## 12. Conclusion
+
+Suno-class systems are codec-token language models, with a learned hierarchical vocabulary whose upper level carries the coarse structure of the music and whose conditioning passes through a universal audio encoder. Read through the lenses that produced them — text transformers, VQ-VAE, ViT — the family is coherent and its blind spot is structural: the representation between condition and output is never one a musician can read, so the operations musicians most need (see the melody, check the chords, keep my voicings) are the ones the architecture cannot expose.
+
+The inverse is buildable from parts that exist. Transcription to note events is solved; note events to notation is where the human has the most leverage and where a single annotation lifts alignment from 33% to 82%. Expressive rendering and synthesis are mature; symbolic-conditioned generation exists and is waiting for a score to condition on. Variational latents over symbolic music exist; contrastive alignment of scores, performances and audio exists and already shows emergent cross-modal structure. What does not exist is their conjunction — one notation-native latent that transcribes in and renders out — and, above it, a learned vocabulary of edit operations for which a composer’s annotations are the names.
+
+That conjunction is the research programme. Its first test is the author’s own recording: upload the piano, see the score, add the voice as notes, and read the build log.
+
+## References
+
+Beyer, Tim, and Angela Dai. 2024. “End-to-End Piano Performance-MIDI to Score Conversion with Transformers.” In *Proceedings of the 25th International Society for Music Information Retrieval Conference (ISMIR)*. <https://arxiv.org/abs/2410.00210>.
+
+Bittner, Rachel M., Juan José Bosch, David Rubinstein, Gabriel Meseguer-Brocal, and Sebastian Ewert. 2022. “A Lightweight Instrument-Agnostic Model for Polyphonic Note Transcription and Multipitch Estimation.” In *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*. <https://github.com/spotify/basic-pitch>.
+
+Borovik, Ilya, and Vladimir Viro. 2023. “ScorePerformer: Expressive Piano Performance Rendering with Fine-Grained Control.” In *Proceedings of the 24th International Society for Music Information Retrieval Conference (ISMIR)*. <https://archives.ismir.net/ismir2023/paper/000069.pdf>.
+
+Bradshaw, Louis, and Simon Colton. 2025. “Aria-MIDI: A Dataset of Piano MIDI Files for Symbolic Music Modeling.” In *International Conference on Learning Representations (ICLR)*. <https://github.com/loubbrad/aria-midi>.
+
+Bruce, Jake, Michael D. Dennis, Ashley Edwards, Jack Parker-Holder, Yuge Shi, Edward Hughes, Matthew Lai, et al. 2024. “Genie: Generative Interactive Environments.” In *Proceedings of the 41st International Conference on Machine Learning (ICML), PMLR 235*, 4603–23. <https://arxiv.org/abs/2402.15391>.
+
+Bukey, Irmak, Michael Feffer, and Chris Donahue. 2024. “Just Label the Repeats for in-the-Wild Audio-to-Score Alignment.” In *Proceedings of the 25th International Society for Music Information Retrieval Conference (ISMIR 2024)*. <https://arxiv.org/abs/2411.07428>.
+
+Cherry, Erin, and Celine Latulipe. 2014. “Quantifying the Creativity Support of Digital Tools Through the Creativity Support Index.” *ACM Transactions on Computer-Human Interaction* 21 (4): 21:1–25. <https://doi.org/10.1145/2617588>.
+
+Chung, Yoonjin, Pilsun Eu, Junwon Lee, Keunwoo Choi, Juhan Nam, and Ben Sangbae Chon. 2025. “KAD: No More FAD! An Effective and Efficient Evaluation Metric for Audio Generation.” *arXiv Preprint*. <https://arxiv.org/abs/2502.15602>.
+
+Copet, Jade, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre Défossez. 2023. “Simple and Controllable Music Generation.” In *Advances in Neural Information Processing Systems (NeurIPS)*. <https://arxiv.org/abs/2306.05284>.
+
+Cummins, Eoin, Zhongyi Huang, Alexandre D’Hooge, Zhuoro Mo, Yaolong Ju, et al. 2026. “Audio-to-Score Transcription Using Pre-Trained Features, Data Augmentation, and the New SheetSage-A2S Dataset.” In *Proceedings of the 34th ACM International Conference on Multimedia (MM ’26)*. <https://arxiv.org/abs/2608.06165>.
+
+Défossez, Alexandre, Jade Copet, Gabriel Synnaeve, and Yossi Adi. 2022. “High Fidelity Neural Audio Compression.” *arXiv Preprint arXiv:2210.13438*. <https://arxiv.org/abs/2210.13438>.
+
+Deruty, Emmanuel, Maarten Grachten, Stefan Lattner, Javier Nistal, and Cyran Aouameur. 2022. “On the Development and Practice of AI Technology for Contemporary Popular Music Production.” *Transactions of the International Society for Music Information Retrieval* 5 (1): 35–50. <https://doi.org/10.5334/tismir.100>.
+
+Dhariwal, Prafulla, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya Sutskever. 2020. “Jukebox: A Generative Model for Music.” *arXiv Preprint arXiv:2005.00341*. <https://arxiv.org/abs/2005.00341>.
+
+Dinculescu, Monica, Jesse Engel, and Adam Roberts. 2019. “MidiMe: Personalizing a MusicVAE Model with User Data.” In *NeurIPS 2019 Workshop on Machine Learning for Creativity and Design*. <https://magenta.tensorflow.org/midi-me>.
+
+Donahue, Chris, John Thickstun, and Percy Liang. 2022. “Melody Transcription via Generative Pre-Training.” In *Proceedings of the 23rd International Society for Music Information Retrieval Conference (ISMIR)*. <https://github.com/chrisdonahue/sheetsage>.
+
+Donahue, Chris, Shih-Lun Wu, Yewon Kim, Dave Carlton, Ryan Miyakawa, and John Thickstun. 2024. “Hookpad Aria: A Copilot for Songwriters.” Late-Breaking Demo, 25th International Society for Music Information Retrieval Conference (ISMIR 2024). <https://arxiv.org/abs/2502.08122>.
+
+Dosovitskiy, Alexey, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, et al. 2021. “An Image Is Worth 16x16 Words: Transformers for Image Recognition at Scale.” In *International Conference on Learning Representations (ICLR)*. <https://arxiv.org/abs/2010.11929>.
+
+Ens, Jeff, and Philippe Pasquier. 2020. “MMM: Exploring Conditional Multi-Track Music Generation with the Transformer.” <https://arxiv.org/abs/2008.06048>.
+
+Gardner, Josh, Ian Simon, Ethan Manilow, Curtis Hawthorne, and Jesse Engel. 2022. “MT3: Multi-Task Multitrack Music Transcription.” In *International Conference on Learning Representations (ICLR)*. <https://arxiv.org/abs/2111.03017>.
+
+Gong, Junmin, Yulin Song, Wenxiao Zhao, Sen Wang, Shengyuan Xu, et al. 2026. “ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation.” *arXiv Preprint arXiv:2602.00744*. <https://arxiv.org/abs/2602.00744>.
+
+Gong, Junmin, Sean Zhao, Sen Wang, Shengyuan Xu, and Jing Guo. 2025. “ACE-Step: A Step Towards Music Generation Foundation Model.” *arXiv Preprint arXiv:2506.00045*. <https://arxiv.org/abs/2506.00045>.
+
+Gong, Yuan, Yu-An Chung, and James Glass. 2021. “AST: Audio Spectrogram Transformer.” In *Proceedings of Interspeech 2021*. <https://arxiv.org/abs/2104.01778>.
+
+Google DeepMind. 2025a. “Genie 3: A New Frontier for World Models.” Google DeepMind blog, 2025-08-05. <https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/>.
+
+———. 2025b. “Magenta RealTime 2 (Model Card).” <https://huggingface.co/google/magenta-realtime-2>.
+
+———. 2025c. “Music AI Sandbox, Now with New Features and Broader Access (Lyria 2); New Generative AI Tools Open the Doors of Music Creation (MusicFX DJ).” <https://deepmind.google/blog/music-ai-sandbox-now-with-new-features-and-broader-access/>.
+
+Gotham, Mark, and Peter Jonas. 2022. “The OpenScore Lieder Corpus.” In *Music Encoding Conference Proceedings 2021*. <https://github.com/OpenScore/Lieder>.
+
+Grötschla, Florian, Ahmet Solak, Luca A. Lanzendörfer, and Roger Wattenhofer. 2025. “Benchmarking Music Generation Models and Metrics via Human Preference Studies.” In *Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*. <https://doi.org/10.1109/ICASSP49660.2025.10887745>.
+
+Hawthorne, Curtis, Erich Elsen, Jialin Song, Adam Roberts, Ian Simon, Colin Raffel, Jesse Engel, Sageev Oore, and Douglas Eck. 2018. “Onsets and Frames: Dual-Objective Piano Transcription.” In *Proceedings of the 19th International Society for Music Information Retrieval Conference (ISMIR)*. <https://arxiv.org/abs/1710.11153>.
+
+Hawthorne, Curtis, Andriy Stasyuk, Adam Roberts, Ian Simon, Cheng-Zhi Anna Huang, Sander Dieleman, Erich Elsen, Jesse Engel, and Douglas Eck. 2019. “Enabling Factorized Piano Music Modeling and Generation with the MAESTRO Dataset.” In *International Conference on Learning Representations (ICLR)*. <https://magenta.tensorflow.org/datasets/maestro>.
+
+Hsiao, Wen-Yi, Jen-Yu Liu, Yin-Cheng Yeh, and Yi-Hsuan Yang. 2021. “Compound Word Transformer: Learning to Compose Full-Song Music over Dynamic Directed Hypergraphs.” In *Proceedings of the AAAI Conference on Artificial Intelligence*. <https://arxiv.org/abs/2101.02402>.
+
+Huang, Cheng-Zhi Anna, Tim Cooijmans, Adam Roberts, Aaron Courville, and Douglas Eck. 2017. “Counterpoint by Convolution.” In *Proceedings of the 18th International Society for Music Information Retrieval Conference (ISMIR)*. Suzhou, China. <https://arxiv.org/abs/1903.07227>.
+
+Huang, Cheng-Zhi Anna, Hendrik Vincent Koops, Ed Newton-Rex, Monica Dinculescu, and Carrie J. Cai. 2020. “AI Song Contest: Human-AI Co-Creation in Songwriting.” In *Proceedings of the 21st International Society for Music Information Retrieval Conference (ISMIR 2020)*. <https://doi.org/10.5281/zenodo.4245530>.
+
+Huang, Cheng-Zhi Anna, Ashish Vaswani, Jakob Uszkoreit, Noam Shazeer, Ian Simon, Curtis Hawthorne, Andrew M. Dai, Matthew D. Hoffman, Monica Dinculescu, and Douglas Eck. 2019. “Music Transformer: Generating Music with Long-Term Structure.” In *International Conference on Learning Representations (ICLR)*. <https://openreview.net/forum?id=rJe4ShAcF7>.
+
+Huang, Yu-Siang, and Yi-Hsuan Yang. 2020. “Pop Music Transformer: Beat-Based Modeling and Generation of Expressive Pop Piano Compositions.” In *Proceedings of the 28th ACM International Conference on Multimedia (MM ’20)*. <https://doi.org/10.1145/3394171.3413671>.
+
+Jeong, Dasaem, Taegyun Kwon, Yoojin Kim, and Juhan Nam. 2019. “VirtuosoNet: A Hierarchical RNN-Based System for Modeling Expressive Piano Performance.” In *Proceedings of the 20th International Society for Music Information Retrieval Conference (ISMIR)*. <https://archives.ismir.net/ismir2019/paper/000112.pdf>.
+
+Jung, Jongmin, Dongmin Kim, Sihun Lee, Seola Cho, Hyungjoon So, Irmak Bukey, Chris Donahue, and Dasaem Jeong. 2025. “Unified Cross-Modal Translation of Score Images, Symbolic Music, and Performance Audio.” *IEEE/ACM Transactions on Audio, Speech, and Language Processing*. <https://arxiv.org/abs/2505.12863>.
+
+Karimi, Pegah, Kazjon Grace, Mary Lou Maher, and Nicholas Davis. 2018. “Evaluating Creativity in Computational Co-Creative Systems.” In *Proceedings of the Ninth International Conference on Computational Creativity (ICCC 2018)*. <https://arxiv.org/abs/1807.09886>.
+
+Kim, Yewon, Sung-Ju Lee, and Chris Donahue. 2025. “Amuse: Human-AI Collaborative Songwriting with Multimodal Inspirations.” In *Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems (CHI ’25)*. Yokohama, Japan: ACM. <https://doi.org/10.1145/3706598.3713818>.
+
+Krol, Stephen James, Maria Teresa Llano, and Jon McCormack. 2025. “Supporting Creative Ownership Through Deep Learning-Based Music Variation.” <https://arxiv.org/abs/2509.25834>.
+
+Li, Peike, Boyu Chen, Yao Yao, Yikai Wang, Allen Wang, and Alex Wang. 2023. “JEN-1: Text-Guided Universal Music Generation with Omnidirectional Diffusion Models.” *arXiv Preprint arXiv:2308.04729*. <https://arxiv.org/abs/2308.04729>.
+
+Li, Yizhi, Ruibin Yuan, Ge Zhang, Yinghao Ma, Xingran Chen, Hanzhi Yin, Chenghao Xiao, et al. 2024. “MERT: Acoustic Music Understanding Model with Large-Scale Self-Supervised Training.” In *International Conference on Learning Representations (ICLR)*. <https://arxiv.org/abs/2306.00107>.
+
+Lin, Liwei, Gus Xia, Junyan Jiang, and Yixiao Zhang. 2023. “Content-Based Controls for Music Large Language Modeling.” *arXiv Preprint arXiv:2310.17162*. <https://arxiv.org/abs/2310.17162>.
+
+Liu, Lele, Qiuqiang Kong, Veronica Morfi, and Emmanouil Benetos. 2022. “Performance MIDI-to-Score Conversion by Neural Beat Tracking.” In *Proceedings of the 23rd International Society for Music Information Retrieval Conference (ISMIR)*. <https://archives.ismir.net/ismir2022/paper/000047.pdf>.
+
+Liu, Zihan, Shuangrui Ding, Zhixiong Zhang, Xiaoyi Dong, Pan Zhang, Yuhang Zang, Yuhang Cao, Dahua Lin, and Jiaqi Wang. 2025. “SongGen: A Single Stage Auto-Regressive Transformer for Text-to-Song Generation.” In *Proceedings of the 42nd International Conference on Machine Learning (ICML)*. <https://arxiv.org/abs/2502.13128>.
+
+Long, Phillip, Zachary Novack, Taylor Berg-Kirkpatrick, and Julian McAuley. 2025. “PDMX: A Large-Scale Public Domain MusicXML Dataset for Symbolic Music Processing.” In *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*. <https://github.com/pnlong/PDMX>.
+
+Louie, Ryan, Andy Coenen, Cheng Zhi Huang, Michael Terry, and Carrie J. Cai. 2020. “Novice-AI Music Co-Creation via AI-Steering Tools for Deep Generative Models.” In *Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (CHI ’20)*. ACM. <https://doi.org/10.1145/3313831.3376739>.
+
+Louie, Ryan, Jesse Engel, and Cheng-Zhi Anna Huang. 2022. “Expressive Communication: Evaluating Developments in Generative Models and Steering Interfaces for Music Creation.” In *Proceedings of the 27th International Conference on Intelligent User Interfaces (IUI ’22)*, 405–17. ACM. <https://doi.org/10.1145/3490099.3511159>.
+
+Lyria Team, Antoine Caillon, Brian McWilliams, Cassie Tarakajian, Ian Simon, Ilaria Manco, Jesse Engel, et al. 2025. “Live Music Models.” <https://arxiv.org/abs/2508.04651>.
+
+Malandro, Martin E. 2024. “Composer’s Assistant 2: Interactive Multi-Track MIDI Infilling with Fine-Grained User Control.” In *Proceedings of the 25th International Society for Music Information Retrieval Conference (ISMIR 2024)*. <https://doi.org/10.5281/zenodo.14877367>.
+
+Min, Lejun, Junyan Jiang, Gus Xia, and Jingwei Zhao. 2023. “Polyffusion: A Diffusion Model for Polyphonic Score Generation with Internal and External Controls.” In *Proceedings of the 24th International Society for Music Information Retrieval Conference (ISMIR)*. <https://arxiv.org/abs/2307.10304>.
+
+Music Business Worldwide. 2025. “Suno Is Getting More Advanced, as AI Music Generator Launches V4.5+ Update.” <https://www.musicbusinessworldwide.com/suno-is-getting-more-advanced-as-ai-music-generator-launches-v4-5-update-with-previously-unimaginable-production-capabilities/>.
+
+Newman, Michele, Lidia J. Morris, and Jin Ha Lee. 2023. “Human-AI Music Creation: Understanding the Perceptions and Experiences of Music Creators for Ethical and Productive Collaboration.” In *Proceedings of the 24th International Society for Music Information Retrieval Conference (ISMIR 2023)*. Milan, Italy. <https://doi.org/10.5281/zenodo.10265227>.
+
+Ning, Ziqian, Huakang Chen, Yuepeng Jiang, Chunbo Hao, Guobin Ma, Shuai Wang, Jixun Yao, and Lei Xie. 2025. “DiffRhythm: Blazingly Fast and Embarrassingly Simple End-to-End Full-Length Song Generation with Latent Diffusion.” In *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL)*. <https://arxiv.org/abs/2503.01183>.
+
+Novack, Zachary, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. 2024. “DITTO: Diffusion Inference-Time T-Optimization for Music Generation.” In *Proceedings of the 41st International Conference on Machine Learning (ICML)*. <https://arxiv.org/abs/2401.12179>.
+
+Oord, Aäron van den, Oriol Vinyals, and Koray Kavukcuoglu. 2017. “Neural Discrete Representation Learning.” In *Advances in Neural Information Processing Systems 30 (NIPS)*. <https://arxiv.org/abs/1711.00937>.
+
+Parker-Holder, Jack, Philip Ball, Jake Bruce, Vibhavari Dasagi, Kristian Holsheimer, Christos Kaplanis, Alexandre Moufarek, et al. 2024. “Genie 2: A Large-Scale Foundation World Model.” Google DeepMind blog, 2024-12-04. <https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/>.
+
+Pasquier, Philippe, Jeff Ens, Nathan Fradet, Paul Triana, Davide Rizzotti, Jean-Baptiste Rolland, and Maryam Safi. 2025. “MIDI-GPT: A Controllable Generative Model for Computer-Assisted Multitrack Music Composition.” In *Proceedings of the AAAI Conference on Artificial Intelligence*. <https://www.metacreation.net/projects/midi-gpt>.
+
+Prajwal, K R, Bowen Shi, Matthew Le, Apoorv Vyas, Andros Tjandra, Mahi Luthra, Baishan Guo, et al. 2024. “MusicFlow: Cascaded Flow Matching for Text Guided Music Generation.” In *Proceedings of the 41st International Conference on Machine Learning (ICML)*. <https://arxiv.org/abs/2410.20478>.
+
+Pugin, Laurent, Rodolfo Zitellini, and Perry Roland. 2014. “Verovio: A Library for Engraving MEI Music Notation into SVG.” In *Proceedings of the 15th International Society for Music Information Retrieval Conference (ISMIR)*, 107–12. <https://github.com/rism-digital/verovio>.
+
+Qu, Xingwei, Yuelin Bai, Yinghao Ma, Ziya Zhou, Ka Man Lo, Jiaheng Liu, Ruibin Yuan, Lejun Min, et al. 2024. “MuPT: A Generative Symbolic Music Pretrained Transformer.” <https://arxiv.org/abs/2404.06393>.
+
+Rezwana, Jeba, and Mary Lou Maher. 2023. “Designing Creative AI Partners with COFI: A Framework for Modeling Interaction in Human-AI Co-Creative Systems.” *ACM Transactions on Computer-Human Interaction* 30 (5): 67:1–28. <https://doi.org/10.1145/3519026>.
+
+Roberts, Adam, Jesse Engel, Colin Raffel, Curtis Hawthorne, and Douglas Eck. 2018. “A Hierarchical Latent Vector Model for Learning Long-Term Structure in Music.” In *Proceedings of the 35th International Conference on Machine Learning (ICML)*, 80:4364–73. Proceedings of Machine Learning Research. PMLR. <https://arxiv.org/abs/1803.05428>.
+
+Shulman, Mikey, Alessio Fan, and Shawn Hsu. 2024. “Making Transformers Sing — with Mikey Shulman of Suno.” Latent Space podcast, 2024-03-14. <https://www.latent.space/p/suno>.
+
+Sturm, Bob L., João Felipe Santos, Oded Ben-Tal, and Iryna Korshunova. 2016. “Music Transcription Modelling and Composition Using Deep Learning.” In *Proceedings of the 1st Conference on Computer Simulation of Musical Creativity (CSMC)*. <https://arxiv.org/abs/1604.08723>.
+
+Suno AI. 2023. “Bark: Text-Prompted Generative Audio Model.” <https://github.com/suno-ai/bark>.
+
+Suno Inc. 2025. “Introducing Suno Studio: The World’s First Generative Audio Workstation.” <https://suno.com/blog/suno-studio>.
+
+———. 2026. “Suno: Release Notes (V3–V5.5, Suno Studio, Stems, Covers, Personas, Replace Section, MIDI).” <https://suno.com/release-notes>.
+
+Tal, Or, Alon Ziv, Itai Gat, Felix Kreuk, and Yossi Adi. 2024. “Joint Audio and Symbolic Conditioning for Temporally Controlled Text-to-Music Generation.” In *Proceedings of the 25th International Society for Music Information Retrieval Conference (ISMIR)*. <https://arxiv.org/abs/2406.10970>.
+
+Tchemeube, Renaud Bougueng, Jeff Ens, Cale Plut, Philippe Pasquier, Maryam Safi, Yvan Grabit, and Jean-Baptiste Rolland. 2023. “Evaluating Human-AI Interaction via Usability, User Experience and Acceptance Measures for MMM-c: A Creative AI System for Music Composition.” In *Proceedings of the Thirty-Second International Joint Conference on Artificial Intelligence (IJCAI-23)*. <https://doi.org/10.24963/ijcai.2023/640>.
+
+Thickstun, John, David Hall, Chris Donahue, and Percy Liang. 2024. “Anticipatory Music Transformer.” *Transactions on Machine Learning Research (TMLR)*. <https://arxiv.org/abs/2306.08620>.
+
+Tsai, Fang-Duo, Shih-Lun Wu, Weijaw Lee, Sheng-Ping Yang, Bo-Rui Chen, Hao-Chung Cheng, and Yi-Hsuan Yang. 2025. “MuseControlLite: Multifunctional Music Generation with Lightweight Conditioners.” In *Proceedings of the 42nd International Conference on Machine Learning (ICML)*. <https://arxiv.org/abs/2506.18729>.
+
+Tutteo Ltd (Flat.io). 2026. “Flat.io: Score Version History and Collaborative Editing.” <https://help.flat.io/en/music-notation-software/history/>.
+
+Universal Music Group, and Udio. 2025. “Universal Music Group and Udio Announce Udio’s First Strategic Agreements for New Licensed AI Music Creation Platform.” <https://www.prnewswire.com/news-releases/universal-music-group-and-udio-announce-udios-first-strategic-agreements-for-new-licensed-ai-music-creation-platform-302599129.html>.
+
+Wang, Yashan, Shangda Wu, Jianhuai Hu, Xingjian Du, Yueqi Peng, Yongxin Huang, Shuai Fan, Xiaobing Li, Feng Yu, and Maosong Sun. 2025. “NotaGen: Advancing Musicality in Symbolic Music Generation with Large Language Model Training Paradigms.” <https://arxiv.org/abs/2502.18008>.
+
+Wang, Ziyu, Lejun Min, and Gus Xia. 2024. “Whole-Song Hierarchical Generation of Symbolic Music Using Cascaded Diffusion Models.” In *International Conference on Learning Representations (ICLR)*. <https://arxiv.org/abs/2405.09901>.
+
+Wang, Ziyu, Yiyi Zhang, Yixiao Zhang, Junyan Jiang, Ruihan Yang, Junbo Zhao, and Gus Xia. 2020. “PianoTree VAE: Structured Representation Learning for Polyphonic Music.” In *Proceedings of the 21st International Society for Music Information Retrieval Conference (ISMIR)*. <https://arxiv.org/abs/2008.07118>.
+
+Wu, Shangda, Zhancheng Guo, Ruibin Yuan, Junyan Jiang, Seungheon Doh, Gus Xia, Juhan Nam, Xiaobing Li, Feng Yu, and Maosong Sun. 2025. “CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages.” In *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL)*. <https://arxiv.org/abs/2502.10362>.
+
+Wu, Shangda, Yashan Wang, Ruibin Yuan, Zhancheng Guo, Xu Tan, Ge Zhang, Monan Zhou, et al. 2025. “CLaMP 2: Multimodal Music Information Retrieval Across 101 Languages Using Large Language Models.” In *Proceedings of the 2025 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL)*. <https://arxiv.org/abs/2410.13267>.
+
+Wu, Shangda, Dingyao Yu, Xu Tan, and Maosong Sun. 2023. “CLaMP: Contrastive Language-Music Pre-Training for Cross-Modal Symbolic Music Information Retrieval.” In *Proceedings of the 24th International Society for Music Information Retrieval Conference (ISMIR)*. <https://arxiv.org/abs/2304.11029>.
+
+Wu, Shih-Lun, Chris Donahue, Shinji Watanabe, and Nicholas J. Bryan. 2024. “Music ControlNet: Multiple Time-Varying Controls for Music Generation.” *IEEE/ACM Transactions on Audio, Speech, and Language Processing*. <https://arxiv.org/abs/2311.07069>.
+
+Wu, Yusong, Ethan Manilow, Yi Deng, Rigel Swavely, Kyle Kastner, Tim Cooijmans, Aaron Courville, Cheng-Zhi Anna Huang, and Jesse Engel. 2022. “MIDI-DDSP: Detailed Control of Musical Performance via Hierarchical Modeling.” In *International Conference on Learning Representations (ICLR)*. <https://arxiv.org/abs/2112.09312>.
+
+Xu, Weihan, Julian McAuley, Shlomo Dubnov, Taylor Berg-Kirkpatrick, and Hao-Wen Dong. 2025. “Generating Symbolic Music from Natural Language Prompts Using an LLM-Enhanced Dataset.” In *Proceedings of the 26th International Society for Music Information Retrieval Conference (ISMIR)*. <https://arxiv.org/abs/2410.02084>.
+
+Yuan, Ruibin, Hanfeng Lin, Shuyue Guo, Ge Zhang, Jiahao Pan, et al. 2025. “YuE: Scaling Open Foundation Models for Long-Form Music Generation.” *arXiv Preprint arXiv:2503.08638*. <https://arxiv.org/abs/2503.08638>.
+
+Yuan, Ruibin, Hanfeng Lin, Yi Wang, Zeyue Tian, Shangda Wu, Tianhao Shen, Ge Zhang, et al. 2024. “ChatMusician: Understanding and Generating Music Intrinsically with LLM.” In *Findings of the Association for Computational Linguistics: ACL 2024*. <https://github.com/hf-lin/ChatMusician>.
+
+Zeghidour, Neil, Alejandro Luebs, Ahmed Omran, Jan Skoglund, and Marco Tagliasacchi. 2021. “SoundStream: An End-to-End Neural Audio Codec.” *arXiv Preprint arXiv:2107.03312*. <https://arxiv.org/abs/2107.03312>.
+
+Zeng, Mingliang, Xu Tan, Rui Wang, Zeqian Ju, Tao Qin, and Tie-Yan Liu. 2021. “MusicBERT: Symbolic Music Understanding with Large-Scale Pre-Training.” In *Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021*. <https://arxiv.org/abs/2106.05630>.
+
+Zeng, Wei, Xian He, and Ye Wang. 2024. “End-to-End Real-World Polyphonic Piano Audio-to-Score Transcription with Hierarchical Decoding.” In *Proceedings of the 33rd International Joint Conference on Artificial Intelligence (IJCAI)*. <https://doi.org/10.24963/ijcai.2024/862>.
+
+Zhang, Huan, Shreyan Chowdhury, Carlos Eduardo Cancino-Chacón, Jinhua Liang, Simon Dixon, and Gerhard Widmer. 2024. “DExter: Learning and Controlling Performance Expression with Diffusion Models.” *Applied Sciences* 14 (15): 6543. <https://doi.org/10.3390/app14156543>.
+
+Zhao, Jingwei, Gus Xia, and Ye Wang. 2023. “Q&a: Query-Based Representation Learning for Multi-Track Symbolic Music Re-Arrangement.” In *Proceedings of the 32nd International Joint Conference on Artificial Intelligence (IJCAI), AI, the Arts and Creativity Track*. <https://arxiv.org/abs/2306.01635>.
+
+Zhao, Jingwei, Gus Xia, Ziyu Wang, and Ye Wang. 2024. “Structured Multi-Track Accompaniment Arrangement via Style Prior Modelling.” In *Advances in Neural Information Processing Systems (NeurIPS)*. <https://arxiv.org/abs/2310.16334>.
+
+Zhu, Haina, Yizhi Zhou, Hangting Chen, Jianwei Yu, Ziyang Ma, Rongzhi Gu, Yi Luo, Wei Tan, and Xie Chen. 2025. “MuQ: Self-Supervised Music Representation Learning with Mel Residual Vector Quantization.” *arXiv Preprint arXiv:2501.01108*. <https://arxiv.org/abs/2501.01108>.
+
