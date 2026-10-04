@@ -62,6 +62,13 @@
       "source": "experiments/001_ace_audio_personalization/results/youtube-sources-2026-09-19.md",
       "description": "What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.",
       "status": "Results record · September 19, 2026"
+    },
+    {
+      "id": "technical-report",
+      "title": "Music to score, score to music",
+      "source": "research/TECHNICAL-REPORT.md",
+      "description": "An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.",
+      "status": "Technical report · October 4, 2026"
     }
   ],
   "entries": [
@@ -89,6 +96,7 @@
       "focus": "Pin the composer's notes as a hard constraint; measure where imitation of Foster fails; let those failures define what annotations must carry.",
       "next_step": "Build the data harness and relative-attention equivalence test; start Nord captures; choose event tokens or piano roll with real data in hand.",
       "artifacts": [
+        "technical-report",
         "field-positioning",
         "experiments-scaffold",
         "music-kitchen-product",

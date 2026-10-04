@@ -39,4 +39,5 @@ render "$SRC/literature-review.md"      literature-review.html      --toc --toc-
 render "$SRC/taxonomy.md"               taxonomy.html               --toc --toc-depth=2
 render "$SRC/annotated-bibliography.md" annotated-bibliography.html --toc --toc-depth=1
 render "$SRC/POSITIONING.md"             positioning.html            --toc --toc-depth=1
+render "$SRC/TECHNICAL-REPORT.md"        technical-report.html       --toc --toc-depth=2 --mathjax
 echo "Done. Open index.html."
