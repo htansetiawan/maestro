@@ -96,7 +96,6 @@
       "focus": "Pin the composer's notes as a hard constraint; measure where imitation of Foster fails; let those failures define what annotations must carry.",
       "next_step": "Build the data harness and relative-attention equivalence test; start Nord captures; choose event tokens or piano roll with real data in hand.",
       "artifacts": [
-        "technical-report",
         "field-positioning",
         "experiments-scaffold",
         "music-kitchen-product",
@@ -208,6 +207,49 @@
         "dataset-intake-2026-09-19"
       ],
       "published": false
+    },
+    {
+      "date": "2026-10-04",
+      "title": "Music to score, score to music: the anatomy of a song generator",
+      "summary": "Three Suno uploads of one piano recording came back as audio and nothing readable. A technical report dissects why — codec-token language models through four lenses — and specifies the inverse: a notation-native latent that transcribes in and renders out, with latent actions as the edit primitive.",
+      "stage": "Technical report written and verified against primary sources (91 cited, 49 lookups). Notation-native latent specified, not trained; CLaMP 3 decoder baseline and notation round-trip test are the first experiments. No model trained yet.",
+      "focus": "Make the score the shared representation between audio and generation; treat a composer's annotations as the names of learned edit actions.",
+      "next_step": "Decoder-on-CLaMP 3 baseline; **kern vs interleaved ABC round-trip fidelity on PDMX; transcribe my own piano recording through the two-stage path as the first case-study fixture.",
+      "artifacts": [
+        "technical-report",
+        "music-kitchen-product",
+        "music-kitchen-research",
+        "studio-experiment",
+        "market-positioning",
+        "positioning-evidence",
+        "field-positioning",
+        "experiments-scaffold",
+        "ace-audio-personalization",
+        "dataset-intake-2026-09-19"
+      ],
+      "published": true,
+      "links": [
+        {
+          "label": "Technical report",
+          "url": "https://htansetiawan.github.io/maestro/survey/technical-report.html"
+        },
+        {
+          "label": "Report source (Markdown)",
+          "url": "https://github.com/htansetiawan/maestro/blob/main/research/TECHNICAL-REPORT.md"
+        },
+        {
+          "label": "Verification notes",
+          "url": "https://github.com/htansetiawan/maestro/blob/main/research/notes/09-anatomy-verification.md"
+        },
+        {
+          "label": "ACE paper",
+          "url": "https://arxiv.org/abs/2602.00744"
+        },
+        {
+          "label": "ACE demo",
+          "url": "https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5"
+        }
+      ]
     }
   ]
 }

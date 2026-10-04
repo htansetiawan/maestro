@@ -33,7 +33,7 @@ class JournalPublishing(unittest.TestCase):
             self.assertIn("Open the current work", journal_index)
             self.assertIn("https://arxiv.org/abs/2602.00744", journal_index)
             self.assertIn("https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5", journal_index)
-            self.assertIn("Two baseline clips", journal_index)
+            self.assertIn("survey/technical-report.html", journal_index)
             self.assertIn("github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-09-12/ace-audio-personalization.md", entry_page)
             self.assertIn("https://arxiv.org/abs/2602.00744", entry_page)
             self.assertIn("https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5", entry_page)

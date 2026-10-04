@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio experiment 01 — Maestro</title>
+<meta name="description" content="The first playable canvas: phrase selection, drawn contours, tapped rhythm, reversible edits, and an executable musical recipe.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/studio-experiment.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Studio experiment 01 — Maestro">
+<meta property="og:description" content="The first playable canvas: phrase selection, drawn contours, tapped rhythm, reversible edits, and an executable musical recipe.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/studio-experiment.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Studio experiment 01 — Maestro">
+<meta name="twitter:description" content="The first playable canvas: phrase selection, drawn contours, tapped rhythm, reversible edits, and an executable musical recipe.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../../../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Dated artifact snapshot</p>
+      <h1>Studio experiment 01</h1>
+      <p class="journal-description">The first playable canvas: phrase selection, drawn contours, tapped rhythm, reversible edits, and an executable musical recipe.</p>
+      <p class="journal-meta">October 4, 2026 · Working prototype · procedural synthesis · <a href="studio-experiment.md">Snapshot source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/studio-experiment.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/studio-experiment.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <aside class="snapshot-note"><strong>Snapshot from October 4, 2026.</strong> This preserves the artifact for <a href="../../2026-10-04.html">this journal entry</a>. <a href="../../../artifacts/studio-experiment.html">Read the current version</a>.</aside><div class="journal-prose"><p><a href="../../../studio">Open the Music Kitchen studio</a>.</p>
+<p>The first prototype explores a concrete interaction: select a phrase, express a change through a contour or tapped rhythm, and hear the result while the rest of the arrangement stays fixed. It uses an original eight-bar procedural sketch, editable musical events, and browser synthesis. It is a working interaction experiment, not a trained music-generation model or a finished production tool.</p>
+<p>The visual direction is a quiet studio: warm neutral surfaces, generous space, restrained color for each instrument, and a contextual panel for one selected phrase. The product inspiration is the simplicity of modern audio workspaces such as <a href="https://elevenlabs.io/studio">ElevenLabs Studio</a>. The interaction analogy comes from <a href="https://ai.meta.com/blog/sam-3d/">Meta SAM 3D</a>: an explicit selection grounds what the system acts on. The prototype uses neither service and does not reconstruct music from a mixed recording.</p>
+<p>The proposed musical equivalent of selecting an object is selecting a meaningful musical region: a bass response, a drum pattern, a melodic phrase, or eventually a relationship between parts. This version supports explicit two-bar regions on separate tracks. Recognizing such objects in arbitrary audio is a separate, unsolved requirement for the larger product.</p>
+<p><strong>What works in this version.</strong> Play or pause the arrangement, select any of sixteen phrases, mute or pin tracks, change tempo, and rename the project. The piano begins pinned. Draw an eight-point contour or use accessible Rise, Fall, and Level buttons; adjust density; tap a rhythm; and apply the transformation to the selected phrase. Before/Now compares versions, and Undo restores the preceding project state.</p>
+<p>Project data is saved on the device through browser storage where available. It can also be downloaded as JSON. Audio export renders the current arrangement to a mono WAV file. Uploaded images remain a visual reference for the current visit; they are not sent to a model or saved with the project. The text control recognizes a small documented set of directions—sparse, dense, rising, and falling—and maps them to the same controls.</p>
+<p><strong>The recipe is an executable first sketch of a language.</strong> It describes a transformation at a selected musical scope:</p>
+<pre><code class="language-text">phrase bass [5:6] {
+  density 0.25
+  contour [0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85]
+  rhythm [0, 3, 8, 12, 16, 23, 28]
+}
+</code></pre>
+<p>The actual interpreter accepts the four displayed tracks, two-bar ranges 1:2 through 7:8, density from 0.15 to 1, eight contour values from 0 to 1, and rhythm steps from 0 to 31 or <code>auto</code>. Rhythm steps divide a two-bar phrase into 32 sixteenth-note positions in 4/4. Pinned tracks reject changes. Unsupported syntax produces an error; it is not passed to a general-purpose code evaluator.</p>
+<p>Each instrument interprets those controls according to its role. Bass contour selects pitches from the local chord; drum contour controls hi-hat emphasis. A string contour can shift register. This is deliberately a small mapping, not a universal theory of musical gesture. The mapping’s musical usefulness needs evaluation.</p>
+<p><strong>Notation remains one useful view.</strong> A future representation could also describe relationships: the bass answers a vocal gap, strings follow an energy curve, a motif returns with different orchestration, or a reference contributes only its rhythmic feel. Such relationships are hypotheses for a richer language, not implemented features of this prototype. Traditional notation can coexist with them; replacing it is not a prerequisite for exploring new interaction.</p>
+<p>The central idea is that several surfaces can edit the same musical decision: a drawn shape, a demonstration, a textual recipe, a conventional score, and the resulting sound. The prototype connects the first three implemented controls—drawing, tapping, and a small recipe—to explicit events and playback. Humming and learned interpretation remain future work.</p>
+<p><strong>Limits and next tests.</strong> The sound is procedural browser synthesis, with no sampled instrument library, imported piano performance, model-generated accompaniment, automatic source separation, or live microphone transcription. The arrangement uses fixed demo harmony, and the first controls do not claim independent transfer of mood, style, or musical identity. Before/Now is a version comparison, not a blind listening experiment.</p>
+<p>The next useful session asks a musician to select an unsatisfactory phrase, demonstrate a change, and decide whether the result matches their intention. Record where the interaction helps and where the mapping breaks down. That evidence should determine whether the next investment is better sound, a different representation, humming input, or more capable arrangement generation.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

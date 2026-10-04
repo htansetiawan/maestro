@@ -4,10 +4,18 @@
   <id>https://htansetiawan.github.io/maestro/journal/</id>
   <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
   <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-09-19T00:00:00-07:00</updated>
+  <updated>2026-10-04T00:00:00-07:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
+  <entry>
+    <title>Music to score, score to music: the anatomy of a song generator</title>
+    <id>https://htansetiawan.github.io/maestro/journal/2026-10-04.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-10-04.html" />
+    <updated>2026-10-04T00:00:00-07:00</updated>
+    <published>2026-10-04T00:00:00-07:00</published>
+    <summary>Three Suno uploads of one piano recording came back as audio and nothing readable. A technical report dissects why — codec-token language models through four lenses — and specifies the inverse: a notation-native latent that transcribes in and renders out, with latent actions as the edit primitive.</summary>
+  </entry>
   <entry>
     <title>From data to a labelled dataset: the David Foster corpus</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-09-19.html</id>

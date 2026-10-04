@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where AI music generation stands — Maestro</title>
+<meta name="description" content="What the field has solved, what it is still arguing about, the four nearly-empty nodes, and three thesis-shaped projects for 6–12 months. 91 sources.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/field-positioning.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Where AI music generation stands — Maestro">
+<meta property="og:description" content="What the field has solved, what it is still arguing about, the four nearly-empty nodes, and three thesis-shaped projects for 6–12 months. 91 sources.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/field-positioning.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where AI music generation stands — Maestro">
+<meta name="twitter:description" content="What the field has solved, what it is still arguing about, the four nearly-empty nodes, and three thesis-shaped projects for 6–12 months. 91 sources.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../../../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Dated artifact snapshot</p>
+      <h1>Where AI music generation stands</h1>
+      <p class="journal-description">What the field has solved, what it is still arguing about, the four nearly-empty nodes, and three thesis-shaped projects for 6–12 months. 91 sources.</p>
+      <p class="journal-meta">October 4, 2026 · Research positioning · September 11, 2026 · <a href="field-positioning.md">Snapshot source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/field-positioning.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/field-positioning.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <aside class="snapshot-note"><strong>Snapshot from October 4, 2026.</strong> This preserves the artifact for <a href="../../2026-10-04.html">this journal entry</a>. <a href="../../../artifacts/field-positioning.html">Read the current version</a>.</aside><div class="journal-prose"><hr />
+<h2 id="title-where-ai-music-generation-stands-and-where-the-openings-are-subtitle-a-research-positioning-one-pager-drawn-from-the-maestro-survey-of-463-works-1957-2026-author-henry-tan-maestro-date-2026-09-07-bibliography-references-bib-description-what-ai-music-generation-has-solved-what-it-is-still-arguing-about-and-three-thesis-shaped-projects-that-fit-a-6-12-month-timeline-canonical-https-htansetiawan-github-io-maestro-survey-positioning-html">title: &quot;Where AI Music Generation Stands, and Where the Openings Are&quot;
+subtitle: &quot;A research-positioning one-pager, drawn from the Maestro survey of 463 works (1957–2026)&quot;
+author: &quot;Henry Tan · Maestro&quot;
+date: &quot;2026-09-07&quot;
+bibliography: references.bib
+description: &quot;What AI music generation has solved, what it is still arguing about, and three thesis-shaped projects that fit a 6–12 month timeline.&quot;
+canonical: &quot;https://htansetiawan.github.io/maestro/survey/positioning.html&quot;</h2>
+<h1 id="1-the-state-of-the-field-in-one-paragraph">1. The state of the field in one paragraph</h1>
+<p>Generation is no longer the bottleneck. Text-to-audio song generation works at consumer quality, commercially and in the open [@suno2026; @udio2025; @google2025lyria2; @gong2026acestep15; @ning2025diffrhythm]. Symbolic infilling under hard constraints — mask a region, regenerate it, keep everything else fixed — is mature and available under permissive licences [@thickstun2024anticipatory; @pasquier2025midigpt; @malandro2024composersassistant2; @ens2020mmm]. What remains unsolved is everything around the act of generation: how a musician states what they want, and how the machine reports what it did. The field optimised the <em>compile</em> step and left <em>annotate</em> and <em>review</em> almost untouched.</p>
+<h1 id="2-solved-enough-to-build-on">2. Solved enough to build on</h1>
+<p><strong>Audio synthesis and full-song generation.</strong> Prompt to finished master, with vocals, in seconds; open weights run on consumer GPUs [@gong2026acestep15; @yuan2025yue; @liu2025songgen; @evans2024stableaudioopen].</p>
+<p><strong>Transcription and separation.</strong> Piano audio to MIDI is reliable [@hawthorne2018onsets; @hawthorne2019maestro]; instrument-agnostic note transcription ships as a plugin [@bittner2022basicpitch]; stem separation is a commodity feature.</p>
+<p><strong>Symbolic infrastructure.</strong> Notation rendering [@pugin2014verovio; @osmd2026], tokenisation [@fradet2021miditok; @liao2024symusic], score–performance alignment [@cancinochacon2022partitura] and corpus analysis [@cuthbert2010music21] are all adopt-not-build.</p>
+<p><strong>Constrained regeneration.</strong> The primitive the composer's loop needs. Coconet framed it in 2017 as modelling how composers &quot;write music in a nonlinear fashion, scribbling motifs here and there&quot; [@huang2017coconet]; nine years on it works at bar × track granularity with ten-odd named controls [@malandro2024composersassistant2; @pasquier2025midigpt], and one deployment reports musicians accepting roughly 23% of 318,000 span-level suggestions inside a notation editor [@donahue2024hookpadaria].</p>
+<h1 id="3-working-imperfect-where-the-effort-currently-goes">3. Working, imperfect — where the effort currently goes</h1>
+<p><strong>Long-form structure.</strong> Deep generators still differ measurably from human music in repetition and hierarchy [@dai2022missing; @dai2024interconnections]. The remedies make form an explicit, editable input [@dai2021controllable; @wang2024wholesong].</p>
+<p><strong>Controllability of audio models.</strong> Chord-, melody- and curve-conditioning exist but stay research-grade [@tal2024jasco; @lin2023cocomulla; @wu2024musiccontrolnet; @tsai2025musecontrollite]; no commercial full-song system accepts MIDI or chords as a <em>generation</em> condition. Inference-time optimisation is the most general mechanism for imposing a musical feature on a frozen model [@novack2024ditto].</p>
+<p><strong>Real-time interaction.</strong> Latency crossed into usability — roughly 200 ms control latency on a laptop with open weights [@lyria2025livemusic] — and RL-tuned accompaniment now anticipates rather than merely reacts [@wu2024realchords; @scarlatos2025realjam; @wu2026gapt]. A 2024 Aalto thesis reaches the same anticipation behaviour with a much cheaper trick: pad away part of the chord sequence so the model learns to generate melody while harmony lags [@wang2024realtimesymbolic].</p>
+<p><strong>Expressive rendering.</strong> Score to expressive MIDI is a separable, controllable stage [@jeong2019virtuosonet; @wu2022mididdsp; @borovik2023scoreperformer].</p>
+<p><strong>Machine music analysis.</strong> Roman-numeral analysis reaches about 51% full-label accuracy (AugmentedNet) to 62% (RNBert), with key at 82–83% [@napoleslopez2021augmentednet; @sailor2024rnbert] — good enough to <em>propose</em> a label for correction, not to trust silently.</p>
+<h1 id="4-contested-no-consensus">4. Contested, no consensus</h1>
+<p><strong>Evaluation.</strong> Distributional audio metrics correlate weakly with human preference [@chung2025kad; @grotschla2025benchmarking; @huang2025aligning], and almost no generation paper evaluates a composer's workflow at all. The one substantial producer study reports &quot;creative misalignment&quot; and demands for control [@ronchini2025ttmuserstudy]; co-creative systems over-measure user experience and under-measure the creativity of the collaboration [@karimi2018evaluating].</p>
+<p><strong>Provenance and law.</strong> Being settled in court, not in papers: memorisation held to be reproduction in Munich [@lgmunich2025gemaopenai; @lgmunich2026gemasuno], human authorship required for protection in the United States [@usco2025part2; @thaler2025perlmutter], and the label settlements producing licensed, walled-garden models [@umg2025udio; @wmg2025suno].</p>
+<p><strong>Whether language models can reason about music.</strong> Every benchmark says not reliably [@li2024ziqieval; @weck2024muchomusic; @wei2024musictheory; @kumar2026howfar]. The emerging architecture is an LLM as orchestrator around deterministic analysers, not as the analyser.</p>
+<h1 id="5-genuinely-open-the-thin-nodes">5. Genuinely open — the thin nodes</h1>
+<p>Four taxonomy nodes are nearly empty, and they are the ones a composer inhabits.</p>
+<p><strong>Annotations as machine instructions (S2.4 — 4 of 463 works, none about music).</strong> All the parts exist and have never been assembled: typed, musical-time-anchored annotation records [@giraud2018dezrann; @pugin2014verovio]; free-form ink and audio placed on and between staves [@cavez2025euterpen]; a grammar that parses &quot;language plus a sketch on the artifact&quot; into typed references with per-modality resolvers, demonstrated for video [@tilekbay2024expressedit]; selection-then-instruction as an interaction [@masson2024directgpt]; musician-readable structural feedback to an agent [@xu2026libretto].</p>
+<p><strong>The machine explaining itself (S4.4 — 2 works).</strong> A survey of 92 co-creative systems found the AI-to-human direction essentially undesigned [@rezwana2023cofi]. The exceptions are few and instructive: a critic that says <em>where</em> to change before <em>how</em> [@ramoneda2024refinpaint], committed-versus-tentative display of an agent's plan [@scarlatos2025realjam], explain-and-debug affordances [@louie2020cococo].</p>
+<p><strong>Symbolic editing and proofreading (S4.2 — 2 works)</strong> and <strong>musical version control (S4.5 — 5 works, none with branch/merge)</strong> [@foscarin2019diff; @flat2026history; @suh2024luminate].</p>
+<p><strong>Notation-native generation.</strong> No verified system emits MusicXML or MEI directly [@xu2025metascore; @qu2024mupt; @wang2025notagen], and the notation incumbents ship nothing generative [@steinberg2025dorico6; @avid2026sibelius; @musegroup2025musescore46] — DeepBach's 2017 MuseScore plugin remains nearly the only research deployment on a notation surface [@hadjeres2017deepbach].</p>
+<p>Two findings make this the right place to work rather than merely an empty one. Steering interfaces move a composer's control, ownership and self-efficacy even with the model held fixed, and interface and model gains are complementary [@louie2020cococo; @louie2022expressive]; and a single slider is not control — MMM-C scored acceptable usability while its users' desire for more control averaged 9.5 out of 10 [@tchemeube2023mmmc]. Practitioners, asked directly, want to pull material rather than be pushed it, and reject automatic completion while accepting transformation of their own material [@deruty2022sonycsl; @newman2023perceptions; @krol2025ownership; @huang2020aisongcontest].</p>
+<h1 id="6-three-projects-that-fit-6-12-months">6. Three projects that fit 6–12 months</h1>
+<p><strong>A. The build log — best risk/reward.</strong> Wrap a frozen, permissively-licensed infiller [@thickstun2024anticipatory] — it runs in a browser [@zhou2024midinfinite] — with the missing return channel: per region, which constraints bound, which were relaxed and why, where the model was least confident, what it would offer instead. Then measure whether the explanation changes trust, ownership and <em>suggestion acceptance rate</em>. No model training. Instruments already exist [@cherry2014csi]. Directly addresses S4.4, the thinnest load-bearing node. CHI- or ISMIR-shaped.</p>
+<p><strong>B. Annotation-following: a benchmark, then a system.</strong> No benchmark exists for &quot;did the model honour the composer's marks?&quot; Build the task suite, compliance metrics and baselines across existing infillers, then a compiler for <em>one</em> annotation type — region plus natural-language instruction on a lead sheet. Nearest precedents: rejection sampling of LLM proposals against a music prior [@kim2025amuse], zero-shot symbolic editing evaluated as unit tests [@zhang2025groove]. Higher ceiling than A; the benchmark alone stands as a contribution if the system slips.</p>
+<p><strong>C. The notation round-trip.</strong> Lossless textual IR ↔ MusicXML/MEI, so generation can happen in notation at all. Lower risk, lower ceiling — a resource paper, and a prerequisite for A and B. Best treated as a component.</p>
+<p><strong>Avoid at this timescale:</strong> symbolically-conditioned audio rendering (compute-heavy, crowded), licence-clean corpus assembly (legal legwork, though the clean sets are real [@long2024pdmx; @gotham2022openscore]), version control (needs a user base before it can be studied).</p>
+<p><strong>The failure mode that kills all three:</strong> building a demo and running out of time before the evaluation. Fix the study design in month one.</p>
+<h1 id="7-local-advantage">7. Local advantage</h1>
+<p>Krzysztof Gajos is at Harvard SEAS and co-authored ChordRipple — Anna Huang's first music paper — with her at Harvard in 2016 [@huang2016chordripple]. His group's work is exactly the human-AI interaction research that projects A and B require. Huang is now at MIT [@mit2026mtcshowcase], one stop away, and Donahue's lab at CMU is the other centre of gravity for this line [@gclef2026lab; @kim2026decomposer]. For the interaction-flavoured version of this work, the advising is unusually well placed.</p>
+<h1 id="references">References</h1>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

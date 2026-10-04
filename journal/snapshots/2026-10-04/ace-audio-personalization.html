@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACE audio-personalization experiment — Maestro</title>
+<meta name="description" content="An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/ace-audio-personalization.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACE audio-personalization experiment — Maestro">
+<meta property="og:description" content="An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/ace-audio-personalization.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ACE audio-personalization experiment — Maestro">
+<meta name="twitter:description" content="An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../../../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Dated artifact snapshot</p>
+      <h1>ACE audio-personalization experiment</h1>
+      <p class="journal-description">An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.</p>
+      <p class="journal-meta">October 4, 2026 · Code · 28-song corpus assembled and drafted; captions being confirmed; ACE GPU run pending · <a href="ace-audio-personalization.md">Snapshot source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/ace-audio-personalization.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/ace-audio-personalization.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <aside class="snapshot-note"><strong>Snapshot from October 4, 2026.</strong> This preserves the artifact for <a href="../../2026-10-04.html">this journal entry</a>. <a href="../../../artifacts/ace-audio-personalization.html">Read the current version</a>.</aside><div class="journal-prose"><p>Question: Does adapting ACE-Step 1.5 to Henry's original piano, violin, and duet
+performances improve useful musical output over the unmodified model? Does offline
+human or AI preference training add value beyond SFT?</p>
+<p>This experiment follows AI Kitchen's scoped configs, separate checkpoints, held-out
+evaluation, and matched conditions. It uses ACE's audio/flow model, so the text-model
+<code>SFTTrainer</code> and <code>GRPOTrainer</code> from Gandalf are <strong>not</strong> reused. The feedback stage is
+an <strong>experimental offline flow-DPO surrogate</strong>, not PPO, GRPO, or a proven ACE recipe.
+Human ranking is the primary feedback signal; CLAP ranking only tests prompt/audio
+match and is a weak RLAIF baseline. Do not infer “musical quality” from its score.</p>
+<h2 id="open-the-work">Open the work</h2>
+<ul>
+<li><strong>Run the experiment:</strong> <a href="https://github.com/htansetiawan/maestro/tree/main/experiments/001_ace_audio_personalization">CLI and training guide</a>, <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/src/maestro_ace/train.py">training loop</a>, <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/configs/piano_violin.toml">frozen config</a>.</li>
+<li><strong>Inspect the evidence:</strong> <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/results/README.md">public results index</a>, <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/results/smoke-2026-09-12.md">September 12 synthetic smoke record</a>, and <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/results/ace-music-playground-2026-09-12.md">two informal ACE Music Playground baselines</a>.</li>
+<li><strong>Prepare recordings:</strong> <a href="https://github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/examples/recordings.jsonl">manifest example</a> and the <a href="#recording-intake">recording intake guide</a>. No real piano audio is public yet.</li>
+<li><strong>Understand ACE:</strong> <a href="https://arxiv.org/abs/2602.00744">ACE-Step 1.5 paper</a>, <a href="https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5">official interactive demo</a>, and <a href="https://github.com/ace-step/ACE-Step-1.5">upstream source</a>.</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<pre><code class="language-text">configs/piano_violin.toml       frozen experiment settings
+data/audio/                     your original WAV/FLAC recordings (ignored)
+data/recordings.jsonl           your annotated recording manifest (ignored)
+prompts/feedback.jsonl          prompts used to make preference candidates
+prompts/eval.jsonl              frozen, separate evaluation prompts
+artifacts/prepared/             validated split, staged audio, hashes (ignored)
+artifacts/tensors/              ACE preprocessed tensors (ignored)
+artifacts/checkpoints/          SFT, human, AI adapter branches (ignored)
+artifacts/generations/          seeded feedback and evaluation audio (ignored)
+artifacts/preferences/          ballots, pairs, AI scores (ignored)
+artifacts/reports/              matched-seed listening index (ignored)
+</code></pre>
+<h2 id="recording-intake">Recording intake</h2>
+<p>Record original music as lossless WAV or FLAC, ideally 48 kHz stereo for piano
+and duet, mono or stereo for violin. Keep aligned piano, violin, and duet exports
+under one <code>composition_id</code>; they must all be in the same train/validation split.
+Start with distinct 60–120 second pieces. The code accepts 10–180 seconds as
+configured, rejects near-silent or clipped files, hashes exact audio bytes, and
+does not quantize or normalize your recordings. Keep MIDI separately if captured;
+ACE LoRA consumes audio, not MIDI. Example rows are in
+<code>examples/recordings.jsonl</code>. Captions describe what is audible, not an artist name.
+Set <code>provenance</code> to document authorship and the right to train on each take.</p>
+<p>Copy the example rows into <code>data/recordings.jsonl</code>, update paths/captions, and
+put the matching files under <code>data/audio/</code>. The example is a schema, not a real
+dataset. At least two distinct compositions are required for a held-out split;
+20–30 is a sensible pilot before claiming any style improvement. Once prepared,
+the inputs and split are frozen under this experiment ID; changes require a new ID.</p>
+<h2 id="external-sources-youtube-audio-and-video">External sources: YouTube audio and video</h2>
+<p>Your own takes are the training set. Recordings of other artists are still useful:
+as listening references beside your own generations, as analysis material, and as
+audio conditions for ACE's cover/layer tasks. The <code>fetch</code> and <code>segment</code> stages bring
+YouTube material into the same manifest format without deciding the rights question
+for you.</p>
+<pre><code class="language-bash">uv sync --extra youtube                      # adds yt-dlp; ffmpeg must be on PATH
+uv run --extra youtube maestro-ace fetch &quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;
+uv run --extra youtube maestro-ace fetch VIDEO_ID --keep-video       # also keep an mp4
+uv run --extra youtube maestro-ace segment VIDEO_ID --clip-seconds 90 --instruments piano,strings
+uv run --extra youtube maestro-ace segment VIDEO_ID --chapters       # one clip per chapter
+uv run --extra youtube maestro-ace segment VIDEO_ID --tracks         # split a compilation at gaps
+uv run --extra youtube maestro-ace segment VIDEO_ID --tracks --role train --merge
+uv run --extra youtube maestro-ace sources                            # what has been fetched
+uv run --extra youtube maestro-ace pending                            # clips still captioned TODO
+uv run --extra youtube maestro-ace caption yt-VIDEO_ID-001 \
+    --text &quot;Pop ballad duet, male and female vocals, piano, strings, soft drums.&quot; \
+    --bpm 72 --keyscale &quot;Db major&quot; --instruments vocals,piano,strings,drums
+</code></pre>
+<p><code>fetch</code> writes <code>data/sources/youtube/&lt;id&gt;/audio.wav</code> (48 kHz stereo) and a <code>source.json</code>
+sidecar with the URL, title, uploader, upload date, the licence YouTube reports, the
+downloader version, the fetch time, chapters, and the audible span. Compilations are
+sometimes muted part-way through by rights claims; <code>fetch</code> warns when a large part of the
+file is digital silence and <code>segment</code> skips those windows.</p>
+<p><code>segment</code> trims leading and trailing silence, cuts fixed windows (default 90 s, with
+optional overlap or per-chapter cuts), drops windows that are mostly silent, applies
+20 ms fades at the cut points, and writes <code>clips/manifest.jsonl</code>. Every row carries
+<code>source_url</code>, <code>source_id</code>, <code>source_start</code> and <code>source_end</code>, and inherits provenance.</p>
+<p>By default all clips of a video share one <code>composition_id</code>, so a single performance never
+straddles the train/validation split. For a compilation of several songs use <code>--tracks</code>:
+the source is split where the level drops below <code>--gap-db</code> (default 35 dB under the peak)
+for at least <code>--min-gap-seconds</code> (0.3 s), pieces shorter than <code>--min-track-seconds</code> (90 s)
+are merged into their neighbour, and each track becomes its own composition
+(<code>yt-&lt;id&gt;-t01</code>, <code>t02</code>, ...). Check the printed track boundaries against the video before
+trusting them; crossfaded compilations do not split cleanly.</p>
+<p><code>caption</code> edits one manifest row in place (caption, BPM, key, time signature, instruments,
+role), and <code>pending</code> lists the clips whose captions are still <code>TODO</code>, with their source
+offsets so you can listen at the right place in the video.</p>
+<p>Two fields govern how those rows are used, and both are enforced by <code>prepare</code>:</p>
+<ul>
+<li><code>role</code>: <code>reference</code> (default) stages the clips under <code>artifacts/prepared/audio/</code> and
+lists them in <code>reference.json</code>, but keeps them out of the train and validation
+splits. <code>train</code> puts them in the split.</li>
+<li><code>rights</code>: <code>unverified</code> for anything fetched from YouTube unless the platform reports a
+Creative Commons licence (<code>cc</code>). A <code>train</code> row with unverified rights is rejected until
+<code>allow_unverified_rights = true</code> is set in the frozen config. That opt-in is a recorded
+decision, not a default.</li>
+</ul>
+<p>Captions of fetched clips start with <code>TODO</code>; a <code>train</code> row keeps failing validation until
+the caption describes what is actually audible. Do not write the artist's name into the
+caption: the model should learn from the sound, and the prompt vocabulary should stay
+usable for your own material.</p>
+<p>yt-dlp works better with a JavaScript runtime available (<code>deno</code> is its default); without
+one it warns that some formats may be missing. Downloaded material stays in the ignored
+<code>data/</code> tree and is never committed or uploaded by these commands.</p>
+<h2 id="local-albums-import">Local albums: <code>import</code></h2>
+<p>Files you already own (MP3, FLAC, WAV, M4A) enter the same source tree:</p>
+<pre><code class="language-bash">uv run --extra youtube maestro-ace import ~/git/datasets/maestro/david_foster_musics \
+    --segment --clip-seconds 90 --role train --instruments piano --merge
+</code></pre>
+<p>Each file is decoded once to 48 kHz stereo WAV under <code>data/sources/local/&lt;slug&gt;/</code> with a
+sidecar carrying its tags (title, artist, album, year) and original path; byte-identical
+duplicates are skipped. One file is one composition, so the split never puts two clips of
+the same song on different sides. Rights are recorded as <code>unverified</code>, as for YouTube.</p>
+<h2 id="whole-songs-as-the-training-unit">Whole songs as the training unit</h2>
+<p><code>data.max_seconds</code> is 360, and both <code>import --segment --clip-seconds 360</code> and
+<code>segment --tracks --clip-seconds 360</code> produce one clip per song. Complete pieces carry
+real intros, entrances and endings, which fixed 90-second windows cut through, and the
+labeling shrinks to one caption per song. If the first GPU run shows that the longest
+tracks do not fit in memory, cut those with <code>segment --clip-seconds 120</code> and re-caption
+only them.</p>
+<h2 id="auto-label-autolabel">Auto-label: <code>autolabel</code></h2>
+<p>Drafts the caption, BPM, key, time signature and instrument list for every clip whose
+caption is still <code>TODO</code>, from the audio alone:</p>
+<pre><code class="language-bash">uv sync --extra label            # librosa, transformers, torch
+uv run --extra label maestro-ace autolabel                 # every TODO row
+uv run --extra label maestro-ace autolabel --ids loc-01-jelinda-s-theme-001
+uv run --extra label maestro-ace autolabel --no-clap       # tempo/key/structure only
+</code></pre>
+<p>Tempo comes from beat tracking with a ballad-leaning prior (double-time estimates are
+halved and noted); key from Krumhansl-Schmuckler profiles over the mean chroma, with the
+runner-up kept; sections from agglomerative segmentation of smoothed MFCC and chroma with
+a loudness label each; instruments from zero-shot CLAP scores on a fixed vocabulary over
+10-second windows, listed only when they persist across a quarter of the song. A
+deterministic template turns that into the draft, so the same evidence always produces
+the same words. The per-clip analysis lands in <code>data/analysis/&lt;clip_id&gt;.json</code> and the
+workbench shows it as a timeline under the player.</p>
+<p>Default captions describe detected instrumentation and the measured loudness arc. They
+do not infer a lead instrument from tag frequency, invent piano when no instrument is
+detected, or treat the first detection window as an exact instrument entrance. Genre,
+musical roles, mood and actual entrances can be refined by the listener.</p>
+<p>Drafts are written as <code>TODO: &lt;draft&gt;</code> and keep failing the training gate until someone
+listens, corrects and saves. Human captions are never overwritten unless <code>--force</code> is
+given. Expect the drafts to be right about tempo range, loud and quiet sections and
+whether there is singing, and to be wrong sometimes about which pad-like instrument is
+playing; that is the part the listener fixes.</p>
+<h2 id="dataset-workbench-web">Dataset workbench: <code>web</code></h2>
+<p>A small web UI for the human part of the job: listen to each clip, write the caption, tap
+the tempo, pick key, time signature and instruments, mark a clip as reference or remove
+it, and run fetch / import / segment / prepare as background jobs with visible logs.</p>
+<pre><code class="language-bash">uv sync --extra web --extra youtube
+MAESTRO_WEB_TOKEN=$(python3 -c 'import secrets; print(secrets.token_urlsafe(24))')
+export MAESTRO_WEB_TOKEN
+uv run --extra web --extra youtube maestro-ace web --host 127.0.0.1 --port 8090
+# open http://127.0.0.1:8090/?token=$MAESTRO_WEB_TOKEN once; the browser keeps a cookie
+</code></pre>
+<p>The server binds to loopback. Every request must carry the token cookie; without the
+environment variable it refuses non-loopback binds. Clips stream from <code>data/</code> on this
+machine and never leave it except to the browser that holds the cookie.</p>
+<p><strong>Public hostname.</strong> <code>maestro.enrica.ai</code> is a CNAME to the <code>blacksmith</code> Cloudflare
+Tunnel that already serves the other enrica.ai hostnames from this box. The tunnel's
+ingress lives in <code>/etc/cloudflared/config.yml</code> (root); add, before the final
+<code>http_status:404</code> rule:</p>
+<pre><code class="language-yaml">  - hostname: maestro.enrica.ai
+    service: http://localhost:8090
+</code></pre>
+<p>then <code>sudo systemctl restart cloudflared</code>. <code>deploy/maestro-web.service</code> is a user unit
+that keeps the workbench running across logins and reboots (user lingering is already on):</p>
+<pre><code class="language-bash">cp deploy/maestro-web.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now maestro-web.service
+</code></pre>
+<p>It reads the token from <code>~/.config/maestro/web.env</code> (<code>MAESTRO_WEB_TOKEN=...</code>, mode 600).
+Consider also putting the hostname behind Cloudflare Access so the token is a second lock.</p>
+<h2 id="environment-and-checkpoints">Environment and checkpoints</h2>
+<p>Run from this directory. <code>uv</code> manages the experiment's own Python 3.12 environment.
+The light environment supports intake without ACE or a GPU:</p>
+<pre><code class="language-bash">uv sync
+uv run maestro-ace doctor
+uv run maestro-ace prepare
+</code></pre>
+<p>To check that the entire pipeline is wired up before recordings or checkpoints
+exist, run the synthetic CPU smoke test:</p>
+<pre><code class="language-bash">uv sync --extra smoke
+uv run --extra smoke maestro-ace smoke
+</code></pre>
+<p>It creates a unique ignored <code>artifacts/smoke/run-*/</code> directory with synthetic
+48 kHz audio, fake preprocessed tensors, a tiny trainable stand-in decoder,
+one SFT step, human and AI preference branches, candidate files, and a
+four-variant listening report. The AI smoke scorer uses audio energy, <strong>not
+CLAP</strong>. The command prints the artifact path and fails on a broken stage.
+This tests orchestration and real PyTorch loss/backprop/optimizer paths; it
+does <strong>not</strong> load ACE weights, run ACE's preprocessor or generator, validate
+adapter compatibility, or measure music quality.</p>
+<p>On the Linux CUDA machine, install a <strong>separate ACE checkout at the revision in
+<code>configs/piano_violin.toml</code></strong>, and install it into this experiment environment:</p>
+<pre><code class="language-bash">git clone https://github.com/ace-step/ACE-Step-1.5.git /path/to/ACE-Step-1.5
+git -C /path/to/ACE-Step-1.5 checkout ca1e85fe9430179831e6bc6be790c332190a3866
+uv pip install -e /path/to/ACE-Step-1.5
+ACE_ROOT=/path/to/ACE-Step-1.5
+ACE_CKPT=/path/to/ACE-Step-1.5/checkpoints
+</code></pre>
+<p>ACE's package includes CUDA-specific PyTorch and model dependencies. Use ACE's
+documented downloader to populate a checkpoint directory containing <code>vae/</code>,
+<code>Qwen3-Embedding-0.6B/</code>, and the selected <code>acestep-v15-base/</code> DiT checkpoint.
+After installation, download only the main bundle and base DiT:</p>
+<pre><code class="language-bash">.venv/bin/acestep-download --model main --dir &quot;$ACE_CKPT&quot;
+.venv/bin/acestep-download --model acestep-v15-base --dir &quot;$ACE_CKPT&quot;
+</code></pre>
+<p>The pinned <strong>base</strong> model supports subsequent layer/extract/complete tasks for
+Maestro Studio. To switch variants, edit the config and fetch the corresponding
+checkpoint. The adapter belongs to the exact base variant and revision.</p>
+<p>After <code>uv pip install -e</code>, call <code>.venv/bin/maestro-ace</code> directly so a fresh
+<code>uv sync</code> does not remove the editable ACE install. Keep the path variables in
+your shell for the commands below.</p>
+<h2 id="run-the-stages">Run the stages</h2>
+<pre><code class="language-bash">.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; preprocess
+.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; sft
+.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; generate --split feedback --model sft
+</code></pre>
+<p>SFT uses ACE's preprocessed tensors, DiT LoRA injection, continuous ACE timestep
+sampling, flow-matching velocity loss and CFG dropout. It trains <strong>exactly</strong>
+<code>sft.steps</code> optimizer steps, records metrics, saves interval/final adapters, and
+compares seeded held-out flow loss before and after. Training never touches the
+held-out composition's tensors.</p>
+<p>For human feedback, listen to each two-seed pair in
+<code>artifacts/generations/feedback/sft/</code>. Record a chosen and rejected ID, reviewer
+and concrete reason in a private JSONL file like <code>examples/human_ballots.jsonl</code>.
+The example ballot is illustrative; listen before using a real ballot.</p>
+<pre><code class="language-bash">.venv/bin/maestro-ace rank --source human --ballots /path/to/my-ballots.jsonl
+.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; preprocess-pairs --source human
+.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; preference --source human
+</code></pre>
+<p>For the separate AI-feedback branch, install the ML environment first and run
+<code>.venv/bin/maestro-ace rank --source ai</code>. It uses a frozen CLAP model to compare candidates under the
+same prompt; score margins below <code>judge.min_margin</code> are rejected. Then run
+<code>preprocess-pairs --source ai</code> and <code>preference --source ai</code>. Both branches reload
+the same SFT adapter and use a frozen copy of that adapter as reference.
+No cross-branch continuation occurs.</p>
+<p>For evaluation, generate the <strong>same prompts and seeds</strong> for the base model,
+SFT adapter, and available feedback adapters, then build the listening index:</p>
+<pre><code class="language-bash">.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; generate --split eval --model base
+.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; generate --split eval --model sft
+.venv/bin/maestro-ace --ace-root &quot;$ACE_ROOT&quot; --checkpoints &quot;$ACE_CKPT&quot; generate --split eval --model human
+.venv/bin/maestro-ace report
+</code></pre>
+<p>The report copies generated audio to anonymous take names and writes a separate
+<code>artifacts/reports/answer_key.json</code>; keep the key closed until ratings are done.
+Rate which take you would keep, phrasing, instrumentation, and artifacts.
+A lower flow loss or higher CLAP score alone is not evidence of
+better composition. Track copy/memorization concerns by comparing outputs with
+the training recordings before sharing a model.</p>
+<h2 id="current-verification-boundary">Current verification boundary</h2>
+<p>The synthetic CPU smoke has run through every pipeline stage, including one
+PyTorch optimizer step for SFT and for each preference branch. It passed in
+September 2026. <strong>No ACE weights, GPU training, CLAP inference, or listening
+study has been run for this experiment yet.</strong> Real model integration still
+requires the pinned upstream checkout and checkpoint bundle on your RTX PRO
+5000/C3 environment. The smoke command does not call a cloud API or upload
+recordings.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

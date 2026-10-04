@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research foundations — Maestro</title>
+<meta name="description" content="A focused map of 27 sources, an editable musical representation, and research questions to revisit as the product develops.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/music-kitchen-research.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Research foundations — Maestro">
+<meta property="og:description" content="A focused map of 27 sources, an editable musical representation, and research questions to revisit as the product develops.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/music-kitchen-research.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Research foundations — Maestro">
+<meta name="twitter:description" content="A focused map of 27 sources, an editable musical representation, and research questions to revisit as the product develops.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../../../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Dated artifact snapshot</p>
+      <h1>Research foundations</h1>
+      <p class="journal-description">A focused map of 27 sources, an editable musical representation, and research questions to revisit as the product develops.</p>
+      <p class="journal-meta">October 4, 2026 · Supporting research · proposal · <a href="music-kitchen-research.md">Snapshot source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/music-kitchen-research.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/music-kitchen-research.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <aside class="snapshot-note"><strong>Snapshot from October 4, 2026.</strong> This preserves the artifact for <a href="../../2026-10-04.html">this journal entry</a>. <a href="../../../artifacts/music-kitchen-research.html">Read the current version</a>.</aside><div class="journal-prose"><p>The governing direction is now the <a href="music-kitchen-product.html">Music Kitchen product brief</a>: a personal arranging studio for pianist-songwriters, with research driven by obstacles to the intended experience. This document supplies supporting literature and optional research questions; its study-first sequence is not the product roadmap.</p>
+<p>Music Kitchen proposes a composition environment in which people express musical ideas through humming, playing, sketching, notation, and language; an AI companion helps translate those ideas into an editable musical specification; and a music engine realizes that specification for listening and revision. The composer controls what is committed, what remains ambiguous, and where the system may contribute. The central research question is whether making musical intent <strong>persistent, executable, and contestable</strong> improves composers’ ability to realize and develop their own ideas.</p>
+<p>The broad ambition has substantial precedent. Musical programming, interactive machine learning, constrained generation, multimodal songwriting, and AI assistants inside music software are established research directions. The promising contribution is therefore a particular representation and interaction contract, tested against strong alternatives. A defensible hypothesis is that a composer-owned specification, coupled to bounded generation and verifiable feedback, can improve control, understanding, and expressive exploration. This is a proposal, not a claim of demonstrated effectiveness or first invention.</p>
+<p>This focused literature synthesis covers sources available through September 10, 2026. It emphasizes primary research and original system documentation, distinguishes published research from preprints, and concentrates on composition and revision. It is not an exhaustive systematic review. The proposed initial population is composers and songwriters who can recognize and revise musical ideas, including people who do not read staff notation or program. Live ensemble performance and unrestricted full-song production are extensions beyond the first experiment.</p>
+<p>The relevant research term is <strong>human–AI music co-creation</strong>, or <strong>AI-assisted composition</strong> when the human’s creative authority is central. “Procreation” is unlikely to communicate the intended research area. The conductor metaphor is useful for delegation, but it should not assume that a complete piece already exists in the composer’s head. The environment must support both realizing an existing idea and discovering an idea through making and listening.</p>
+<p><strong>The argument from prior work begins with a distinction between musical capability and creative interaction.</strong> Music Transformer demonstrated long-range symbolic generation using efficient relative attention, including motif continuation and melody-conditioned accompaniment. Those capabilities provide musical material and context sensitivity; they do not by themselves establish an interface for precise revision or explain the composer’s experience. Its relevant publication history is the 2018 preprint and ICLR 2019 paper. <a href="https://arxiv.org/abs/1809.04281">1</a></p>
+<p>Coconet, described in <em>Counterpoint by Convolution</em>, models completion of partially specified music and iterative revision. DeepBach similarly makes user constraints part of generation. These are particularly relevant ancestors because a composer often knows scattered parts of a piece before knowing the intervening material. Music Kitchen should inherit this capacity to work around existing decisions. <a href="https://arxiv.org/abs/1903.07227">2</a> <a href="https://proceedings.mlr.press/v70/hadjeres17a.html">3</a></p>
+<p>The HCI evidence is unusually close to the proposal. Cococo’s steering tools let novices restrict generation to voices and regions, adjust example-based and semantic controls, and compare alternatives. Its study with 21 novices reported improvements in control, comprehension, and ownership. The AI Song Contest study examined 13 teams comprising 61 participants and identified needs for more decomposable, steerable, interpretable, and adaptive tools. Neither establishes that a DSL is necessary, but both motivate studying the relationship between the scale of machine intervention and human agency. <a href="https://ceur-ws.org/Vol-2848/HAI-GEN-Paper-1.pdf">4</a> <a href="https://program.ismir2020.net/static/final_papers/167.pdf">5</a></p>
+<p><em>Expressive Communication</em> provides an especially useful evaluation model: assess composers’ experience alongside listeners’ judgments of whether the resulting music expresses the intended imagery. Its study with 26 composers found complementary benefits from better steering interfaces and more expressive models. It does not justify a universal claim that interface quality matters more than model quality. For Music Kitchen, model quality should be held constant when testing interface mechanisms. <a href="https://arxiv.org/abs/2111.14951">6</a></p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Research line and selected sources</th>
+<th>What already exists</th>
+<th>Implication for Music Kitchen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Graphical composition: Hyperscore, 2004</td>
+<td>Sketches and graphical structures mediate composition for people with limited musical training. <a href="https://opera.media.mit.edu/papers/IEEE2004.pdf">7</a></td>
+<td>Musical intent can be expressed without either prose or typed code.</td>
+</tr>
+<tr>
+<td>Musical programming: OpenMusic</td>
+<td>Visual programs combine musical objects and transformations; the maquette organizes them in time. <a href="https://openmusic-project.github.io/openmusic/overview.html">8</a></td>
+<td>An executable musical representation is established prior art.</td>
+</tr>
+<tr>
+<td>Interactive machine learning: Fiebrink and Caramiaux, 2016 preprint</td>
+<td>Treats learning algorithms as creative interfaces shaped by musicians’ goals and interaction. <a href="https://arxiv.org/abs/1611.00379">9</a></td>
+<td>The feedback loop must accommodate personal meanings and changing goals.</td>
+</tr>
+<tr>
+<td>Symbolic infilling: Anticipatory Music Transformer, 2023/2024</td>
+<td>Generates around fixed control events, supporting accompaniment and infilling. <a href="https://arxiv.org/abs/2306.08620">10</a></td>
+<td>A plausible generation substrate for preserving authored material.</td>
+</tr>
+<tr>
+<td>Performance control: MIDI-DDSP, ICLR 2022</td>
+<td>Exposes a hierarchy of notes, performance attributes, and synthesis parameters. <a href="https://arxiv.org/abs/2112.09312">11</a></td>
+<td>Editable notes alone do not capture expressive performance.</td>
+</tr>
+<tr>
+<td>Controlled audio: MusicGen, 2023; JASCO, 2024</td>
+<td>MusicGen supports text and melodic conditioning; JASCO combines temporal symbolic and audio conditions, including chords, melody, and drums. <a href="https://arxiv.org/abs/2306.05284">12</a> <a href="https://arxiv.org/abs/2406.10970">13</a></td>
+<td>Avoid claiming that audio generation has no control. Study the strength and reliability of particular controls.</td>
+</tr>
+<tr>
+<td>Language and symbolic music: ChatMusician, Findings of ACL 2024</td>
+<td>Uses text-compatible ABC notation for music understanding and generation. <a href="https://aclanthology.org/2024.findings-acl.373/">14</a></td>
+<td>Language models producing musical notation are not a new contribution by themselves.</td>
+</tr>
+<tr>
+<td>Orchestrated tools: Loop Copilot, 2023/2024</td>
+<td>An LLM coordinates specialized music models and maintains shared musical attributes across iterative requests. <a href="https://arxiv.org/abs/2310.12404">15</a></td>
+<td>“AI as the glue between music tools” has direct precedent.</td>
+</tr>
+<tr>
+<td>Deployed symbolic assistance: Hookpad Aria, ISMIR 2024 demo / 2025 preprint</td>
+<td>Supports continuation, infilling, and melody–harmony generation in a lead-sheet editor; reports 318,000 suggestions and 74,000 acceptances across 3,000 users. <a href="https://arxiv.org/abs/2502.08122">16</a></td>
+<td>Use an integrated symbolic assistant as a baseline; acceptance does not establish lasting creative value.</td>
+</tr>
+<tr>
+<td>Multimodal inspiration: Amuse, CHI 2025</td>
+<td>Converts image, text, and audio inspirations into chord suggestions; editable music keywords mediate interpretation. <a href="https://arxiv.org/abs/2412.18940">17</a></td>
+<td>Editable intermediate interpretation and multimodal musical inspiration also have precedent.</td>
+</tr>
+<tr>
+<td>DAW assistance: DAWZY, December 2025 preprint</td>
+<td>Converts text and speech into reversible REAPER actions and humming into MIDI with Basic Pitch. <a href="https://arxiv.org/abs/2512.03289">18</a></td>
+<td>A hum-to-code-to-DAW workflow is insufficient as a novelty claim.</td>
+</tr>
+<tr>
+<td>Structured musical intent: Inspiration-to-Structure, AAAI 2026</td>
+<td>Generates structured musical sections from melodic ideas and language through specialized modeling. <a href="https://ojs.aaai.org/index.php/AAAI/article/view/37163">19</a></td>
+<td>“Inspiration to musical structure” needs a more specific representation or HCI contribution.</td>
+</tr>
+<tr>
+<td>Agent-readable representation: Libretto, June 2026 preprint</td>
+<td>Uses explicit onsets, voices, bars, and computed structural feedback to support iterative symbolic revision. <a href="https://arxiv.org/abs/2606.22708">20</a></td>
+<td>A readable music grammar plus an agent revision loop is already close prior art.</td>
+</tr>
+<tr>
+<td>Text-conditioned lead sheets: MIDI-LLM, August 2026 revision</td>
+<td>Adapts an LLM for MIDI and lead-sheet generation/infilling; reports a study with 58 Hookpad Aria users and 4,002 outputs. The source identifies acceptance to ISMIR 2026. <a href="https://arxiv.org/abs/2511.03942v2">21</a></td>
+<td>Compare against current text-controlled symbolic assistance, not only early text-to-audio systems.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Several recent sources further narrow the originality claim. <em>Who Decides How Knowing Becomes Doing?</em> explicitly studies visible and editable reasoning surfaces in music co-creation. Its September 2025 preprint is relevant to contestability, although the inspected version contains unresolved publication-template fields; its reported findings should be treated as provisional rather than established venue-verified evidence. Music Kitchen cannot claim to introduce contestability into musical AI. <a href="https://arxiv.org/html/2509.10331v1">22</a></p>
+<p>Chang and Jing’s August 26, 2026 article describes a composer translating auditory judgments into executable sampling constraints and filtering rules through natural-language programming. The work includes a listening experiment, but its generator construction centers on one composer and a small personal corpus. It is direct precedent for the proposed listening-to-rules loop, while leaving room for a comparative study of reusable interaction mechanisms across composers. <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1903971/full">23</a></p>
+<p>Hawley’s August 2026 preprint investigates hierarchical representations for symbolic music understanding, variation, and inpainting in support of co-creative agents. It strengthens the case for representations at multiple musical scales. Decodability of features from embeddings, however, should not be equated with evidence that a composer understands or can reliably control the system. <a href="https://arxiv.org/abs/2608.04378">24</a></p>
+<p><strong>The proposed contribution is an executable agreement about musical intent.</strong> A composition state should include the musical material, the composer’s current commitments, the system’s unresolved interpretations, and the changes currently delegated to AI. This agreement is external to the model, inspectable by the composer, and enforced wherever the engine has a reliable checker. It persists across turns instead of depending on the model remembering a conversation correctly.</p>
+<p>Five properties make that agreement testable. First, musical references identify an exact object or region. Second, a constraint distinguishes something that must hold from a preference that can be negotiated. Third, a delegation scope defines the parts and properties the AI may change. Fourth, proposed changes have an observable before/after difference. Fifth, the composer can revise the interpretation or undo the transformation. These are proposed design requirements, not established sufficient conditions for human agency.</p>
+<p>“Keep my melody” illustrates why this is a research problem. It could mean preserving exact pitches and rhythms, preserving only melodic contour, preserving phrase identity while allowing ornamentation, or preserving an expressive recording. A system that silently chooses one interpretation can obey its own representation while violating the composer’s intention. Music Kitchen should expose the interpretation when it matters, using playback and concrete alternatives rather than demanding a long formal specification before work begins.</p>
+<p>The DSL is therefore best conceived as an underlying representation with multiple editing surfaces. A composer might hum the phrase, circle a note, drag a chord label, and say “make this ending less final.” These actions refer to the same musical objects. Typed code is available for users who benefit from it; graphical editing and auditory demonstration remain complete ways to participate. The research hypothesis is about access to meaningful commitments, not about making every composer become a programmer.</p>
+<p>A DSL is neither necessary nor sufficient for human control: direct manipulation can provide precise control, while an inscrutable program can create a new barrier. Its value must be established by the tasks it makes easier. The “compiler” metaphor also needs limits: an underspecified musical request permits many realizations. Deterministic parsing and checking can surround probabilistic proposal generation without pretending that aesthetic interpretation has a single correct compilation.</p>
+<pre><code class="language-text">Humming / playing / sketching / notation / language
+                         ↓
+       Candidate interpretation, with ambiguity exposed
+                         ↕
+ Composer-owned musical state and executable constraints
+                         ↓
+     AI proposes a change within the delegated scope
+                         ↓
+     Engine checks the change and renders a preview
+                         ↓
+      Listen + inspect differences + compare versions
+                         ↓
+        Accept / revise / reject / change the goal
+                         ↺
+</code></pre>
+<p>This is a proposed architecture. No working Music Kitchen implementation or experimental result is claimed here.</p>
+<p><strong>The representation needs more than a sequence of notes.</strong> Its smallest useful unit is a musical object with a stable identity: a note event, chord, motif, phrase, part, performance gesture, or audio region. Objects need musical-time anchors and links to their source, including the original recording when applicable. Stable identities let a constraint continue to refer to a motif after that motif moves to another bar.</p>
+<p>The composition layer stores events and relationships: pitches, onsets, durations, voices, phrase boundaries, chord labels, and repeated or transformed motifs. The performance layer stores timing deviations, articulation, dynamics, and other supported expressive controls. The sound layer identifies instruments, audio material, and processing. MIDI-DDSP’s hierarchy is a useful precedent for separating these levels, although a first prototype need not implement its synthesis architecture. <a href="https://arxiv.org/abs/2112.09312">11</a></p>
+<p>An additional intent layer stores protected material, preferences, delegation scope, and unresolved hypotheses. “Preserve these note events exactly” is different from “retain the feeling of this performance.” Only the first has an immediately precise checker. Mood words should remain user-interpreted preferences unless grounded in an explicit, editable operational definition. “Tender” must not silently become a universal rule for minor harmony, slow tempo, or low density.</p>
+<p>The internal representation need not replace existing interchange formats. It can retain MIDI or notation events and attach intent metadata in a separate document. Import and export should explicitly identify unsupported information. Round-trip preservation is a property to test within a supported feature set, not a blanket promise that every score, performance, and production detail survives arbitrary conversions.</p>
+<p>A proposed DSL interaction could look like this. The syntax is illustrative pseudocode; <code>confirmed_take</code> refers to a transcription that the composer has already reviewed.</p>
+<pre><code class="language-text">project &quot;Evening sketch&quot; {
+  meter = 4/4
+  tempo = 84
+
+  motif theme = confirmed_take(&quot;hum-01&quot;)
+  place theme in melody at bars 1..4
+
+  edit accompaniment at bars 1..4 {
+    may_change = [chords, voicing, rhythm]
+    must preserve(melody.pitch, melody.onset, melody.duration)
+    must preserve(all_material_outside_selection)
+    prefer fewer_onsets_than(previous_accompaniment)
+    prefer mood(&quot;tender&quot;, reference = &quot;composer-example-02&quot;)
+    propose alternatives = 3
+  }
+}
+</code></pre>
+<p>The first two requirements are executable invariants over the supported symbolic state. Fewer onsets is measurable, but whether it is musically appropriate remains a judgment. The mood preference is an invitation to explore, not a guarantee. A visible operation record should distinguish these three cases. If no candidate satisfies the hard constraints, the system returns that result and lets the composer decide what to relax.</p>
+<p><strong>A concrete session makes the HCI claim clearer.</strong> A composer hums a four-bar melody. The system presents the recording beside a candidate transcription and flags an ambiguous repeated note. The composer corrects its duration by dragging or singing that moment again. That corrected representation becomes the protected melody; the raw performance remains available so quantization does not erase the original idea.</p>
+<p>The composer requests three accompaniments and selects one. Later, they point to the last two bars and ask for a less conclusive ending while preserving the melody. The companion offers explicit interpretations, such as changing the cadence or reducing the final accompaniment’s density. Preview controls let the composer hear those alternatives before committing to either. This interaction exposes the translation from an aesthetic phrase into a musical operation.</p>
+<p>After an edit, the feedback might read: “Melody pitches and timing preserved; two accompaniment chords changed; accompaniment onsets reduced from 12 to 8.” Those statements come from checks on the actual changes. “This may feel less settled” is a separate suggestion, supported by a listening comparison rather than presented as an objective fact. Undo restores the preceding project state, including the associated constraints and interpretation.</p>
+<p>Basic Pitch demonstrates an accessible audio-to-MIDI route, and DAWZY already uses it for humming. Transcription is nevertheless an estimate of performed events, not direct access to imagined intent. The crucial new experiment would investigate whether reviewing and correcting the transcription helps users express their idea without breaking creative flow. <a href="https://engineering.atspotify.com/2022/6/meet-basic-pitch">25</a> <a href="https://arxiv.org/abs/2512.03289">18</a></p>
+<p><strong>Interpretability should be defined by what the composer can understand and do.</strong> There are at least four distinct targets: understanding the stored musical representation; understanding the operation applied; understanding how a control affects the result; and understanding the internal mechanism of a learned model. A visible DSL primarily addresses the first two. It does not make a neural generator mechanistically interpretable.</p>
+<p>Work on explainable generative music has mapped latent dimensions to musical attributes and provided interactive feedback for inspecting their effects. A context-sensitive XAI position paper likewise argues that explanations should fit the audience and setting. These provide foundations for assessing explanations through musical tasks, rather than assuming that a technical visualization is useful because it exposes model information. <a href="https://arxiv.org/abs/2308.05496">26</a> <a href="https://arxiv.org/abs/2309.04491">27</a></p>
+<p>Music Kitchen should prioritize three forms of evidence: a semantic diff identifying changed musical objects, a check identifying satisfied or violated commitments, and a controlled listening comparison. For example, hold notes and instruments fixed while varying articulation, then let the composer predict and audition the difference. If the renderer cannot isolate that property, expose the resulting side effects instead of describing the control as independent.</p>
+<p>Generated explanations require particular discipline. An LLM can describe the recorded operation, but its prose is not evidence of why its neural network selected a chord. The operation record can establish that a chord changed and that a melody lock held. It cannot establish that the model understood grief or intended a particular emotional effect. Explanation correctness and composer comprehension must be measured separately.</p>
+<p>Libretto is a close technical comparison: its representation deliberately abstracts away velocity, microtiming, original timbre, and unpitched percussion while exposing quantized symbolic structure and computed descriptors. A plausible extension is to investigate human-editable commitments across composition and performance, with evaluation centered on composers’ interventions. The mere addition of a grammar or structural feedback would not establish originality. <a href="https://arxiv.org/html/2606.22708v1">20</a></p>
+<p><strong>The listening loop is initially interactive search.</strong> A composer listens, notices a mismatch or possibility, and changes the material or the intention. This resembles sequential optimization, but formal reinforcement learning is not required. A frozen generator, explicit constraints, and human selection can support the loop. Early work should test whether the interaction is useful before introducing online model adaptation.</p>
+<p>If personalization becomes necessary, a first extension is candidate ranking from explicit comparisons. The composer might prefer accompaniment A to B for this passage while remaining indifferent about their relative value elsewhere. Feedback should therefore include context, the selected region, the current goal, and an option for neither candidate. Accepting a candidate after exhaustion is not a clean positive reward, and rejection may reflect an incorrect interpretation rather than poor music.</p>
+<p>A later RL formulation could define state as the project, commitments, and recent feedback; actions as bounded proposals or clarification requests; and reward as feedback on a proposal’s usefulness. Hard constraints should be enforced outside the reward function whenever possible, so an agent cannot trade a forbidden edit for a higher aesthetic score. This is a proposed formulation, not a trained method or a claim that sparse feedback will suffice.</p>
+<p>No universal scalar for beauty is required. A composer may want ambiguity, friction, a particular bodily feeling, or an intentionally awkward phrase. Their preferences can change after hearing an unexpected result. The system should allow branching and revising the goal, including explicitly inviting surprise within a selected region. Human control includes deciding when to relinquish detailed control.</p>
+<p><strong>A first prototype should isolate the contribution.</strong> Limit it to four- or eight-bar passages with a melody and a simple accompaniment. Support humming or MIDI import, correction of the input, locking selected note properties, accompaniment generation, one scoped revision operation, version comparison, and export. Add a performance control only if its effects can be rendered and checked consistently. General orchestration, automatic mixing, and full-song generation would obscure the first study’s causal question.</p>
+<p>The companion proposes typed operations against the current musical state. A validator checks object references, time boundaries, allowed properties, and invariants before a proposal becomes an accepted edit. The generator fills only the delegated material. A renderer produces a prompt preview from the accepted symbolic and performance state. The interpreter, generator, checker, and renderer should remain separately inspectable so a failure can be assigned to the right stage.</p>
+<p>Repeatability requires more than storing a random seed. Preserve accepted generated material, the operation log, relevant model and renderer versions, and references to sound assets. A quick deterministic preview can support composition experiments; a later high-fidelity rendering path can be evaluated separately. Identical notation does not imply identical audio when instruments, performance interpretation, or processing change.</p>
+<p><strong>The study should distinguish actual control from the feeling of control.</strong> Four questions organize the proposed evaluation:</p>
+<ol>
+<li>Does an editable specification reduce unintended changes and repair effort relative to conversational control over the same engine?</li>
+<li>Do semantic diffs and constraint checks improve composers’ predictions and error detection beyond a readable musical representation alone?</li>
+<li>Can people who do not code express and revise commitments through humming and direct manipulation without excessive specification effort?</li>
+<li>How does the system affect ownership, exploration, and the development of musical intent over repeated use?</li>
+</ol>
+<p>Begin with formative sessions involving roughly 6–10 composers or songwriters across relevant skill levels. This is a planning range, not a statistically powered sample. Ask participants to demonstrate actual revisions, including ambiguous requests and corrections that existing tools make difficult. Develop the supported vocabulary from those sessions rather than assuming traditional harmony terminology fits every participant.</p>
+<p>The main controlled experiment can compare three conditions using the same generator, renderer, and task materials. Condition A provides conversational instructions and auditioning in an editor. Condition B adds persistent, directly editable musical commitments and scoped generation. Condition C adds verified diffs, compliance feedback, and controlled comparisons. This separates the representation’s contribution from the feedback mechanism’s contribution. All conditions should retain ordinary manual editing and undo, with matched candidate budgets and measured latency.</p>
+<p>Use counterbalanced conditions and equivalent but different musical tasks to reduce learning effects. Determine the main sample size from pilot variance and a preregistered minimum effect of interest. Include participant and task effects in analysis, report confidence intervals, and distinguish planned outcomes from exploratory findings. An additional comparison with an established symbolic editor or copilot tests ecological usefulness, but a different engine introduces confounds and should be interpreted accordingly.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Proposed operational measure</th>
+<th>Limitation to address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commitment preservation</td>
+<td>Violations of composer-confirmed protected pitches, timing, regions, and permitted edit properties</td>
+<td>A wrong interpretation can pass every checker; evaluate interpretation agreement separately.</td>
+</tr>
+<tr>
+<td>Revision efficiency</td>
+<td>Time and number of corrective actions to an accepted target revision</td>
+<td>Faster work is not always better creative work; separate repair from chosen exploration.</td>
+</tr>
+<tr>
+<td>Locality</td>
+<td>Amount of change outside the permitted region or property set</td>
+<td>Score preservation does not imply acoustic independence when effects or resonance cross boundaries.</td>
+</tr>
+<tr>
+<td>Comprehension</td>
+<td>Predict which material will change, identify the cause of a mismatch, and choose an appropriate correction</td>
+<td>Task accuracy is stronger evidence than self-reported understanding alone.</td>
+</tr>
+<tr>
+<td>Calibrated reliance</td>
+<td>Acceptance of valid suggestions versus detection or rejection of flawed ones in designated diagnostic tasks</td>
+<td>More trust is not necessarily an improvement.</td>
+</tr>
+<tr>
+<td>Expressive success</td>
+<td>Composer intent ratings and blinded listener comparisons against an articulated brief</td>
+<td>Listener consensus does not define artistic worth or every composer’s goal.</td>
+</tr>
+<tr>
+<td>Creative experience</td>
+<td>Ownership, agency, workload, and accounts of useful surprise or frustration</td>
+<td>Self-report should be interpreted with behavior and interviews.</td>
+</tr>
+<tr>
+<td>Sustained usefulness</td>
+<td>Repeated use, retained edits, abandoned branches, and transfer to personal projects</td>
+<td>Early novelty and demand effects can inflate a single-session result.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Keep a bounded revision task and an open composition task separate. The first might require changing an accompaniment while preserving a supplied melody; it supports an objective constraint measure. The second starts with the participant’s own hum or fragment and allows the intention to evolve; it supports inquiry into exploration and ownership. The Expressive Communication approach offers a precedent for connecting composer intent with listener response without treating audio quality as the sole outcome. <a href="https://arxiv.org/abs/2111.14951">6</a></p>
+<p>Follow the controlled experiment with a small longitudinal deployment in participants’ own projects. Examine whether the representation becomes a useful part of thinking, whether users hide it after learning the tool, and whether explanations interrupt listening. Failure is informative: the DSL might impose too much overhead, meaningful edits might resist formalization, or better control might narrow exploration. These would revise the design claim rather than simply count as usability defects.</p>
+<p><strong>A position paper is a viable first contribution if it delivers an argument reviewers can examine.</strong> The paper should provide the literature comparison above, define the executable agreement, offer detailed interaction scenarios, and specify falsifiable claims. It should explicitly compare against OpenMusic, Cococo, Amuse, DAWZY, Libretto, and recent work on editable reasoning and perceptual rules. A broad statement that humans should stay creative would mostly restate existing motivations.</p>
+<p>A possible abstract is:</p>
+<blockquote>
+<p>Human–AI music co-creation requires interfaces through which composers can express incomplete ideas, preserve commitments, and understand the consequences of delegated changes. We propose Music Kitchen, a research framework for representing musical intent as an editable, executable agreement between composer and system. Humming, performance, sketches, notation, and language contribute to a shared representation containing musical material, constraints, preferences, and explicit delegation scopes. An AI companion proposes bounded transformations; an engine checks supported invariants and renders alternatives; and composers revise both the music and its specification through listening. Drawing on musical programming, interactive machine learning, constrained generation, and creativity-support research, we distinguish representation transparency, operation accountability, and model interpretability. We articulate design requirements and an evaluation agenda measuring commitment preservation, correction effort, comprehension, expressive success, and creative agency. The framework treats formalization as a revisable aid to musical thinking and identifies when ambiguity and surprise should remain available to the composer.</p>
+</blockquote>
+<p>The most defensible next contribution is a small system plus evidence for one mechanism: whether executable musical commitments help people preserve and revise their ideas, and whether checked feedback improves their understanding. A position paper can establish the conceptual framework now. Demonstrating that it improves creative work requires the comparative and longitudinal evidence described above.</p>
+<p><strong>Sources and evidence notes.</strong> Dates below identify publication or the inspected preprint version. Linked numbered references above point directly to the corresponding originals. Preprint findings are author-reported and not independent replications. Concept descriptions based on abstracts are used only for scope and capability; the closest overlaps and study interpretations were also checked against full text where accessible.</p>
+<ol>
+<li>Huang, Cheng-Zhi Anna, et al. <em>Music Transformer</em>. 2018 preprint; ICLR 2019. <a href="https://arxiv.org/abs/1809.04281">Original paper</a>.</li>
+<li>Huang, Cheng-Zhi Anna, Tim Cooijmans, Adam Roberts, Aaron Courville, and Douglas Eck. <em>Counterpoint by Convolution</em>. Original ISMIR 2017 work; linked arXiv record, 2019. <a href="https://arxiv.org/abs/1903.07227">Original paper</a>.</li>
+<li>Hadjeres, Gaëtan, François Pachet, and Frank Nielsen. <em>DeepBach: a Steerable Model for Bach Chorales Generation</em>. ICML 2017, PMLR 70, 1362–1371. <a href="https://proceedings.mlr.press/v70/hadjeres17a.html">Proceedings</a>.</li>
+<li>Louie, Ryan, Andy Coenen, Cheng Zhi Huang, Michael Terry, and Carrie J. Cai. <em>Cococo: AI-Steering Tools for Music Novices Co-Creating with Generative Models</em>. IUI 2020 workshop summary of the full CHI 2020 paper, <em>Novice-AI Music Co-Creation via AI-Steering Tools for Deep Generative Models</em>. <a href="https://ceur-ws.org/Vol-2848/HAI-GEN-Paper-1.pdf">Accessible workshop paper</a>; <a href="https://doi.org/10.1145/3313831.3376739">CHI DOI</a>.</li>
+<li>Huang, Cheng-Zhi Anna, et al. <em>AI Song Contest: Human-AI Co-Creation in Songwriting</em>. ISMIR 2020. <a href="https://program.ismir2020.net/static/final_papers/167.pdf">Proceedings paper</a>.</li>
+<li>Louie, Ryan, Jesse Engel, and Cheng-Zhi Anna Huang. <em>Expressive Communication: A Common Framework for Evaluating Developments in Generative Models and Steering Interfaces</em>. 2021 preprint; IUI 2022 publication. <a href="https://arxiv.org/html/2111.14951v1">Full text</a>; <a href="https://doi.org/10.1145/3490099.3511159">publication DOI</a>.</li>
+<li>Farbood, Morwaread M., Egon Pasztor, and Kevin Jennings. <em>Hyperscore: A Graphical Sketchpad for Novice Composers</em>. IEEE Computer Graphics and Applications, 24(1), 2004. <a href="https://opera.media.mit.edu/papers/IEEE2004.pdf">Author-hosted paper</a>.</li>
+<li>OpenMusic project. <em>Overview</em>. Undated project documentation, accessed September 10, 2026. <a href="https://openmusic-project.github.io/openmusic/overview.html">Official documentation</a>.</li>
+<li>Fiebrink, Rebecca, and Baptiste Caramiaux. <em>The Machine Learning Algorithm as Creative Musical Tool</em>. 2016 preprint for the Oxford Handbook of Algorithmic Music. <a href="https://arxiv.org/abs/1611.00379">Original manuscript</a>.</li>
+<li>Thickstun, John, David Hall, Chris Donahue, and Percy Liang. <em>Anticipatory Music Transformer</em>. 2023 preprint; July 2024 TMLR accepted version. <a href="https://arxiv.org/abs/2306.08620">Original paper</a>.</li>
+<li>Wu, Yusong, et al. <em>MIDI-DDSP: Detailed Control of Musical Performance via Hierarchical Modeling</em>. ICLR 2022. <a href="https://arxiv.org/abs/2112.09312">Original paper</a>.</li>
+<li>Copet, Jade, et al. <em>Simple and Controllable Music Generation</em>. NeurIPS 2023. <a href="https://arxiv.org/abs/2306.05284">Original paper</a>.</li>
+<li>Tal, Or, Alon Ziv, Itai Gat, Felix Kreuk, and Yossi Adi. <em>Joint Audio and Symbolic Conditioning for Temporally Controlled Text-to-Music Generation</em>. JASCO, 2024. <a href="https://arxiv.org/abs/2406.10970">Original paper</a>.</li>
+<li>Yuan et al. <em>ChatMusician: Understanding and Generating Music Intrinsically with LLM</em>. Findings of ACL 2024. <a href="https://aclanthology.org/2024.findings-acl.373/">Proceedings</a>.</li>
+<li>Zhang, Yixiao, Akira Maezawa, Gus Xia, Kazuhiko Yamamoto, and Simon Dixon. <em>Loop Copilot: Conducting AI Ensembles for Music Generation and Iterative Editing</em>. October 2023 preprint, revised August 2024. <a href="https://arxiv.org/abs/2310.12404">Original paper</a>.</li>
+<li>Donahue, Chris, Shih-Lun Wu, Yewon Kim, Dave Carlton, Ryan Miyakawa, and John Thickstun. <em>Hookpad Aria: A Copilot for Songwriters</em>. ISMIR 2024 late-breaking demo; February 2025 preprint. <a href="https://arxiv.org/abs/2502.08122">Original report</a>.</li>
+<li>Kim, Yewon, Sung-Ju Lee, and Chris Donahue. <em>Amuse: Human-AI Collaborative Songwriting with Multimodal Inspirations</em>. CHI 2025. <a href="https://arxiv.org/html/2412.18940v2">Full text</a>.</li>
+<li>Elkins, Aaron C., et al. <em>DAWZY: A New Addition to AI powered “Human in the Loop” Music Co-creation</em>. December 2, 2025 preprint. <a href="https://arxiv.org/html/2512.03289v1">Full text</a>. Capability and evaluation details were checked; the reported 21-person rating study does not establish superiority of an entire workflow under matched experimental conditions.</li>
+<li>Hu, Zhejing, et al. <em>Is Symbolic Music a Specific Language? Exploring Inspiration-to-Structure Machine Composition via LLMs</em>. AAAI 2026, 40(3), 1837–1845. <a href="https://ojs.aaai.org/index.php/AAAI/article/view/37163">Proceedings</a>. Abstract-level capability comparison; its reported creativity scores are not treated as general measures of artistic value.</li>
+<li>Xu, Yichen. <em>Libretto: Giving LLM Agents a Sense of Musical Structure</em>. June 21, 2026 preprint. <a href="https://arxiv.org/html/2606.22708v1">Full text</a>. Representation and evaluation design are close prior art; structural metric performance is not evidence of improved composer agency.</li>
+<li>Wu, Shih-Lun, Dave Carlton, Ryan Miyakawa, Yoon Kim, Chris Donahue, and Cheng-Zhi Anna Huang. <em>MIDI-LLM: Improving Text-to-MIDI Music Generation via Adapting Large Language Models</em>. August 4, 2026 revision; source reports ISMIR 2026 acceptance. <a href="https://arxiv.org/abs/2511.03942v2">Version inspected</a>.</li>
+<li>Hu, Zhejing, et al. <em>Who Decides How Knowing Becomes Doing? Redistributing Authority in Human–AI Music Co-Creation</em>. September 12, 2025 preprint. <a href="https://arxiv.org/html/2509.10331v1">Full text</a>. Relevant conceptual overlap; publication-template placeholders remain in this version, and no venue status is inferred from them.</li>
+<li>Chang and Jing. <em>From Perceptual Rule Transformation to Listener Attribution Judgments: A Blind-Listening Experiment on AI-Generated, Human–AI Collaborative, and Human-Composed Music</em>. Frontiers in Psychology 17, August 26, 2026. <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1903971/full">Full article</a>.</li>
+<li>Hawley, Scott H. <em>Helping Music Co-Creation Agents “Listen” Well: Hierarchical Self-Supervised World Models for Understanding and Generation</em>. August 5, 2026 preprint. <a href="https://arxiv.org/abs/2608.04378">Original paper</a>. Source describes a submission to a future track, not an accepted publication.</li>
+<li>Spotify Engineering. <em>Meet Basic Pitch: Spotify’s Open Source Audio-to-MIDI Converter</em>. June 2022, introducing the ICASSP 2022 transcription research. <a href="https://engineering.atspotify.com/2022/6/meet-basic-pitch">First-party technical account</a>.</li>
+<li>Bryan-Kinns, Nick, et al. <em>Exploring XAI for the Arts: Explaining Latent Space in Generative Music</em>. August 10, 2023 preprint. <a href="https://arxiv.org/abs/2308.05496">Original paper</a>.</li>
+<li>Privato, Nicola, and Jack Armitage. <em>A Context-Sensitive Approach to XAI in Music Performance</em>. September 5, 2023 position-paper preprint. <a href="https://arxiv.org/abs/2309.04491">Original paper</a>.</li>
+</ol>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

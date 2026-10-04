@@ -7,50 +7,50 @@
 <meta name="description" content="An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.">
 <meta name="author" content="Henry Tan">
 <meta name="color-scheme" content="light dark">
-<link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/technical-report.html">
-<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/technical-report.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
 <meta property="og:site_name" content="Maestro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Music to score, score to music — Maestro">
 <meta property="og:description" content="An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.">
-<meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/technical-report.html">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/technical-report.html">
 <meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Music to score, score to music — Maestro">
 <meta name="twitter:description" content="An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.">
 <meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
-<link rel="icon" href="../assets/favicon.ico">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/site.css">
-<link rel="stylesheet" href="../assets/journal.css">
-<script src="../assets/share.js" defer></script>
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a>
 <div class="journal-wrap">
   <header class="journal-top">
-    <a class="wordmark" href="../">Maestro</a>
+    <a class="wordmark" href="../../../">Maestro</a>
     <nav aria-label="Main navigation">
-      <a href="../#now">Now</a>
-      <a href="../journal/">Journal</a>
-      <a href="../#artifacts">Artifacts</a>
-      <a href="../survey/literature-review.html">Research</a>
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
       <a href="https://github.com/htansetiawan/maestro">GitHub</a>
     </nav>
   </header>
   <main id="content">
     <header class="journal-head">
-      <p class="eyebrow">Working artifact</p>
+      <p class="eyebrow">Dated artifact snapshot</p>
       <h1>Music to score, score to music</h1>
       <p class="journal-description">An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.</p>
-      <p class="journal-meta">Technical report · October 4, 2026 · <a href="../research/TECHNICAL-REPORT.md">Markdown source</a></p>
+      <p class="journal-meta">October 4, 2026 · Technical report · October 4, 2026 · <a href="technical-report.md">Snapshot source</a></p>
       <div class="share-actions">
-        <a href="https://htansetiawan.github.io/maestro/artifacts/technical-report.html">Permalink</a>
-        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/artifacts/technical-report.html" hidden>Copy link</button>
+        <a href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/technical-report.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/technical-report.html" hidden>Copy link</button>
         <span class="share-status" role="status" aria-live="polite"></span>
       </div>
     </header>
-    <div class="journal-prose"><hr />
+    <aside class="snapshot-note"><strong>Snapshot from October 4, 2026.</strong> This preserves the artifact for <a href="../../2026-10-04.html">this journal entry</a>. <a href="../../../artifacts/technical-report.html">Read the current version</a>.</aside><div class="journal-prose"><hr />
 <h2 id="title-music-to-score-score-to-music-subtitle-an-anatomy-of-text-and-audio-song-generators-and-a-methodology-for-making-the-score-the-shared-representation-between-them-author-henry-tan-maestro-date-2026-10-04-bibliography-references-bib-description-a-technical-report-dissecting-suno-class-song-generators-through-four-lenses-text-transformers-vq-vae-vit-and-genie-and-proposing-a-shared-symbolic-acoustic-latent-that-transcribes-and-renders-with-latent-actions-as-the-edit-primitive-canonical-https-htansetiawan-github-io-maestro-survey-technical-report-html-abstract-commercial-song-generators-now-accept-a-recording-and-return-a-transformed-one-a-solo-piano-track-comes-back-with-a-vocal-an-orchestra-or-as-a-clean-instrumental-without-ever-showing-the-musician-a-score-this-report-asks-what-such-systems-represent-internally-why-that-representation-keeps-the-musician-out-and-how-to-build-the-inverse-a-system-whose-shared-representation-is-the-score-so-that-audio-can-be-transcribed-into-it-and-notation-rendered-out-of-it-under-human-control-we-dissect-the-suno-class-architecture-through-four-lenses-from-outside-music-next-token-prediction-over-a-learned-vocabulary-text-transformers-hierarchical-discrete-codes-vq-vae-patch-based-universal-features-vit-and-unsupervised-latent-actions-genie-and-assemble-a-comparative-anatomy-of-bark-yue-ace-step-magenta-realtime-musicgen-and-jukebox-from-primary-sources-we-then-specify-the-two-directions-music-score-is-a-two-stage-problem-note-events-then-notation-whose-second-stage-meter-quantisation-staff-assignment-spelling-is-where-current-systems-stop-and-where-a-single-human-annotation-can-lift-alignment-accuracy-from-33-to-82-score-music-splits-into-expressive-rendering-and-synthesis-and-no-production-generator-today-accepts-a-score-as-its-condition-grounding-in-musicvae-pianotree-vae-and-clamp-3-we-specify-what-would-be-new-a-notation-native-variational-latent-aligned-contrastively-to-a-frozen-audio-encoder-with-decoders-in-both-directions-and-borrowing-genie-s-latent-action-model-edit-operations-learned-without-labels-from-pairs-of-musical-versions-for-which-a-composer-s-annotations-are-the-human-readable-names-a-case-study-of-three-real-suno-outputs-from-one-piano-recording-shows-what-such-a-system-would-surface-at-each-step-that-today-s-tools-hide-and-an-evaluation-plan-is-given">title: &quot;Music to Score, Score to Music&quot;
 subtitle: &quot;An anatomy of text-and-audio song generators, and a methodology for making the score the shared representation between them&quot;
 author: &quot;Henry Tan · Maestro&quot;
@@ -296,8 +296,8 @@ plan is given.</h2>
 </div>
   </main>
   <footer class="journal-footer">
-    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
-      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
     <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
       <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
   </footer>

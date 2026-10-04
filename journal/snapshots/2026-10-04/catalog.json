@@ -1,0 +1,72 @@
+[
+  {
+    "id": "music-kitchen-product",
+    "title": "Music Kitchen product brief",
+    "source": "research/MUSIC-KITCHEN-PRODUCT.md",
+    "description": "A personal arranging studio: play piano, write lyrics, and direct the rest of the band through musical examples.",
+    "status": "Current direction · product concept"
+  },
+  {
+    "id": "music-kitchen-research",
+    "title": "Research foundations",
+    "source": "research/MUSIC-KITCHEN.md",
+    "description": "A focused map of 27 sources, an editable musical representation, and research questions to revisit as the product develops.",
+    "status": "Supporting research · proposal"
+  },
+  {
+    "id": "studio-experiment",
+    "title": "Studio experiment 01",
+    "source": "research/STUDIO-EXPERIMENT.md",
+    "description": "The first playable canvas: phrase selection, drawn contours, tapped rhythm, reversible edits, and an executable musical recipe.",
+    "status": "Working prototype · procedural synthesis"
+  },
+  {
+    "id": "market-positioning",
+    "title": "Earlier market positioning",
+    "source": "research/AI-MUSIC-POSITIONING.md",
+    "description": "The earlier assessment of generation, editing, and score-based opportunities. Context for the shift toward the musician’s experience.",
+    "status": "Earlier position · retained for context"
+  },
+  {
+    "id": "positioning-evidence",
+    "title": "Positioning evidence",
+    "source": "research/AI-MUSIC-POSITIONING-EVIDENCE.md",
+    "description": "Sources, evidence grades, and assumptions behind the market assessment. Product capabilities are dated vendor claims.",
+    "status": "Evidence notes · September 10, 2026"
+  },
+  {
+    "id": "field-positioning",
+    "title": "Where AI music generation stands",
+    "source": "research/POSITIONING.md",
+    "description": "What the field has solved, what it is still arguing about, the four nearly-empty nodes, and three thesis-shaped projects for 6–12 months. 91 sources.",
+    "status": "Research positioning · September 11, 2026"
+  },
+  {
+    "id": "experiments-scaffold",
+    "title": "Experiment scaffold",
+    "source": "experiments/README.md",
+    "description": "Why not to start from Music Transformer's reference codebase, the Anticipatory Music Transformer checkpoints, and the annotation-compliance reward module.",
+    "status": "Code · AMT smoke unrun; reward module tested"
+  },
+  {
+    "id": "ace-audio-personalization",
+    "title": "ACE audio-personalization experiment",
+    "source": "experiments/001_ace_audio_personalization/README.md",
+    "description": "An experiment-scoped ACE-Step 1.5 pipeline: audio intake from albums and YouTube, whole-song clips, auto-drafted captions confirmed in a web workbench, SFT and preference branches, matched listening evaluation.",
+    "status": "Code · 28-song corpus assembled and drafted; captions being confirmed; ACE GPU run pending"
+  },
+  {
+    "id": "dataset-intake-2026-09-19",
+    "title": "Dataset intake record",
+    "source": "experiments/001_ace_audio_personalization/results/youtube-sources-2026-09-19.md",
+    "description": "What the intake tools do, the first YouTube source and its muted tail, the two albums, the switch to whole-song units, auto-label, and the recorded rights opt-in.",
+    "status": "Results record · September 19, 2026"
+  },
+  {
+    "id": "technical-report",
+    "title": "Music to score, score to music",
+    "source": "research/TECHNICAL-REPORT.md",
+    "description": "An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.",
+    "status": "Technical report · October 4, 2026"
+  }
+]

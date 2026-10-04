@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experiment scaffold — Maestro</title>
+<meta name="description" content="Why not to start from Music Transformer&#x27;s reference codebase, the Anticipatory Music Transformer checkpoints, and the annotation-compliance reward module.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/experiments-scaffold.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Experiment scaffold — Maestro">
+<meta property="og:description" content="Why not to start from Music Transformer&#x27;s reference codebase, the Anticipatory Music Transformer checkpoints, and the annotation-compliance reward module.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/experiments-scaffold.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Experiment scaffold — Maestro">
+<meta name="twitter:description" content="Why not to start from Music Transformer&#x27;s reference codebase, the Anticipatory Music Transformer checkpoints, and the annotation-compliance reward module.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../../../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Dated artifact snapshot</p>
+      <h1>Experiment scaffold</h1>
+      <p class="journal-description">Why not to start from Music Transformer&#x27;s reference codebase, the Anticipatory Music Transformer checkpoints, and the annotation-compliance reward module.</p>
+      <p class="journal-meta">October 4, 2026 · Code · AMT smoke unrun; reward module tested · <a href="experiments-scaffold.md">Snapshot source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/experiments-scaffold.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/experiments-scaffold.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <aside class="snapshot-note"><strong>Snapshot from October 4, 2026.</strong> This preserves the artifact for <a href="../../2026-10-04.html">this journal entry</a>. <a href="../../../artifacts/experiments-scaffold.html">Read the current version</a>.</aside><div class="journal-prose"><p>The new <a href="ace-audio-personalization.html">ACE audio personalization experiment</a>
+is experiment-scoped and uses <code>uv</code>. It prepares original piano/violin recordings,
+trains an ACE-Step LoRA, collects human or AI audio preferences, branches into
+an experimental offline preference update, and builds a matched-seed listening
+index. No ACE GPU run has been completed yet; see its README for exact setup.</p>
+<p>The files below are the older <strong>symbolic AMT</strong> experiment scaffold. They are
+independent of ACE-Step and are not part of the audio training pipeline.</p>
+<p>Scaffold for the first Maestro experiments. Order matters.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it does</th>
+<th>Tested?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rewards.py</code></td>
+<td>Programmatic annotation-compliance rewards + build log</td>
+<td><strong>yes</strong>, unit-tested locally</td>
+</tr>
+<tr>
+<td><code>01_smoke_test.py</code></td>
+<td>Load AMT, generate, infill around a pinned melody, score it</td>
+<td>written against the verified API, not run on GPU</td>
+</tr>
+<tr>
+<td><code>requirements.txt</code></td>
+<td>Deps</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="why-not-music-transformer">Why not Music Transformer</h2>
+<p>Music Transformer (2018) is the right <em>idea</em> and the wrong <em>starting codebase</em>. The
+reference implementation lives in <code>tensor2tensor</code> (TensorFlow 1), which is effectively
+unmaintained; the community PyTorch ports are unvalidated re-implementations. The paper
+also never reports a parameter count — from the published config (6 layers, d_model 512,
+8 heads, L=2048, 388-event vocabulary) it works out to roughly 20–40M depending on the
+feed-forward width. That is <strong>smaller than a single layer's worth of a modern 3B LLM</strong>.</p>
+<p>Start from the <strong>Anticipatory Music Transformer</strong> instead: Apache 2.0, PyTorch, on the
+Hub, trained on Lakh MIDI (CC-BY), and — decisively — its anticipation mechanism gives
+you <em>infilling with arbitrary pinned material</em> out of the box, which is exactly the
+primitive the compose → annotate → compile loop needs.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Checkpoint</th>
+<th>Params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stanford-crfm/music-small-800k</code></td>
+<td>128M</td>
+</tr>
+<tr>
+<td><code>stanford-crfm/music-medium-800k</code></td>
+<td>360M — best model in the paper</td>
+</tr>
+<tr>
+<td><code>stanford-crfm/music-large-800k</code></td>
+<td>larger, extra training data</td>
+</tr>
+</tbody>
+</table></div>
+<p>On a 48 GB card, none of this is compute-bound. A full fine-tune of the 360M model fits
+comfortably in bf16 with room for a large batch. <strong>Your constraint is data and problem
+choice, not VRAM.</strong> Resist the urge to reach for a bigger model.</p>
+<h2 id="the-reward-module-is-the-research-not-the-plumbing">The reward module is the research, not the plumbing</h2>
+<p>GRPO needs a reward it can trust. &quot;Is this good music?&quot; is not that. &quot;Did the model
+honour the composer's marks?&quot; is — and <code>rewards.py</code> computes it: chord-tone compliance
+weighted by duration, key, register, density, leap size, and one hard multiplicative
+constraint, <code>frozen_intact</code>, which zeroes the entire reward if the model overwrote
+material the human pinned.</p>
+<p>That last one is the point. A compile that silently rewrites the composer's own notes has
+failed no matter how pretty the result, and no existing symbolic model is trained against
+that objective.</p>
+<pre><code>$ python -c &quot;...&quot;   # see the test in the commit message
+--- HONOURS the annotations
+compiled 8 notes over 8 beats — reward 0.886
+  [FAIL] chord    0.750  2 sustained non-chord tone(s): pitch 65 over Ebmaj7 for 1.0b
+  [ok  ] frozen   1.000  all pinned notes intact
+--- IGNORES them
+compiled 4 notes over 8 beats — reward 0.000
+  [FAIL] frozen   0.000  DESTROYED 2/2 pinned note(s)
+</code></pre>
+<p><strong>Known limitation, and the first thing to fix:</strong> strict chord-tone membership penalises
+9ths, 11ths and passing tones — note the 0.750 above, where an F over Ebmaj7 is scored as
+a miss when it is really a colour tone. Lush extended harmony is precisely the idiom this
+project cares about, so the reward needs a tiered scheme (chord tone / colour tone /
+avoid note), weighted by metrical position. Getting that tier right <em>is</em> a contribution.</p>
+<h2 id="sequence">Sequence</h2>
+<ol>
+<li>Run <code>01_smoke_test.py</code>. Confirm you can infill around pinned material.</li>
+<li>Build a personal corpus — your own Nord captures. See the note on style below.</li>
+<li>Supervised fine-tune on that corpus; measure whether infills move toward your idiom.</li>
+<li>Only then GRPO, with <code>rewards.py</code> as the verifier.</li>
+</ol>
+<p>Step 3 before step 4, always. If SFT alone gets you most of the way, that is a result
+worth reporting, and it tells you how much headroom RL actually has.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

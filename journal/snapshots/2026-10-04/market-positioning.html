@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earlier market positioning — Maestro</title>
+<meta name="description" content="The earlier assessment of generation, editing, and score-based opportunities. Context for the shift toward the musician’s experience.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/market-positioning.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../../../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Earlier market positioning — Maestro">
+<meta property="og:description" content="The earlier assessment of generation, editing, and score-based opportunities. Context for the shift toward the musician’s experience.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/market-positioning.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earlier market positioning — Maestro">
+<meta name="twitter:description" content="The earlier assessment of generation, editing, and score-based opportunities. Context for the shift toward the musician’s experience.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="stylesheet" href="../../../assets/journal.css">
+<script src="../../../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../../../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../../../#now">Now</a>
+      <a href="../../../journal/">Journal</a>
+      <a href="../../../#artifacts">Artifacts</a>
+      <a href="../../../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Dated artifact snapshot</p>
+      <h1>Earlier market positioning</h1>
+      <p class="journal-description">The earlier assessment of generation, editing, and score-based opportunities. Context for the shift toward the musician’s experience.</p>
+      <p class="journal-meta">October 4, 2026 · Earlier position · retained for context · <a href="market-positioning.md">Snapshot source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/market-positioning.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/snapshots/2026-10-04/market-positioning.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <aside class="snapshot-note"><strong>Snapshot from October 4, 2026.</strong> This preserves the artifact for <a href="../../2026-10-04.html">this journal entry</a>. <a href="../../../artifacts/market-positioning.html">Read the current version</a>.</aside><div class="journal-prose"><p><strong>Research, product, and startup positioning, September 10, 2026</strong></p>
+<p><strong>Scope assumption.</strong> This memo assumes a 6–12 month thesis, limited training compute, and an eventual product for serious score-based composers, arrangers, educators, or music-production teams. It does not assume that a consumer text-to-song startup can outspend foundation-model companies on data, compute, licensing, or distribution.</p>
+<h2 id="executive-position">Executive position</h2>
+<p>The inherited analysis is directionally right about research and too broad about the market. Raw music generation is now a mature product capability for ideation: leading systems create full songs, vocals, stems, and real-time audio. But professional music creation is not solved, because a pleasing output is different from a controllable, repeatable, rights-clear workflow. The market has also moved quickly beyond prompt-to-song. Suno v6 performs local language-directed edits while preserving the surrounding song, Suno Studio 2.0 includes MIDI and a generative chat layer, Udio Sessions supports timeline edits and saved takes, and Moises generates context-aware stems inside a collaborative studio [E1–E4]. The claim that the field optimized generation and ignored editing is therefore no longer defensible at the audio and DAW layer.</p>
+<p>The strongest remaining opening is narrower and more valuable: <strong>a control and accountability layer for score-based work</strong>. The product should let a musician select a musical region, state constraints, receive alternatives, inspect machine-checkable evidence of compliance, compare a semantic diff, and revert or revise the result. The best thesis is not a new generator and not a prose “build log.” It is an experiment on whether verifiable and contestable feedback improves task success, correction time, and calibrated reliance.</p>
+<h2 id="the-state-of-the-field">The state of the field</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>State in 2026</th>
+<th>What is solved enough</th>
+<th>What remains open</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full-song audio</td>
+<td>Commercially mature for ideation</td>
+<td>Songs, vocals, variable duration, local regeneration, multimodal prompts, real-time steering [E1, E5]</td>
+<td>Exact repeatability, multilevel structure, fine symbolic control, production consistency</td>
+</tr>
+<tr>
+<td>Symbolic generation</td>
+<td>Mature for scoped tasks</td>
+<td>Continuation, accompaniment, and infilling while fixed notes remain fixed [E6, E7]</td>
+<td>General instruction following across notation, instrumentation, form, and idiom</td>
+</tr>
+<tr>
+<td>Decomposition and rendering</td>
+<td>Product infrastructure</td>
+<td>Stem separation, audio-to-MIDI in bounded settings, MIDI-driven vocal and instrument rendering [E3, E8]</td>
+<td>Robust polyphonic understanding, expressive intent, interchange without semantic loss</td>
+</tr>
+<tr>
+<td>Editing and workflow</td>
+<td>Rapidly productizing</td>
+<td>Region edits, takes, MIDI clips, stem generation, DAW integration [E1–E4, E9]</td>
+<td>Objective constraint checking, semantic diffs, cross-tool provenance, score-native workflows</td>
+</tr>
+<tr>
+<td>Evaluation and governance</td>
+<td>Immature</td>
+<td>Better perceptual metrics and early AI-credit standards exist [E10, E11]</td>
+<td>Workflow benchmarks, calibrated reliance, attribution, interoperable edit lineage</td>
+</tr>
+</tbody>
+</table></div>
+<p>This supports a more precise conclusion: <strong>generation has become an embedded capability; the durable problem is governing how it participates in creative work.</strong></p>
+<h2 id="what-i-would-correct-in-the-inherited-report">What I would correct in the inherited report</h2>
+<ol>
+<li><strong>“Generation is no longer the bottleneck” needs a qualifier.</strong> It is true for rapid ideation and false for professional delivery. Control, consistency, rights, and revision still constrain the final artifact.</li>
+<li><strong>“Notation editors ship zero generative features” is factually false.</strong> Sibelius has shipped AI-assisted chord suggestions since 2023 [E12]. The defensible claim is that mainstream notation editors still lack broad, score-region generation with inspectable constraints.</li>
+<li><strong>“No commercial system takes MIDI as a generation condition” is too broad.</strong> AIVA accepts MIDI influence, Moises can begin from MIDI or audio, and Suno Studio can create and edit MIDI clips [E2, E3, E13]. The unresolved issue is stronger: whether a system treats a detailed symbolic score as an enforceable condition for generated music.</li>
+<li><strong>A build log is not automatically an explanation.</strong> Token probabilities are not composer-facing reasons, and a language model can invent plausible rationales. Research shows explanations can increase trust even when responses are deceptive [E14]. Only report a constraint as satisfied if a deterministic checker can verify it; label everything else as a model estimate or provenance fact.</li>
+<li><strong>Sparse literature is evidence of novelty, not demand.</strong> The thin nodes support a thesis. A startup also needs a frequent job, a buyer with budget, a distribution path, and a compounding asset. Incumbents are already moving from generation into editing, and notation vendors can copy a shallow feature.</li>
+</ol>
+<h2 id="opportunity-map">Opportunity map</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Opportunity</th>
+<th style="text-align:right">Thesis fit</th>
+<th style="text-align:right">Startup attractiveness</th>
+<th>Judgment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New full-song foundation model</td>
+<td style="text-align:right">Low</td>
+<td style="text-align:right">Low for a new entrant</td>
+<td>Capital-, data-, licensing-, and distribution-intensive; dominated by scaled platforms</td>
+</tr>
+<tr>
+<td>Generic AI DAW or stem copilot</td>
+<td style="text-align:right">Medium</td>
+<td style="text-align:right">Medium</td>
+<td>Real demand, but Suno, Udio, Moises, ACE Studio, and DAW integrations make this crowded [E1–E4, E8]</td>
+</tr>
+<tr>
+<td>Score-native, auditable editing</td>
+<td style="text-align:right"><strong>High</strong></td>
+<td style="text-align:right"><strong>Medium</strong></td>
+<td>Clear research gap and feasible prototype; market is narrower and must be validated</td>
+</tr>
+<tr>
+<td>Evaluation and compliance infrastructure</td>
+<td style="text-align:right"><strong>High</strong></td>
+<td style="text-align:right">Medium to high B2B</td>
+<td>Valuable to model vendors, labels, publishers, and schools; enterprise integration and sales are hard</td>
+</tr>
+<tr>
+<td>Musical version control alone</td>
+<td style="text-align:right">Medium</td>
+<td style="text-align:right">Low</td>
+<td>Useful as an embedded capability, weak as a standalone product before users and workflows exist</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="recommended-6-12-month-thesis">Recommended 6–12 month thesis</h2>
+<p><strong>Auditable score editing: from prompt compliance to calibrated reliance.</strong> Build a thin web or notation-plugin layer over a frozen symbolic infiller. The musician selects a MusicXML or MEI region and chooses one of three or four bounded operations, such as reharmonize under fixed melody, simplify rhythm, change density, or preserve a motif while replacing accompaniment. The system returns alternatives with four separate records: hard-constraint test results, descriptive musical measurements, model uncertainty clearly labeled as estimated, and a semantic before/after diff. Every accepted edit produces a reversible provenance entry.</p>
+<p>Use a preregistered within-subject study comparing three conditions: bare generation, generation plus prose rationale, and generation plus the evidence-backed inspector. Primary measures should be constraint violations, time to an acceptable result, manual edit distance, undo/reject behavior, and whether users rely on the system more when it is correct than when it is wrong. Ownership, Creativity Support Index, and subjective trust should be secondary measures. A power analysis should set the participant count.</p>
+<p>This remains novel even as commercial editors improve because the contribution is not the interface alone. It is the coupling of composer instructions, executable tests, contestability, and measured reliance. A recent unreviewed music-co-creation preprint already compares hidden, visible, and editable reasoning surfaces, so transparency by itself is no longer a safe novelty claim [E15].</p>
+<p><strong>Practical sequence:</strong> months 1–2 define tasks with musicians and preregister the study; months 3–5 build the smallest end-to-end system and constraint suite; months 6–8 pilot and stabilize; months 9–10 run the study; months 11–12 analyze, release the benchmark, and write. For a six-month thesis, omit generalized natural language and provenance export, but keep deterministic verification and the user study.</p>
+<h2 id="startup-position">Startup position</h2>
+<p>Position the product as <strong>“the audit and control layer for AI-assisted composition: every change is constrained, inspectable, reversible, and exportable.”</strong> Do not begin as another notation editor. Enter through a MuseScore, MusicXML, or DAW bridge, and sell first to a narrow workflow where revisions cost money: arranging and publishing teams, media-composition teams, or advanced music programs. Individual composers are the user, but an institution or team is the more plausible economic buyer.</p>
+<p>The moat is not the base model. It is the accumulated corpus of instructions, constraint failures, accepted corrections, and semantic diffs, plus integrations and trusted provenance. This creates a learning loop: more real edits produce better checks and ranking, which reduce correction time and improve adoption. Provenance is commercially relevant because the U.S. Copyright Office distinguishes assistive use and human modification from prompt-only generation, while Spotify and DDEX are moving toward granular AI credits [E11, E16]. A log does not prove copyright ownership, but it can preserve evidence of process.</p>
+<p>Three kill tests should run before treating this as a company: confirm that target users perform the selected revision tasks weekly, show at least a 25 percent reduction in correction time without increased constraint violations, and find a buyer willing to pay for workflow or compliance rather than novelty. If those fail, the work can still be an excellent HCI or ISMIR thesis, but it is not yet a startup.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../../../journal/">Weekly journal</a> ·
+      <a href="../../../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
