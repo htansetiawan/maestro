@@ -14,6 +14,9 @@ while making that experience work.
   trained multimodal generation and humming transcription are not connected.
 - **[Weekly journal](https://htansetiawan.github.io/maestro/journal/)** — dated decisions,
   positioning, findings, open questions, experiments, and frozen artifact snapshots.
+- **[Hear the first ACE vocal experiment](experiments/002_ace_piano_vocals/README.md)**
+  — a generated singer over a supplied solo piano recording, with original lyrics
+  about the Yard, downloadable audio, and the generation record.
 - **[Current product brief](https://htansetiawan.github.io/maestro/artifacts/music-kitchen-product.html)**
   — the intended experience and first product milestone.
 - **[Maestro landing page](https://htansetiawan.github.io/maestro/)** — current state and

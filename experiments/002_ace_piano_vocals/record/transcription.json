@@ -1,0 +1,19 @@
+{
+  "text": " through the gate and down the walk evening settles on the yard red brick buildings catch the light windows glow against the dark meet me where the E-O-O- the red brick holds the day. Every road that brought us far, Let us here beneath these stars. Footsteps fade along the green. Someone laughs beyond the wall. All the dreams we carried in. Find a room within us us all Meet me where the old trees sway Where the red brick holds the day Every road that brought us far Let us hear, let us here beneath these stars.",
+  "chunks": [
+    {
+      "timestamp": [
+        0.0,
+        20.16
+      ],
+      "text": " through the gate and down the walk evening settles on the yard red brick"
+    },
+    {
+      "timestamp": [
+        20.16,
+        90.0
+      ],
+      "text": " buildings catch the light windows glow against the dark meet me where the E-O-O- the red brick holds the day. Every road that brought us far, Let us here beneath these stars. Footsteps fade along the green. Someone laughs beyond the wall. All the dreams we carried in. Find a room within us us all Meet me where the old trees sway Where the red brick holds the day Every road that brought us far Let us hear, let us here beneath these stars."
+    }
+  ]
+}

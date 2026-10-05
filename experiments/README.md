@@ -4,7 +4,11 @@ The new [ACE audio personalization experiment](001_ace_audio_personalization/REA
 is experiment-scoped and uses `uv`. It prepares original piano/violin recordings,
 trains an ACE-Step LoRA, collects human or AI audio preferences, branches into
 an experimental offline preference update, and builds a matched-seed listening
-index. No ACE GPU run has been completed yet; see its README for exact setup.
+index. Its personalization training has not been run on GPU; see its README for exact setup.
+
+[002 — Piano with an ACE vocal layer](002_ace_piano_vocals/README.md) records the
+first local ACE GPU generation: a sung vocal stem conditioned on a supplied piano
+performance, with original Yard lyrics, the finished audio, and full run settings.
 
 The files below are the older **symbolic AMT** experiment scaffold. They are
 independent of ACE-Step and are not part of the audio training pipeline.

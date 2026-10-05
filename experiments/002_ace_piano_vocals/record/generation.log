@@ -1,0 +1,224 @@
+2026-10-04 22:23:00.311 | DEBUG    | acestep.core.generation.handler.init_service_memory_basic:_apply_malloc_mmap_threshold:50 - [memory] Set M_MMAP_THRESHOLD=131072 for immediate OS reclaim of large frees
+2026-10-04 22:23:04.579 | WARNING  | acestep.training.trainer:<module>:40 - bitsandbytes not installed. Using standard AdamW.
+Initializing XL Base on NVIDIA RTX PRO 5000 Blackwell
+2026-10-04 22:23:04.638 | INFO     | acestep.gpu_config:get_gpu_memory_gb:578 - CUDA GPU detected: NVIDIA RTX PRO 5000 Blackwell (47.2 GB)
+2026-10-04 22:23:04.642 | WARNING  | acestep.core.generation.handler.init_service_downloads:_sync_model_code_if_needed:71 - [initialize_service] Model code mismatch detected for 'acestep-v15-xl-base': ['configuration_acestep_v15.py', 'modeling_acestep_v15_xl_base.py', 'apg_guidance.py']. Auto-syncing from acestep/models/...
+2026-10-04 22:23:04.642 | DEBUG    | acestep.model_downloader:_sync_model_code_files:131 - [Model Sync] Synced configuration_acestep_v15.py -> /tmp/maestro-ace-step/checkpoints/acestep-v15-xl-base/configuration_acestep_v15.py
+2026-10-04 22:23:04.642 | DEBUG    | acestep.model_downloader:_sync_model_code_files:131 - [Model Sync] Synced modeling_acestep_v15_xl_base.py -> /tmp/maestro-ace-step/checkpoints/acestep-v15-xl-base/modeling_acestep_v15_xl_base.py
+2026-10-04 22:23:04.642 | DEBUG    | acestep.model_downloader:_sync_model_code_files:131 - [Model Sync] Synced apg_guidance.py -> /tmp/maestro-ace-step/checkpoints/acestep-v15-xl-base/apg_guidance.py
+2026-10-04 22:23:04.642 | INFO     | acestep.core.generation.handler.init_service_downloads:_sync_model_code_if_needed:76 - [initialize_service] Model code files synced successfully.
+2026-10-04 22:23:04.790 | INFO     | acestep.core.generation.handler.init_service_loader:_load_main_model_from_checkpoint:174 - [initialize_service] Attempting to load model with attention implementation: sdpa
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:09<00:27,  9.04s/it]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:32<00:35, 17.66s/it]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [01:02<00:23, 23.09s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [01:12<00:00, 17.86s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [01:12<00:00, 18.03s/it]
+[OK] Model initialized successfully on cuda
+Main model: /tmp/maestro-ace-step/checkpoints/acestep-v15-xl-base
+VAE: /tmp/maestro-ace-step/checkpoints/vae
+Text encoder: /tmp/maestro-ace-step/checkpoints/Qwen3-Embedding-0.6B
+Dtype: torch.bfloat16
+Attention: sdpa
+Compiled: False
+Quantization: Disabled
+Offload to CPU: False
+Offload DiT to CPU: False
+MLX DiT: Disabled
+MLX VAE: Disabled
+2026-10-04 22:25:09.107 | INFO     | acestep.inference:generate_music:660 - Skipping LM for task_type='lego' - using DiT directly
+2026-10-04 22:25:09.115 | INFO     | acestep.inference:generate_music:662 - [generate_music] LLM usage decision: thinking=False, use_cot_caption=False, use_cot_language=False, use_cot_metas=False, need_lm_for_cot=False, llm_initialized=False, use_lm=False
+2026-10-04 22:25:09.115 | INFO     | acestep.inference:generate_music:834 - [generate_music] lego task: using params.caption='Warm intimate male lead singing an English piano ballad about the Yard, red brick buildings, evening light and belonging. Natural expressive tenor, clear words, gentle legato phrasing, subtle vibrato and audible breath. One solo singer responding to the provided piano accompaniment, restrained verse and a gently rising chorus. Vocal stem only, no additional instruments.', params.lyrics='[Intro]
+
+[Verse 1]
+Through the gate and down the walk
+Evening settles on the Yard
+Red brick buildings catch the light
+Windows glow against the dark
+
+[Chorus]
+Meet me where the old trees sway
+Where the red brick holds the day
+Every road that brought us far
+Led us here beneath these stars
+
+[Verse 2]
+Footsteps fade along the green
+Someone laughs beyond the wall
+All the dreams we carried in
+Find a room within us all
+
+[Chorus]
+Meet me where the old trees sway
+Where the red brick holds the day
+Every road that brought us far
+Led us here beneath these stars
+
+[Outro]
+In the Yard, beneath these stars
+'
+2026-10-04 22:25:09.115 | INFO     | acestep.inference:generate_music:835 - [generate_music] Final inputs: dit_input_caption='Warm intimate male lead singing an English piano ballad about the Yard, red brick buildings, evening light and belonging. Natural expressive tenor, clear words, gentle legato phrasing, subtle vibrato and audible breath. One solo singer responding to the provided piano accompaniment, restrained verse and a gently rising chorus. Vocal stem only, no additional instruments.', dit_input_lyrics='[Intro]
+
+[Verse 1]
+Through the gate and down the walk
+Evening settles on the Yard
+Red brick buildings catch the light
+Windows glow against the dark
+
+[Chorus]
+Meet me where the old trees sway
+Where the red brick holds the day
+Every road that brought us far
+Led us here beneath these stars
+
+[Verse 2]
+Footsteps fade along the green
+Someone laughs beyond the wall
+All the dreams we carried in
+Find a room within us all
+
+[Chorus]
+Meet me where the old trees sway
+Where the red brick holds the day
+Every road that brought us far
+Led us here beneath these stars
+
+[Outro]
+In the Yard, beneath these stars
+'
+2026-10-04 22:25:09.117 | INFO     | acestep.core.generation.handler.generate_music:generate_music:329 - [generate_music] Starting generation...
+2026-10-04 22:25:09.117 | INFO     | acestep.core.generation.handler.generate_music:generate_music:332 - [generate_music] Preparing inputs...
+2026-10-04 22:25:09.120 | INFO     | acestep.core.generation.handler.generate_music_request:_prepare_reference_and_source_audio:188 - [generate_music] Processing source audio...
+2026-10-04 22:25:11.771 | INFO     | acestep.core.generation.handler.generate_music:_vram_preflight_check:157 - [generate_music] VRAM pre-flight: 35.32 GB free, ~2.08 GB needed (batch=1, duration=95s, mode=xl_base).
+2026-10-04 22:25:11.771 | INFO     | acestep.core.generation.handler.progress:_start_diffusion_progress_estimator:179 - [progress] No timing history — using fallback estimate (2.5s/step for batch_size=1).  This will self-calibrate after the first generation.
+2026-10-04 22:25:11.853 | INFO     | acestep.core.generation.handler.conditioning_target:_prepare_target_latents_and_wavs:104 - [generate_music] Encoding target audio to latents for item 0...
+2026-10-04 22:25:11.854 | INFO     | acestep.gpu_config:get_gpu_memory_gb:578 - CUDA GPU detected: NVIDIA RTX PRO 5000 Blackwell (47.2 GB)
+2026-10-04 22:25:13.163 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:119 -
+======================================================================
+2026-10-04 22:25:13.163 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:120 - 🔍 [DEBUG] DiT TEXT ENCODER INPUT (Inference)
+2026-10-04 22:25:13.163 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:121 - ======================================================================
+2026-10-04 22:25:13.163 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Generate the VOCALS track based on the audio context:
+
+# Caption
+Warm intimate male lead singing an English piano ballad about the Yard, red brick buildings, evening light and belonging. Natural expressive tenor, clear words, gentle legato phrasing, subtle vibrato and audible breath. One solo singer responding to the provided piano accompaniment, restrained verse and a gently rising chorus. Vocal stem only, no additional instruments.
+
+# Metas
+- bpm: N/A
+- timesignature: N/A
+- keyscale: N/A
+- duration: 94 seconds
+<|endoftext|>
+
+2026-10-04 22:25:13.163 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:123 - ======================================================================
+2026-10-04 22:25:13.163 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:124 - lyrics_text:
+# Languages
+en
+
+# Lyric
+[Intro]
+
+[Verse 1]
+Through the gate and down the walk
+Evening settles on the Yard
+Red brick buildings catch the light
+Windows glow against the dark
+
+[Chorus]
+Meet me where the old trees sway
+Where the red brick holds the day
+Every road that brought us far
+Led us here beneath these stars
+
+[Verse 2]
+Footsteps fade along the green
+Someone laughs beyond the wall
+All the dreams we carried in
+Find a room within us all
+
+[Chorus]
+Meet me where the old trees sway
+Where the red brick holds the day
+Every road that brought us far
+Led us here beneath these stars
+
+[Outro]
+In the Yard, beneath these stars
+<|endoftext|>
+2026-10-04 22:25:13.163 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:125 - ======================================================================
+
+2026-10-04 22:25:13.203 | INFO     | acestep.core.generation.handler.conditioning_embed:preprocess_batch:110 - [preprocess_batch] Inferring prompt embeddings...
+2026-10-04 22:25:13.502 | INFO     | acestep.core.generation.handler.conditioning_embed:preprocess_batch:113 - [preprocess_batch] Inferring lyric embeddings...
+2026-10-04 22:25:13.503 | INFO     | acestep.core.generation.handler.service_generate_execute:_execute_service_generate_diffusion:173 - [service_generate] Generating audio... (DiT backend: PyTorch (cuda))
+2026-10-04 22:25:13.844 | INFO     | acestep.core.generation.handler.service_generate_execute:_execute_service_generate_diffusion:276 - [service_generate] DiT diffusion via PyTorch (cuda)...
+
+  0%|          | 0/50 [00:00<?, ?it/s]
+  2%|▏         | 1/50 [00:00<00:12,  3.82it/s]
+  4%|▍         | 2/50 [00:00<00:10,  4.65it/s]
+  6%|▌         | 3/50 [00:00<00:09,  5.03it/s]
+  8%|▊         | 4/50 [00:00<00:08,  5.24it/s]
+ 10%|█         | 5/50 [00:00<00:08,  5.37it/s]
+ 12%|█▏        | 6/50 [00:01<00:08,  5.44it/s]
+ 14%|█▍        | 7/50 [00:01<00:07,  5.48it/s]
+ 16%|█▌        | 8/50 [00:01<00:07,  5.51it/s]
+ 18%|█▊        | 9/50 [00:01<00:07,  5.52it/s]
+ 20%|██        | 10/50 [00:01<00:07,  5.53it/s]
+ 22%|██▏       | 11/50 [00:02<00:07,  5.54it/s]
+ 24%|██▍       | 12/50 [00:02<00:06,  5.54it/s]
+ 26%|██▌       | 13/50 [00:02<00:06,  5.54it/s]
+ 28%|██▊       | 14/50 [00:02<00:06,  5.55it/s]
+ 30%|███       | 15/50 [00:02<00:06,  5.55it/s]
+ 32%|███▏      | 16/50 [00:02<00:06,  5.55it/s]
+ 34%|███▍      | 17/50 [00:03<00:05,  5.55it/s]
+ 36%|███▌      | 18/50 [00:03<00:05,  5.54it/s]
+ 38%|███▊      | 19/50 [00:03<00:05,  5.54it/s]
+ 40%|████      | 20/50 [00:03<00:05,  5.54it/s]
+ 42%|████▏     | 21/50 [00:03<00:05,  5.54it/s]
+ 44%|████▍     | 22/50 [00:04<00:05,  5.54it/s]
+ 46%|████▌     | 23/50 [00:04<00:04,  5.54it/s]
+ 48%|████▊     | 24/50 [00:04<00:04,  5.54it/s]
+ 50%|█████     | 25/50 [00:04<00:04,  5.54it/s]
+ 52%|█████▏    | 26/50 [00:04<00:04,  5.53it/s]
+ 54%|█████▍    | 27/50 [00:04<00:04,  5.53it/s]
+ 56%|█████▌    | 28/50 [00:05<00:03,  5.53it/s]
+ 58%|█████▊    | 29/50 [00:05<00:03,  5.53it/s]
+ 60%|██████    | 30/50 [00:05<00:03,  5.53it/s]
+ 62%|██████▏   | 31/50 [00:05<00:03,  5.53it/s]
+ 64%|██████▍   | 32/50 [00:05<00:03,  5.53it/s]
+ 66%|██████▌   | 33/50 [00:06<00:03,  5.53it/s]
+ 68%|██████▊   | 34/50 [00:06<00:02,  5.53it/s]
+ 70%|███████   | 35/50 [00:06<00:02,  5.52it/s]
+ 72%|███████▏  | 36/50 [00:06<00:02,  5.52it/s]
+ 74%|███████▍  | 37/50 [00:06<00:02,  5.52it/s]
+ 76%|███████▌  | 38/50 [00:06<00:02,  5.52it/s]
+ 78%|███████▊  | 39/50 [00:07<00:01,  5.52it/s]
+ 80%|████████  | 40/50 [00:07<00:01,  5.52it/s]
+ 82%|████████▏ | 41/50 [00:07<00:01,  5.52it/s]
+ 84%|████████▍ | 42/50 [00:07<00:01,  5.52it/s]
+ 86%|████████▌ | 43/50 [00:07<00:01,  5.52it/s]
+ 88%|████████▊ | 44/50 [00:08<00:01,  5.52it/s]
+ 90%|█████████ | 45/50 [00:08<00:00,  5.52it/s]
+ 92%|█████████▏| 46/50 [00:08<00:00,  5.51it/s]
+ 94%|█████████▍| 47/50 [00:08<00:00,  5.51it/s]
+ 96%|█████████▌| 48/50 [00:08<00:00,  5.51it/s]
+ 98%|█████████▊| 49/50 [00:08<00:00,  5.51it/s]
+100%|██████████| 50/50 [00:09<00:00,  5.51it/s]
+100%|██████████| 50/50 [00:09<00:00,  5.49it/s]
+2026-10-04 22:25:22.981 | INFO     | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:42 - [generate_music] Model generation completed. Decoding latents...
+2026-10-04 22:25:22.982 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:64 - [generate_music] pred_latents: torch.Size([1, 2374, 64]), dtype=torch.float32
+2026-10-04 22:25:22.982 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:65 - [generate_music] time_costs: {'encoder_time_cost': 0.02079153060913086, 'diffusion_time_cost': 9.115838527679443, 'diffusion_per_step_time_cost': 0.18231677055358886, 'total_time_cost': 9.136630058288574, 'offload_time_cost': 0.0}
+2026-10-04 22:25:22.986 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:127 - [generate_music] Decoding latents with VAE...
+2026-10-04 22:25:22.995 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:136 - [generate_music] Before VAE decode: allocated=10.95GB, max=13.07GB
+2026-10-04 22:25:22.996 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:154 - [generate_music] Effective free VRAM before VAE decode: 35.12 GB
+2026-10-04 22:25:22.996 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:172 - [generate_music] Using tiled VAE decode to reduce VRAM usage...
+2026-10-04 22:25:22.996 | DEBUG    | acestep.core.generation.handler.memory_utils:_get_auto_decode_chunk_size:108 - [_get_auto_decode_chunk_size] Effective free VRAM: 35.12 GB
+2026-10-04 22:25:22.996 | DEBUG    | acestep.core.generation.handler.memory_utils:_should_offload_wav_to_cpu:131 - [_should_offload_wav_to_cpu] Effective free VRAM: 35.12 GB
+2026-10-04 22:25:22.996 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=512, offload_wav_to_cpu=False, latents_shape=torch.Size([1, 64, 2374])
+2026-10-04 22:25:23.485 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:193 - [generate_music] After VAE decode: allocated=11.12GB, max=13.07GB
+2026-10-04 22:25:23.597 | DEBUG    | acestep.core.generation.handler.repaint_waveform_splice:apply_repaint_waveform_splice:80 - [repaint_waveform_splice] Length mismatch: pred_wavs=4558080, src_wavs=4558848; truncating to 4558080
+2026-10-04 22:25:23.612 | INFO     | acestep.core.generation.handler.generate_music_payload:_build_generate_music_success_payload:38 - [generate_music] VAE decode completed. Preparing audio tensors...
+2026-10-04 22:25:23.624 | INFO     | acestep.core.generation.handler.generate_music_payload:_build_generate_music_success_payload:50 - [generate_music] Done! Generated 1 audio tensors.
+2026-10-04 22:25:24.007 | DEBUG    | acestep.audio_utils:save_audio:296 - [AudioSaver] Saved audio to /tmp/maestro-yard-vocals/raw/950dc725-743d-8514-ed0a-01fe3a1a542f.wav (wav32, 48000Hz)
+Saved /tmp/maestro-yard-vocals/yard-piano-and-voice.mp3
