@@ -1,0 +1,155 @@
+{
+  "captured_at": "2026-10-05",
+  "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "model_revisions": [
+    {
+      "repository": "ACE-Step/Ace-Step1.5",
+      "revision": "19671f406d603126926c1b7e2adc169acbcade22"
+    },
+    {
+      "repository": "ACE-Step/acestep-v15-xl-base",
+      "revision": "220c1166efbdd9583eafcb12eb160594bbfcb241"
+    }
+  ],
+  "vae_config": {
+    "_class_name": "AutoencoderOobleck",
+    "_diffusers_version": "0.34.0",
+    "_name_or_path": "/root/data/repo/gongjunmin/ACE-Step-1.5/checkpoints/vae/",
+    "audio_channels": 2,
+    "channel_multiples": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "decoder_channels": 128,
+    "decoder_input_channels": 64,
+    "downsampling_ratios": [
+      2,
+      4,
+      4,
+      6,
+      10
+    ],
+    "encoder_hidden_size": 128,
+    "sampling_rate": 48000
+  },
+  "xl_base_config": {
+    "architectures": [
+      "AceStepConditionGenerationModel"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_acestep_v15.AceStepConfig",
+      "AutoModel": "modeling_acestep_v15_xl_base.AceStepConditionGenerationModel"
+    },
+    "attention_bias": false,
+    "attention_dropout": 0.0,
+    "audio_acoustic_hidden_dim": 64,
+    "data_proportion": 0.5,
+    "dtype": "bfloat16",
+    "encoder_hidden_size": 2048,
+    "encoder_intermediate_size": 6144,
+    "encoder_num_attention_heads": 16,
+    "encoder_num_key_value_heads": 8,
+    "fsq_dim": 2048,
+    "fsq_input_levels": [
+      8,
+      8,
+      8,
+      5,
+      5,
+      5
+    ],
+    "fsq_input_num_quantizers": 1,
+    "head_dim": 128,
+    "hidden_act": "silu",
+    "hidden_size": 2560,
+    "in_channels": 192,
+    "initializer_range": 0.02,
+    "intermediate_size": 9728,
+    "layer_types": [
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention",
+      "sliding_attention",
+      "full_attention"
+    ],
+    "max_position_embeddings": 32768,
+    "model_type": "acestep",
+    "model_version": "base",
+    "num_attention_heads": 32,
+    "num_attention_pooler_hidden_layers": 2,
+    "num_audio_decoder_hidden_layers": 24,
+    "num_hidden_layers": 32,
+    "num_key_value_heads": 8,
+    "num_lyric_encoder_hidden_layers": 8,
+    "num_timbre_encoder_hidden_layers": 4,
+    "patch_size": 2,
+    "pool_window_size": 5,
+    "rms_norm_eps": 1e-06,
+    "rope_scaling": null,
+    "rope_theta": 1000000,
+    "sliding_window": 128,
+    "text_hidden_dim": 1024,
+    "timbre_fix_frame": 750,
+    "timbre_hidden_dim": 64,
+    "timestep_mu": -0.4,
+    "timestep_sigma": 1.0,
+    "transformers_version": "4.57.0",
+    "use_cache": true,
+    "use_sliding_window": true,
+    "vocab_size": 64003,
+    "is_turbo": false,
+    "lyric_alignment_layers_config": {
+      "3": [
+        18,
+        27
+      ],
+      "4": [
+        22
+      ],
+      "5": [
+        5,
+        6,
+        7
+      ],
+      "6": [
+        2,
+        12,
+        13
+      ],
+      "7": [
+        20,
+        21
+      ]
+    }
+  }
+}

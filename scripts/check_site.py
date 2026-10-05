@@ -34,7 +34,7 @@ class Page(HTMLParser):
 
 def main():
     paths = [ROOT / "index.html"] + sorted((ROOT / "journal").rglob("*.html"))
-    paths += sorted((ROOT / "artifacts").glob("*.html")) + [ROOT / "studio/index.html"]
+    paths += sorted((ROOT / "artifacts").glob("*.html")) + [ROOT / "studio/index.html", ROOT / "anatomy/index.html"]
     parsed, errors = {}, []
     for path in paths:
         page = parsed.setdefault(path, Page(path))

@@ -12,6 +12,9 @@ while making that experience work.
   experiment with phrase selection, contour drawing, rhythm tapping, an editable recipe,
   before/after comparison, undo, and WAV/project export. It uses procedural synthesis;
   trained multimodal generation and humming transcription are not connected.
+- **[Explore Music Anatomy](https://htansetiawan.github.io/maestro/anatomy/)** — an interactive
+  ACE-Step pipeline atlas, representation explorer, flow-matching lab, and symbolic compiler
+  with playback and MIDI/MusicXML export. Includes the recorded vocal experiment and primary sources.
 - **[Weekly journal](https://htansetiawan.github.io/maestro/journal/)** — dated decisions,
   positioning, findings, open questions, experiments, and frozen artifact snapshots.
 - **[Hear the first ACE vocal experiment](experiments/002_ace_piano_vocals/README.md)**
@@ -38,6 +41,7 @@ Generated pages are committed, so previewing the existing site requires no build
 | Path | Purpose |
 |---|---|
 | `studio/` | Playable browser prototype with procedural synthesis |
+| `anatomy/` | Interactive ACE-Step research atlas and symbolic music compiler |
 | `research/MUSIC-KITCHEN-PRODUCT.md` | Current product brief |
 | `research/STUDIO-EXPERIMENT.md` | Implemented prototype behavior and limitations |
 | `journal/entries/` | Source for dated progress updates |
