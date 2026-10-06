@@ -34,9 +34,13 @@ these checks establish a functioning experiment, not a perceptual improvement.
 | Base continuation | 210.00 s | 97.9 s | 12.04 GiB |
 | Adapted continuation | 210.00 s | 149.2 s | 12.08 GiB |
 
-Use the listening comparisons to assess Foster-like arrangement, lyric accuracy,
-vocal timing/pitch fit, and the transition at 30 seconds. None has been certified
-by a listening evaluation. Machine-readable checks are in `record/checks.json`.
+User listening feedback on October 5, 2026: both temporal continuations sounded
+poor, and LEGO-Foster sounded generally similar to the unfine-tuned experiment 003.
+The user also reported that a previous Suno result provided a much more convincing
+singer-over-piano performance. That is a subjective comparison, not a controlled
+cross-system benchmark. This pilot demonstrated training fit but did not establish
+useful style transfer or improved vocal alignment. Machine-readable technical
+checks are in `record/checks.json`; they do not override this listening result.
 
 ## Training design
 
