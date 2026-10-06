@@ -1,0 +1,9 @@
+data/
+artifacts/
+audio/
+raw/
+.cache/
+__pycache__/
+record/*.log
+record/*.json
+record/*.jsonl

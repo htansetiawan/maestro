@@ -1,0 +1,10 @@
+audio/
+data/
+raw/
+.cache/
+record/*.log
+record/generation.json
+record/transcription.json
+record/quality.json
+record/SHA256SUMS
+__pycache__/
