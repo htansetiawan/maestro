@@ -1,0 +1,8 @@
+{
+  "reason": "Original 1800-token limit truncated an 80.42-second plan.",
+  "source": "planned-20261005",
+  "change": {
+    "max_tokens": 3500
+  },
+  "selection": "Same saved score and seed. Original retained; no best-of-N selection."
+}

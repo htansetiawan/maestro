@@ -1,0 +1,9 @@
+{
+  "style": "English, intimate cinematic piano ballad, warm expressive male baritone, acoustic grand piano accompaniment only, tender nostalgic college memories, clear lyrics, gentle legato, C major, 90 BPM, short verse and chorus, minimal intro and outro, no drums, no choir",
+  "lyrics": "[Verse]\nRed brick walls hold the light of home\nOld trees shade all the friends we know\n\n[Chorus]\nYears drift by but the paths still stay\nLove keeps all of our names in May\n",
+  "cot": "melody",
+  "seed": 20261006,
+  "abc": "X:1\nT:\nM:4/4\nL:1/16\nQ:1/4=90\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:C\n% verse\nV: Vocal\nG,4C4E4A,4|C4F4D4E4|G,4C4E4A,4|C4F4A4G4|\nV: Ins\nZ4|\n% chorus\nV: Vocal\nG,4C4E4A,4|C4F4D4E4|G,4C4E4A,4|C4F4A4G4|\nV: Ins\nZ4|\n",
+  "cfg_scale": null,
+  "id": "fixed-20261006"
+}

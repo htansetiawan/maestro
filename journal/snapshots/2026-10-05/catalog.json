@@ -1,0 +1,16 @@
+[
+  {
+    "id": "technical-report",
+    "title": "Music to score, score to music",
+    "source": "research/TECHNICAL-REPORT.md",
+    "description": "An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.",
+    "status": "Technical report · October 4, 2026"
+  },
+  {
+    "id": "core-music-references",
+    "title": "Core music generation references",
+    "source": "research/CORE-MUSIC-GENERATION-REFERENCES.md",
+    "description": "52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.",
+    "status": "Reading path updated October 5, 2026"
+  }
+]

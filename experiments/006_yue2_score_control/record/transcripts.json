@@ -1,0 +1,157 @@
+{
+  "model": "openai/whisper-base.en",
+  "scope": "ASR of complete mixture; not ground truth or a melody metric",
+  "transcripts": {
+    "fixed-20261005": {
+      "text": " Red brick walls hold the light of home Old tree shade, all the friends we know He was drift by, but the paths still stay Love keeps all of our names in man There brick walls hold the light of home Old tree shade, all the friends we know Here's drift by but the path still Stave of keeps all of our names in me",
+      "chunks": [
+        {
+          "timestamp": [
+            0.0,
+            5.32
+          ],
+          "text": " Red brick walls hold the light of home"
+        },
+        {
+          "timestamp": [
+            5.32,
+            29.0
+          ],
+          "text": " Old tree shade, all the friends we know He was drift by, but the paths still stay Love keeps all of our names in man There brick walls hold the light of home"
+        },
+        {
+          "timestamp": [
+            29.0,
+            35.0
+          ],
+          "text": " Old tree shade, all the friends we know"
+        },
+        {
+          "timestamp": [
+            35.0,
+            39.0
+          ],
+          "text": " Here's drift by but the path still"
+        },
+        {
+          "timestamp": [
+            39.0,
+            48.0
+          ],
+          "text": " Stave of keeps all of our names in me"
+        }
+      ]
+    },
+    "fixed-20261006": {
+      "text": " Red brick walls hold the light of home Old trees shade all the friends we know Years drift by, but the past still stay Love keeps all of our names in me",
+      "chunks": [
+        {
+          "timestamp": [
+            0.0,
+            5.2
+          ],
+          "text": " Red brick walls hold the light of home"
+        },
+        {
+          "timestamp": [
+            5.2,
+            10.32
+          ],
+          "text": " Old trees shade all the friends we know"
+        },
+        {
+          "timestamp": [
+            10.32,
+            15.36
+          ],
+          "text": " Years drift by, but the past still stay"
+        },
+        {
+          "timestamp": [
+            15.36,
+            22.4
+          ],
+          "text": " Love keeps all of our names in me"
+        }
+      ]
+    },
+    "planned-20261005": {
+      "text": " Red brick walls, hold the light of home Oh, tree's shade, all the friends we know Years drift by, but the paths still stay Love keeps all of our names in vain Here's drift by but the past still stay Love keeps all of our names in man.",
+      "chunks": [
+        {
+          "timestamp": [
+            0.0,
+            61.68
+          ],
+          "text": " Red brick walls, hold the light of home Oh, tree's shade, all the friends we know Years drift by, but the paths still stay Love keeps all of our names in vain Here's drift by but the past still stay"
+        },
+        {
+          "timestamp": [
+            62.68,
+            70.0
+          ],
+          "text": " Love keeps all of our names in man."
+        }
+      ]
+    },
+    "planned-20261006": {
+      "text": " Red brick walls, hold the light of home Old tree shade, all the friends we know. Years drift by, but the paths still stay. Love keeps all of our names in me.",
+      "chunks": [
+        {
+          "timestamp": [
+            0.0,
+            27.0
+          ],
+          "text": " Red brick walls, hold the light of home Old tree shade, all the friends we know."
+        },
+        {
+          "timestamp": [
+            27.0,
+            35.0
+          ],
+          "text": " Years drift by, but the paths still stay."
+        },
+        {
+          "timestamp": [
+            35.0,
+            46.0
+          ],
+          "text": " Love keeps all of our names in me."
+        }
+      ]
+    },
+    "planned-20261005-extended": {
+      "text": " Red brick walls, hold the light of home Old tree shade All the friends we know Years drift by but the paths still stay. Love keeps all of our names in name. Here's drift by, but the paths still stay. Love keeps all of our names in name.",
+      "chunks": [
+        {
+          "timestamp": [
+            0.0,
+            46.0
+          ],
+          "text": " Red brick walls, hold the light of home Old tree shade All the friends we know Years drift by but the paths still stay."
+        },
+        {
+          "timestamp": [
+            46.0,
+            55.0
+          ],
+          "text": " Love keeps all of our names in name."
+        },
+        {
+          "timestamp": [
+            55.0,
+            62.0
+          ],
+          "text": " Here's drift by, but the paths still stay."
+        },
+        {
+          "timestamp": [
+            62.0,
+            67.0
+          ],
+          "text": " Love keeps all of our names in name."
+        }
+      ]
+    }
+  }
+}

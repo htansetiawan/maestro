@@ -20,8 +20,10 @@ The three LEGO passes took 257.5 seconds including initialization and exports,
 with 12.21 GiB peak Torch allocation. Each output is 210.35 seconds, stereo at
 48 kHz. Technical checks passed: all stems are finite and non-silent; intermediate
 contexts, final mix, and orchestral-only mix reconstruct exactly from their recorded
-components. The MIDI compiler's three tests passed. Musical quality and absence of
-unwanted vocal or piano leakage still require listening; no improvement is claimed.
+components. The MIDI compiler's three tests passed. User listening feedback on
+October 5, 2026 described the orchestral result as a "mess"; it did not meet the
+user's musical-coherence requirement. Technical integrity did not establish a
+useful arrangement. Vocal or piano leakage was not separately assessed.
 
 ## What is being tested
 

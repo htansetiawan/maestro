@@ -69,6 +69,13 @@
       "source": "research/TECHNICAL-REPORT.md",
       "description": "An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.",
       "status": "Technical report · October 4, 2026"
+    },
+    {
+      "id": "core-music-references",
+      "title": "Core music generation references",
+      "source": "research/CORE-MUSIC-GENERATION-REFERENCES.md",
+      "description": "52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.",
+      "status": "Reading path updated October 5, 2026"
     }
   ],
   "entries": [
@@ -248,6 +255,37 @@
         {
           "label": "ACE demo",
           "url": "https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "title": "Audio to score and a test of symbolic control",
+      "summary": "Promote direct audio-to-score research into the core reading path, correct its treatment in the report, and evaluate explicit melody control with YuE2 after unsuccessful ACE-Step listening tests.",
+      "stage": "Audio-to-Score paper reviewed; reference list corrected; four YuE2 pilot candidates and one cap-extension rerender complete. Musical quality awaits listening.",
+      "focus": "Measure transcription, notation conversion, and audible score adherence separately.",
+      "next_step": "Listen to all YuE2 candidates against the melody guide, then evaluate direct lead-sheet transcription against reviewed notation.",
+      "artifacts": [
+        "core-music-references",
+        "technical-report"
+      ],
+      "published": true,
+      "links": [
+        {
+          "label": "Audio-to-Score paper",
+          "url": "https://arxiv.org/abs/2608.06165"
+        },
+        {
+          "label": "YuE2 evaluation",
+          "url": "https://github.com/htansetiawan/maestro/tree/main/experiments/006_yue2_score_control"
+        },
+        {
+          "label": "YuE2 listening comparison",
+          "url": "https://htansetiawan.github.io/maestro/experiments/006_yue2_score_control/"
+        },
+        {
+          "label": "Corrected technical report",
+          "url": "https://htansetiawan.github.io/maestro/survey/technical-report.html"
         }
       ]
     }

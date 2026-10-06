@@ -1,0 +1,1305 @@
+{
+  "target": {
+    "bpm": 90,
+    "nominal_seconds": 21.333333333333332,
+    "notes": [
+      {
+        "onset_quarters": 0.0,
+        "midi": 55,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 1.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 2.0,
+        "midi": 64,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 3.0,
+        "midi": 57,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 4.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 5.0,
+        "midi": 65,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 6.0,
+        "midi": 62,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 7.0,
+        "midi": 64,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 8.0,
+        "midi": 55,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 9.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 10.0,
+        "midi": 64,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 11.0,
+        "midi": 57,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 12.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 13.0,
+        "midi": 65,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 14.0,
+        "midi": 69,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 15.0,
+        "midi": 67,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 16.0,
+        "midi": 55,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 17.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 18.0,
+        "midi": 64,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 19.0,
+        "midi": 57,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 20.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 21.0,
+        "midi": 65,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 22.0,
+        "midi": 62,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 23.0,
+        "midi": 64,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 24.0,
+        "midi": 55,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 25.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 26.0,
+        "midi": 64,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 27.0,
+        "midi": 57,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 28.0,
+        "midi": 60,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 29.0,
+        "midi": 65,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 30.0,
+        "midi": 69,
+        "duration_quarters": 1.0
+      },
+      {
+        "onset_quarters": 31.0,
+        "midi": 67,
+        "duration_quarters": 1.0
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "id": "fixed-20261005",
+      "status": "complete",
+      "seconds": 49.958666666666666,
+      "peak": 0.6534756422042847,
+      "rms": 0.09736404567956924,
+      "channels": 2,
+      "sample_rate": 48000,
+      "fraction_at_full_scale": 0.0,
+      "truncated": {
+        "abc": false,
+        "semantic": false
+      },
+      "manifest_verified": true,
+      "measurement": {
+        "elapsed_seconds": 47.104870670009404,
+        "peak_allocated_gib": 7.040661811828613,
+        "peak_reserved_gib": 7.13671875
+      },
+      "symbolic_score": {
+        "bpm": 90,
+        "nominal_seconds": 21.333333333333332,
+        "notes": [
+          {
+            "onset_quarters": 0.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 1.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 2.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 3.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 4.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 5.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 6.0,
+            "midi": 62,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 7.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 8.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 9.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 10.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 11.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 12.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 13.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 14.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 15.0,
+            "midi": 67,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 16.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 17.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 18.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 19.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 20.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 21.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 22.0,
+            "midi": 62,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 23.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 24.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 25.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 26.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 27.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 28.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 29.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 30.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 31.0,
+            "midi": 67,
+            "duration_quarters": 1.0
+          }
+        ]
+      },
+      "provided_score_preserved_in_artifacts": true
+    },
+    {
+      "id": "fixed-20261006",
+      "status": "complete",
+      "seconds": 24.318666666666665,
+      "peak": 0.7108793258666992,
+      "rms": 0.10115646570920944,
+      "channels": 2,
+      "sample_rate": 48000,
+      "fraction_at_full_scale": 0.0,
+      "truncated": {
+        "abc": false,
+        "semantic": false
+      },
+      "manifest_verified": true,
+      "measurement": {
+        "elapsed_seconds": 19.108359585050493,
+        "peak_allocated_gib": 7.298677444458008,
+        "peak_reserved_gib": 7.4375
+      },
+      "symbolic_score": {
+        "bpm": 90,
+        "nominal_seconds": 21.333333333333332,
+        "notes": [
+          {
+            "onset_quarters": 0.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 1.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 2.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 3.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 4.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 5.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 6.0,
+            "midi": 62,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 7.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 8.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 9.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 10.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 11.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 12.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 13.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 14.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 15.0,
+            "midi": 67,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 16.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 17.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 18.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 19.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 20.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 21.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 22.0,
+            "midi": 62,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 23.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 24.0,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 25.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 26.0,
+            "midi": 64,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 27.0,
+            "midi": 57,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 28.0,
+            "midi": 60,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 29.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 30.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 31.0,
+            "midi": 67,
+            "duration_quarters": 1.0
+          }
+        ]
+      },
+      "provided_score_preserved_in_artifacts": true
+    },
+    {
+      "id": "planned-20261005",
+      "status": "complete",
+      "seconds": 71.99866666666667,
+      "peak": 0.8889331817626953,
+      "rms": 0.10451976209878922,
+      "channels": 2,
+      "sample_rate": 48000,
+      "fraction_at_full_scale": 0.0,
+      "truncated": {
+        "abc": false,
+        "semantic": true
+      },
+      "manifest_verified": true,
+      "measurement": {
+        "elapsed_seconds": 53.63077212614007,
+        "peak_allocated_gib": 7.505801200866699,
+        "peak_reserved_gib": 7.685546875
+      },
+      "symbolic_score": {
+        "bpm": 72,
+        "nominal_seconds": 80.41666666666667,
+        "notes": [
+          {
+            "onset_quarters": 17.0,
+            "midi": 58,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 17.25,
+            "midi": 60,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 17.5,
+            "midi": 62,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 17.75,
+            "midi": 62,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 18.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 21.5,
+            "midi": 58,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 21.75,
+            "midi": 60,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 22.0,
+            "midi": 62,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 22.75,
+            "midi": 65,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 23.5,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 33.0,
+            "midi": 58,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 33.5,
+            "midi": 62,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 34.0,
+            "midi": 65,
+            "duration_quarters": 2.0
+          },
+          {
+            "onset_quarters": 37.5,
+            "midi": 58,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 37.75,
+            "midi": 60,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 38.0,
+            "midi": 62,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 38.75,
+            "midi": 65,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 39.5,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 49.0,
+            "midi": 69,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 49.5,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 50.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 51.0,
+            "midi": 69,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 51.5,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 52.0,
+            "midi": 69,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 52.75,
+            "midi": 70,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 53.5,
+            "midi": 67,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 57.0,
+            "midi": 69,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 57.5,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 58.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 59.0,
+            "midi": 69,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 59.25,
+            "midi": 70,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 60.0,
+            "midi": 69,
+            "duration_quarters": 2.0
+          },
+          {
+            "onset_quarters": 62.5,
+            "midi": 70,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 63.5,
+            "midi": 72,
+            "duration_quarters": 4.0
+          },
+          {
+            "onset_quarters": 68.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 69.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 70.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 71.5,
+            "midi": 72,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 72.0,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 72.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 73.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 74.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 77.0,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 77.75,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 78.5,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 79.25,
+            "midi": 72,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 79.75,
+            "midi": 70,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 80.5,
+            "midi": 74,
+            "duration_quarters": 1.5
+          },
+          {
+            "onset_quarters": 82.0,
+            "midi": 72,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 82.25,
+            "midi": 72,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 82.5,
+            "midi": 70,
+            "duration_quarters": 4.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "planned-20261005-extended",
+      "status": "complete",
+      "seconds": 79.95866666666667,
+      "peak": 0.8116142749786377,
+      "rms": 0.10522819310426712,
+      "channels": 2,
+      "sample_rate": 48000,
+      "fraction_at_full_scale": 0.0,
+      "truncated": {
+        "abc": false,
+        "semantic": false
+      },
+      "manifest_verified": true,
+      "measurement": {
+        "elapsed_seconds": 52.6597186550498,
+        "peak_allocated_gib": 7.246843338012695,
+        "peak_reserved_gib": 7.52734375
+      },
+      "symbolic_score": {
+        "bpm": 72,
+        "nominal_seconds": 80.41666666666667,
+        "notes": [
+          {
+            "onset_quarters": 17.0,
+            "midi": 58,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 17.25,
+            "midi": 60,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 17.5,
+            "midi": 62,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 17.75,
+            "midi": 62,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 18.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 21.5,
+            "midi": 58,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 21.75,
+            "midi": 60,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 22.0,
+            "midi": 62,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 22.75,
+            "midi": 65,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 23.5,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 33.0,
+            "midi": 58,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 33.5,
+            "midi": 62,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 34.0,
+            "midi": 65,
+            "duration_quarters": 2.0
+          },
+          {
+            "onset_quarters": 37.5,
+            "midi": 58,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 37.75,
+            "midi": 60,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 38.0,
+            "midi": 62,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 38.75,
+            "midi": 65,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 39.5,
+            "midi": 55,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 49.0,
+            "midi": 69,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 49.5,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 50.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 51.0,
+            "midi": 69,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 51.5,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 52.0,
+            "midi": 69,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 52.75,
+            "midi": 70,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 53.5,
+            "midi": 67,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 57.0,
+            "midi": 69,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 57.5,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 58.0,
+            "midi": 69,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 59.0,
+            "midi": 69,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 59.25,
+            "midi": 70,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 60.0,
+            "midi": 69,
+            "duration_quarters": 2.0
+          },
+          {
+            "onset_quarters": 62.5,
+            "midi": 70,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 63.5,
+            "midi": 72,
+            "duration_quarters": 4.0
+          },
+          {
+            "onset_quarters": 68.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 69.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 70.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 71.5,
+            "midi": 72,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 72.0,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 72.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 73.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 74.5,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 77.0,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 77.75,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 78.5,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 79.25,
+            "midi": 72,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 79.75,
+            "midi": 70,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 80.5,
+            "midi": 74,
+            "duration_quarters": 1.5
+          },
+          {
+            "onset_quarters": 82.0,
+            "midi": 72,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 82.25,
+            "midi": 72,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 82.5,
+            "midi": 70,
+            "duration_quarters": 4.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "planned-20261006",
+      "status": "complete",
+      "seconds": 49.958666666666666,
+      "peak": 0.9798057079315186,
+      "rms": 0.12378937005996704,
+      "channels": 2,
+      "sample_rate": 48000,
+      "fraction_at_full_scale": 0.0,
+      "truncated": {
+        "abc": false,
+        "semantic": false
+      },
+      "manifest_verified": true,
+      "measurement": {
+        "elapsed_seconds": 37.23781272699125,
+        "peak_allocated_gib": 7.531466484069824,
+        "peak_reserved_gib": 7.744140625
+      },
+      "symbolic_score": {
+        "bpm": 65,
+        "nominal_seconds": 55.38461538461539,
+        "notes": [
+          {
+            "onset_quarters": 20.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 21.5,
+            "midi": 65,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 22.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 24.0,
+            "midi": 65,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 24.5,
+            "midi": 63,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 24.75,
+            "midi": 63,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 25.5,
+            "midi": 62,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 25.75,
+            "midi": 63,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 28.5,
+            "midi": 65,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 29.25,
+            "midi": 67,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 30.0,
+            "midi": 65,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 31.5,
+            "midi": 58,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 31.75,
+            "midi": 60,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 32.0,
+            "midi": 60,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 32.5,
+            "midi": 62,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 33.5,
+            "midi": 62,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 36.5,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 37.25,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 38.0,
+            "midi": 72,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 39.5,
+            "midi": 70,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 39.75,
+            "midi": 72,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 40.0,
+            "midi": 74,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 41.0,
+            "midi": 70,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 42.0,
+            "midi": 67,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 44.5,
+            "midi": 70,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 45.25,
+            "midi": 74,
+            "duration_quarters": 0.75
+          },
+          {
+            "onset_quarters": 46.0,
+            "midi": 72,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 46.25,
+            "midi": 70,
+            "duration_quarters": 0.25
+          },
+          {
+            "onset_quarters": 46.5,
+            "midi": 70,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 49.0,
+            "midi": 67,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 49.5,
+            "midi": 70,
+            "duration_quarters": 0.5
+          },
+          {
+            "onset_quarters": 50.0,
+            "midi": 74,
+            "duration_quarters": 1.5
+          },
+          {
+            "onset_quarters": 51.5,
+            "midi": 72,
+            "duration_quarters": 1.0
+          },
+          {
+            "onset_quarters": 52.5,
+            "midi": 70,
+            "duration_quarters": 2.0
+          }
+        ]
+      }
+    }
+  ],
+  "audio_pitch_alignment_measured": false,
+  "listening_status": "Pending user evaluation; file integrity is not musical quality.",
+  "duration_caution": "Total audio duration includes intros/outros; it does not isolate vocal timing."
+}

@@ -4,10 +4,18 @@
   <id>https://htansetiawan.github.io/maestro/journal/</id>
   <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
   <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-10-04T00:00:00-07:00</updated>
+  <updated>2026-10-05T00:00:00-07:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
+  <entry>
+    <title>Audio to score and a test of symbolic control</title>
+    <id>https://htansetiawan.github.io/maestro/journal/2026-10-05.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-10-05.html" />
+    <updated>2026-10-05T00:00:00-07:00</updated>
+    <published>2026-10-05T00:00:00-07:00</published>
+    <summary>Promote direct audio-to-score research into the core reading path, correct its treatment in the report, and evaluate explicit melody control with YuE2 after unsuccessful ACE-Step listening tests.</summary>
+  </entry>
   <entry>
     <title>Music to score, score to music: the anatomy of a song generator</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-10-04.html</id>

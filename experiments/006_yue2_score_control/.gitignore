@@ -1,0 +1,6 @@
+__pycache__/
+record/*.log
+outputs/*/latent.npy
+outputs/*/semantic.npy
+outputs/*/prefix.npy
+outputs/*/abc_tokens.npy

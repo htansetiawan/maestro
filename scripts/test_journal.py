@@ -17,7 +17,8 @@ class JournalPublishing(unittest.TestCase):
             root = Path(temp) / "site"
             shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(
                 ".git", "__pycache__", ".venv", "node_modules", ".pytest_cache", ".ruff_cache",
-                "data", "artifacts", "wandb"))  # experiment trees are large and irrelevant here
+                "data", "artifacts", "wandb", "audio", "outputs", "raw", ".cache",
+                "*.wav", "*.mp3", "*.flac", "*.safetensors", "*.pt"))
             def run(*args, success=True):
                 result = subprocess.run([sys.executable, str(root / "scripts/build_journal.py"), *args],
                                         capture_output=True, text=True)
@@ -29,10 +30,13 @@ class JournalPublishing(unittest.TestCase):
             home = (root / "index.html").read_text()
             journal_index = (root / "journal/index.html").read_text()
             entry_page = (root / "journal/2026-09-12.html").read_text()
-            self.assertIn("github.com/htansetiawan/maestro/blob/main/experiments/001_ace_audio_personalization/README.md", home)
+            published = [e for e in json.loads((root / "journal/content.json").read_text())["entries"]
+                         if e["published"]]
+            latest = max(published, key=lambda e: e["date"])
+            for link in latest.get("links", []):
+                self.assertIn(link["url"], home)
+                self.assertIn(link["url"], journal_index)
             self.assertIn("Open the current work", journal_index)
-            self.assertIn("https://arxiv.org/abs/2602.00744", journal_index)
-            self.assertIn("https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5", journal_index)
             self.assertIn("survey/technical-report.html", journal_index)
             self.assertIn("github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-09-12/ace-audio-personalization.md", entry_page)
             self.assertIn("https://arxiv.org/abs/2602.00744", entry_page)

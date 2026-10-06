@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audio to score and a test of symbolic control — Maestro</title>
+<meta name="description" content="Promote direct audio-to-score research into the core reading path, correct its treatment in the report, and evaluate explicit melody control with YuE2 after unsuccessful ACE-Step listening tests.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-10-05.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Audio to score and a test of symbolic control — Maestro">
+<meta property="og:description" content="Promote direct audio-to-score research into the core reading path, correct its treatment in the report, and evaluate explicit melody control with YuE2 after unsuccessful ACE-Step listening tests.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-10-05.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Audio to score and a test of symbolic control — Maestro">
+<meta name="twitter:description" content="Promote direct audio-to-score research into the core reading path, correct its treatment in the report, and evaluate explicit melody control with YuE2 after unsuccessful ACE-Step listening tests.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Weekly journal · week of October 5, 2026</p>
+      <h1>Audio to score and a test of symbolic control</h1>
+      <p class="journal-description">Promote direct audio-to-score research into the core reading path, correct its treatment in the report, and evaluate explicit melody control with YuE2 after unsuccessful ACE-Step listening tests.</p>
+      <p class="journal-meta"><time datetime="2026-10-05">October 5, 2026</time> · Henry Tan · <a href="entries/2026-10-05.md">Entry source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/2026-10-05.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/2026-10-05.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <dl class="state-grid"><div><dt>Stage</dt><dd>Audio-to-Score paper reviewed; reference list corrected; four YuE2 pilot candidates and one cap-extension rerender complete. Musical quality awaits listening.</dd></div><div><dt>Current focus</dt><dd>Measure transcription, notation conversion, and audible score adherence separately.</dd></div><div><dt>Next experiment</dt><dd>Listen to all YuE2 candidates against the melody guide, then evaluate direct lead-sheet transcription against reviewed notation.</dd></div></dl><div class="journal-prose"><p>The research priority is an editable representation between musical sound and generation. Recent ACE-Step experiments produced realistic vocal timbre but did not satisfy the author's listening criteria for alignment, continuation, or orchestral accompaniment. The next evaluation asks whether supplying explicit notes gives more useful control.</p>
+<h2 id="find-the-work">Find the work</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2608.06165">Audio-to-Score paper by Cummins and colleagues</a>.</li>
+<li><a href="https://github.com/htansetiawan/maestro/blob/main/research/CORE-MUSIC-GENERATION-REFERENCES.md">Updated core reading list</a>, now including this paper and YuE2 as first-pass readings.</li>
+<li><a href="https://github.com/htansetiawan/maestro/tree/main/experiments/006_yue2_score_control">YuE2 evaluation inputs and code</a>.</li>
+<li><a href="https://github.com/htansetiawan/maestro/tree/main/experiments/005_color_purple_orchestra">ACE orchestral experiment and audio</a>.</li>
+</ul>
+<h2 id="the-reference-was-present-but-underemphasized">The reference was present but underemphasized</h2>
+<p>The October 4 report cited <code>cummins2026a2s</code> in section 5.2, and the verification notes and bibliography already contained it. The curated core list omitted it, and the journal did not explain its relevance. A passing citation was insufficient for a research program centered on notation and audio. The current report now distinguishes this work from the preceding hierarchical piano transcription system. The October 4 snapshot remains unchanged.</p>
+<h2 id="what-the-paper-contributes">What the paper contributes</h2>
+<p>Cummins and colleagues decode score symbols from frozen MuQ features using a Transformer. SheetSage-A2S supplies 9,468 clips from 6,066 songs, about 61 hours, with singing-melody and chord annotations. Its lead-sheet target uses <code>**kern</code> and a chord spine. Reported SER is 20.92% on this dataset and 4.98% on synthetic Quartets; these are different tasks. The popular-music setting does not recover every instrumental staff. Annotation variability, note durations, and complex chords remain difficulties. <a href="https://arxiv.org/pdf/2608.06165">Paper, sections 2–6</a>.</p>
+<p>The <a href="https://github.com/Multimodal-Music-Research-Lab/SheetSage2Kern_model">official implementation</a> provides separate lead-sheet and quartet checkpoints. It reports melody SER of 38.62% and chord SER of 22.28%; the overall score includes easier structural symbols. These figures should guide error inspection, rather than be read as a percentage of fully correct songs.</p>
+<h2 id="implications-for-maestro">Implications for Maestro</h2>
+<p>A direct notation decoder belongs beside the modular audio → note events → score baseline. Our experiment should compare both against the same manually reviewed passage. Evaluate pitch, rhythm, spelling, rests, and harmony separately; keep raw predictions alongside any human corrections.</p>
+<p>For the compiler design, use explicit adapters between <code>**kern</code>, an internal event representation, and the ABC subset accepted by YuE2. Test preservation of pitches, rational durations, voices, and chord meaning. Record unsupported constructs instead of silently dropping them. Neither shared musical content nor similar project names establish format compatibility: SheetSage-A2S and YuE2's SheetSage2 transcription workflow are distinct projects.</p>
+<p>The proposed research loop is:</p>
+<pre><code class="language-text">audio → estimated notation → reviewed musical events → edited score → generated audio
+                    ↘ uncertainty and correction record ↗
+</code></pre>
+<p>Round-trip transcription alone is an insufficient judge: the transcriber and generator can share mistakes. Use an independent reference score and human listening. A singer can sound natural while singing the wrong notes; a correct score can render with unconvincing phrasing. Those are separate outcomes.</p>
+<h2 id="current-evaluation">Current evaluation</h2>
+<p>Four initial YuE2 candidates have rendered, and the listening evaluation is ready locally. Four candidates are predeclared: two seeds, each with a supplied melody and a model-composed melody, keeping lyrics, style, and melody-only mode fixed. The supplied score repeats the author's 16-note scale-degree motif twice. C major, 90 BPM, and quarter notes are illustrative assumptions, not a transcription of the Color Purple recording. The target contains 32 notes and lasts 21.33 seconds before any generated introduction or ending.</p>
+<p>This tests score-to-audio control and musical coherence. It does not test waveform-preserving LEGO, transcription of the source piano, or superiority to Suno. The original four outputs are retained. One hit the initial token cap; rerendering its exact saved score with a larger cap produced a complete 79.96-second output. The supplied-score runs lasted 49.96 and 24.32 seconds. ASR suggests the longer one repeats the lyrics; listening must confirm that and judge melody adherence. Both model-composed scores depart from the requested 90 BPM, choosing 72 and 65 BPM. Listening judgments remain pending. <a href="../experiments/006_yue2_score_control/index.html">Open the comparison</a>.</p>
+<h2 id="next-experiment">Next experiment</h2>
+<p>First judge YuE2's short outputs against the audible motif guide. Then evaluate the Audio-to-Score checkpoint on a suitable vocal-and-accompaniment excerpt with a reviewed lead sheet. Treat solo-piano transcription as a separate domain test. A conversion into YuE2's score format comes only after notation and conversion errors have been measured independently.</p>
+</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"><article class="artifact-item"><p class="artifact-status">Technical report · October 4, 2026</p><h3><a href="snapshots/2026-10-05/technical-report.html">Music to score, score to music</a></h3><p>An anatomy of Suno-class song generators through four lenses — text transformers, VQ-VAE, ViT, Genie — and a methodology for a notation-native latent that transcribes in and renders out. 91 sources.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-05/technical-report.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Reading path updated October 5, 2026</p><h3><a href="snapshots/2026-10-05/core-music-references.html">Core music generation references</a></h3><p>52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-05/core-music-references.md">Frozen source on GitHub ↗</a></p></article></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-10-04.html">← Earlier: Music to score, score to music: the anatomy of a song generator</a><a href="./">All entries</a></nav>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

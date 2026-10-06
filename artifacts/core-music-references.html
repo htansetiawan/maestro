@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core music generation references — Maestro</title>
+<meta name="description" content="52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/core-music-references.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Core music generation references — Maestro">
+<meta property="og:description" content="52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/core-music-references.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Core music generation references — Maestro">
+<meta name="twitter:description" content="52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Working artifact</p>
+      <h1>Core music generation references</h1>
+      <p class="journal-description">52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.</p>
+      <p class="journal-meta">Reading path updated October 5, 2026 · <a href="../research/CORE-MUSIC-GENERATION-REFERENCES.md">Markdown source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/artifacts/core-music-references.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/artifacts/core-music-references.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <div class="journal-prose"><p>A curated starting bibliography for a book about music generation, with particular attention to controllable representations and the path between audio, performance, and written scores.</p>
+<p><strong>52 references: 50 papers and 2 official project write-ups.</strong> Checkboxes are for your reading progress; <strong>★</strong> marks the 17-paper first pass. Years refer to the first preprint or project release, so they can differ from conference publication years. Primary links checked on 2026-10-05. IDs remain stable when new references are added.</p>
+<h2 id="suggested-first-pass">Suggested first pass</h2>
+<ol>
+<li><strong>Representations:</strong> VQ-VAE → EnCodec → MERT.</li>
+<li><strong>Generation:</strong> DDPM → Latent Diffusion → Flow Matching → Jukebox → MusicGen.</li>
+<li><strong>Song generation and control:</strong> ACE-Step → ACE-Step 1.5 → JASCO.</li>
+<li><strong>Your score ↔ audio direction:</strong> REMI → MT3 → PM2S → SheetSage-A2S → YuE2 → DDSP. Compare direct audio-to-notation with the modular audio-to-MIDI-to-score route.</li>
+</ol>
+<p>Read the other foundations as needed. Then compare YuE, SongGen, and DiffRhythm to understand competing ways of generating vocals and accompaniment.</p>
+<h2 id="1-generative-modeling-foundations">1. Generative modeling foundations</h2>
+<ul>
+<li>
+<p>[ ] <strong>P01 · VAE</strong> — Kingma &amp; Welling (2013). <a href="https://arxiv.org/abs/1312.6114">Auto-Encoding Variational Bayes</a>. Learn the ELBO, reparameterization, reconstruction–regularization tradeoff, and what a continuous latent variable model actually learns.</p>
+</li>
+<li>
+<p>[ ] <strong>P02 · Transformer</strong> — Vaswani et al. (2017). <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>. The attention architecture underlying symbolic music models, audio token language models, and diffusion transformers.</p>
+</li>
+<li>
+<p>[ ] <strong>P03 · WaveNet</strong> — van den Oord et al. (2016). <a href="https://arxiv.org/abs/1609.03499">WaveNet: A Generative Model for Raw Audio</a>. Understand sample-level autoregression and why later systems move generation into compressed representations.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P04 · DDPM</strong> — Ho, Jain &amp; Abbeel (2020). <a href="https://arxiv.org/abs/2006.11239">Denoising Diffusion Probabilistic Models</a>. The forward noise process, denoising objective, and iterative sampling foundation for diffusion-based audio generation.</p>
+</li>
+<li>
+<p>[ ] <strong>P05 · Classifier-free guidance</strong> — Ho &amp; Salimans (2022). <a href="https://arxiv.org/abs/2207.12598">Classifier-Free Diffusion Guidance</a>. How conditional and unconditional predictions steer sampling; useful for understanding prompt adherence and guidance tradeoffs.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P06 · Latent Diffusion</strong> — Rombach et al. (2021). <a href="https://arxiv.org/abs/2112.10752">High-Resolution Image Synthesis with Latent Diffusion Models</a>. Image-domain foundation for separating an autoencoder from a generator operating in its compressed latent space.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P07 · Flow Matching</strong> — Lipman et al. (2022). <a href="https://arxiv.org/abs/2210.02747">Flow Matching for Generative Modeling</a>. Learn vector-field training, probability paths, and ODE sampling before studying modern flow-based music generators.</p>
+</li>
+<li>
+<p>[ ] <strong>P08 · DiT</strong> — Peebles &amp; Xie (2022). <a href="https://arxiv.org/abs/2212.09748">Scalable Diffusion Models with Transformers</a>. The image-domain diffusion transformer foundation; focus on latent tokens, timestep conditioning, and adaptive normalization.</p>
+</li>
+</ul>
+<h2 id="2-audio-compression-discrete-tokens-and-continuous-latents">2. Audio compression, discrete tokens, and continuous latents</h2>
+<ul>
+<li>
+<p>[ ] <strong>★ P09 · VQ-VAE</strong> — van den Oord, Vinyals &amp; Kavukcuoglu (2017). <a href="https://arxiv.org/abs/1711.00937">Neural Discrete Representation Learning</a>. The essential starting point for learned codebooks, commitment loss, discrete bottlenecks, and separately trained generative priors.</p>
+</li>
+<li>
+<p>[ ] <strong>P10 · VQ-VAE-2</strong> — Razavi, van den Oord &amp; Vinyals (2019). <a href="https://arxiv.org/abs/1906.00446">Generating Diverse High-Fidelity Images with VQ-VAE-2</a>. Hierarchical discrete representations and priors; useful background for Jukebox's multiscale design.</p>
+</li>
+<li>
+<p>[ ] <strong>P11 · SoundStream</strong> — Zeghidour et al. (2021). <a href="https://arxiv.org/abs/2107.03312">SoundStream: An End-to-End Neural Audio Codec</a>. Residual vector quantization, adversarial reconstruction, and variable-rate neural audio compression.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P12 · EnCodec</strong> — Défossez et al. (2022). <a href="https://arxiv.org/abs/2210.13438">High Fidelity Neural Audio Compression</a>. Understand audio codebooks, bitrate, reconstruction losses, and the codec interface used by MusicGen.</p>
+</li>
+<li>
+<p>[ ] <strong>P13 · DAC / RVQGAN</strong> — Kumar et al. (2023). <a href="https://arxiv.org/abs/2306.06546">High-Fidelity Audio Compression with Improved RVQGAN</a>. A strong codec reference for quantization design, codebook utilization, and perceptual reconstruction quality.</p>
+</li>
+<li>
+<p>[ ] <strong>P14 · FSQ</strong> — Mentzer et al. (2023). <a href="https://arxiv.org/abs/2309.15505">Finite Scalar Quantization: VQ-VAE Made Simple</a>. Discretize bounded scalar dimensions instead of learning a vector codebook; relevant to understanding alternative token bottlenecks, including ACE-Step 1.5.</p>
+</li>
+<li>
+<p>[ ] <strong>P15 · DC-AE / DCAE</strong> — Chen et al. (2024). <a href="https://arxiv.org/abs/2410.10733">Deep Compression Autoencoder for Efficient High-Resolution Diffusion Models</a>. An image-domain compression paper that informs the adapted DCAE in original ACE-Step. Study compression versus reconstruction; check audio implementations separately.</p>
+</li>
+<li>
+<p>[ ] <strong>P16 · X-Codec</strong> — Ye et al. (2024). <a href="https://arxiv.org/abs/2408.17175">Codec Does Matter: Exploring the Semantic Shortcoming of Codec for Audio Language Model</a>. Why acoustic reconstruction alone can produce weak tokens for language modeling, and how semantic features improve the codec; relevant to YuE.</p>
+</li>
+</ul>
+<h2 id="3-understanding-and-aligning-audio-representations">3. Understanding and aligning audio representations</h2>
+<ul>
+<li>
+<p>[ ] <strong>P17 · HuBERT</strong> — Hsu et al. (2021). <a href="https://arxiv.org/abs/2106.07447">HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units</a>. Cluster-derived targets and masked prediction underpin a major family of speech representation models.</p>
+</li>
+<li>
+<p>[ ] <strong>P18 · mHuBERT</strong> — Boito et al. (2024). <a href="https://arxiv.org/abs/2406.06371">mHuBERT-147: A Compact Multilingual HuBERT Model</a>. A concrete multilingual speech-model reference. Useful for vocal-content features; distinguish the mHuBERT family from the exact checkpoint used by a music system.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P19 · MERT</strong> — Li et al. (2023). <a href="https://arxiv.org/abs/2306.00107">MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training</a>. Music-specific self-supervised representations using acoustic and musical teacher targets; important for probing what musical information a representation preserves.</p>
+</li>
+<li>
+<p>[ ] <strong>P20 · LAION-CLAP</strong> — Wu et al. (2022). <a href="https://arxiv.org/abs/2211.06687">Large-scale Contrastive Language-Audio Pretraining with Feature Fusion and Keyword-to-Caption Augmentation</a>. Audio–text contrastive alignment used for retrieval, conditioning, and semantic evaluation; a global similarity embedding does not encode an exact score.</p>
+</li>
+<li>
+<p>[ ] <strong>P21 · REPA</strong> — Yu et al. (2024). <a href="https://arxiv.org/abs/2410.06940">Representation Alignment for Generation: Training Diffusion Transformers Is Easier Than You Think</a>. Align generator features with pretrained representations. Read this image-domain foundation alongside ACE-Step's adaptation to audio teachers.</p>
+</li>
+</ul>
+<h2 id="4-from-audio-modeling-to-music-and-complete-songs">4. From audio modeling to music and complete songs</h2>
+<ul>
+<li>
+<p>[ ] <strong>★ P22 · Jukebox</strong> — Dhariwal et al. (2020). <a href="https://arxiv.org/abs/2005.00341">Jukebox: A Generative Model for Music</a>. Hierarchical VQ-VAE compression plus autoregressive priors for music with singing; a landmark in lyrics-conditioned audio generation. <a href="https://github.com/openai/jukebox">Official code</a>.</p>
+</li>
+<li>
+<p>[ ] <strong>P23 · AudioLM</strong> — Borsos et al. (2022). <a href="https://arxiv.org/abs/2209.03143">AudioLM: a Language Modeling Approach to Audio Generation</a>. Separates semantic and acoustic token modeling; essential background for hierarchical audio language models.</p>
+</li>
+<li>
+<p>[ ] <strong>P24 · MusicLM</strong> — Agostinelli et al. (2023). <a href="https://arxiv.org/abs/2301.11325">MusicLM: Generating Music From Text</a>. Hierarchical text-conditioned music generation, including melody conditioning; compare semantic planning with acoustic detail generation.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P25 · MusicGen</strong> — Copet et al. (2023). <a href="https://arxiv.org/abs/2306.05284">Simple and Controllable Music Generation</a>. A single-stage autoregressive model over EnCodec tokens with codebook delay patterns and melody conditioning.</p>
+</li>
+<li>
+<p>[ ] <strong>P26 · AudioLDM</strong> — Liu et al. (2023). <a href="https://arxiv.org/abs/2301.12503">AudioLDM: Text-to-Audio Generation with Latent Diffusion Models</a>. Connects contrastive audio–text embeddings, a latent audio autoencoder, and diffusion; foundational beyond music-specific models.</p>
+</li>
+<li>
+<p>[ ] <strong>P27 · Riffusion — original prototype</strong> — Forsgren &amp; Martiros (2022). <a href="https://github.com/riffusion/riffusion-hobby">Official repository</a> · <a href="https://huggingface.co/riffusion/riffusion-model-v1">Original model card</a>. <strong>Project/code reference, not a formal paper:</strong> Stable Diffusion adapted to spectrogram images, followed by audio reconstruction. Useful for understanding representation choices and their limitations.</p>
+</li>
+<li>
+<p>[ ] <strong>P28 · Stable Audio — timing conditioning</strong> — Evans et al. (2024). <a href="https://arxiv.org/abs/2402.04825">Fast Timing-Conditioned Latent Audio Diffusion</a>. Duration and timing conditioning for latent audio diffusion; the original Stable Audio architecture reference.</p>
+</li>
+<li>
+<p>[ ] <strong>P29 · Stable Audio 2.0 — long-form generation</strong> — Evans et al. (2024). <a href="https://arxiv.org/abs/2404.10301">Long-form music generation with latent diffusion</a>. A fully convolutional audio autoencoder and diffusion transformer for longer, high-fidelity music generation.</p>
+</li>
+<li>
+<p>[ ] <strong>P30 · Stable Audio Open</strong> — Evans et al. (2024). <a href="https://arxiv.org/abs/2407.14358">Stable Audio Open</a>. An openly released text-to-audio system; read for the relationship between training data, autoencoding, text conditioning, and diffusion.</p>
+</li>
+<li>
+<p>[ ] <strong>P31 · YuE</strong> — Yuan et al. (2025). <a href="https://arxiv.org/abs/2503.08638">YuE: Scaling Open Foundation Models for Long-Form Music Generation</a>. Lyrics-to-song generation with track-decoupled token prediction and progressive conditioning; compare vocal/accompaniment coordination with latent diffusion. <a href="https://github.com/multimodal-art-projection/YuE/tree/YuE-v1">Original-version code</a>.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P52 · YuE2</strong> — Yuan et al. (2026). <a href="https://arxiv.org/abs/2609.33757">YuE2: Unifying Symbolic and Audio Music Generation at Frontier Quality</a>. Editable ABC composition followed by semantic-token prediction, acoustic flow matching, and waveform decoding. Study explicit score conditioning and measure whether the audio actually follows it. <a href="https://github.com/multimodal-art-projection/YuE/blob/main/docs/generation.md">Official code and generation guide</a>.</p>
+</li>
+<li>
+<p>[ ] <strong>P32 · SongGen</strong> — Liu et al. (2025). <a href="https://arxiv.org/abs/2502.13128">SongGen: A Single Stage Auto-regressive Transformer for Text-to-Song Generation</a>. Mixed and dual-track token generation from descriptions and lyrics, with optional reference voice conditioning. <a href="https://github.com/LiuZH-19/SongGen">Official code</a>.</p>
+</li>
+<li>
+<p>[ ] <strong>P33 · DiffRhythm</strong> — Ning et al. (2025). <a href="https://arxiv.org/abs/2503.01183">DiffRhythm: Blazingly Fast and Embarrassingly Simple End-to-End Full-Length Song Generation with Latent Diffusion</a>. Joint vocal/accompaniment generation through latent flow matching with lyrics and style conditioning; inspect how lyric timing enters the model. <a href="https://github.com/ASLP-lab/DiffRhythm">Official code</a>.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P34 · ACE-Step — original model</strong> — Gong et al. (2025). <a href="https://arxiv.org/abs/2506.00045">ACE-Step: A Step Towards Music Generation Foundation Model</a>. Connect DCAE compression, diffusion/flow generation, lyric conditioning, and representation alignment with music and speech teachers. <a href="https://github.com/ace-step/ACE-Step">Official code</a>.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P35 · ACE-Step 1.5</strong> — Gong et al. (2026). <a href="https://arxiv.org/abs/2602.00744">ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation</a>. Study the language-model planning stage, semantic tokens, and acoustic diffusion renderer. Compare the paper with the selected checkpoint and inference path. <a href="https://github.com/ace-step/ACE-Step-1.5">Official code</a>.</p>
+</li>
+</ul>
+<h2 id="5-adaptation-and-precise-musical-control">5. Adaptation and precise musical control</h2>
+<ul>
+<li>
+<p>[ ] <strong>P36 · LoRA</strong> — Hu et al. (2021). <a href="https://arxiv.org/abs/2106.09685">LoRA: Low-Rank Adaptation of Large Language Models</a>. Low-rank weight updates for economical adaptation; useful background for music-model fine-tuning, separate from per-note conditioning.</p>
+</li>
+<li>
+<p>[ ] <strong>P37 · ControlNet</strong> — Zhang, Rao &amp; Agrawala (2023). <a href="https://arxiv.org/abs/2302.05543">Adding Conditional Control to Text-to-Image Diffusion Models</a>. The image-domain foundation for adding structured conditions to pretrained diffusion models.</p>
+</li>
+<li>
+<p>[ ] <strong>P38 · Music ControlNet</strong> — Wu et al. (2023). <a href="https://arxiv.org/abs/2311.07069">Music ControlNet: Multiple Time-varying Controls for Music Generation</a>. Melody, dynamics, and rhythm controls over time, including partially specified controls; directly relevant to your melody-following problem.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P39 · JASCO</strong> — Tal et al. (2024). <a href="https://arxiv.org/abs/2406.10970">Joint Audio and Symbolic Conditioning for Temporally Controlled Text-to-Music Generation</a>. A bridge between symbolic conditions and audio generation, combining text with temporally aligned chord, melody, and drum controls.</p>
+</li>
+</ul>
+<h2 id="6-symbolic-composition-transcription-and-score-audio-bridges">6. Symbolic composition, transcription, and score ↔ audio bridges</h2>
+<ul>
+<li>
+<p>[ ] <strong>P40 · MusicVAE</strong> — Roberts et al. (2018). <a href="https://arxiv.org/abs/1803.05428">A Hierarchical Latent Vector Model for Learning Long-Term Structure in Music</a>. A foundational symbolic latent-space model for interpolation and long-range musical structure.</p>
+</li>
+<li>
+<p>[ ] <strong>P41 · Music Transformer</strong> — Huang et al. (2018). <a href="https://arxiv.org/abs/1809.04281">Music Transformer</a>. Relative attention for expressive symbolic music with longer-range repetition and structure.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P42 · REMI / Pop Music Transformer</strong> — Huang &amp; Yang (2020). <a href="https://arxiv.org/abs/2002.00212">Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions</a>. Beat- and bar-aware event representations; a key reference for designing a musically meaningful intermediate representation.</p>
+</li>
+<li>
+<p>[ ] <strong>P43 · MuseNet</strong> — Payne (2019). <a href="https://openai.com/index/musenet/">Official MuseNet write-up</a>. <strong>Project write-up, not a formal paper:</strong> multi-instrument MIDI token prediction with style and instrumentation conditioning. Study its event encoding alongside REMI.</p>
+</li>
+<li>
+<p>[ ] <strong>P44 · Anticipatory Music Transformer</strong> — Thickstun et al. (2023). <a href="https://arxiv.org/abs/2306.08620">Anticipatory Music Transformer</a>. Asynchronous symbolic controls, infilling, and accompaniment generation; useful for preserving specified events while generating surrounding music.</p>
+</li>
+<li>
+<p>[ ] <strong>P45 · Onsets and Frames</strong> — Hawthorne et al. (2017). <a href="https://arxiv.org/abs/1710.11153">Onsets and Frames: Dual-Objective Piano Transcription</a>. Audio-to-note estimation with explicit onset and frame objectives; understand transcription before attempting audio-to-score systems.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P46 · MT3</strong> — Gardner et al. (2021). <a href="https://arxiv.org/abs/2111.03017">MT3: Multi-Task Multitrack Music Transcription</a>. Sequence-to-sequence transcription from audio into instrument-labeled note events across multiple datasets.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P47 · PM2S</strong> — Liu, Kong, Morfi &amp; Benetos (2022). <a href="https://archives.ismir.net/ismir2022/paper/000047.pdf">Performance MIDI-to-Score Conversion by Neural Beat Tracking</a>. The next bridge after transcription: rhythmic quantization and score-related predictions from performed note events. <a href="https://github.com/cheriell/PM2S">Official code</a>.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P48 · DDSP</strong> — Engel et al. (2020). <a href="https://arxiv.org/abs/2001.04643">DDSP: Differentiable Digital Signal Processing</a>. Differentiable synthesis with explicit pitch, loudness, and signal-processing structure; a foundational example of interpretable controls combined with learned components.</p>
+</li>
+<li>
+<p>[ ] <strong>P49 · CLaMP 3</strong> — Wu et al. (2025). <a href="https://arxiv.org/abs/2502.10362">CLaMP 3: Universal Music Information Retrieval Across Unaligned Modalities and Unseen Languages</a>. Align sheet music, performance MIDI, audio, and text for retrieval. Relevant to a shared musical interface; contrastive alignment alone does not provide score↔audio conversion.</p>
+</li>
+<li>
+<p>[ ] <strong>★ P51 · SheetSage-A2S</strong> — Cummins et al. (2026). <a href="https://arxiv.org/abs/2608.06165">Audio-to-Score Transcription using Pre-trained Features, Data Augmentation, and the New SheetSage-A2S Dataset</a>. Frozen MuQ features and an autoregressive notation decoder; a direct audio-to-score reference. <a href="../journal/entries/2026-10-05.md">Research discussion</a>.</p>
+</li>
+</ul>
+<h2 id="7-evaluation">7. Evaluation</h2>
+<ul>
+<li>[ ] <strong>P50 · Fréchet Audio Distance</strong> — Kilgour et al. (2018). <a href="https://arxiv.org/abs/1812.08466">Fréchet Audio Distance: A Metric for Evaluating Music Enhancement Algorithms</a>. The origin of a widely used distributional audio metric. Pair it with listening tests and separate checks of notes, timing, lyrics, and control adherence.</li>
+</ul>
+<h2 id="how-to-curate-this-into-a-book">How to curate this into a book</h2>
+<p>For each reference, keep a short note: <strong>representation → training objective → conditioning → inference → evidence → unresolved question</strong>. Record which information is explicit, which is compressed into learned features, and which can actually be edited.</p>
+<p>For your compiler-oriented research, a useful working decomposition is:</p>
+<pre><code class="language-text">score / notation → structured musical events → expressive performance → audio renderer
+audio → estimated performance events → rhythm / meter / voice interpretation → score
+</code></pre>
+<p>This is a research organizing framework, not a claim that the cited systems implement a complete reversible pipeline. Transcription, score interpretation, and rendering have different objectives; acoustic codec tokens, semantic embeddings, and symbolic note events also carry different information.</p>
+<p>Read ACE-Step 1.0 and 1.5 as separate architectures. Likewise, mHuBERT is a speech representation family, MERT is music-oriented, and DC-AE, DiT, LoRA, and ControlNet originated outside music. Those distinctions help trace which ideas were transferred and what the music-specific adaptations actually contribute.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

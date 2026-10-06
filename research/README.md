@@ -4,7 +4,7 @@ Ground truth for everything published on the [Maestro site](https://htansetiawan
 
 | Path | What it is |
 |---|---|
-| [CORE-MUSIC-GENERATION-REFERENCES.md](CORE-MUSIC-GENERATION-REFERENCES.md) | A curated 50-reference reading list for understanding music generation, with primary links, a 15-paper first pass, and symbolic score ↔ audio foundations. |
+| [CORE-MUSIC-GENERATION-REFERENCES.md](CORE-MUSIC-GENERATION-REFERENCES.md) | A curated 52-reference reading list for understanding music generation, with primary links, a 17-paper first pass, and symbolic score ↔ audio foundations. |
 | `notes/01–08*.md` | The eight raw research clusters, 463 entries. Every claim in the review traces to an entry here. Each carries a **verification level** — *verified* (primary source fetched), *partial* (secondary only), *unverified* (recall). |
 | `literature-review.md` | The assembled review, 13 sections. Rendered to `../survey/`. |
 | `taxonomy.md` | 49 nodes, 10 dimensions, the studio's design position, 12 gaps. |
