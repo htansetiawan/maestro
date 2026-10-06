@@ -13,8 +13,12 @@ piano recording, and a full arrangement continued from only its first 30 seconds
 | 30-second seed, then piano + orchestra + vocals | [Base continuation](audio/continuation-base/continuation.mp3) | [Adapted continuation](audio/continuation-foster/continuation.mp3) |
 
 Both tasks use the original [The Yard Remembers lyrics](../003_color_purple_yard_vocals/lyrics.txt).
-Generated files and checkpoints are local, gitignored artifacts. Links become
-available on this machine. All three new renders completed on October 5, 2026;
+Generated MP3 and WAV files are included in this repository. Training data,
+checkpoints, and runtime logs are gitignored. The final adapter is hosted in the
+private Hugging Face repository
+[henryatharvard/maestro-acestep-foster-lora](https://huggingface.co/henryatharvard/maestro-acestep-foster-lora);
+access requires an authorized Hugging Face account. See the [model card](MODEL_CARD.md).
+All three new renders completed on October 5, 2026;
 each has a `status: complete` runtime record.
 
 The [verification script](record/check.py) passed: all 512 adapter tensors are

@@ -1,6 +1,5 @@
 data/
 artifacts/
-audio/
 raw/
 .cache/
 __pycache__/

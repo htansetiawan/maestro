@@ -13,8 +13,9 @@ generations of students.
 - [Generated singing alone — float32 WAV](audio/vocals.wav)
 - [Original lyrics: The Yard Remembers](lyrics.txt)
 
-Audio and runtime records are local, ignored experiment outputs. The source MP3
-is decoded to 48 kHz stereo. The decoded accompaniment is mixed directly with the
+Generated MP3 and WAV outputs are included in the repository. Source data and
+runtime records remain local and gitignored. The source MP3 is decoded to
+48 kHz stereo. The decoded accompaniment is mixed directly with the
 new vocal stem, with a constant overall gain for peak headroom. There is no time
 stretching or regeneration of the accompaniment.
 
