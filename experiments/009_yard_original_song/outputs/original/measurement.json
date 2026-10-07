@@ -1,0 +1,16 @@
+{
+  "elapsed_seconds": 80.13006949913688,
+  "audio_seconds": 189.31866666666667,
+  "peak": 1.0,
+  "rms": 0.2167953698431056,
+  "clipped_fraction": 2.145852847755812e-06,
+  "truncated": {
+    "abc": false,
+    "semantic": false
+  },
+  "manifest_verified": true,
+  "external_score_supplied": false,
+  "peak_cuda_gib": 8.66121244430542,
+  "auditory_quality_evaluated": false,
+  "lyric_accuracy_evaluated": false
+}

@@ -1,0 +1,6 @@
+{
+  "first_launch": "Stopped before model loading: CUDA free memory below 24 GiB threshold",
+  "followup": "nvidia-smi and independent torch check subsequently found GPU available",
+  "followup_cuda_free_bytes": 49468342272,
+  "generation_started": false
+}

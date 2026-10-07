@@ -1,5 +1,10 @@
 # Experiments
 
+[009 — The Yard with Red Brick Buildings](009_yard_original_song/README.md)
+is an original YuE2 song generated from new lyrics and a style prompt, with a
+model-composed melody and harmony. Includes the MP3, lossless audio, generated
+score, and exact request; no recording or external score was supplied.
+
 The new [ACE audio personalization experiment](001_ace_audio_personalization/README.md)
 is experiment-scoped and uses `uv`. It prepares original piano/violin recordings,
 trains an ACE-Step LoRA, collects human or AI audio preferences, branches into
