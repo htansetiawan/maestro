@@ -1,5 +1,9 @@
 # Experiments
 
+[010 — Sheet-conditioned orchestral Yard song](010_yard_sheet_orchestral/README.md)
+uses the supplied sheet's melody and chords with score-adapted Yard lyrics and
+the orchestral direction of 009. Its experiment page records queue/output status.
+
 [009 — The Yard with Red Brick Buildings](009_yard_original_song/README.md)
 is an original YuE2 song generated from new lyrics and a style prompt, with a
 model-composed melody and harmony. Includes the MP3, lossless audio, generated

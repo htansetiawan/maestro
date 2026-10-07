@@ -1,0 +1,6 @@
+outputs/**/*.npy
+record/*.log
+record/*.lock
+record/queue-status.json
+record/*.tmp
+record/__pycache__/

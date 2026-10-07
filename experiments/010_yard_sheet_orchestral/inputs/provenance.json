@@ -1,0 +1,18 @@
+{
+  "source_pdf_sha256": "4fff8e8f669eeaede7506398a22203d4353b14a2ddd5ba9db0b1e752df08fbbc",
+  "source_reduction": "experiments/007_color_purple_sheet_yue2/prepared/score.abc",
+  "vocal_adaptation": "experiments/008_color_purple_two_vocal_versions/inputs/vocal.abc",
+  "review": "experiments/008_color_purple_two_vocal_versions/record/score-review.json",
+  "reviewed_input_hashes": {
+    "experiments/007_color_purple_sheet_yue2/prepared/score.abc": "2bf593c9a7015ea0847d4a1e530a872f765dc8348e2521d5815642c4ec324d30",
+    "experiments/008_color_purple_two_vocal_versions/inputs/vocal.abc": "52b47ee6ab9cf3711732987f7ab4106c9007088f623e1d9184fc093bf7d6996d",
+    "experiments/008_color_purple_two_vocal_versions/inputs/request.json": "707891fa0e001a2c98522245f4d2f83fafbb280d90446bbf81a7d2d0bb124c62",
+    "experiments/008_color_purple_two_vocal_versions/inputs/lyrics.txt": "b546c53e2c7aaca9d28b2382911c9eea228d8ea97092e8fa3f46df1e3d381617",
+    "experiments/008_color_purple_two_vocal_versions/inputs/edit_manifest.json": "577db60ab5e110d61870cb6e1568276b9c575cddf2d46a316a95b461e4a5d657",
+    "experiments/008_color_purple_two_vocal_versions/inputs/lyric-note-map.json": "de4e59184bc5bf3925b1bbeeead7e76d6417eaf170c47c80f32305d07bd52323"
+  },
+  "score_reused_without_changes": true,
+  "lyrics_reused_without_changes": true,
+  "audio_input": null,
+  "comparison": "009 supplies orchestral style and seed; 008 supplies reviewed sheet-derived vocal score and compatible Yard lyrics. Tempo changes from 78 to 88 BPM and key/meter follow the sheet. This is not a one-variable comparison with 009."
+}
