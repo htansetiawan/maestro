@@ -1,6 +1,6 @@
 # 010 — The Yard, conditioned on the sheet music
 
-**Queued for GPU memory. Audio has not been generated yet.**
+**Generated without token-limit truncation. Duration **6:11**. Audio and lyric fidelity await listening.**
 
 [Listening page](index.html) · [Actual lyrics](inputs/lyrics.txt) ·
 [Actual conditioning score](inputs/vocal.abc) · [Request](inputs/request.json)
@@ -47,6 +47,29 @@ configuration and weight hashes are saved with the output. Native token arrays
 and latents stay local and ignored; audio and readable manifests are published.
 File integrity, score-input equality and non-silent audio do not prove audible
 score adherence, lyric accuracy or musical quality.
+
+
+Run measurements:
+
+```json
+{
+  "elapsed_seconds": 128.24141481192783,
+  "audio_seconds": 370.75866666666667,
+  "peak": 0.693731427192688,
+  "rms": 0.07388661422849878,
+  "clipped_fraction": 0.0,
+  "truncated": {
+    "abc": false,
+    "semantic": false
+  },
+  "manifest_verified": true,
+  "external_score_supplied": true,
+  "saved_score_matches_input": true,
+  "peak_cuda_gib": 8.890914916992188,
+  "auditory_quality_evaluated": false,
+  "lyric_accuracy_evaluated": false
+}
+```
 
 ## Queue and reproduction
 
