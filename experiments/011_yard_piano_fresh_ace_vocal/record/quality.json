@@ -1,0 +1,19 @@
+{
+  "mix_reconstruction_max_error": 5.960464477539063e-08,
+  "recovered_piano_max_error": 1.7881393432617188e-07,
+  "piano_time_stretched": false,
+  "piano_regenerated": false,
+  "piano_gain": 0.8335381761704183,
+  "vocal_gain": 0.7631677876291133,
+  "vocal_delivery_gain": 0.95,
+  "sample_rate": 48000,
+  "channels": 2,
+  "samples": 10096640,
+  "duration_seconds": 210.34666666666666,
+  "raw_vocal_duration_seconds": 210.32,
+  "vocal_padding_or_trimming_samples": 1280,
+  "peak": 0.9500000476837158,
+  "clipped_samples": 0,
+  "musical_alignment_evaluated": false,
+  "lyric_accuracy_evaluated": false
+}

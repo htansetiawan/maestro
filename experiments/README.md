@@ -1,5 +1,9 @@
 # Experiments
 
+[011 — Original piano with a fresh ACE-Step vocal](011_yard_piano_fresh_ace_vocal/README.md)
+conditions the LEGO vocal task directly on the original Color Purple audio, using
+009's lyrics. Includes the mix, isolated voice and piano-preservation checks.
+
 [010 — Sheet-conditioned orchestral Yard song](010_yard_sheet_orchestral/README.md)
 uses the supplied sheet's melody and chords with score-adapted Yard lyrics and
 the orchestral direction of 009. Its experiment page records queue/output status.

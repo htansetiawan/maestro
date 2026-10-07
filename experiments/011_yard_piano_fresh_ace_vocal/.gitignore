@@ -1,0 +1,8 @@
+data/
+raw/
+.cache/
+audio/*.wav
+record/*.log
+record/generation-private.json
+record/failure-private.json
+__pycache__/
