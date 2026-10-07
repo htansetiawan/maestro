@@ -1,0 +1,9 @@
+{
+  "removed_task_created_arrays": [
+    "generated-voice.npy",
+    "prompt.npy",
+    "piano-analysis.npz"
+  ],
+  "original_user_audio_untouched": true,
+  "retained_trial_audio": "MP3 only"
+}

@@ -1,0 +1,23 @@
+{
+  "player_durations": [
+    {
+      "id": "mix",
+      "duration": 25
+    },
+    {
+      "id": "vocal",
+      "duration": 25
+    },
+    {
+      "id": "note-guide",
+      "duration": 25
+    },
+    {
+      "id": "piano",
+      "duration": 25
+    }
+  ],
+  "note_click_starts_playback": true,
+  "mobile_overflow": false,
+  "page_errors": []
+}

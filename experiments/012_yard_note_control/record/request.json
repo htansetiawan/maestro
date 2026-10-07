@@ -1,0 +1,26 @@
+{
+  "model": "Soul-AILab/SoulX-Singer",
+  "model_revision": "40493ad90286056c7a9095035164434a79daa8c9",
+  "code_revision": "81aeb3ae772c70093c3de74dc23c92d983801ae4",
+  "model_sha256": "447eaf41f91a6b6659d55e9ec3c9b809221724fb8592aebaec35a23751a5b500",
+  "control": "score",
+  "auto_shift": false,
+  "pitch_shift": 0,
+  "seed": 20261007,
+  "n_steps": 32,
+  "cfg": 3.0,
+  "fp16": true,
+  "runtime": {
+    "torch": "2.10.0+cu128",
+    "torchaudio": "2.10.0+cu128",
+    "transformers": "4.41.2",
+    "numpy": "2.2.6",
+    "librosa": "0.11.0",
+    "cmudict": "1.1.1"
+  },
+  "runtime_note": "Isolated Transformers 4.41.2; existing Torch 2.10 CUDA 12.8 and NumPy 2.2.6 reused for Blackwell. Not the upstream Torch 2.2/Python 3.10 environment.",
+  "target_metadata_sha256": "2849d227c336d956998a5f166bef134bc4b77ad2328c4477d82e585b4f8701a7",
+  "prompt_metadata_sha256": "76537243b2ec3c5800a2f2aedea4d677ba61a395c539a1b1291451c300b3668f",
+  "voice_reference": "Synthetic ACE-Step excerpt from experiment 011; see prompt-provenance.json",
+  "conditioning": "Explicit note pitch/duration and English phonemes. Piano waveform is used only for original excerpt/mixing; the melody was composed against its analyzed timing."
+}

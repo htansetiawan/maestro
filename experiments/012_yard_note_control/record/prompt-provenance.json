@@ -1,0 +1,85 @@
+{
+  "source": "experiments/011_yard_piano_fresh_ace_vocal/audio/vocals.mp3",
+  "source_sha256": "39a4899571546852792d671bd3d9d2d464412a6e6e268d64d5d8dc2a0bcf6d72",
+  "start_seconds": 7.38,
+  "end_seconds": 16.4,
+  "voice_origin": "Synthetic ACE-Step voice from experiment 011; not an external singer recording",
+  "alignment": "Whisper-base.en word timestamps; estimated, not manually verified phoneme alignment",
+  "pitch": "Median librosa pYIN F0 per word; approximate prompt annotation only",
+  "words": [
+    {
+      "word": "books",
+      "onset": 0.0,
+      "duration": 0.58,
+      "midi": 50,
+      "phonemes": [
+        "B",
+        "UH1",
+        "K",
+        "S"
+      ],
+      "voiced_median_hz": 146.76537262479707
+    },
+    {
+      "word": "and",
+      "onset": 0.58,
+      "duration": 0.52,
+      "midi": 53,
+      "phonemes": [
+        "AH0",
+        "N",
+        "D"
+      ],
+      "voiced_median_hz": 178.0996037738115
+    },
+    {
+      "word": "coats",
+      "onset": 1.1,
+      "duration": 0.86,
+      "midi": 50,
+      "phonemes": [
+        "K",
+        "OW1",
+        "T",
+        "S"
+      ],
+      "voiced_median_hz": 148.4707041104003
+    },
+    {
+      "word": "beneath",
+      "onset": 1.96,
+      "duration": 1.62,
+      "midi": 46,
+      "phonemes": [
+        "B",
+        "IH0",
+        "N",
+        "IY1",
+        "TH"
+      ],
+      "voiced_median_hz": 114.4865635674993
+    },
+    {
+      "word": "a",
+      "onset": 3.58,
+      "duration": 1.38,
+      "midi": 53,
+      "phonemes": [
+        "AH0"
+      ],
+      "voiced_median_hz": 174.53442536143424
+    },
+    {
+      "word": "tree",
+      "onset": 4.96,
+      "duration": 4.06,
+      "midi": 53,
+      "phonemes": [
+        "T",
+        "R",
+        "IY1"
+      ],
+      "voiced_median_hz": 174.53442536143424
+    }
+  ]
+}

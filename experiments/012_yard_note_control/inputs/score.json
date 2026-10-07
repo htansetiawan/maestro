@@ -1,0 +1,433 @@
+{
+  "source": "theme_from_the_color_purple.mp3",
+  "source_sha256": "1a6ab9f251f1bc1ef278583b976c582aee39a67cde57536757b9bd4c1b0824a7",
+  "excerpt_start": 1.7,
+  "excerpt_seconds": 25.0,
+  "control": "Explicit MIDI pitches and per-syllable durations; 20 ms grid",
+  "timing_method": "Audio onset/CQT evidence; manually selected phrase anchors. Intermediate onsets are composed by proportional subdivision, not measured beat annotations.",
+  "harmonic_method": "F-centered pedal harmony inferred from audio. Upper-voice labels are tentative; no sheet imported.",
+  "source_anchor_seconds": [
+    1.927,
+    4.888,
+    7.663,
+    10.728,
+    14.129,
+    16.776,
+    19.377,
+    22.396,
+    26.401
+  ],
+  "lyrics": "Red brick walls hold the light\nOld trees shade our dreams at night\nFriends we found will walk with us\nHere our love will live and last",
+  "events": [
+    {
+      "word": "Red",
+      "syllable": "red",
+      "start": 0.22,
+      "end": 0.96,
+      "midi": 57,
+      "phonemes": [
+        "R",
+        "EH1",
+        "D"
+      ],
+      "bar": 1,
+      "chord_estimate": "F",
+      "original_audio_start": 1.92
+    },
+    {
+      "word": "brick",
+      "syllable": "brick",
+      "start": 0.96,
+      "end": 1.7,
+      "midi": 60,
+      "phonemes": [
+        "B",
+        "R",
+        "IH1",
+        "K"
+      ],
+      "bar": 1,
+      "chord_estimate": "F",
+      "original_audio_start": 2.66
+    },
+    {
+      "word": "walls",
+      "syllable": "walls",
+      "start": 1.7,
+      "end": 3.14,
+      "midi": 57,
+      "phonemes": [
+        "W",
+        "AO1",
+        "L",
+        "Z"
+      ],
+      "bar": 1,
+      "chord_estimate": "F",
+      "original_audio_start": 3.4
+    },
+    {
+      "word": "hold",
+      "syllable": "hold",
+      "start": 3.18,
+      "end": 3.88,
+      "midi": 55,
+      "phonemes": [
+        "HH",
+        "OW1",
+        "L",
+        "D"
+      ],
+      "bar": 2,
+      "chord_estimate": "Gm7/F-like upper voices",
+      "original_audio_start": 4.88
+    },
+    {
+      "word": "the",
+      "syllable": "the",
+      "start": 3.88,
+      "end": 4.58,
+      "midi": 58,
+      "phonemes": [
+        "DH",
+        "AH0"
+      ],
+      "bar": 2,
+      "chord_estimate": "Gm7/F-like upper voices",
+      "original_audio_start": 5.58
+    },
+    {
+      "word": "light",
+      "syllable": "light",
+      "start": 4.58,
+      "end": 5.82,
+      "midi": 62,
+      "phonemes": [
+        "L",
+        "AY1",
+        "T"
+      ],
+      "bar": 2,
+      "chord_estimate": "Gm7/F-like upper voices",
+      "original_audio_start": 6.28
+    },
+    {
+      "word": "Old",
+      "syllable": "old",
+      "start": 5.96,
+      "end": 6.72,
+      "midi": 53,
+      "phonemes": [
+        "OW1",
+        "L",
+        "D"
+      ],
+      "bar": 3,
+      "chord_estimate": "Bb/F",
+      "original_audio_start": 7.66
+    },
+    {
+      "word": "trees",
+      "syllable": "trees",
+      "start": 6.72,
+      "end": 7.5,
+      "midi": 58,
+      "phonemes": [
+        "T",
+        "R",
+        "IY1",
+        "Z"
+      ],
+      "bar": 3,
+      "chord_estimate": "Bb/F",
+      "original_audio_start": 8.42
+    },
+    {
+      "word": "shade",
+      "syllable": "shade",
+      "start": 7.5,
+      "end": 8.98,
+      "midi": 62,
+      "phonemes": [
+        "SH",
+        "EY1",
+        "D"
+      ],
+      "bar": 3,
+      "chord_estimate": "Bb/F",
+      "original_audio_start": 9.2
+    },
+    {
+      "word": "our",
+      "syllable": "our",
+      "start": 9.02,
+      "end": 9.7,
+      "midi": 61,
+      "phonemes": [
+        "AW1",
+        "R"
+      ],
+      "bar": 4,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 10.72
+    },
+    {
+      "word": "dreams",
+      "syllable": "dreams",
+      "start": 9.7,
+      "end": 10.38,
+      "midi": 60,
+      "phonemes": [
+        "D",
+        "R",
+        "IY1",
+        "M",
+        "Z"
+      ],
+      "bar": 4,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 11.4
+    },
+    {
+      "word": "at",
+      "syllable": "at",
+      "start": 10.38,
+      "end": 11.06,
+      "midi": 58,
+      "phonemes": [
+        "AE1",
+        "T"
+      ],
+      "bar": 4,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 12.08
+    },
+    {
+      "word": "night",
+      "syllable": "night",
+      "start": 11.06,
+      "end": 12.28,
+      "midi": 53,
+      "phonemes": [
+        "N",
+        "AY1",
+        "T"
+      ],
+      "bar": 4,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 12.76
+    },
+    {
+      "word": "Friends",
+      "syllable": "friends",
+      "start": 12.42,
+      "end": 13.1,
+      "midi": 57,
+      "phonemes": [
+        "F",
+        "R",
+        "EH1",
+        "N",
+        "D",
+        "Z"
+      ],
+      "bar": 5,
+      "chord_estimate": "F",
+      "original_audio_start": 14.12
+    },
+    {
+      "word": "we",
+      "syllable": "we",
+      "start": 13.1,
+      "end": 13.76,
+      "midi": 60,
+      "phonemes": [
+        "W",
+        "IY1"
+      ],
+      "bar": 5,
+      "chord_estimate": "F",
+      "original_audio_start": 14.8
+    },
+    {
+      "word": "found",
+      "syllable": "found",
+      "start": 13.76,
+      "end": 15.04,
+      "midi": 57,
+      "phonemes": [
+        "F",
+        "AW1",
+        "N",
+        "D"
+      ],
+      "bar": 5,
+      "chord_estimate": "F",
+      "original_audio_start": 15.46
+    },
+    {
+      "word": "will",
+      "syllable": "will",
+      "start": 15.08,
+      "end": 15.6,
+      "midi": 55,
+      "phonemes": [
+        "W",
+        "IH1",
+        "L"
+      ],
+      "bar": 6,
+      "chord_estimate": "Gm7/F-like upper voices",
+      "original_audio_start": 16.78
+    },
+    {
+      "word": "walk",
+      "syllable": "walk",
+      "start": 15.6,
+      "end": 16.12,
+      "midi": 58,
+      "phonemes": [
+        "W",
+        "AO1",
+        "K"
+      ],
+      "bar": 6,
+      "chord_estimate": "Gm7/F-like upper voices",
+      "original_audio_start": 17.3
+    },
+    {
+      "word": "with",
+      "syllable": "with",
+      "start": 16.12,
+      "end": 16.64,
+      "midi": 60,
+      "phonemes": [
+        "W",
+        "IH1",
+        "DH"
+      ],
+      "bar": 6,
+      "chord_estimate": "Gm7/F-like upper voices",
+      "original_audio_start": 17.82
+    },
+    {
+      "word": "us",
+      "syllable": "us",
+      "start": 16.64,
+      "end": 17.54,
+      "midi": 62,
+      "phonemes": [
+        "AH1",
+        "S"
+      ],
+      "bar": 6,
+      "chord_estimate": "Gm7/F-like upper voices",
+      "original_audio_start": 18.34
+    },
+    {
+      "word": "Here",
+      "syllable": "here",
+      "start": 17.68,
+      "end": 18.44,
+      "midi": 53,
+      "phonemes": [
+        "HH",
+        "IY1",
+        "R"
+      ],
+      "bar": 7,
+      "chord_estimate": "Bb/F",
+      "original_audio_start": 19.38
+    },
+    {
+      "word": "our",
+      "syllable": "our",
+      "start": 18.44,
+      "end": 19.18,
+      "midi": 58,
+      "phonemes": [
+        "AW1",
+        "R"
+      ],
+      "bar": 7,
+      "chord_estimate": "Bb/F",
+      "original_audio_start": 20.14
+    },
+    {
+      "word": "love",
+      "syllable": "love",
+      "start": 19.18,
+      "end": 20.66,
+      "midi": 62,
+      "phonemes": [
+        "L",
+        "AH1",
+        "V"
+      ],
+      "bar": 7,
+      "chord_estimate": "Bb/F",
+      "original_audio_start": 20.88
+    },
+    {
+      "word": "will",
+      "syllable": "will",
+      "start": 20.7,
+      "end": 21.5,
+      "midi": 61,
+      "phonemes": [
+        "W",
+        "IH1",
+        "L"
+      ],
+      "bar": 8,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 22.4
+    },
+    {
+      "word": "live",
+      "syllable": "live",
+      "start": 21.5,
+      "end": 22.3,
+      "midi": 60,
+      "phonemes": [
+        "L",
+        "AY1",
+        "V"
+      ],
+      "bar": 8,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 23.2
+    },
+    {
+      "word": "and",
+      "syllable": "and",
+      "start": 22.3,
+      "end": 23.1,
+      "midi": 58,
+      "phonemes": [
+        "AH0",
+        "N",
+        "D"
+      ],
+      "bar": 8,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 24.0
+    },
+    {
+      "word": "last",
+      "syllable": "last",
+      "start": 23.1,
+      "end": 24.56,
+      "midi": 53,
+      "phonemes": [
+        "L",
+        "AE1",
+        "S",
+        "T"
+      ],
+      "bar": 8,
+      "chord_estimate": "Bbm/F",
+      "original_audio_start": 24.8
+    }
+  ]
+}

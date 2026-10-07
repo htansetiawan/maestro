@@ -1,0 +1,79 @@
+{
+  "mp3_files": {
+    "vocal.mp3": {
+      "info": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "24000",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "25.056000",
+          "bit_rate": "160167"
+        }
+      },
+      "decoded_seconds": 25.0,
+      "decoded_mono_peak": 0.9047850370407104
+    },
+    "piano.mp3": {
+      "info": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "25.032000",
+          "bit_rate": "192198"
+        }
+      },
+      "decoded_seconds": 25.0,
+      "decoded_mono_peak": 0.9595193862915039
+    },
+    "mix.mp3": {
+      "info": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "25.032000",
+          "bit_rate": "192198"
+        }
+      },
+      "decoded_seconds": 25.0,
+      "decoded_mono_peak": 1.0381503105163574
+    },
+    "note-guide.mp3": {
+      "info": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "25.032000",
+          "bit_rate": "192198"
+        }
+      },
+      "decoded_seconds": 25.0,
+      "decoded_mono_peak": 0.9442229270935059
+    }
+  },
+  "note_count": 27,
+  "midi_matches_score": true,
+  "conditioning_duration": 25.0
+}

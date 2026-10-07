@@ -1,5 +1,10 @@
 # Experiments
 
+[012 — A short note-controlled vocal](012_yard_note_control/README.md) composes
+27 explicit notes and syllable durations against a 25-second piano excerpt,
+renders them with SoulX-Singer, and provides MP3 comparisons, MIDI, an interactive
+note timeline and measured pitch-following diagnostics.
+
 [011 — Original piano with a fresh ACE-Step vocal](011_yard_piano_fresh_ace_vocal/README.md)
 conditions the LEGO vocal task directly on the original Color Purple audio, using
 009's lyrics. Includes the mix, isolated voice and piano-preservation checks.

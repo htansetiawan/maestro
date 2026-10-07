@@ -1,0 +1,15 @@
+[
+  {
+    "index": "synthetic_ace_timbre",
+    "language": "English",
+    "time": [
+      0,
+      9020
+    ],
+    "duration": "0.58 0.52 0.86 1.62 1.38 4.06",
+    "text": "books and coats beneath a tree",
+    "phoneme": "en_B-UH1-K-S en_AH0-N-D en_K-OW1-T-S en_B-IH0-N-IY1-TH en_AH0 en_T-R-IY1",
+    "note_pitch": "50 53 50 46 53 53",
+    "note_type": "2 2 2 2 2 2"
+  }
+]

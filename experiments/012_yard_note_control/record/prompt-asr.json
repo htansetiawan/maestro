@@ -1,0 +1,159 @@
+{
+  "text": " Morning falls across the green, books and coats beneath a tree. Someone calls and waves me near. Suddenly I belong here. window",
+  "chunks": [
+    {
+      "text": " Morning",
+      "timestamp": [
+        0.0,
+        2.8
+      ]
+    },
+    {
+      "text": " falls",
+      "timestamp": [
+        2.8,
+        3.48
+      ]
+    },
+    {
+      "text": " across",
+      "timestamp": [
+        3.48,
+        5.0
+      ]
+    },
+    {
+      "text": " the",
+      "timestamp": [
+        5.0,
+        5.9
+      ]
+    },
+    {
+      "text": " green,",
+      "timestamp": [
+        5.9,
+        7.38
+      ]
+    },
+    {
+      "text": " books",
+      "timestamp": [
+        7.38,
+        7.96
+      ]
+    },
+    {
+      "text": " and",
+      "timestamp": [
+        7.96,
+        8.48
+      ]
+    },
+    {
+      "text": " coats",
+      "timestamp": [
+        8.48,
+        9.34
+      ]
+    },
+    {
+      "text": " beneath",
+      "timestamp": [
+        9.34,
+        10.96
+      ]
+    },
+    {
+      "text": " a",
+      "timestamp": [
+        10.96,
+        12.34
+      ]
+    },
+    {
+      "text": " tree.",
+      "timestamp": [
+        12.34,
+        16.4
+      ]
+    },
+    {
+      "text": " Someone",
+      "timestamp": [
+        17.5,
+        17.5
+      ]
+    },
+    {
+      "text": " calls",
+      "timestamp": [
+        17.5,
+        18.36
+      ]
+    },
+    {
+      "text": " and",
+      "timestamp": [
+        18.36,
+        19.18
+      ]
+    },
+    {
+      "text": " waves",
+      "timestamp": [
+        19.18,
+        19.64
+      ]
+    },
+    {
+      "text": " me",
+      "timestamp": [
+        19.64,
+        20.44
+      ]
+    },
+    {
+      "text": " near.",
+      "timestamp": [
+        20.44,
+        22.02
+      ]
+    },
+    {
+      "text": " Suddenly",
+      "timestamp": [
+        23.14,
+        23.14
+      ]
+    },
+    {
+      "text": " I",
+      "timestamp": [
+        23.14,
+        24.02
+      ]
+    },
+    {
+      "text": " belong",
+      "timestamp": [
+        24.02,
+        25.04
+      ]
+    },
+    {
+      "text": " here.",
+      "timestamp": [
+        25.04,
+        28.7
+      ]
+    },
+    {
+      "text": " window",
+      "timestamp": [
+        29.0,
+        29.64
+      ]
+    }
+  ]
+}

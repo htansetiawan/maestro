@@ -1,0 +1,15 @@
+[
+  {
+    "index": "yard_notes_25s",
+    "language": "English",
+    "time": [
+      0,
+      25000
+    ],
+    "text": "<SP> Red brick walls <SP> hold the light <SP> Old trees shade <SP> our dreams at night <SP> Friends we found <SP> will walk with us <SP> Here our love <SP> will live and last <SP>",
+    "duration": "0.22 0.74 0.74 1.44 0.04 0.7 0.7 1.24 0.14 0.76 0.78 1.48 0.04 0.68 0.68 0.68 1.22 0.14 0.68 0.66 1.28 0.04 0.52 0.52 0.52 0.9 0.14 0.76 0.74 1.48 0.04 0.8 0.8 0.8 1.46 0.44",
+    "phoneme": "<SP> en_R-EH1-D en_B-R-IH1-K en_W-AO1-L-Z <SP> en_HH-OW1-L-D en_DH-AH0 en_L-AY1-T <SP> en_OW1-L-D en_T-R-IY1-Z en_SH-EY1-D <SP> en_AW1-R en_D-R-IY1-M-Z en_AE1-T en_N-AY1-T <SP> en_F-R-EH1-N-D-Z en_W-IY1 en_F-AW1-N-D <SP> en_W-IH1-L en_W-AO1-K en_W-IH1-DH en_AH1-S <SP> en_HH-IY1-R en_AW1-R en_L-AH1-V <SP> en_W-IH1-L en_L-AY1-V en_AH0-N-D en_L-AE1-S-T <SP>",
+    "note_pitch": "0 57 60 57 0 55 58 62 0 53 58 62 0 61 60 58 53 0 57 60 57 0 55 58 60 62 0 53 58 62 0 61 60 58 53 0",
+    "note_type": "1 2 2 2 1 2 2 2 1 2 2 2 1 2 2 2 2 1 2 2 2 1 2 2 2 2 1 2 2 2 1 2 2 2 2 1"
+  }
+]

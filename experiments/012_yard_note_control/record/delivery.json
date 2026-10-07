@@ -1,0 +1,21 @@
+{
+  "format": "MP3 only",
+  "files": {
+    "vocal.mp3": {
+      "bytes": 501645,
+      "sha256": "e2b5def7ca8c127cd7b0aad9073a8619e17234b747d9318736d7bb07209b14a1"
+    },
+    "piano.mp3": {
+      "bytes": 601389,
+      "sha256": "4849cc94d3b427c1cb5e99510c730ddef9b558883bfc07bf659edfbaf2e65120"
+    },
+    "mix.mp3": {
+      "bytes": 601389,
+      "sha256": "a69184a68aff6ea7f5ada3b6b08cdcc1b9e420d93eccdd6a521763205d37d57d"
+    },
+    "note-guide.mp3": {
+      "bytes": 601389,
+      "sha256": "32bff9463fa4d385afb8ec9e01474ab862fbd6b08d1f864c8dc234f084e599e0"
+    }
+  }
+}

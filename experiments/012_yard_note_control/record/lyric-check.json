@@ -1,0 +1,37 @@
+{
+  "model": "openai/whisper-base.en",
+  "scope": "One-pass ASR diagnostic; not verified words or alignment",
+  "result": {
+    "text": " Red brick walls hold the light Oh, tree's shade, our dreams at night Friends we've found, we'll walk with us Here our love will live and last",
+    "chunks": [
+      {
+        "timestamp": [
+          0.0,
+          5.84
+        ],
+        "text": " Red brick walls hold the light"
+      },
+      {
+        "timestamp": [
+          5.84,
+          12.24
+        ],
+        "text": " Oh, tree's shade, our dreams at night"
+      },
+      {
+        "timestamp": [
+          12.24,
+          17.52
+        ],
+        "text": " Friends we've found, we'll walk with us"
+      },
+      {
+        "timestamp": [
+          17.52,
+          24.88
+        ],
+        "text": " Here our love will live and last"
+      }
+    ]
+  }
+}
