@@ -1,0 +1,38 @@
+{
+  "model": "openai/whisper-base.en",
+  "source": "outputs/new-piano-vocal-extended/audio.flac",
+  "scope": "One ASR diagnostic pass; not ground truth, phoneme alignment, or a musical quality rating",
+  "result": {
+    "text": " Thank you so much for your time and I will see you in the heart of your heart I'm sorry, I'm sorry, I'm sorry I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry Digging in the heart through the dark Sunlight warms the old brick wall Hold us here Beneath the star, the light, and the quiet soft light, books lie open on the grass, left to floats Bene beneath the trees We chase the day Red brick building's keep our stories When now, footsteps fade Let our love stay Some more saves a place for me We trade our dreams, beneath the shelter of the tree Hereby, here another spring brings voices, hear strangers start to life long, friends, and learn to start it. How old does he hear a little longer where the roots of love grow strong in the yard we learn belong in that And our stories stay When I walked these paths once more All of the friends come back to me, how good you are. Maybe this is all I'll stay, stay I'm so happy to have you here today, and thank you so much for being here, and I hope'll see you in the next video.",
+    "chunks": [
+      {
+        "timestamp": [
+          0.0,
+          48.0
+        ],
+        "text": " Thank you so much for your time and I will see you in the heart of your heart I'm sorry, I'm sorry, I'm sorry I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry Digging in the heart through the dark"
+      },
+      {
+        "timestamp": [
+          56.0,
+          71.0
+        ],
+        "text": " Sunlight warms the old brick wall"
+      },
+      {
+        "timestamp": [
+          78.0,
+          79.0
+        ],
+        "text": " Hold us here"
+      },
+      {
+        "timestamp": [
+          188.0,
+          367.0
+        ],
+        "text": " Beneath the star, the light, and the quiet soft light, books lie open on the grass, left to floats Bene beneath the trees We chase the day Red brick building's keep our stories When now, footsteps fade Let our love stay Some more saves a place for me We trade our dreams, beneath the shelter of the tree Hereby, here another spring brings voices, hear strangers start to life long, friends, and learn to start it. How old does he hear a little longer where the roots of love grow strong in the yard we learn belong in that And our stories stay When I walked these paths once more All of the friends come back to me, how good you are. Maybe this is all I'll stay, stay I'm so happy to have you here today, and thank you so much for being here, and I hope'll see you in the next video."
+      }
+    ]
+  }
+}

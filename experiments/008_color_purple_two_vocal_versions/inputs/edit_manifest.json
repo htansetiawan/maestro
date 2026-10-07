@@ -1,0 +1,5970 @@
+{
+  "schema_version": 1,
+  "contract": "Preserve all prepared lead events, onset/duration, pitch class, harmony, complete 87 measures plus pickup, 88 BPM and meters. Route selected phrases to Vocal with documented whole-octave shifts; preserve all remaining notes in Ins.",
+  "source_hashes": {
+    "experiments/007_color_purple_sheet_yue2/prepared/score.abc": "2bf593c9a7015ea0847d4a1e530a872f765dc8348e2521d5815642c4ec324d30",
+    "experiments/007_color_purple_sheet_yue2/prepared/events.json": "976f52a23e43db17390c1ad9e7b223f34d4a4c0ae4d5417540233b2c4bba9856",
+    "experiments/007_color_purple_sheet_yue2/inputs/source-events.json": "cdc40760c53272f8a30314373b386ee18ea31d799faa9e2ce130dad10e3d9478",
+    "experiments/007_color_purple_sheet_yue2/inputs/transcription.tsv": "bb41313e1ccce50f5ea2085076c3ad2c681b8599244f73e1fc2c2e1284ff4857",
+    "experiments/003_color_purple_yard_vocals/lyrics.txt": "a2df72cbc27dc5088dc87800d44f64097a9e6279a274cff79abfce0c72fe8d48"
+  },
+  "scope": "Symbolic adaptation only. No audio generated or listened to by this script. Inherits experiment 007 transcription and rhythm reductions; does not independently certify PDF note accuracy.",
+  "rationale": "Piano melody ranges and phrase ornaments are unsuitable for direct unedited singing. Coherent phrases move down one or two octaves for a warm male baritone; piano retains intro, outro and turnarounds. Fewer lyrics leave held vowels and melismas instead of compressing the original long poem.",
+  "vocal_range_midi": [
+    45,
+    67
+  ],
+  "vocal_range_name": "A2\u2013G4",
+  "changed_notes": [
+    {
+      "source_note_index": 26,
+      "measure": 9,
+      "onset": 33,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 57,
+      "adapted_midi": 45,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 27,
+      "measure": 9,
+      "onset": 34,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 60,
+      "adapted_midi": 48,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 28,
+      "measure": 9,
+      "onset": 35,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 29,
+      "measure": 9,
+      "onset": 36,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 30,
+      "measure": 10,
+      "onset": 37,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 62,
+      "adapted_midi": 50,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 31,
+      "measure": 10,
+      "onset": 38,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 32,
+      "measure": 10,
+      "onset": 39,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 33,
+      "measure": 10,
+      "onset": "81/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 34,
+      "measure": 11,
+      "onset": 41,
+      "duration": 4,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-01"
+    },
+    {
+      "source_note_index": 35,
+      "measure": 13,
+      "onset": 50,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 60,
+      "adapted_midi": 48,
+      "semitone_change": -12,
+      "phrase_id": "phrase-02"
+    },
+    {
+      "source_note_index": 36,
+      "measure": 13,
+      "onset": 51,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-02"
+    },
+    {
+      "source_note_index": 37,
+      "measure": 13,
+      "onset": 52,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-02"
+    },
+    {
+      "source_note_index": 38,
+      "measure": 14,
+      "onset": 53,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 62,
+      "adapted_midi": 50,
+      "semitone_change": -12,
+      "phrase_id": "phrase-02"
+    },
+    {
+      "source_note_index": 39,
+      "measure": 14,
+      "onset": 54,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-02"
+    },
+    {
+      "source_note_index": 40,
+      "measure": 14,
+      "onset": 55,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-02"
+    },
+    {
+      "source_note_index": 41,
+      "measure": 14,
+      "onset": 56,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-02"
+    },
+    {
+      "source_note_index": 51,
+      "measure": 17,
+      "onset": 65,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 52,
+      "measure": 17,
+      "onset": 67,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 53,
+      "measure": 17,
+      "onset": "2165/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 84,
+      "adapted_midi": 60,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 54,
+      "measure": 17,
+      "onset": "2187/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 86,
+      "adapted_midi": 62,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 55,
+      "measure": 18,
+      "onset": 69,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 56,
+      "measure": 18,
+      "onset": 71,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 52,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 57,
+      "measure": 18,
+      "onset": 72,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 48,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 58,
+      "measure": 19,
+      "onset": 73,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 59,
+      "measure": 19,
+      "onset": 75,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 60,
+      "measure": 19,
+      "onset": "2421/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 84,
+      "adapted_midi": 60,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 61,
+      "measure": 19,
+      "onset": "2443/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 86,
+      "adapted_midi": 62,
+      "semitone_change": -24,
+      "phrase_id": "phrase-03"
+    },
+    {
+      "source_note_index": 64,
+      "measure": 21,
+      "onset": 81,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-04"
+    },
+    {
+      "source_note_index": 65,
+      "measure": 21,
+      "onset": 83,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-04"
+    },
+    {
+      "source_note_index": 66,
+      "measure": 21,
+      "onset": "2677/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-04"
+    },
+    {
+      "source_note_index": 67,
+      "measure": 21,
+      "onset": "2699/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-04"
+    },
+    {
+      "source_note_index": 68,
+      "measure": 22,
+      "onset": 85,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-04"
+    },
+    {
+      "source_note_index": 69,
+      "measure": 22,
+      "onset": 87,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 71,
+      "adapted_midi": 59,
+      "semitone_change": -12,
+      "phrase_id": "phrase-04"
+    },
+    {
+      "source_note_index": 80,
+      "measure": 25,
+      "onset": 98,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 48,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 81,
+      "measure": 25,
+      "onset": 99,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 82,
+      "measure": 25,
+      "onset": 100,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 83,
+      "measure": 26,
+      "onset": 101,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 50,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 84,
+      "measure": 26,
+      "onset": 102,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 85,
+      "measure": 26,
+      "onset": 103,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 86,
+      "measure": 26,
+      "onset": "209/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 55,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 87,
+      "measure": 27,
+      "onset": 105,
+      "duration": 4,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-05"
+    },
+    {
+      "source_note_index": 88,
+      "measure": 28,
+      "onset": 109,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 46,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 89,
+      "measure": 28,
+      "onset": 110,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 90,
+      "measure": 28,
+      "onset": 111,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 55,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 91,
+      "measure": 28,
+      "onset": "225/2",
+      "duration": "1/4",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 92,
+      "measure": 28,
+      "onset": "451/4",
+      "duration": "1/4",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 52,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 93,
+      "measure": 29,
+      "onset": 113,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 94,
+      "measure": 29,
+      "onset": 114,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 48,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 95,
+      "measure": 29,
+      "onset": 115,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 96,
+      "measure": 29,
+      "onset": 116,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 97,
+      "measure": 30,
+      "onset": 117,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 50,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 98,
+      "measure": 30,
+      "onset": 118,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 99,
+      "measure": 30,
+      "onset": 119,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 100,
+      "measure": 30,
+      "onset": 120,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 86,
+      "adapted_midi": 62,
+      "semitone_change": -24,
+      "phrase_id": "phrase-06"
+    },
+    {
+      "source_note_index": 110,
+      "measure": 33,
+      "onset": 129,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 111,
+      "measure": 33,
+      "onset": 131,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 112,
+      "measure": 33,
+      "onset": "4213/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 113,
+      "measure": 33,
+      "onset": "4235/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 114,
+      "measure": 34,
+      "onset": 133,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 115,
+      "measure": 34,
+      "onset": 135,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 116,
+      "measure": 34,
+      "onset": 136,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 117,
+      "measure": 35,
+      "onset": 137,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 118,
+      "measure": 35,
+      "onset": 139,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 119,
+      "measure": 35,
+      "onset": "4469/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 120,
+      "measure": 35,
+      "onset": "4491/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 67,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 121,
+      "measure": 36,
+      "onset": 141,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 67,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 122,
+      "measure": 36,
+      "onset": 142,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 123,
+      "measure": 36,
+      "onset": 143,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 124,
+      "measure": 36,
+      "onset": 144,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-07"
+    },
+    {
+      "source_note_index": 125,
+      "measure": 37,
+      "onset": 145,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-08"
+    },
+    {
+      "source_note_index": 126,
+      "measure": 37,
+      "onset": 147,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-08"
+    },
+    {
+      "source_note_index": 127,
+      "measure": 37,
+      "onset": "4725/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 84,
+      "adapted_midi": 60,
+      "semitone_change": -24,
+      "phrase_id": "phrase-08"
+    },
+    {
+      "source_note_index": 128,
+      "measure": 37,
+      "onset": "4747/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 86,
+      "adapted_midi": 62,
+      "semitone_change": -24,
+      "phrase_id": "phrase-08"
+    },
+    {
+      "source_note_index": 129,
+      "measure": 38,
+      "onset": 149,
+      "duration": 4,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 88,
+      "adapted_midi": 64,
+      "semitone_change": -24,
+      "phrase_id": "phrase-08"
+    },
+    {
+      "source_note_index": 145,
+      "measure": 44,
+      "onset": 173,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 146,
+      "measure": 44,
+      "onset": 174,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 60,
+      "adapted_midi": 48,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 147,
+      "measure": 44,
+      "onset": 175,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 148,
+      "measure": 44,
+      "onset": 176,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 149,
+      "measure": 45,
+      "onset": 177,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 62,
+      "adapted_midi": 50,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 150,
+      "measure": 45,
+      "onset": 178,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 151,
+      "measure": 45,
+      "onset": 179,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 152,
+      "measure": 45,
+      "onset": "361/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 153,
+      "measure": 46,
+      "onset": 181,
+      "duration": 4,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-09"
+    },
+    {
+      "source_note_index": 154,
+      "measure": 47,
+      "onset": 185,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 155,
+      "measure": 47,
+      "onset": 187,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 156,
+      "measure": 47,
+      "onset": "375/2",
+      "duration": "3/4",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 157,
+      "measure": 47,
+      "onset": "753/4",
+      "duration": "3/4",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 158,
+      "measure": 48,
+      "onset": 189,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 159,
+      "measure": 48,
+      "onset": 190,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 60,
+      "adapted_midi": 48,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 160,
+      "measure": 48,
+      "onset": 191,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 161,
+      "measure": 48,
+      "onset": "385/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 162,
+      "measure": 49,
+      "onset": 193,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 62,
+      "adapted_midi": 50,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 163,
+      "measure": 49,
+      "onset": 194,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 164,
+      "measure": 49,
+      "onset": 195,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 165,
+      "measure": 49,
+      "onset": 196,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-10"
+    },
+    {
+      "source_note_index": 172,
+      "measure": 52,
+      "onset": 205,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 173,
+      "measure": 52,
+      "onset": 207,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 174,
+      "measure": 52,
+      "onset": "6645/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 175,
+      "measure": 52,
+      "onset": "6667/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 176,
+      "measure": 53,
+      "onset": 209,
+      "duration": 3,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 177,
+      "measure": 53,
+      "onset": 212,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 60,
+      "adapted_midi": 48,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 178,
+      "measure": 54,
+      "onset": 213,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 179,
+      "measure": 54,
+      "onset": 215,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 180,
+      "measure": 54,
+      "onset": "6901/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 181,
+      "measure": 54,
+      "onset": "6923/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 182,
+      "measure": 55,
+      "onset": 217,
+      "duration": 3,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 183,
+      "measure": 55,
+      "onset": 220,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-11"
+    },
+    {
+      "source_note_index": 184,
+      "measure": 56,
+      "onset": 221,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 185,
+      "measure": 56,
+      "onset": 223,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 186,
+      "measure": 56,
+      "onset": "7157/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 187,
+      "measure": 56,
+      "onset": "7179/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 188,
+      "measure": 57,
+      "onset": 225,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 189,
+      "measure": 57,
+      "onset": 227,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 71,
+      "adapted_midi": 59,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 190,
+      "measure": 58,
+      "onset": 229,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 191,
+      "measure": 58,
+      "onset": 230,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 192,
+      "measure": 58,
+      "onset": 231,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 193,
+      "measure": 59,
+      "onset": 233,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 194,
+      "measure": 59,
+      "onset": 235,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 195,
+      "measure": 59,
+      "onset": "471/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 57,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 196,
+      "measure": 59,
+      "onset": 236,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-12"
+    },
+    {
+      "source_note_index": 197,
+      "measure": 60,
+      "onset": 237,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 45,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 198,
+      "measure": 60,
+      "onset": 238,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 48,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 199,
+      "measure": 60,
+      "onset": 239,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 200,
+      "measure": 60,
+      "onset": 240,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 201,
+      "measure": 61,
+      "onset": 241,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 50,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 202,
+      "measure": 61,
+      "onset": 242,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 203,
+      "measure": 61,
+      "onset": 243,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 204,
+      "measure": 61,
+      "onset": "489/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 55,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 205,
+      "measure": 62,
+      "onset": 245,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 206,
+      "measure": 62,
+      "onset": 247,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 86,
+      "adapted_midi": 62,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 207,
+      "measure": 62,
+      "onset": "495/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 84,
+      "adapted_midi": 60,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 208,
+      "measure": 62,
+      "onset": 248,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 209,
+      "measure": 62,
+      "onset": "497/2",
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 84,
+      "adapted_midi": 60,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 210,
+      "measure": 63,
+      "onset": "501/2",
+      "duration": "1/4",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 211,
+      "measure": 63,
+      "onset": "1003/4",
+      "duration": "1/4",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 212,
+      "measure": 63,
+      "onset": 251,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 213,
+      "measure": 63,
+      "onset": "503/2",
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 55,
+      "semitone_change": -24,
+      "phrase_id": "phrase-13"
+    },
+    {
+      "source_note_index": 214,
+      "measure": 64,
+      "onset": 253,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 215,
+      "measure": 64,
+      "onset": 254,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 48,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 216,
+      "measure": 64,
+      "onset": 255,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 217,
+      "measure": 64,
+      "onset": 256,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 81,
+      "adapted_midi": 57,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 218,
+      "measure": 65,
+      "onset": 257,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 50,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 219,
+      "measure": 65,
+      "onset": 258,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 220,
+      "measure": 65,
+      "onset": 259,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 82,
+      "adapted_midi": 58,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 221,
+      "measure": 65,
+      "onset": "521/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 86,
+      "adapted_midi": 62,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 222,
+      "measure": 66,
+      "onset": 261,
+      "duration": 4,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 84,
+      "adapted_midi": 60,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 223,
+      "measure": 67,
+      "onset": 265,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 224,
+      "measure": 67,
+      "onset": 267,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 53,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 225,
+      "measure": 67,
+      "onset": "535/2",
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 45,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 226,
+      "measure": 67,
+      "onset": "537/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 69,
+      "adapted_midi": 45,
+      "semitone_change": -24,
+      "phrase_id": "phrase-14"
+    },
+    {
+      "source_note_index": 227,
+      "measure": 68,
+      "onset": 269,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 228,
+      "measure": 68,
+      "onset": "539/2",
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 229,
+      "measure": 68,
+      "onset": 271,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 230,
+      "measure": 68,
+      "onset": "8693/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 231,
+      "measure": 68,
+      "onset": "8715/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 232,
+      "measure": 69,
+      "onset": 273,
+      "duration": 3,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 233,
+      "measure": 69,
+      "onset": 276,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 234,
+      "measure": 70,
+      "onset": 277,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 235,
+      "measure": 70,
+      "onset": 279,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 236,
+      "measure": 70,
+      "onset": "8949/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 237,
+      "measure": 70,
+      "onset": "8971/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 67,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 238,
+      "measure": 71,
+      "onset": 281,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 79,
+      "adapted_midi": 67,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 239,
+      "measure": 71,
+      "onset": 282,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 240,
+      "measure": 71,
+      "onset": 283,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 241,
+      "measure": 71,
+      "onset": 284,
+      "duration": 1,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-15"
+    },
+    {
+      "source_note_index": 242,
+      "measure": 72,
+      "onset": 285,
+      "duration": 2,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 243,
+      "measure": 72,
+      "onset": 287,
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 70,
+      "adapted_midi": 58,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 244,
+      "measure": 72,
+      "onset": "9205/32",
+      "duration": "11/16",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 72,
+      "adapted_midi": 60,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 245,
+      "measure": 72,
+      "onset": "9227/32",
+      "duration": "21/32",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 74,
+      "adapted_midi": 62,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 246,
+      "measure": 73,
+      "onset": 289,
+      "duration": "3/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 247,
+      "measure": 73,
+      "onset": "581/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 62,
+      "adapted_midi": 50,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 248,
+      "measure": 73,
+      "onset": 291,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 249,
+      "measure": 73,
+      "onset": "583/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 65,
+      "adapted_midi": 53,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 250,
+      "measure": 73,
+      "onset": 292,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 67,
+      "adapted_midi": 55,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 251,
+      "measure": 73,
+      "onset": "585/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 62,
+      "adapted_midi": 50,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 252,
+      "measure": 74,
+      "onset": 293,
+      "duration": 3,
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 64,
+      "adapted_midi": 52,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 253,
+      "measure": 74,
+      "onset": 296,
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 77,
+      "adapted_midi": 65,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    },
+    {
+      "source_note_index": 254,
+      "measure": 74,
+      "onset": "593/2",
+      "duration": "1/2",
+      "old_voice": "Ins",
+      "new_voice": "Vocal",
+      "original_midi": 76,
+      "adapted_midi": 64,
+      "semitone_change": -12,
+      "phrase_id": "phrase-16"
+    }
+  ],
+  "instrumental_measures": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    12,
+    15,
+    16,
+    20,
+    23,
+    24,
+    31,
+    32,
+    39,
+    40,
+    41,
+    42,
+    43,
+    50,
+    51,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87
+  ],
+  "changed_harmony": [],
+  "changed_timing": [],
+  "section_assignments": [
+    {
+      "measure": 0,
+      "section": "intro"
+    },
+    {
+      "measure": 1,
+      "section": "intro"
+    },
+    {
+      "measure": 2,
+      "section": "intro"
+    },
+    {
+      "measure": 3,
+      "section": "intro"
+    },
+    {
+      "measure": 4,
+      "section": "intro"
+    },
+    {
+      "measure": 5,
+      "section": "intro"
+    },
+    {
+      "measure": 6,
+      "section": "intro"
+    },
+    {
+      "measure": 7,
+      "section": "intro"
+    },
+    {
+      "measure": 8,
+      "section": "intro"
+    },
+    {
+      "measure": 9,
+      "section": "verse"
+    },
+    {
+      "measure": 10,
+      "section": "verse"
+    },
+    {
+      "measure": 11,
+      "section": "verse"
+    },
+    {
+      "measure": 12,
+      "section": "interlude"
+    },
+    {
+      "measure": 13,
+      "section": "verse"
+    },
+    {
+      "measure": 14,
+      "section": "verse"
+    },
+    {
+      "measure": 15,
+      "section": "interlude"
+    },
+    {
+      "measure": 16,
+      "section": "interlude"
+    },
+    {
+      "measure": 17,
+      "section": "chorus"
+    },
+    {
+      "measure": 18,
+      "section": "chorus"
+    },
+    {
+      "measure": 19,
+      "section": "chorus"
+    },
+    {
+      "measure": 20,
+      "section": "interlude"
+    },
+    {
+      "measure": 21,
+      "section": "chorus"
+    },
+    {
+      "measure": 22,
+      "section": "chorus"
+    },
+    {
+      "measure": 23,
+      "section": "interlude"
+    },
+    {
+      "measure": 24,
+      "section": "interlude"
+    },
+    {
+      "measure": 25,
+      "section": "verse"
+    },
+    {
+      "measure": 26,
+      "section": "verse"
+    },
+    {
+      "measure": 27,
+      "section": "verse"
+    },
+    {
+      "measure": 28,
+      "section": "verse"
+    },
+    {
+      "measure": 29,
+      "section": "verse"
+    },
+    {
+      "measure": 30,
+      "section": "verse"
+    },
+    {
+      "measure": 31,
+      "section": "interlude"
+    },
+    {
+      "measure": 32,
+      "section": "interlude"
+    },
+    {
+      "measure": 33,
+      "section": "chorus"
+    },
+    {
+      "measure": 34,
+      "section": "chorus"
+    },
+    {
+      "measure": 35,
+      "section": "chorus"
+    },
+    {
+      "measure": 36,
+      "section": "chorus"
+    },
+    {
+      "measure": 37,
+      "section": "chorus"
+    },
+    {
+      "measure": 38,
+      "section": "chorus"
+    },
+    {
+      "measure": 39,
+      "section": "interlude"
+    },
+    {
+      "measure": 40,
+      "section": "interlude"
+    },
+    {
+      "measure": 41,
+      "section": "interlude"
+    },
+    {
+      "measure": 42,
+      "section": "interlude"
+    },
+    {
+      "measure": 43,
+      "section": "interlude"
+    },
+    {
+      "measure": 44,
+      "section": "verse"
+    },
+    {
+      "measure": 45,
+      "section": "verse"
+    },
+    {
+      "measure": 46,
+      "section": "verse"
+    },
+    {
+      "measure": 47,
+      "section": "verse"
+    },
+    {
+      "measure": 48,
+      "section": "verse"
+    },
+    {
+      "measure": 49,
+      "section": "verse"
+    },
+    {
+      "measure": 50,
+      "section": "interlude"
+    },
+    {
+      "measure": 51,
+      "section": "interlude"
+    },
+    {
+      "measure": 52,
+      "section": "bridge"
+    },
+    {
+      "measure": 53,
+      "section": "bridge"
+    },
+    {
+      "measure": 54,
+      "section": "bridge"
+    },
+    {
+      "measure": 55,
+      "section": "bridge"
+    },
+    {
+      "measure": 56,
+      "section": "bridge"
+    },
+    {
+      "measure": 57,
+      "section": "bridge"
+    },
+    {
+      "measure": 58,
+      "section": "bridge"
+    },
+    {
+      "measure": 59,
+      "section": "bridge"
+    },
+    {
+      "measure": 60,
+      "section": "chorus"
+    },
+    {
+      "measure": 61,
+      "section": "chorus"
+    },
+    {
+      "measure": 62,
+      "section": "chorus"
+    },
+    {
+      "measure": 63,
+      "section": "chorus"
+    },
+    {
+      "measure": 64,
+      "section": "chorus"
+    },
+    {
+      "measure": 65,
+      "section": "chorus"
+    },
+    {
+      "measure": 66,
+      "section": "chorus"
+    },
+    {
+      "measure": 67,
+      "section": "chorus"
+    },
+    {
+      "measure": 68,
+      "section": "chorus"
+    },
+    {
+      "measure": 69,
+      "section": "chorus"
+    },
+    {
+      "measure": 70,
+      "section": "chorus"
+    },
+    {
+      "measure": 71,
+      "section": "chorus"
+    },
+    {
+      "measure": 72,
+      "section": "chorus"
+    },
+    {
+      "measure": 73,
+      "section": "chorus"
+    },
+    {
+      "measure": 74,
+      "section": "chorus"
+    },
+    {
+      "measure": 75,
+      "section": "outro"
+    },
+    {
+      "measure": 76,
+      "section": "outro"
+    },
+    {
+      "measure": 77,
+      "section": "outro"
+    },
+    {
+      "measure": 78,
+      "section": "outro"
+    },
+    {
+      "measure": 79,
+      "section": "outro"
+    },
+    {
+      "measure": 80,
+      "section": "outro"
+    },
+    {
+      "measure": 81,
+      "section": "outro"
+    },
+    {
+      "measure": 82,
+      "section": "outro"
+    },
+    {
+      "measure": 83,
+      "section": "outro"
+    },
+    {
+      "measure": 84,
+      "section": "outro"
+    },
+    {
+      "measure": 85,
+      "section": "outro"
+    },
+    {
+      "measure": 86,
+      "section": "outro"
+    },
+    {
+      "measure": 87,
+      "section": "outro"
+    }
+  ],
+  "lyrics": {
+    "retained_verbatim_lines": [
+      "Morning in the Harvard Yard",
+      "Books lie open on the grass",
+      "Someone saves a place for me"
+    ],
+    "revised_or_new_lines": [
+      "Sunlight warms the old brick walls",
+      "Hold us here beneath the starlight",
+      "In the quiet soft light",
+      "Laughter floats beneath the trees we chase the day",
+      "Red brick buildings keep our stories when our footsteps fade",
+      "Let our love stay",
+      "We trade our dreams beneath the shelter of a tree",
+      "Year by year another spring brings voices here",
+      "Strangers turn to lifelong friends and learn to start again",
+      "Hold us here a little longer where the roots of love grow strong",
+      "In the Yard we learned belonging let our stories stay",
+      "When I walk these paths once more old friends come back to me",
+      "Harvard Yard beneath your trees all our love stays here"
+    ],
+    "original_lines_not_retained_verbatim": [
+      "Sunlight on the red brick walls",
+      "Laughter rises, someone calls",
+      "A ball goes sailing through the leaves",
+      "We chase it like we own the day",
+      "Under trees that knew our names",
+      "Before we found the words to say",
+      "Hold us here a little longer",
+      "In the quiet, in the light",
+      "Where the roots of love grew stronger",
+      "And our friends stayed late at night",
+      "Red brick buildings, keep our stories",
+      "When our footsteps fade away",
+      "In the Yard we learned belonging",
+      "Let a little of us stay",
+      "Coffee cooling on the steps",
+      "We trade our plans for coming years",
+      "Beneath the shelter of a tree",
+      "Somewhere, someone falls in love",
+      "Someone learns to start again",
+      "And the walls stand listening still",
+      "As strangers turn to lifelong friends",
+      "Year by year, another spring",
+      "Other voices fill the air",
+      "Trees reach higher, bricks grow old",
+      "Something of us lingers there",
+      "Hold us here a little longer",
+      "In the quiet, in the light",
+      "Where the roots of love grew stronger",
+      "And our friends stayed late at night",
+      "Red brick buildings, keep our stories",
+      "When our footsteps fade away",
+      "In the Yard we learned belonging",
+      "Let a little of us stay",
+      "When I walk these paths again",
+      "Years from who we used to be",
+      "Harvard Yard, beneath your trees",
+      "All my friends come back to me"
+    ],
+    "themes_preserved": [
+      "Harvard Yard",
+      "red brick buildings",
+      "trees",
+      "friendship",
+      "love",
+      "college memories",
+      "returning years later"
+    ]
+  },
+  "checks": {
+    "native_abc_parse": true,
+    "complete_bar_grid": true,
+    "note_count_preserved": 298,
+    "pitch_class_onset_duration_preserved": true,
+    "unchanged_harmony_events": true,
+    "every_vocal_note_mapped_once": true,
+    "vocal_note_count": 178,
+    "instrumental_note_count": 120
+  },
+  "inspection": {
+    "scope": "native-dialect structural check; not native serializer reconstruction or audio verification",
+    "sha256": "52b47ee6ab9cf3711732987f7ab4106c9007088f623e1d9184fc093bf7d6996d",
+    "bpm": 88,
+    "unit_length": "1/128",
+    "duration_quarters": "336",
+    "nominal_duration_seconds": 229.0909090909091,
+    "voices": {
+      "Vocal": {
+        "sounding_notes": 178,
+        "measures": 88,
+        "notes": [
+          {
+            "onset_quarters": "33",
+            "midi_pitch": 45,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "34",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "35",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "36",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "37",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "38",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "39",
+            "midi_pitch": 58,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "81/2",
+            "midi_pitch": 55,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "41",
+            "midi_pitch": 57,
+            "duration_quarters": "4"
+          },
+          {
+            "onset_quarters": "50",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "51",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "52",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "53",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "54",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "55",
+            "midi_pitch": 58,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "56",
+            "midi_pitch": 62,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "65",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "67",
+            "midi_pitch": 58,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "2165/32",
+            "midi_pitch": 60,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "2187/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "69",
+            "midi_pitch": 53,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "71",
+            "midi_pitch": 52,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "72",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "73",
+            "midi_pitch": 57,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "75",
+            "midi_pitch": 58,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "2421/32",
+            "midi_pitch": 60,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "2443/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "81",
+            "midi_pitch": 65,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "83",
+            "midi_pitch": 65,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "2677/32",
+            "midi_pitch": 64,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "2699/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "85",
+            "midi_pitch": 60,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "87",
+            "midi_pitch": 59,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "98",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "99",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "100",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "101",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "102",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "103",
+            "midi_pitch": 58,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "209/2",
+            "midi_pitch": 55,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "105",
+            "midi_pitch": 57,
+            "duration_quarters": "4"
+          },
+          {
+            "onset_quarters": "109",
+            "midi_pitch": 46,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "110",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "111",
+            "midi_pitch": 55,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "225/2",
+            "midi_pitch": 53,
+            "duration_quarters": "1/4"
+          },
+          {
+            "onset_quarters": "451/4",
+            "midi_pitch": 52,
+            "duration_quarters": "1/4"
+          },
+          {
+            "onset_quarters": "113",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "114",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "115",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "116",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "117",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "118",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "119",
+            "midi_pitch": 58,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "120",
+            "midi_pitch": 62,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "129",
+            "midi_pitch": 62,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "131",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "4213/32",
+            "midi_pitch": 64,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "4235/32",
+            "midi_pitch": 65,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "133",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "135",
+            "midi_pitch": 58,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "136",
+            "midi_pitch": 55,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "137",
+            "midi_pitch": 64,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "139",
+            "midi_pitch": 64,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "4469/32",
+            "midi_pitch": 65,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "4491/32",
+            "midi_pitch": 67,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "141",
+            "midi_pitch": 67,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "142",
+            "midi_pitch": 65,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "143",
+            "midi_pitch": 64,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "144",
+            "midi_pitch": 60,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "145",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "147",
+            "midi_pitch": 58,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "4725/32",
+            "midi_pitch": 60,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "4747/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "149",
+            "midi_pitch": 64,
+            "duration_quarters": "4"
+          },
+          {
+            "onset_quarters": "173",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "174",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "175",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "176",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "177",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "178",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "179",
+            "midi_pitch": 58,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "361/2",
+            "midi_pitch": 55,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "181",
+            "midi_pitch": 57,
+            "duration_quarters": "4"
+          },
+          {
+            "onset_quarters": "185",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "187",
+            "midi_pitch": 58,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "375/2",
+            "midi_pitch": 60,
+            "duration_quarters": "3/4"
+          },
+          {
+            "onset_quarters": "753/4",
+            "midi_pitch": 58,
+            "duration_quarters": "3/4"
+          },
+          {
+            "onset_quarters": "189",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "190",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "191",
+            "midi_pitch": 53,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "385/2",
+            "midi_pitch": 57,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "193",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "194",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "195",
+            "midi_pitch": 58,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "196",
+            "midi_pitch": 62,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "205",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "207",
+            "midi_pitch": 58,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "6645/32",
+            "midi_pitch": 60,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "6667/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "209",
+            "midi_pitch": 55,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "212",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "213",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "215",
+            "midi_pitch": 58,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "6901/32",
+            "midi_pitch": 60,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "6923/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "217",
+            "midi_pitch": 53,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "220",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "221",
+            "midi_pitch": 65,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "223",
+            "midi_pitch": 65,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "7157/32",
+            "midi_pitch": 64,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "7179/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "225",
+            "midi_pitch": 60,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "227",
+            "midi_pitch": 59,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "229",
+            "midi_pitch": 62,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "230",
+            "midi_pitch": 60,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "231",
+            "midi_pitch": 60,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "233",
+            "midi_pitch": 60,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "235",
+            "midi_pitch": 58,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "471/2",
+            "midi_pitch": 57,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "236",
+            "midi_pitch": 55,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "237",
+            "midi_pitch": 45,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "238",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "239",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "240",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "241",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "242",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "243",
+            "midi_pitch": 58,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "489/2",
+            "midi_pitch": 55,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "245",
+            "midi_pitch": 57,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "247",
+            "midi_pitch": 62,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "495/2",
+            "midi_pitch": 60,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "248",
+            "midi_pitch": 57,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "497/2",
+            "midi_pitch": 60,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "501/2",
+            "midi_pitch": 53,
+            "duration_quarters": "1/4"
+          },
+          {
+            "onset_quarters": "1003/4",
+            "midi_pitch": 53,
+            "duration_quarters": "1/4"
+          },
+          {
+            "onset_quarters": "251",
+            "midi_pitch": 53,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "503/2",
+            "midi_pitch": 55,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "253",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "254",
+            "midi_pitch": 48,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "255",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "256",
+            "midi_pitch": 57,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "257",
+            "midi_pitch": 50,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "258",
+            "midi_pitch": 53,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "259",
+            "midi_pitch": 58,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "521/2",
+            "midi_pitch": 62,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "261",
+            "midi_pitch": 60,
+            "duration_quarters": "4"
+          },
+          {
+            "onset_quarters": "265",
+            "midi_pitch": 53,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "267",
+            "midi_pitch": 53,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "535/2",
+            "midi_pitch": 45,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "537/2",
+            "midi_pitch": 45,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "269",
+            "midi_pitch": 55,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "539/2",
+            "midi_pitch": 53,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "271",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "8693/32",
+            "midi_pitch": 64,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "8715/32",
+            "midi_pitch": 65,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "273",
+            "midi_pitch": 58,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "276",
+            "midi_pitch": 55,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "277",
+            "midi_pitch": 64,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "279",
+            "midi_pitch": 64,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "8949/32",
+            "midi_pitch": 65,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "8971/32",
+            "midi_pitch": 67,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "281",
+            "midi_pitch": 67,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "282",
+            "midi_pitch": 65,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "283",
+            "midi_pitch": 64,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "284",
+            "midi_pitch": 60,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "285",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "287",
+            "midi_pitch": 58,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "9205/32",
+            "midi_pitch": 60,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "9227/32",
+            "midi_pitch": 62,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "289",
+            "midi_pitch": 55,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "581/2",
+            "midi_pitch": 50,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "291",
+            "midi_pitch": 53,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "583/2",
+            "midi_pitch": 53,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "292",
+            "midi_pitch": 55,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "585/2",
+            "midi_pitch": 50,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "293",
+            "midi_pitch": 52,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "296",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "593/2",
+            "midi_pitch": 64,
+            "duration_quarters": "1/2"
+          }
+        ],
+        "chords": [
+          [
+            1,
+            "F"
+          ],
+          [
+            5,
+            "Eb/F"
+          ],
+          [
+            9,
+            "Bb/F"
+          ],
+          [
+            13,
+            "Bbm/F"
+          ],
+          [
+            17,
+            "F"
+          ],
+          [
+            21,
+            "Eb/F"
+          ],
+          [
+            25,
+            "Bb/F"
+          ],
+          [
+            29,
+            "Bbm/F"
+          ],
+          [
+            33,
+            "F"
+          ],
+          [
+            37,
+            "Bb/F"
+          ],
+          [
+            39,
+            "Bbm/F"
+          ],
+          [
+            41,
+            "F"
+          ],
+          [
+            45,
+            "Bb/F"
+          ],
+          [
+            49,
+            "F"
+          ],
+          [
+            53,
+            "Bb/F"
+          ],
+          [
+            57,
+            "Am"
+          ],
+          [
+            61,
+            "Dm"
+          ],
+          [
+            65,
+            "Gm7"
+          ],
+          [
+            69,
+            "Gm7/C"
+          ],
+          [
+            71,
+            "C7"
+          ],
+          [
+            73,
+            "F"
+          ],
+          [
+            75,
+            "C/E"
+          ],
+          [
+            77,
+            "Dm7"
+          ],
+          [
+            81,
+            "Bm7b5"
+          ],
+          [
+            85,
+            "E7"
+          ],
+          [
+            87,
+            "E7"
+          ],
+          [
+            89,
+            "Am7"
+          ],
+          [
+            93,
+            "C7"
+          ],
+          [
+            97,
+            "F"
+          ],
+          [
+            101,
+            "Bb/F"
+          ],
+          [
+            105,
+            "F"
+          ],
+          [
+            109,
+            "Bb/F"
+          ],
+          [
+            113,
+            "F"
+          ],
+          [
+            117,
+            "Bb/F"
+          ],
+          [
+            121,
+            "Cm7/F"
+          ],
+          [
+            125,
+            "F7"
+          ],
+          [
+            129,
+            "Bbmaj7"
+          ],
+          [
+            133,
+            "Gm7"
+          ],
+          [
+            135,
+            "C7"
+          ],
+          [
+            137,
+            "A7"
+          ],
+          [
+            141,
+            "Dm7"
+          ],
+          [
+            145,
+            "Gm7"
+          ],
+          [
+            149,
+            "C7"
+          ],
+          [
+            153,
+            "C"
+          ],
+          [
+            157,
+            "F"
+          ],
+          [
+            161,
+            "Eb/F"
+          ],
+          [
+            165,
+            "Bb/F"
+          ],
+          [
+            169,
+            "Bbm/F"
+          ],
+          [
+            "5493/32",
+            "Am7"
+          ],
+          [
+            "5515/32",
+            "Gm7"
+          ],
+          [
+            173,
+            "F"
+          ],
+          [
+            177,
+            "Bb/F"
+          ],
+          [
+            181,
+            "F"
+          ],
+          [
+            185,
+            "Bb/F"
+          ],
+          [
+            189,
+            "F"
+          ],
+          [
+            193,
+            "Bb/F"
+          ],
+          [
+            197,
+            "Am7"
+          ],
+          [
+            201,
+            "Dm7"
+          ],
+          [
+            205,
+            "Gm7"
+          ],
+          [
+            209,
+            "C"
+          ],
+          [
+            213,
+            "F"
+          ],
+          [
+            217,
+            "Dm"
+          ],
+          [
+            221,
+            "Bm7b5"
+          ],
+          [
+            225,
+            "Am/E"
+          ],
+          [
+            227,
+            "E7"
+          ],
+          [
+            229,
+            "Am7"
+          ],
+          [
+            233,
+            "Gm7/C"
+          ],
+          [
+            237,
+            "F"
+          ],
+          [
+            241,
+            "Bb/F"
+          ],
+          [
+            243,
+            "Bbm/F"
+          ],
+          [
+            245,
+            "F"
+          ],
+          [
+            249,
+            "Bb/F"
+          ],
+          [
+            251,
+            "C7"
+          ],
+          [
+            253,
+            "F"
+          ],
+          [
+            257,
+            "Bb/F"
+          ],
+          [
+            261,
+            "Cm7/F"
+          ],
+          [
+            265,
+            "Cm7/F"
+          ],
+          [
+            269,
+            "Bbmaj7"
+          ],
+          [
+            271,
+            "Am7"
+          ],
+          [
+            273,
+            "Gm7"
+          ],
+          [
+            275,
+            "Gm7/C"
+          ],
+          [
+            277,
+            "A7"
+          ],
+          [
+            281,
+            "Dm7"
+          ],
+          [
+            285,
+            "Gm7"
+          ],
+          [
+            289,
+            "Gm7/C"
+          ],
+          [
+            293,
+            "Gm7/C"
+          ],
+          [
+            297,
+            "F"
+          ],
+          [
+            300,
+            "Cm7/F"
+          ],
+          [
+            303,
+            "Bb/F"
+          ],
+          [
+            306,
+            "Bbm/F"
+          ],
+          [
+            309,
+            "F"
+          ],
+          [
+            312,
+            "Cm7/F"
+          ],
+          [
+            315,
+            "Bb/F"
+          ],
+          [
+            318,
+            "Bbm/F"
+          ],
+          [
+            321,
+            "F"
+          ],
+          [
+            324,
+            "Cm7/F"
+          ],
+          [
+            327,
+            "Bb/F"
+          ],
+          [
+            330,
+            "Bbm/F"
+          ],
+          [
+            332,
+            "C7"
+          ],
+          [
+            333,
+            "F"
+          ]
+        ],
+        "keys": [
+          [
+            0,
+            "F"
+          ]
+        ],
+        "bars": [
+          [
+            0,
+            1,
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            1,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            5,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            9,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            13,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            17,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            21,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            25,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            29,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            33,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            37,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            41,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            45,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            49,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            53,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            57,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            61,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            65,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            69,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            73,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            77,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            81,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            85,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            89,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            93,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            97,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            101,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            105,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            109,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            113,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            117,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            121,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            125,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            129,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            133,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            137,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            141,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            145,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            149,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            153,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            157,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            161,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            165,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            169,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            173,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            177,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            181,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            185,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            189,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            193,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            197,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            201,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            205,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            209,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            213,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            217,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            221,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            225,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            229,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            233,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            237,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            241,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            245,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            249,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            253,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            257,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            261,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            265,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            269,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            273,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            277,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            281,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            285,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            289,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            293,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            297,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            300,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            303,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            306,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            309,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            312,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            315,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            318,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            321,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            324,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            327,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            330,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            333,
+            3,
+            [
+              3,
+              4
+            ]
+          ]
+        ]
+      },
+      "Ins": {
+        "sounding_notes": 120,
+        "measures": 88,
+        "notes": [
+          {
+            "onset_quarters": "0",
+            "midi_pitch": 77,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "1/2",
+            "midi_pitch": 76,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "1",
+            "midi_pitch": 77,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "4",
+            "midi_pitch": 72,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "9/2",
+            "midi_pitch": 71,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "5",
+            "midi_pitch": 72,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "8",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "17/2",
+            "midi_pitch": 64,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "9",
+            "midi_pitch": 65,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "12",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "25/2",
+            "midi_pitch": 60,
+            "duration_quarters": "5/32"
+          },
+          {
+            "onset_quarters": "405/32",
+            "midi_pitch": 58,
+            "duration_quarters": "3/16"
+          },
+          {
+            "onset_quarters": "411/32",
+            "midi_pitch": 57,
+            "duration_quarters": "5/32"
+          },
+          {
+            "onset_quarters": "13",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "16",
+            "midi_pitch": 77,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "33/2",
+            "midi_pitch": 76,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "17",
+            "midi_pitch": 77,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "20",
+            "midi_pitch": 72,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "41/2",
+            "midi_pitch": 71,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "21",
+            "midi_pitch": 72,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "24",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "49/2",
+            "midi_pitch": 64,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "25",
+            "midi_pitch": 65,
+            "duration_quarters": "7/2"
+          },
+          {
+            "onset_quarters": "57/2",
+            "midi_pitch": 57,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "29",
+            "midi_pitch": 58,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "32",
+            "midi_pitch": 58,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "57",
+            "midi_pitch": 72,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "58",
+            "midi_pitch": 60,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "117/2",
+            "midi_pitch": 62,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "59",
+            "midi_pitch": 64,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "121/2",
+            "midi_pitch": 57,
+            "duration_quarters": "1/4"
+          },
+          {
+            "onset_quarters": "243/4",
+            "midi_pitch": 55,
+            "duration_quarters": "1/4"
+          },
+          {
+            "onset_quarters": "61",
+            "midi_pitch": 57,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "63",
+            "midi_pitch": 74,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "129/2",
+            "midi_pitch": 77,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "77",
+            "midi_pitch": 77,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "80",
+            "midi_pitch": 65,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "89",
+            "midi_pitch": 74,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "90",
+            "midi_pitch": 72,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "91",
+            "midi_pitch": 60,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "183/2",
+            "midi_pitch": 60,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "92",
+            "midi_pitch": 64,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "185/2",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "93",
+            "midi_pitch": 67,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "94",
+            "midi_pitch": 62,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "95",
+            "midi_pitch": 64,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "96",
+            "midi_pitch": 60,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "121",
+            "midi_pitch": 84,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "123",
+            "midi_pitch": 63,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "247/2",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "124",
+            "midi_pitch": 67,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "249/2",
+            "midi_pitch": 70,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "125",
+            "midi_pitch": 72,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "126",
+            "midi_pitch": 69,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "127",
+            "midi_pitch": 70,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "128",
+            "midi_pitch": 72,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "153",
+            "midi_pitch": 72,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "156",
+            "midi_pitch": 89,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "313/2",
+            "midi_pitch": 88,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "157",
+            "midi_pitch": 89,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "160",
+            "midi_pitch": 84,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "321/2",
+            "midi_pitch": 83,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "161",
+            "midi_pitch": 84,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "164",
+            "midi_pitch": 77,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "329/2",
+            "midi_pitch": 76,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "165",
+            "midi_pitch": 77,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "167",
+            "midi_pitch": 70,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "337/2",
+            "midi_pitch": 69,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "169",
+            "midi_pitch": 70,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "5493/32",
+            "midi_pitch": 72,
+            "duration_quarters": "11/16"
+          },
+          {
+            "onset_quarters": "5515/32",
+            "midi_pitch": 70,
+            "duration_quarters": "21/32"
+          },
+          {
+            "onset_quarters": "197",
+            "midi_pitch": 75,
+            "duration_quarters": "1/16"
+          },
+          {
+            "onset_quarters": "3153/16",
+            "midi_pitch": 74,
+            "duration_quarters": "1/16"
+          },
+          {
+            "onset_quarters": "1577/8",
+            "midi_pitch": 72,
+            "duration_quarters": "31/8"
+          },
+          {
+            "onset_quarters": "201",
+            "midi_pitch": 64,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "202",
+            "midi_pitch": 60,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "204",
+            "midi_pitch": 65,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "297",
+            "midi_pitch": 77,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "299",
+            "midi_pitch": 72,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "599/2",
+            "midi_pitch": 71,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "300",
+            "midi_pitch": 72,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "302",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "605/2",
+            "midi_pitch": 64,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "303",
+            "midi_pitch": 65,
+            "duration_quarters": "5/2"
+          },
+          {
+            "onset_quarters": "611/2",
+            "midi_pitch": 57,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "306",
+            "midi_pitch": 58,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "308",
+            "midi_pitch": 77,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "617/2",
+            "midi_pitch": 76,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "309",
+            "midi_pitch": 77,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "311",
+            "midi_pitch": 72,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "623/2",
+            "midi_pitch": 71,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "312",
+            "midi_pitch": 72,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "314",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "629/2",
+            "midi_pitch": 64,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "315",
+            "midi_pitch": 65,
+            "duration_quarters": "3"
+          },
+          {
+            "onset_quarters": "318",
+            "midi_pitch": 60,
+            "duration_quarters": "1/16"
+          },
+          {
+            "onset_quarters": "5089/16",
+            "midi_pitch": 58,
+            "duration_quarters": "1/16"
+          },
+          {
+            "onset_quarters": "2545/8",
+            "midi_pitch": 57,
+            "duration_quarters": "1/16"
+          },
+          {
+            "onset_quarters": "5091/16",
+            "midi_pitch": 58,
+            "duration_quarters": "29/16"
+          },
+          {
+            "onset_quarters": "320",
+            "midi_pitch": 77,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "641/2",
+            "midi_pitch": 76,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "321",
+            "midi_pitch": 77,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "323",
+            "midi_pitch": 72,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "647/2",
+            "midi_pitch": 71,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "324",
+            "midi_pitch": 72,
+            "duration_quarters": "2"
+          },
+          {
+            "onset_quarters": "326",
+            "midi_pitch": 65,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "653/2",
+            "midi_pitch": 64,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "327",
+            "midi_pitch": 65,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "328",
+            "midi_pitch": 58,
+            "duration_quarters": "3/2"
+          },
+          {
+            "onset_quarters": "659/2",
+            "midi_pitch": 57,
+            "duration_quarters": "1/2"
+          },
+          {
+            "onset_quarters": "330",
+            "midi_pitch": 58,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "331",
+            "midi_pitch": 55,
+            "duration_quarters": "1"
+          },
+          {
+            "onset_quarters": "332",
+            "midi_pitch": 72,
+            "duration_quarters": "1/16"
+          },
+          {
+            "onset_quarters": "5313/16",
+            "midi_pitch": 73,
+            "duration_quarters": "1/16"
+          },
+          {
+            "onset_quarters": "2657/8",
+            "midi_pitch": 72,
+            "duration_quarters": "5/8"
+          },
+          {
+            "onset_quarters": "1331/4",
+            "midi_pitch": 70,
+            "duration_quarters": "1/4"
+          },
+          {
+            "onset_quarters": "333",
+            "midi_pitch": 70,
+            "duration_quarters": "11/32"
+          },
+          {
+            "onset_quarters": "10667/32",
+            "midi_pitch": 70,
+            "duration_quarters": "5/16"
+          },
+          {
+            "onset_quarters": "10677/32",
+            "midi_pitch": 69,
+            "duration_quarters": "11/32"
+          },
+          {
+            "onset_quarters": "334",
+            "midi_pitch": 72,
+            "duration_quarters": "2"
+          }
+        ],
+        "chords": [],
+        "keys": [
+          [
+            0,
+            "F"
+          ]
+        ],
+        "bars": [
+          [
+            0,
+            1,
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            1,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            5,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            9,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            13,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            17,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            21,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            25,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            29,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            33,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            37,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            41,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            45,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            49,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            53,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            57,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            61,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            65,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            69,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            73,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            77,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            81,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            85,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            89,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            93,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            97,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            101,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            105,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            109,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            113,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            117,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            121,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            125,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            129,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            133,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            137,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            141,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            145,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            149,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            153,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            157,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            161,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            165,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            169,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            173,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            177,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            181,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            185,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            189,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            193,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            197,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            201,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            205,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            209,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            213,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            217,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            221,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            225,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            229,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            233,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            237,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            241,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            245,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            249,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            253,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            257,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            261,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            265,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            269,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            273,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            277,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            281,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            285,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            289,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            293,
+            4,
+            [
+              4,
+              4
+            ]
+          ],
+          [
+            297,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            300,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            303,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            306,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            309,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            312,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            315,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            318,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            321,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            324,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            327,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            330,
+            3,
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            333,
+            3,
+            [
+              3,
+              4
+            ]
+          ]
+        ]
+      }
+    }
+  }
+}

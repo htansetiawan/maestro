@@ -1,0 +1,30 @@
+{
+  "operation": "existing piano plus separated, timing-adjusted YuE2 singing",
+  "base_source": "experiment 007 audio.mp3, decoded by ffmpeg to 48 kHz stereo float32",
+  "base_sha256": "fc82603b14d076b2e310a9c543221e068e974ff50a6bf928516307cbecf034c4",
+  "vocal_source_sha256": "f95edf7f6db34f51b9ed31e1f55d6be2b0126d9efc0543a76cac3714b93a6755",
+  "samples": 16281536,
+  "sample_rate": 48000,
+  "seconds": 339.19866666666667,
+  "vocal_gain": 0.57016963492444,
+  "global_gain": 1.0,
+  "piano_time_stretched": false,
+  "piano_regenerated": false,
+  "piano_reconstruction_max_error": 8.940696716308594e-08,
+  "peak": 0.5851064920425415,
+  "rms": 0.0408872322272727,
+  "vocal_active_rms": 0.05257530982605265,
+  "piano_active_rms": 0.03773861219973503,
+  "warp": {
+    "engine": 3,
+    "pitch_scale": 1.0,
+    "keyframes": 248,
+    "raw_frames": 16281536,
+    "target_frames": 16281536,
+    "tail_pad_or_trim_frames": 0,
+    "method": "Rubber Band offline key-frame time map applied to isolated vocals only"
+  },
+  "librosa_version": "0.11.0",
+  "audible_alignment_verified": false,
+  "caveat": "Separation leakage and time-stretch artifacts remain possible. Chroma DTW is not phoneme alignment."
+}

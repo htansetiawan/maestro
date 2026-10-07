@@ -1,0 +1,13 @@
+{
+  "engine": 3,
+  "pitch_scale": 1.0,
+  "keyframes": 1,
+  "raw_frames": 144000,
+  "target_frames": 144000,
+  "tail_pad_or_trim_frames": 0,
+  "method": "Rubber Band offline key-frame time map applied to isolated vocals only",
+  "test": "440 Hz tone, amplitude landmark moved from 1.0 to 0.75 seconds",
+  "output_peak_hz": 440.0,
+  "landmark_seconds": 0.755,
+  "passed": true
+}

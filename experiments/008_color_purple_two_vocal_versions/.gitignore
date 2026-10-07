@@ -1,0 +1,4 @@
+outputs/**/*.npy
+work/
+record/*.log
+record/__pycache__/

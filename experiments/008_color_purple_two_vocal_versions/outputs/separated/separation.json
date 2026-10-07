@@ -1,0 +1,17 @@
+{
+  "operation": "source separation of version A; not new singing generation",
+  "model": "htdemucs",
+  "demucs_version": "4.0.1",
+  "seed": 20261006,
+  "shifts": 1,
+  "overlap": 0.25,
+  "weights_sha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+  "official_weights_url": "https://dl.fbaipublicfiles.com/demucs/hybrid_transformer/955717e8-8726e21a.th",
+  "source_sha256": "f256f4c9b00e38d75b28a08d02f826ebf318cde9a1f37595dc240ea796f23651",
+  "seconds": 372.15866666666665,
+  "sample_rate": 48000,
+  "elapsed_seconds": 11.230352061102167,
+  "vocal_rms": 0.03987610941897833,
+  "mixture_reconstruction_max_error": 1.4901161193847656e-08,
+  "caveat": "The vocal estimate may retain piano leakage and separation artifacts."
+}

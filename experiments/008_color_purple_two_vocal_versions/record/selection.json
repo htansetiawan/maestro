@@ -1,0 +1,6 @@
+{
+  "version_a": "new-piano-vocal-extended",
+  "reason": "Same request and seed rerendered with 15000 token allowance after initial9000-token take was truncated; extended take reached natural EOS. No seed or quality selection.",
+  "initial_attempt": "new-piano-vocal",
+  "version_b": "existing-piano-vocal"
+}

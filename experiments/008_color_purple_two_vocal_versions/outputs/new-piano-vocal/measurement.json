@@ -1,0 +1,15 @@
+{
+  "elapsed_seconds": 143.26817247993313,
+  "audio_seconds": 359.9986666666667,
+  "peak": 1.0,
+  "rms": 0.12206034387406978,
+  "clipped_fraction": 3.804990944410905e-05,
+  "truncated": {
+    "abc": false,
+    "semantic": true
+  },
+  "manifest_verified": true,
+  "score_preserved_in_saved_input": true,
+  "peak_cuda_gib": 8.737849235534668,
+  "audio_score_adherence_measured": false
+}

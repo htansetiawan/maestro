@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent reviewer agent",
+  "review_order": "Raw before/after ABC, request and lyrics inspected before manifest or rationale; parsed invariants then reconciled with manifest and lyric map.",
+  "verdict": "symbolic_contract_pass_with_musical_cautions",
+  "inputs": {
+    "experiments/007_color_purple_sheet_yue2/prepared/score.abc": "2bf593c9a7015ea0847d4a1e530a872f765dc8348e2521d5815642c4ec324d30",
+    "experiments/008_color_purple_two_vocal_versions/inputs/vocal.abc": "52b47ee6ab9cf3711732987f7ab4106c9007088f623e1d9184fc093bf7d6996d",
+    "experiments/008_color_purple_two_vocal_versions/inputs/request.json": "707891fa0e001a2c98522245f4d2f83fafbb280d90446bbf81a7d2d0bb124c62",
+    "experiments/008_color_purple_two_vocal_versions/inputs/lyrics.txt": "b546c53e2c7aaca9d28b2382911c9eea228d8ea97092e8fa3f46df1e3d381617",
+    "experiments/008_color_purple_two_vocal_versions/inputs/edit_manifest.json": "577db60ab5e110d61870cb6e1568276b9c575cddf2d46a316a95b461e4a5d657",
+    "experiments/008_color_purple_two_vocal_versions/inputs/lyric-note-map.json": "de4e59184bc5bf3925b1bbeeead7e76d6417eaf170c47c80f32305d07bd52323"
+  },
+  "checks": {
+    "valid_native_abc": true,
+    "all_298_lead_events_retained": true,
+    "all_note_onsets_and_durations_exact": true,
+    "all_pitch_classes_exact": true,
+    "tempo_88_preserved": true,
+    "keys_preserved": true,
+    "bars_meters_preserved": true,
+    "all_chord_symbols_and_onsets_preserved": true,
+    "chords_only_in_Vocal": true,
+    "request_exact_abc": true,
+    "request_exact_lyrics": true,
+    "full_conditioning": true,
+    "native_request_fields_only": true,
+    "source_hashes_valid": true,
+    "instrumental_events_unchanged": true,
+    "phrase_phrase-01_consistent_octave": true,
+    "phrase_phrase-02_consistent_octave": true,
+    "phrase_phrase-03_consistent_octave": true,
+    "phrase_phrase-04_consistent_octave": true,
+    "phrase_phrase-05_consistent_octave": true,
+    "phrase_phrase-06_consistent_octave": true,
+    "phrase_phrase-07_consistent_octave": true,
+    "phrase_phrase-08_consistent_octave": true,
+    "phrase_phrase-09_consistent_octave": true,
+    "phrase_phrase-10_consistent_octave": true,
+    "phrase_phrase-11_consistent_octave": true,
+    "phrase_phrase-12_consistent_octave": true,
+    "phrase_phrase-13_consistent_octave": true,
+    "phrase_phrase-14_consistent_octave": true,
+    "phrase_phrase-15_consistent_octave": true,
+    "phrase_phrase-16_consistent_octave": true,
+    "lyric_note_indices_cover_all_vocal_notes_exactly_once": true,
+    "lyric_note_map_matches_abc": true,
+    "manifest_changed_notes_exact": true
+  },
+  "metrics": {
+    "total_notes": 298,
+    "vocal_notes": 178,
+    "instrumental_notes": 120,
+    "bars_including_pickup": 88,
+    "quarter_beats": 336,
+    "nominal_seconds": 229.0909090909091,
+    "vocal_range_midi": [
+      45,
+      67
+    ],
+    "octave_changes_semitones": {
+      "0": 120,
+      "-12": 111,
+      "-24": 67
+    }
+  },
+  "findings": [
+    {
+      "severity": "resolved",
+      "id": "lyric_stress",
+      "scope": "intended lyric-note map",
+      "detail": "Editor replaced phrase03 with Hold us here beneath the starlight, phrase15 again with once more, and phrase16 our memories stay with all our love stays here. Independent recheck confirms complete note coverage and unchanged notes. Long held endings now target light, once, and stays; the three flagged unstressed-syllable holds are removed.",
+      "recommendation": "Audition diction and lexical stress after generation; this sidecar remains intended mapping rather than model-enforced timing."
+    },
+    {
+      "severity": "caution",
+      "id": "breathing",
+      "scope": "bars52\u201374",
+      "detail": "Vocal has 92 consecutive quarter beats (62.727 seconds nominal) without a written rest. Phrase-ending sustained notes offer performance breathing choices, but exact note-duration preservation and natural breath gaps cannot both be asserted.",
+      "recommendation": "Treat tiny phrase-end releases as interpretation, document this limit, and listen for rushed or unbroken phrasing."
+    },
+    {
+      "severity": "caution",
+      "id": "register",
+      "scope": "Vocal A2\u2013G4",
+      "detail": "The nearly two-octave range is plausible for an expressive male voice, but A2 and G4 are both edge notes for a generic warm baritone. The verse mostly sits low, while chorus passages reach G4.",
+      "recommendation": "Listen for weak low diction and strained upper notes; do not promise baritone comfort from the numeric range alone."
+    },
+    {
+      "severity": "limitation",
+      "id": "pronunciation_audit",
+      "scope": "lyric-note-map.json",
+      "detail": "Manual English orthographic syllabification is explicitly labeled and no dictionary phonemes are supplied or claimed. Pronunciation-source verification remains incomplete, but this is not a blocker for the text-conditioned generation.",
+      "recommendation": "If the sidecar later becomes an enforced phoneme-based singing specification, add verified pronunciations and lexical stress."
+    },
+    {
+      "severity": "limitation",
+      "id": "symbolic_only",
+      "detail": "No audio was generated or auditioned by this reviewer. Structural equality verifies conditioning data, not audible melody, lyric timing, harmony or preservation of the prior piano waveform. The pre-existing PDF transcription was not independently revalidated."
+    }
+  ],
+  "followup": "Re-read updated raw lyrics, request and changed phrase maps after editor revision. ABC hash unchanged; all earlier parsed note, harmony, tempo and meter invariants remain valid. Rechecked complete syllable mapping and request exactness."
+}

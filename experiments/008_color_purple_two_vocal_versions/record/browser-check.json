@@ -1,0 +1,31 @@
+{
+  "audio": [
+    {
+      "src": "outputs/new-piano-vocal-extended/audio.mp3",
+      "duration": 372.158667,
+      "error": null
+    },
+    {
+      "src": "outputs/existing-piano-vocal/audio.mp3",
+      "duration": 339.198667,
+      "error": null
+    },
+    {
+      "src": "outputs/existing-piano-vocal/vocals-aligned.mp3",
+      "duration": 339.198667,
+      "error": null
+    },
+    {
+      "src": "../007_color_purple_sheet_yue2/outputs/sheet-piano-20261005/audio.mp3",
+      "duration": 339.198667,
+      "error": null
+    },
+    {
+      "src": "outputs/new-piano-vocal/audio.mp3",
+      "duration": 359.998667,
+      "error": null
+    }
+  ],
+  "mobile_overflow": false,
+  "scope": "Browser media metadata and layout; not an auditory evaluation"
+}

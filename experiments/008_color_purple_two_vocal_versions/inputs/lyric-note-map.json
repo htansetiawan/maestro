@@ -1,0 +1,2340 @@
+{
+  "schema_version": 1,
+  "voice": "Vocal",
+  "note_index_base": 0,
+  "note_index_definition": "Sounding Vocal notes after merging ABC ties, chronological order; excludes Ins notes.",
+  "status": "Intended manual syllable mapping only; not a model API input or measured audio alignment.",
+  "pronunciation_source": "Manual English orthographic syllabification; no dictionary phonemes supplied or claimed.",
+  "note_count": 178,
+  "phrases": [
+    {
+      "phrase_id": "phrase-01",
+      "section": "verse",
+      "measures": [
+        9,
+        11
+      ],
+      "onset": 33,
+      "end": 45,
+      "octave_shift": -1,
+      "lyric": "Morning in the Harvard Yard",
+      "syllables": [
+        {
+          "word": "Morning",
+          "syllable": "Morn",
+          "note_indices": [
+            0
+          ],
+          "pitches": [
+            45
+          ],
+          "onset": 33,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Morning",
+          "syllable": "ing",
+          "note_indices": [
+            1
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 34,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "in",
+          "syllable": "in",
+          "note_indices": [
+            2
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 35,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            3
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 36,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Harvard",
+          "syllable": "Har",
+          "note_indices": [
+            4
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 37,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Harvard",
+          "syllable": "vard",
+          "note_indices": [
+            5
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 38,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Yard",
+          "syllable": "Yard",
+          "note_indices": [
+            6,
+            7,
+            8
+          ],
+          "pitches": [
+            58,
+            55,
+            57
+          ],
+          "onset": 39,
+          "duration": 6,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-02",
+      "section": "verse",
+      "measures": [
+        13,
+        14
+      ],
+      "onset": 50,
+      "end": 57,
+      "octave_shift": -1,
+      "lyric": "Sunlight warms the old brick walls",
+      "syllables": [
+        {
+          "word": "Sunlight",
+          "syllable": "Sun",
+          "note_indices": [
+            9
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 50,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Sunlight",
+          "syllable": "light",
+          "note_indices": [
+            10
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 51,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "warms",
+          "syllable": "warms",
+          "note_indices": [
+            11
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 52,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            12
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 53,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "old",
+          "syllable": "old",
+          "note_indices": [
+            13
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 54,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "brick",
+          "syllable": "brick",
+          "note_indices": [
+            14
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 55,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "walls",
+          "syllable": "walls",
+          "note_indices": [
+            15
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": 56,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-03",
+      "section": "chorus",
+      "measures": [
+        17,
+        19
+      ],
+      "onset": 65,
+      "end": 77,
+      "octave_shift": -2,
+      "lyric": "Hold us here beneath the starlight",
+      "syllables": [
+        {
+          "word": "Hold",
+          "syllable": "Hold",
+          "note_indices": [
+            16
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 65,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "us",
+          "syllable": "us",
+          "note_indices": [
+            17
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 67,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "here",
+          "syllable": "here",
+          "note_indices": [
+            18
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "2165/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "be",
+          "note_indices": [
+            19
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": "2187/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "neath",
+          "note_indices": [
+            20
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 69,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            21
+          ],
+          "pitches": [
+            52
+          ],
+          "onset": 71,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "starlight",
+          "syllable": "star",
+          "note_indices": [
+            22
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 72,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "starlight",
+          "syllable": "light",
+          "note_indices": [
+            23,
+            24,
+            25,
+            26
+          ],
+          "pitches": [
+            57,
+            58,
+            60,
+            62
+          ],
+          "onset": 73,
+          "duration": 4,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-04",
+      "section": "chorus",
+      "measures": [
+        21,
+        22
+      ],
+      "onset": 81,
+      "end": 89,
+      "octave_shift": -1,
+      "lyric": "In the quiet soft light",
+      "syllables": [
+        {
+          "word": "In",
+          "syllable": "In",
+          "note_indices": [
+            27
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": 81,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            28
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": 83,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "quiet",
+          "syllable": "qui",
+          "note_indices": [
+            29
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": "2677/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "quiet",
+          "syllable": "et",
+          "note_indices": [
+            30
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": "2699/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "soft",
+          "syllable": "soft",
+          "note_indices": [
+            31
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": 85,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "light",
+          "syllable": "light",
+          "note_indices": [
+            32
+          ],
+          "pitches": [
+            59
+          ],
+          "onset": 87,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-05",
+      "section": "verse",
+      "measures": [
+        25,
+        27
+      ],
+      "onset": 98,
+      "end": 109,
+      "octave_shift": -2,
+      "lyric": "Books lie open on the grass",
+      "syllables": [
+        {
+          "word": "Books",
+          "syllable": "Books",
+          "note_indices": [
+            33
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 98,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "lie",
+          "syllable": "lie",
+          "note_indices": [
+            34
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 99,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "open",
+          "syllable": "o",
+          "note_indices": [
+            35
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 100,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "open",
+          "syllable": "pen",
+          "note_indices": [
+            36
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 101,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "on",
+          "syllable": "on",
+          "note_indices": [
+            37
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 102,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            38
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 103,
+          "duration": "3/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "grass",
+          "syllable": "grass",
+          "note_indices": [
+            39,
+            40
+          ],
+          "pitches": [
+            55,
+            57
+          ],
+          "onset": "209/2",
+          "duration": "9/2",
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-06",
+      "section": "verse",
+      "measures": [
+        28,
+        30
+      ],
+      "onset": 109,
+      "end": 121,
+      "octave_shift": -2,
+      "lyric": "Laughter floats beneath the trees we chase the day",
+      "syllables": [
+        {
+          "word": "Laughter",
+          "syllable": "Laugh",
+          "note_indices": [
+            41
+          ],
+          "pitches": [
+            46
+          ],
+          "onset": 109,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Laughter",
+          "syllable": "ter",
+          "note_indices": [
+            42
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 110,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "floats",
+          "syllable": "floats",
+          "note_indices": [
+            43
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 111,
+          "duration": "3/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "be",
+          "note_indices": [
+            44
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": "225/2",
+          "duration": "1/4",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "neath",
+          "note_indices": [
+            45
+          ],
+          "pitches": [
+            52
+          ],
+          "onset": "451/4",
+          "duration": "1/4",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            46
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 113,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "trees",
+          "syllable": "trees",
+          "note_indices": [
+            47
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 114,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "we",
+          "syllable": "we",
+          "note_indices": [
+            48
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 115,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "chase",
+          "syllable": "chase",
+          "note_indices": [
+            49
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 116,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            50
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 117,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "day",
+          "syllable": "day",
+          "note_indices": [
+            51,
+            52,
+            53
+          ],
+          "pitches": [
+            53,
+            58,
+            62
+          ],
+          "onset": 118,
+          "duration": 3,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-07",
+      "section": "chorus",
+      "measures": [
+        33,
+        36
+      ],
+      "onset": 129,
+      "end": 145,
+      "octave_shift": -1,
+      "lyric": "Red brick buildings keep our stories when our footsteps fade",
+      "syllables": [
+        {
+          "word": "Red",
+          "syllable": "Red",
+          "note_indices": [
+            54
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": 129,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "brick",
+          "syllable": "brick",
+          "note_indices": [
+            55
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": 131,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "buildings",
+          "syllable": "build",
+          "note_indices": [
+            56
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": "4213/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "buildings",
+          "syllable": "ings",
+          "note_indices": [
+            57
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": "4235/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "keep",
+          "syllable": "keep",
+          "note_indices": [
+            58
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 133,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "our",
+          "syllable": "our",
+          "note_indices": [
+            59
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 135,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "stories",
+          "syllable": "sto",
+          "note_indices": [
+            60
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 136,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "stories",
+          "syllable": "ries",
+          "note_indices": [
+            61
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": 137,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "when",
+          "syllable": "when",
+          "note_indices": [
+            62
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": 139,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "our",
+          "syllable": "our",
+          "note_indices": [
+            63
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": "4469/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "footsteps",
+          "syllable": "foot",
+          "note_indices": [
+            64
+          ],
+          "pitches": [
+            67
+          ],
+          "onset": "4491/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "footsteps",
+          "syllable": "steps",
+          "note_indices": [
+            65
+          ],
+          "pitches": [
+            67
+          ],
+          "onset": 141,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "fade",
+          "syllable": "fade",
+          "note_indices": [
+            66,
+            67,
+            68
+          ],
+          "pitches": [
+            65,
+            64,
+            60
+          ],
+          "onset": 142,
+          "duration": 3,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-08",
+      "section": "chorus",
+      "measures": [
+        37,
+        38
+      ],
+      "onset": 145,
+      "end": 153,
+      "octave_shift": -2,
+      "lyric": "Let our love stay",
+      "syllables": [
+        {
+          "word": "Let",
+          "syllable": "Let",
+          "note_indices": [
+            69
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 145,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "our",
+          "syllable": "our",
+          "note_indices": [
+            70
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 147,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "love",
+          "syllable": "love",
+          "note_indices": [
+            71
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "4725/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "stay",
+          "syllable": "stay",
+          "note_indices": [
+            72,
+            73
+          ],
+          "pitches": [
+            62,
+            64
+          ],
+          "onset": "4747/32",
+          "duration": "149/32",
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-09",
+      "section": "verse",
+      "measures": [
+        44,
+        46
+      ],
+      "onset": 173,
+      "end": 185,
+      "octave_shift": -1,
+      "lyric": "Someone saves a place for me",
+      "syllables": [
+        {
+          "word": "Someone",
+          "syllable": "Some",
+          "note_indices": [
+            74
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 173,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Someone",
+          "syllable": "one",
+          "note_indices": [
+            75
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 174,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "saves",
+          "syllable": "saves",
+          "note_indices": [
+            76
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 175,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "a",
+          "syllable": "a",
+          "note_indices": [
+            77
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 176,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "place",
+          "syllable": "place",
+          "note_indices": [
+            78
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 177,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "for",
+          "syllable": "for",
+          "note_indices": [
+            79
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 178,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "me",
+          "syllable": "me",
+          "note_indices": [
+            80,
+            81,
+            82
+          ],
+          "pitches": [
+            58,
+            55,
+            57
+          ],
+          "onset": 179,
+          "duration": 6,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-10",
+      "section": "verse",
+      "measures": [
+        47,
+        49
+      ],
+      "onset": 185,
+      "end": 197,
+      "octave_shift": -1,
+      "lyric": "We trade our dreams beneath the shelter of a tree",
+      "syllables": [
+        {
+          "word": "We",
+          "syllable": "We",
+          "note_indices": [
+            83
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 185,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "trade",
+          "syllable": "trade",
+          "note_indices": [
+            84
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 187,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "our",
+          "syllable": "our",
+          "note_indices": [
+            85
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "375/2",
+          "duration": "3/4",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "dreams",
+          "syllable": "dreams",
+          "note_indices": [
+            86
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": "753/4",
+          "duration": "3/4",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "be",
+          "note_indices": [
+            87
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 189,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "neath",
+          "note_indices": [
+            88
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 190,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            89
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 191,
+          "duration": "3/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "shelter",
+          "syllable": "shel",
+          "note_indices": [
+            90
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": "385/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "shelter",
+          "syllable": "ter",
+          "note_indices": [
+            91
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 193,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "of",
+          "syllable": "of",
+          "note_indices": [
+            92
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 194,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "a",
+          "syllable": "a",
+          "note_indices": [
+            93
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 195,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "tree",
+          "syllable": "tree",
+          "note_indices": [
+            94
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": 196,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-11",
+      "section": "bridge",
+      "measures": [
+        52,
+        55
+      ],
+      "onset": 205,
+      "end": 221,
+      "octave_shift": -1,
+      "lyric": "Year by year another spring brings voices here",
+      "syllables": [
+        {
+          "word": "Year",
+          "syllable": "Year",
+          "note_indices": [
+            95
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 205,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "by",
+          "syllable": "by",
+          "note_indices": [
+            96
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 207,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "year",
+          "syllable": "year",
+          "note_indices": [
+            97
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "6645/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "another",
+          "syllable": "an",
+          "note_indices": [
+            98
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": "6667/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "another",
+          "syllable": "oth",
+          "note_indices": [
+            99
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 209,
+          "duration": 3,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "another",
+          "syllable": "er",
+          "note_indices": [
+            100
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 212,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "spring",
+          "syllable": "spring",
+          "note_indices": [
+            101
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 213,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "brings",
+          "syllable": "brings",
+          "note_indices": [
+            102
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 215,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "voices",
+          "syllable": "voic",
+          "note_indices": [
+            103
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "6901/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "voices",
+          "syllable": "es",
+          "note_indices": [
+            104
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": "6923/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "here",
+          "syllable": "here",
+          "note_indices": [
+            105,
+            106
+          ],
+          "pitches": [
+            53,
+            53
+          ],
+          "onset": 217,
+          "duration": 4,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-12",
+      "section": "bridge",
+      "measures": [
+        56,
+        59
+      ],
+      "onset": 221,
+      "end": 237,
+      "octave_shift": -1,
+      "lyric": "Strangers turn to lifelong friends and learn to start again",
+      "syllables": [
+        {
+          "word": "Strangers",
+          "syllable": "Stran",
+          "note_indices": [
+            107
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": 221,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Strangers",
+          "syllable": "gers",
+          "note_indices": [
+            108
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": 223,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "turn",
+          "syllable": "turn",
+          "note_indices": [
+            109
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": "7157/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "to",
+          "syllable": "to",
+          "note_indices": [
+            110
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": "7179/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "lifelong",
+          "syllable": "life",
+          "note_indices": [
+            111
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": 225,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "lifelong",
+          "syllable": "long",
+          "note_indices": [
+            112
+          ],
+          "pitches": [
+            59
+          ],
+          "onset": 227,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "friends",
+          "syllable": "friends",
+          "note_indices": [
+            113
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": 229,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "and",
+          "syllable": "and",
+          "note_indices": [
+            114
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": 230,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "learn",
+          "syllable": "learn",
+          "note_indices": [
+            115
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": 231,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "to",
+          "syllable": "to",
+          "note_indices": [
+            116
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": 233,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "start",
+          "syllable": "start",
+          "note_indices": [
+            117
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 235,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "again",
+          "syllable": "a",
+          "note_indices": [
+            118
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": "471/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "again",
+          "syllable": "gain",
+          "note_indices": [
+            119
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 236,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-13",
+      "section": "chorus",
+      "measures": [
+        60,
+        63
+      ],
+      "onset": 237,
+      "end": 253,
+      "octave_shift": -2,
+      "lyric": "Hold us here a little longer where the roots of love grow strong",
+      "syllables": [
+        {
+          "word": "Hold",
+          "syllable": "Hold",
+          "note_indices": [
+            120
+          ],
+          "pitches": [
+            45
+          ],
+          "onset": 237,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "us",
+          "syllable": "us",
+          "note_indices": [
+            121
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 238,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "here",
+          "syllable": "here",
+          "note_indices": [
+            122
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 239,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "a",
+          "syllable": "a",
+          "note_indices": [
+            123
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 240,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "little",
+          "syllable": "lit",
+          "note_indices": [
+            124
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 241,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "little",
+          "syllable": "tle",
+          "note_indices": [
+            125
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 242,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "longer",
+          "syllable": "long",
+          "note_indices": [
+            126
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 243,
+          "duration": "3/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "longer",
+          "syllable": "er",
+          "note_indices": [
+            127
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": "489/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "where",
+          "syllable": "where",
+          "note_indices": [
+            128
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 245,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            129
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": 247,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "roots",
+          "syllable": "roots",
+          "note_indices": [
+            130
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "495/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "of",
+          "syllable": "of",
+          "note_indices": [
+            131
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 248,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "love",
+          "syllable": "love",
+          "note_indices": [
+            132
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "497/2",
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "grow",
+          "syllable": "grow",
+          "note_indices": [
+            133
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": "501/2",
+          "duration": "1/4",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "strong",
+          "syllable": "strong",
+          "note_indices": [
+            134,
+            135,
+            136
+          ],
+          "pitches": [
+            53,
+            53,
+            55
+          ],
+          "onset": "1003/4",
+          "duration": "9/4",
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-14",
+      "section": "chorus",
+      "measures": [
+        64,
+        67
+      ],
+      "onset": 253,
+      "end": 269,
+      "octave_shift": -2,
+      "lyric": "In the Yard we learned belonging let our stories stay",
+      "syllables": [
+        {
+          "word": "In",
+          "syllable": "In",
+          "note_indices": [
+            137
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 253,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "the",
+          "syllable": "the",
+          "note_indices": [
+            138
+          ],
+          "pitches": [
+            48
+          ],
+          "onset": 254,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Yard",
+          "syllable": "Yard",
+          "note_indices": [
+            139
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 255,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "we",
+          "syllable": "we",
+          "note_indices": [
+            140
+          ],
+          "pitches": [
+            57
+          ],
+          "onset": 256,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "learned",
+          "syllable": "learned",
+          "note_indices": [
+            141
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": 257,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "belonging",
+          "syllable": "be",
+          "note_indices": [
+            142
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 258,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "belonging",
+          "syllable": "long",
+          "note_indices": [
+            143
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 259,
+          "duration": "3/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "belonging",
+          "syllable": "ing",
+          "note_indices": [
+            144
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": "521/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "let",
+          "syllable": "let",
+          "note_indices": [
+            145
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": 261,
+          "duration": 4,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "our",
+          "syllable": "our",
+          "note_indices": [
+            146
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 265,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "stories",
+          "syllable": "sto",
+          "note_indices": [
+            147
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 267,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "stories",
+          "syllable": "ries",
+          "note_indices": [
+            148
+          ],
+          "pitches": [
+            45
+          ],
+          "onset": "535/2",
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "stay",
+          "syllable": "stay",
+          "note_indices": [
+            149
+          ],
+          "pitches": [
+            45
+          ],
+          "onset": "537/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-15",
+      "section": "chorus",
+      "measures": [
+        68,
+        71
+      ],
+      "onset": 269,
+      "end": 285,
+      "octave_shift": -1,
+      "lyric": "When I walk these paths once more old friends come back to me",
+      "syllables": [
+        {
+          "word": "When",
+          "syllable": "When",
+          "note_indices": [
+            150
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 269,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "I",
+          "syllable": "I",
+          "note_indices": [
+            151
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": "539/2",
+          "duration": "3/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "walk",
+          "syllable": "walk",
+          "note_indices": [
+            152
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": 271,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "these",
+          "syllable": "these",
+          "note_indices": [
+            153
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": "8693/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "paths",
+          "syllable": "paths",
+          "note_indices": [
+            154
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": "8715/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "once",
+          "syllable": "once",
+          "note_indices": [
+            155
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 273,
+          "duration": 3,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "more",
+          "syllable": "more",
+          "note_indices": [
+            156
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 276,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "old",
+          "syllable": "old",
+          "note_indices": [
+            157
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": 277,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "friends",
+          "syllable": "friends",
+          "note_indices": [
+            158
+          ],
+          "pitches": [
+            64
+          ],
+          "onset": 279,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "come",
+          "syllable": "come",
+          "note_indices": [
+            159
+          ],
+          "pitches": [
+            65
+          ],
+          "onset": "8949/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "back",
+          "syllable": "back",
+          "note_indices": [
+            160
+          ],
+          "pitches": [
+            67
+          ],
+          "onset": "8971/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "to",
+          "syllable": "to",
+          "note_indices": [
+            161
+          ],
+          "pitches": [
+            67
+          ],
+          "onset": 281,
+          "duration": 1,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "me",
+          "syllable": "me",
+          "note_indices": [
+            162,
+            163,
+            164
+          ],
+          "pitches": [
+            65,
+            64,
+            60
+          ],
+          "onset": 282,
+          "duration": 3,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    },
+    {
+      "phrase_id": "phrase-16",
+      "section": "chorus",
+      "measures": [
+        72,
+        74
+      ],
+      "onset": 285,
+      "end": 297,
+      "octave_shift": -1,
+      "lyric": "Harvard Yard beneath your trees all our love stays here",
+      "syllables": [
+        {
+          "word": "Harvard",
+          "syllable": "Har",
+          "note_indices": [
+            165
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 285,
+          "duration": 2,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Harvard",
+          "syllable": "vard",
+          "note_indices": [
+            166
+          ],
+          "pitches": [
+            58
+          ],
+          "onset": 287,
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "Yard",
+          "syllable": "Yard",
+          "note_indices": [
+            167
+          ],
+          "pitches": [
+            60
+          ],
+          "onset": "9205/32",
+          "duration": "11/16",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "be",
+          "note_indices": [
+            168
+          ],
+          "pitches": [
+            62
+          ],
+          "onset": "9227/32",
+          "duration": "21/32",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "beneath",
+          "syllable": "neath",
+          "note_indices": [
+            169
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 289,
+          "duration": "3/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "your",
+          "syllable": "your",
+          "note_indices": [
+            170
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": "581/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "trees",
+          "syllable": "trees",
+          "note_indices": [
+            171
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": 291,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "all",
+          "syllable": "all",
+          "note_indices": [
+            172
+          ],
+          "pitches": [
+            53
+          ],
+          "onset": "583/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "our",
+          "syllable": "our",
+          "note_indices": [
+            173
+          ],
+          "pitches": [
+            55
+          ],
+          "onset": 292,
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "love",
+          "syllable": "love",
+          "note_indices": [
+            174
+          ],
+          "pitches": [
+            50
+          ],
+          "onset": "585/2",
+          "duration": "1/2",
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "stays",
+          "syllable": "stays",
+          "note_indices": [
+            175
+          ],
+          "pitches": [
+            52
+          ],
+          "onset": 293,
+          "duration": 3,
+          "articulation": "One syllable attack on this note."
+        },
+        {
+          "word": "here",
+          "syllable": "here",
+          "note_indices": [
+            176,
+            177
+          ],
+          "pitches": [
+            65,
+            64
+          ],
+          "onset": 296,
+          "duration": 1,
+          "articulation": "Sustain final vowel across these notes; release consonant at phrase end."
+        }
+      ]
+    }
+  ]
+}
