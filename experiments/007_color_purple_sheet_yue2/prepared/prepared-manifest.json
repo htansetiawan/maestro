@@ -1,0 +1,36 @@
+{
+  "files": {
+    "events.json": {
+      "sha256": "976f52a23e43db17390c1ad9e7b223f34d4a4c0ae4d5417540233b2c4bba9856",
+      "bytes": 20376
+    },
+    "lyrics.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "prompt.txt": {
+      "sha256": "e098504cfefa818c92016094da6afa5e1623079b8cb2ec32f41e108aa4c09c85",
+      "bytes": 341
+    },
+    "repair-report.json": {
+      "sha256": "6c5a943924c837ce068777376c6b912c04bd6db3bce89545d75d054fff6b9327",
+      "bytes": 14696
+    },
+    "request.json": {
+      "sha256": "a00ec09f7b05c915b8ad73902a97cb95ff99b1d2447c6b7748066fa6dc128f25",
+      "bytes": 4205
+    },
+    "score-check.json": {
+      "sha256": "33fea3e8d9c0c3f57fec1fa9d3136f2eb5c6a6b855cad8c3006b612a969f8e91",
+      "bytes": 60177
+    },
+    "score.abc": {
+      "sha256": "2bf593c9a7015ea0847d4a1e530a872f765dc8348e2521d5815642c4ec324d30",
+      "bytes": 3553
+    },
+    "style.txt": {
+      "sha256": "861fe02aefc68ba8f2518ac041ecd3a358e7106177b8503fbceb96676daabb1b",
+      "bytes": 213
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# Keep original shared-link document private; publish only if explicitly requested.
+source-private/
+# Checkpoint-independent intermediate arrays can be large; retain locally.
+outputs/**/*.npy
+record/gpu-wait.lock
+record/gpu-wait-status.json
+record/gpu-wait.log
+record/generation.log

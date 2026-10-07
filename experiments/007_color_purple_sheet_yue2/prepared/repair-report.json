@@ -1,0 +1,743 @@
+{
+  "changes": [
+    {
+      "kind": "rhythm_grid",
+      "note_index": 10,
+      "pitch": 60,
+      "source": [
+        "25/2",
+        "1/6"
+      ],
+      "native": [
+        "25/2",
+        "5/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 11,
+      "pitch": 58,
+      "source": [
+        "38/3",
+        "1/6"
+      ],
+      "native": [
+        "405/32",
+        "3/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 12,
+      "pitch": 57,
+      "source": [
+        "77/6",
+        "1/6"
+      ],
+      "native": [
+        "411/32",
+        "5/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 52,
+      "pitch": 82,
+      "source": [
+        67,
+        "2/3"
+      ],
+      "native": [
+        67,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 53,
+      "pitch": 84,
+      "source": [
+        "203/3",
+        "2/3"
+      ],
+      "native": [
+        "2165/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 54,
+      "pitch": 86,
+      "source": [
+        "205/3",
+        "2/3"
+      ],
+      "native": [
+        "2187/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 59,
+      "pitch": 82,
+      "source": [
+        75,
+        "2/3"
+      ],
+      "native": [
+        75,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 60,
+      "pitch": 84,
+      "source": [
+        "227/3",
+        "2/3"
+      ],
+      "native": [
+        "2421/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 61,
+      "pitch": 86,
+      "source": [
+        "229/3",
+        "2/3"
+      ],
+      "native": [
+        "2443/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 65,
+      "pitch": 77,
+      "source": [
+        83,
+        "2/3"
+      ],
+      "native": [
+        83,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 66,
+      "pitch": 76,
+      "source": [
+        "251/3",
+        "2/3"
+      ],
+      "native": [
+        "2677/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 67,
+      "pitch": 74,
+      "source": [
+        "253/3",
+        "2/3"
+      ],
+      "native": [
+        "2699/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 111,
+      "pitch": 74,
+      "source": [
+        131,
+        "2/3"
+      ],
+      "native": [
+        131,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 112,
+      "pitch": 76,
+      "source": [
+        "395/3",
+        "2/3"
+      ],
+      "native": [
+        "4213/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 113,
+      "pitch": 77,
+      "source": [
+        "397/3",
+        "2/3"
+      ],
+      "native": [
+        "4235/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 118,
+      "pitch": 76,
+      "source": [
+        139,
+        "2/3"
+      ],
+      "native": [
+        139,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 119,
+      "pitch": 77,
+      "source": [
+        "419/3",
+        "2/3"
+      ],
+      "native": [
+        "4469/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 120,
+      "pitch": 79,
+      "source": [
+        "421/3",
+        "2/3"
+      ],
+      "native": [
+        "4491/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 126,
+      "pitch": 82,
+      "source": [
+        147,
+        "2/3"
+      ],
+      "native": [
+        147,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 127,
+      "pitch": 84,
+      "source": [
+        "443/3",
+        "2/3"
+      ],
+      "native": [
+        "4725/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 128,
+      "pitch": 86,
+      "source": [
+        "445/3",
+        "2/3"
+      ],
+      "native": [
+        "4747/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 143,
+      "pitch": 72,
+      "source": [
+        "515/3",
+        "2/3"
+      ],
+      "native": [
+        "5493/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 144,
+      "pitch": 70,
+      "source": [
+        "517/3",
+        "2/3"
+      ],
+      "native": [
+        "5515/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 173,
+      "pitch": 70,
+      "source": [
+        207,
+        "2/3"
+      ],
+      "native": [
+        207,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 174,
+      "pitch": 72,
+      "source": [
+        "623/3",
+        "2/3"
+      ],
+      "native": [
+        "6645/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 175,
+      "pitch": 74,
+      "source": [
+        "625/3",
+        "2/3"
+      ],
+      "native": [
+        "6667/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 179,
+      "pitch": 70,
+      "source": [
+        215,
+        "2/3"
+      ],
+      "native": [
+        215,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 180,
+      "pitch": 72,
+      "source": [
+        "647/3",
+        "2/3"
+      ],
+      "native": [
+        "6901/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 181,
+      "pitch": 74,
+      "source": [
+        "649/3",
+        "2/3"
+      ],
+      "native": [
+        "6923/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 185,
+      "pitch": 77,
+      "source": [
+        223,
+        "2/3"
+      ],
+      "native": [
+        223,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 186,
+      "pitch": 76,
+      "source": [
+        "671/3",
+        "2/3"
+      ],
+      "native": [
+        "7157/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 187,
+      "pitch": 74,
+      "source": [
+        "673/3",
+        "2/3"
+      ],
+      "native": [
+        "7179/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 229,
+      "pitch": 74,
+      "source": [
+        271,
+        "2/3"
+      ],
+      "native": [
+        271,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 230,
+      "pitch": 76,
+      "source": [
+        "815/3",
+        "2/3"
+      ],
+      "native": [
+        "8693/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 231,
+      "pitch": 77,
+      "source": [
+        "817/3",
+        "2/3"
+      ],
+      "native": [
+        "8715/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 235,
+      "pitch": 76,
+      "source": [
+        279,
+        "2/3"
+      ],
+      "native": [
+        279,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 236,
+      "pitch": 77,
+      "source": [
+        "839/3",
+        "2/3"
+      ],
+      "native": [
+        "8949/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 237,
+      "pitch": 79,
+      "source": [
+        "841/3",
+        "2/3"
+      ],
+      "native": [
+        "8971/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 243,
+      "pitch": 70,
+      "source": [
+        287,
+        "2/3"
+      ],
+      "native": [
+        287,
+        "21/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 244,
+      "pitch": 72,
+      "source": [
+        "863/3",
+        "2/3"
+      ],
+      "native": [
+        "9205/32",
+        "11/16"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 245,
+      "pitch": 74,
+      "source": [
+        "865/3",
+        "2/3"
+      ],
+      "native": [
+        "9227/32",
+        "21/32"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 294,
+      "pitch": 70,
+      "source": [
+        333,
+        "1/3"
+      ],
+      "native": [
+        333,
+        "11/32"
+      ],
+      "onset_error_ms": 0.0,
+      "endpoint_error_ms": 7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 295,
+      "pitch": 70,
+      "source": [
+        "1000/3",
+        "1/3"
+      ],
+      "native": [
+        "10667/32",
+        "5/16"
+      ],
+      "onset_error_ms": 7.102272727272727,
+      "endpoint_error_ms": -7.102272727272727
+    },
+    {
+      "kind": "rhythm_grid",
+      "note_index": 296,
+      "pitch": 69,
+      "source": [
+        "1001/3",
+        "1/3"
+      ],
+      "native": [
+        "10677/32",
+        "11/32"
+      ],
+      "onset_error_ms": -7.102272727272727,
+      "endpoint_error_ms": 0.0
+    },
+    {
+      "kind": "chord_reduction",
+      "source": [
+        85,
+        "E7+5"
+      ],
+      "native": [
+        85,
+        "E7"
+      ]
+    },
+    {
+      "kind": "chord_reduction",
+      "source": [
+        "515/3",
+        "Am7"
+      ],
+      "native": [
+        "5493/32",
+        "Am7"
+      ]
+    },
+    {
+      "kind": "chord_reduction",
+      "source": [
+        "517/3",
+        "Gm7"
+      ],
+      "native": [
+        "5515/32",
+        "Gm7"
+      ]
+    }
+  ],
+  "grace_realizations": [
+    {
+      "measure": 50,
+      "beat": 0,
+      "pitches": [
+        "Eb5",
+        "D5"
+      ],
+      "realization": "1/16 quarter per grace, stolen from following note",
+      "stolen_quarters": "1/8"
+    },
+    {
+      "measure": 82,
+      "beat": 0,
+      "pitches": [
+        "C4",
+        "Bb3",
+        "A3"
+      ],
+      "realization": "1/16 quarter per grace, stolen from following note",
+      "stolen_quarters": "3/16"
+    },
+    {
+      "measure": 86,
+      "beat": 2,
+      "pitches": [
+        "C5",
+        "Db5"
+      ],
+      "realization": "1/16 quarter per grace, stolen from following note",
+      "stolen_quarters": "1/8"
+    }
+  ],
+  "unresolved": [],
+  "assumptions": [
+    "Manual uppermost right-hand melody reduction, not complete two-staff piano transcription.",
+    "Printed left-hand accompaniment and lower right-hand chord tones are represented by chord labels only.",
+    "Measure 0 is a one-quarter pickup, encoded as 1/4 then 4/4; measure 75 changes to 3/4.",
+    "Triplet endpoints are rounded to a 1/32-quarter grid; original rational durations remain in source-events.json.",
+    "Grace durations are editorial: 1/16 quarter per note stolen from the following main note.",
+    "E7+5 in measure 22 is reduced to E7 because the native chord vocabulary lacks augmented dominant seventh.",
+    "Ritardando in measure 86 and the final fermata are retained as annotations; model timing stays at 88 BPM.",
+    "Arpeggiation signs, dynamics, articulation, pedal and internal voicings are not encoded.",
+    "Native section names approximate printed Intro/A\u2013G; original labels and locations remain in the source table.",
+    "Manually visually checked; no independent human proofreading or source-audio pitch comparison yet."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "prepared_hashes_verified": true,
+  "native_tokenizer_roundtrip": true,
+  "score_sha256": "2bf593c9a7015ea0847d4a1e530a872f765dc8348e2521d5815642c4ec324d30",
+  "abc_tokens": 2889,
+  "prefix_tokens": 2972,
+  "semantic_token_limit": 9000,
+  "context_limit": 24576,
+  "context_fits": true,
+  "model_loaded": false
+}

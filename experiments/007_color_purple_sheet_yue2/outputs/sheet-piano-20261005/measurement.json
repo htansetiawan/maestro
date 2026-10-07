@@ -1,0 +1,16 @@
+{
+  "seconds": 195.4614098649472,
+  "peak_allocated_gib": 8.622281074523926,
+  "peak_reserved_gib": 8.98828125,
+  "audio_seconds": 339.19866666666667,
+  "audio_peak": 0.5160095691680908,
+  "audio_rms": 0.03356269863111062,
+  "fraction_at_full_scale": 0.0,
+  "artifact_manifest_verified": true,
+  "truncated": {
+    "abc": false,
+    "semantic": false
+  },
+  "score_preserved_in_artifacts": true,
+  "audio_note_adherence_measured": false
+}

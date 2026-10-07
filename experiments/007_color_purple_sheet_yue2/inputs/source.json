@@ -1,0 +1,38 @@
+{
+  "title": "Theme from The Color Purple",
+  "printed_pages": [
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
+  "composers": [
+    "Quincy Jones",
+    "Rod Temperton",
+    "Jeremy Lubbock"
+  ],
+  "piano_arranger": "Shiori Aoyama",
+  "source": "User-provided five-page Dropbox PDF; shared-link credentials omitted.",
+  "source_pdf_sha256": "4fff8e8f669eeaede7506398a22203d4353b14a2ddd5ba9db0b1e752df08fbbc",
+  "source_pdf_bytes": 206751,
+  "source_pdf_stored_in_git": false,
+  "preparation": "Manual visual reading of rendered PDF; no OMR or audio transcription model used.",
+  "nominal_quarter_beats": 336,
+  "tempo_quarter_bpm": 88,
+  "expressive_annotations": [
+    {
+      "measure": 86,
+      "marking": "ritardando"
+    },
+    {
+      "measure": 87,
+      "marking": "fermata"
+    }
+  ],
+  "tool_hashes": {
+    "compile_score.py": "c4eec7f68e3f09b93b45d568a8af640b3f10bb47d31ef6d3b6ce4ae23ac1dea3",
+    "abc_tools.py": "ea04b922dacebec7ad257a2f8d83bdb5dfecb7a23110c1a3121c5c41c313930e",
+    "instrumental.py": "bd294e4a57f1100722f7eeb14ed2457e1bc65b7a6cf516c4225fb1c3e7a441b0"
+  }
+}

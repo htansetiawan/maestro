@@ -1,0 +1,5 @@
+Generate a chord-annotated ABC transcription, then generate music with codec tokens from the given conditions.
+[Tags]
+Instrumental, solo acoustic grand piano, lyrical pastoral piano theme, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, no vocals, no singing, no choir, no spoken words, no drums.
+[Lyrics]
+

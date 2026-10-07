@@ -1,0 +1,44 @@
+{
+  "request": {
+    "id": "sheet-piano-20261005",
+    "style": "Instrumental, solo acoustic grand piano, lyrical pastoral piano theme, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, no vocals, no singing, no choir, no spoken words, no drums.",
+    "lyrics": "",
+    "abc": "X:1\nT:\nM:1/4\nL:1/128\nQ:1/4=88\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:F\n% intro\nV: Vocal\nZ|\nV: Ins\nf16e16|\nV: Vocal\nM:4/4\n\"F\"z48z48z32|\"Eb/F\"z48z48z32|\"Bb/F\"z48z48z32|\"Bbm/F\"z48z48z32|\nV: Ins\nM:4/4\nf48-f48c16=B16|c48-c48F16E16|F48-F48F16C4-CB,6A,4-A,|B,48-B,16z32f16e16|\nV: Vocal\n\"F\"z48z48z32|\"Eb/F\"z48z48z32|\"Bb/F\"z48z48z32|\"Bbm/F\"z48z48z32|\nV: Ins\nf48-f48c16=B16|c48-c48F16E16|F48-F48-F16A,16|B,48-B,48B,32|\n% verse\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z16\"Bbm/F\"z48z16|\"F\"z48z48z32|\"Bb/F\"z48z48z32|\nV: Ins\nA,32C32F32A32|D32F32B48G16|A48-A48-A32|Z|\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z48z32|\"Am\"z48z48z32|\"Dm\"z48z48z32|\nV: Ins\nz32C32F32A32|D32F32B32d32|c32C16D16E48A,8G,8|A,48-A,16d48f16|\n% chorus\nV: Vocal\n\"Gm7\"z48z48z32|\"Gm7/C\"z48z16\"C7\"z48z16|\"F\"z48z16\"C/E\"z48z16|\"Dm7\"z48z48z32|\nV: Ins\nb48-b16b16-b4-bc'16-c'6d'16-d'4-d'|f48-f16e32c32|a48-a16b16-b4-bc'16-c'6d'16-d'4-d'|f48-f48F32|\nV: Vocal\n\"Bm7b5\"z48z48z32|\"E7\"z48z16\"E7\"z48z16|\"Am7\"z48z48z32|\"C7\"z48z48z32|\nV: Ins\nf48-f16f16-f4-fe16-e6d16-d4-d|c48-c16=B48-B16|d32c32C16C16E16F16|G32D32E32C32|\n% verse\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z48z32|\"F\"z48z48z32|\"Bb/F\"z48z48z32|\nV: Ins\nz32c32f32a32|d32f32b48g16|a48-a48-a32|B32a32g48f8e8|\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z48z32|\"Cm7/F\"z48z48z32|\"F7\"z48z48z32|\nV: Ins\nf32c32f32a32|d32f32b32d'32|c'48-c'16_E16F16G16B16|c32A32B32c32|\n% chorus\nV: Vocal\n\"Bbmaj7\"z48z48z32|\"Gm7\"z48z16\"C7\"z48z16|\"A7\"z48z48z32|\"Dm7\"z48z48z32|\nV: Ins\nd48-d16d16-d4-de16-e6f16-f4-f|B48-B16B32G32|e48-e16e16-e4-ef16-f6g16-g4-g|g32f32e32c32|\nV: Vocal\n\"Gm7\"z48z48z32|\"C7\"z48z48z32|\"C\"z48z48z32|\"F\"z48z48z32|\nV: Ins\nb48-b16b16-b4-bc'16-c'6d'16-d'4-d'|e'48-e'48-e'32|c48-c48f'16e'16|f'48-f'48c'16=b16|\nV: Vocal\n\"Eb/F\"z48z48z32|\"Bb/F\"z48z48z32|\"Bbm/F\"z48z32z4z\"Am7\"z16z6\"Gm7\"z16z4z|\nV: Ins\nc'48-c'48f16e16|f48-f16B48A16|B48-B16z16z4zc16-c6B16-B4-B|\n% verse\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z48z32|\"F\"z48z48z32|\"Bb/F\"z48z48z32|\nV: Ins\nA32C32F32A32|D32F32B48G16|A48-A48-A32|B48-B16B16c24B24|\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z48z32|\"Am7\"z48z48z32|\"Dm7\"z48z48z32|\nV: Ins\nA32C32F48A16|D32F32B32d32|_e2d2c48-c48-c24-c4|E32C48-C16F32|\nV: Vocal\n\"Gm7\"z48z48z32|\"C\"z48z48z32|\"F\"z48z48z32|\"Dm\"z48z48z32|\nV: Ins\nB48-B16B16-B4-Bc16-c6d16-d4-d|G48-G48C32|B48-B16B16-B4-Bc16-c6d16-d4-d|F48-F48F32|\nV: Vocal\n\"Bm7b5\"z48z48z32|\"Am/E\"z48z16\"E7\"z48z16|\"Am7\"z48z48z32|\"Gm7/C\"z48z48z32|\nV: Ins\nf48-f16f16-f4-fe16-e6d16-d4-d|c48-c16=B48-B16|d32c32c48-c16|c48-c16B16A16G32|\n% chorus\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z16\"Bbm/F\"z48z16|\"F\"z48z48z32|\"Bb/F\"z48z16\"C7\"z48z16|\nV: Ins\nA32c32f32a32|d32f32b48g16|a48-a16d'16c'16a16c'16-|c'48f8f8f16g48|\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z48z32|\"Cm7/F\"z48z48z32|\"Cm7/F\"z48z48z32|\nV: Ins\na32c32f32a32|d32f32b48d'16|c'48-c'48-c'32|f48-f16f16A32A16|\nV: Vocal\n\"Bbmaj7\"z48z16\"Am7\"z48z16|\"Gm7\"z48z16\"Gm7/C\"z48z16|\"A7\"z48z48z32|\"Dm7\"z48z48z32|\nV: Ins\nG16F48d16-d4-de16-e6f16-f4-f|B48-B48G32|e48-e16e16-e4-ef16-f6g16-g4-g|g32f32e32c32|\nV: Vocal\n\"Gm7\"z48z48z32|\"Gm7/C\"z48z48z32|\"Gm7/C\"z48z48z32|\nV: Ins\nB48-B16B16-B4-Bc16-c6d16-d4-d|G48D16F16F16G16D16|E48-E48f16e16|\n% outro\nV: Vocal\nM:3/4\n\"F\"z48z48|\"Cm7/F\"z48z48|\"Bb/F\"z48z48|\"Bbm/F\"z48z48|\nV: Ins\nM:3/4\nf48-f16c16=B16|c48-c16F16E16|F48-F32A,16|B,48-B,16f16e16|\nV: Vocal\n\"F\"z48z48|\"Cm7/F\"z48z48|\"Bb/F\"z48z48|\"Bbm/F\"z48z48|\nV: Ins\nf48-f16c16=B16|c48-c16F16E16|F48-F48|C2B,2A,2B,48-B,8-B,2f16e16|\nV: Vocal\n\"F\"z48z48|\"Cm7/F\"z48z48|\"Bb/F\"z48z48|\"Bbm/F\"z48z16\"C7\"z32|\nV: Ins\nf48-f16c16=B16|c48-c16F16E16|F32B,48A,16|B,32G,32c2_d2c16-c4B8|\nV: Vocal\n\"F\"z48z48|\nV: Ins\nB8-B3B8-B2A8-A3c48-c16|\n",
+    "cot": "full",
+    "seed": 20261005
+  },
+  "source_revision": "3d21f8f5d31be867f4c3b2e6beafb0f2e52f8c10",
+  "model_revision": "c044757a011169583f363168348ae380946efff8",
+  "vae_revision": "152733a19ad43aa67e367f9b5503ef8075bb5126",
+  "runtime": {
+    "yue2-infer": "0.1.6",
+    "torch": "2.10.0+cu128",
+    "transformers": "4.57.6",
+    "numpy": "2.2.6",
+    "huggingface-hub": "0.36.2"
+  },
+  "pipeline": {
+    "device": "cuda",
+    "memory_budget_gib": 17,
+    "offload_ar": true,
+    "vae_core_frames": 512,
+    "backend": "torch",
+    "quantization": "none"
+  },
+  "semantic_sampling": {
+    "max_tokens": 9000
+  },
+  "recipe_difference": "Use installed 0.1.6 runtime and pinned checkpoints from experiment 006; bundled instrumental release.json pins an older 0.1.5 recipe.",
+  "status": "submitted",
+  "preflight": {
+    "prepared_hashes_verified": true,
+    "native_tokenizer_roundtrip": true,
+    "score_sha256": "2bf593c9a7015ea0847d4a1e530a872f765dc8348e2521d5815642c4ec324d30",
+    "abc_tokens": 2889,
+    "prefix_tokens": 2972,
+    "semantic_token_limit": 9000,
+    "context_limit": 24576,
+    "context_fits": true,
+    "model_loaded": false
+  }
+}
