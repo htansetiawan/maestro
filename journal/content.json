@@ -308,8 +308,8 @@
       "title": "YuE2 experiments in musical control",
       "summary": "YuE2 produced an acceptable original song from lyrics and style, but score-conditioned arrangements and vocal layering were less convincing in my listening.",
       "stage": "YuE2 inference trials complete; informal listening favors the original song. No model training or controlled cross-model ranking.",
-      "focus": "Preserve the composer’s piano and test whether explicit notes and timing improve the added voice.",
-      "next_step": "Evaluate a short note-controlled vocal for phrasing and musical fit, then test one deliberate score edit.",
+      "focus": "Find where score-conditioned generation fails: score reading, format conversion, or audible melody following.",
+      "next_step": "Plan a staged YuE2 imitation test: validate PDF/image-to-MusicXML, check MusicXML/MIDI-to-ABC conversion, then compare simple melody generation from verified notation and solo-piano audio. Not yet run.",
       "artifacts": [
         "yue2-score-control",
         "yue2-original-song"
