@@ -1,0 +1,7 @@
+.listening-nav { margin-bottom: 32px; font-size: 13px; line-height: 1.5; }
+.listening-nav .journal-link { display: inline-block; margin-bottom: 14px; }
+.listening-nav div { display: flex; flex-wrap: wrap; gap: 8px; }
+.listening-nav div a { padding: 8px 11px; border: 1px solid #deded9; border-radius: 6px; text-decoration: none; }
+.listening-nav a[aria-current="page"] { background: #eaf1eb; border-color: #9db7a3; }
+.listening-nav a:focus-visible { outline: 2px solid #366348; outline-offset: 3px; }
+audio { display: block; max-width: 100%; }
