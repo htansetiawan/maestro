@@ -76,6 +76,20 @@
       "source": "research/CORE-MUSIC-GENERATION-REFERENCES.md",
       "description": "52 readings spanning generation, audio-to-score transcription, symbolic control, and evaluation.",
       "status": "Reading path updated October 5, 2026"
+    },
+    {
+      "id": "yue2-score-control",
+      "title": "YuE2 melody control pilot",
+      "source": "experiments/006_yue2_score_control/README.md",
+      "description": "Two seeds comparing a supplied melody with model-composed melodies, with recordings and measured limits.",
+      "status": "Rendered; audible note adherence unmeasured"
+    },
+    {
+      "id": "yue2-original-song",
+      "title": "YuE2 original Yard song",
+      "source": "experiments/009_yard_original_song/README.md",
+      "description": "A complete song generated from original lyrics and a style prompt, with the exact request and run measurements.",
+      "status": "Generated; preferred in the author’s listening assessment"
     }
   ],
   "entries": [
@@ -286,6 +300,33 @@
         {
           "label": "Corrected technical report",
           "url": "https://htansetiawan.github.io/maestro/survey/technical-report.html"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "title": "YuE2 experiments in musical control",
+      "summary": "YuE2 produced an acceptable original song from lyrics and style, but score-conditioned arrangements and vocal layering were less convincing in my listening.",
+      "stage": "YuE2 inference trials complete; informal listening favors the original song. No model training or controlled cross-model ranking.",
+      "focus": "Preserve the composer’s piano and test whether explicit notes and timing improve the added voice.",
+      "next_step": "Evaluate a short note-controlled vocal for phrasing and musical fit, then test one deliberate score edit.",
+      "artifacts": [
+        "yue2-score-control",
+        "yue2-original-song"
+      ],
+      "published": true,
+      "links": [
+        {
+          "label": "Original song — listen",
+          "url": "https://htansetiawan.github.io/maestro/experiments/009_yard_original_song/"
+        },
+        {
+          "label": "Score-conditioned orchestra — listen",
+          "url": "https://htansetiawan.github.io/maestro/experiments/010_yard_sheet_orchestral/"
+        },
+        {
+          "label": "Vocal layering comparison",
+          "url": "https://htansetiawan.github.io/maestro/experiments/008_color_purple_two_vocal_versions/"
         }
       ]
     }

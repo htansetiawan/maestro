@@ -4,10 +4,18 @@
   <id>https://htansetiawan.github.io/maestro/journal/</id>
   <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
   <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-10-05T00:00:00-07:00</updated>
+  <updated>2026-10-12T00:00:00-07:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
+  <entry>
+    <title>YuE2 experiments in musical control</title>
+    <id>https://htansetiawan.github.io/maestro/journal/2026-10-12.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-10-12.html" />
+    <updated>2026-10-12T00:00:00-07:00</updated>
+    <published>2026-10-12T00:00:00-07:00</published>
+    <summary>YuE2 produced an acceptable original song from lyrics and style, but score-conditioned arrangements and vocal layering were less convincing in my listening.</summary>
+  </entry>
   <entry>
     <title>Audio to score and a test of symbolic control</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-10-05.html</id>

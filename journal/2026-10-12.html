@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YuE2 experiments in musical control — Maestro</title>
+<meta name="description" content="YuE2 produced an acceptable original song from lyrics and style, but score-conditioned arrangements and vocal layering were less convincing in my listening.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-10-12.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YuE2 experiments in musical control — Maestro">
+<meta property="og:description" content="YuE2 produced an acceptable original song from lyrics and style, but score-conditioned arrangements and vocal layering were less convincing in my listening.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-10-12.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YuE2 experiments in musical control — Maestro">
+<meta name="twitter:description" content="YuE2 produced an acceptable original song from lyrics and style, but score-conditioned arrangements and vocal layering were less convincing in my listening.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Weekly journal · week of October 12, 2026</p>
+      <h1>YuE2 experiments in musical control</h1>
+      <p class="journal-description">YuE2 produced an acceptable original song from lyrics and style, but score-conditioned arrangements and vocal layering were less convincing in my listening.</p>
+      <p class="journal-meta"><time datetime="2026-10-12">October 12, 2026</time> · Henry Tan · <a href="entries/2026-10-12.md">Entry source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/2026-10-12.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/2026-10-12.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <dl class="state-grid"><div><dt>Stage</dt><dd>YuE2 inference trials complete; informal listening favors the original song. No model training or controlled cross-model ranking.</dd></div><div><dt>Current focus</dt><dd>Preserve the composer’s piano and test whether explicit notes and timing improve the added voice.</dd></div><div><dt>Next experiment</dt><dd>Evaluate a short note-controlled vocal for phrasing and musical fit, then test one deliberate score edit.</dd></div></dl><div class="journal-prose"><p>After last week's ACE-Step trials fell short of my listening expectations, I tested YuE2 for Music Kitchen: can it produce useful music while keeping the composer's melody and performance under control? These were inference experiments with existing checkpoints, not model training.</p>
+<p><strong>My listening assessment:</strong> YuE2's original song from a style prompt and lyrics was acceptable. The attempts to follow a supplied score or add a voice to existing piano were less convincing. Musical quality and musical control remain separate problems.</p>
+<h2 id="what-i-tested">What I tested</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Input and method</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../experiments/006_yue2_score_control/index.html">Short melody test</a></td>
+<td>Supplied 32-note motif versus a model-composed melody; same lyrics and style, two seeds.</td>
+<td>Four initial candidates and one rerender with a larger token allowance. Audible note adherence remains unmeasured.</td>
+</tr>
+<tr>
+<td><a href="../experiments/007_color_purple_sheet_yue2/index.html">Printed score to piano</a></td>
+<td>Manual melody/chord reduction of the five-page <em>Theme from The Color Purple</em> score, converted to ABC notation.</td>
+<td>5:39 of generated piano. This represents the lead line and chords, not every part of the printed arrangement.</td>
+</tr>
+<tr>
+<td><a href="../experiments/008_color_purple_two_vocal_versions/index.html">Piano and voice</a></td>
+<td>A: generate piano and singing together. B: extract A's vocal, adjust its timing, and mix it over the piano generated in the previous experiment.</td>
+<td>A: 6:12. B: 5:39. B preserves the decoded piano; vocal separation and stretching introduce additional limitations.</td>
+</tr>
+<tr>
+<td><a href="../experiments/009_yard_original_song/index.html">Original Yard song</a></td>
+<td>Style prompt and original lyrics; no supplied melody, score or recording.</td>
+<td>3:09. My preferred result: acceptable musical quality.</td>
+</tr>
+<tr>
+<td><a href="../experiments/010_yard_sheet_orchestral/index.html">Score with orchestral arrangement</a></td>
+<td>Supplied melody/chords and adapted lyrics, with an orchestral style prompt.</td>
+<td>6:11. The model generates piano, voice and accompaniment together.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="what-i-learned">What I learned</h2>
+<p>The original song is the strongest demonstration so far, but YuE2 chooses its melody and harmony. That is useful for generating a song; it does not establish control over a composition I already have in mind.</p>
+<p>In my listening, the attempted arrangement changed the piano too much, and the voice felt more like an incongruent background singer than an integrated lead. It was not simply out of tune. The musical relationship between the parts was the problem.</p>
+<p>“LEGO” describes the intended task here, not a native YuE2 operation tested in these runs. The orchestral version regenerated the performance from notation. Only the separate extract–align–mix workflow preserved an existing piano waveform. These methods should not be conflated.</p>
+<p>Saved scores matched their supplied inputs, but that does not prove the audio followed those notes. The trials also changed lyrics, style and other settings, so they do not establish a controlled ranking of YuE2 against ACE-Step or Suno.</p>
+<h2 id="next-experiment">Next experiment</h2>
+<p>Test a short passage with explicit pitches, syllables and timing while keeping the piano unchanged. A <a href="../experiments/012_yard_note_control/index.html">25-second SoulX-Singer follow-up</a> already separates the vocal score from voice synthesis: estimated median pitch errors were within 50 cents for all 27 notes. This is encouraging pitch evidence, not proof of good phrasing or musical fit. Next, evaluate those separately by listening and making one deliberate score edit.</p>
+</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"><article class="artifact-item"><p class="artifact-status">Rendered; audible note adherence unmeasured</p><h3><a href="snapshots/2026-10-12/yue2-score-control.html">YuE2 melody control pilot</a></h3><p>Two seeds comparing a supplied melody with model-composed melodies, with recordings and measured limits.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-12/yue2-score-control.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Generated; preferred in the author’s listening assessment</p><h3><a href="snapshots/2026-10-12/yue2-original-song.html">YuE2 original Yard song</a></h3><p>A complete song generated from original lyrics and a style prompt, with the exact request and run measurements.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-12/yue2-original-song.md">Frozen source on GitHub ↗</a></p></article></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-10-05.html">← Earlier: Audio to score and a test of symbolic control</a><a href="./">All entries</a></nav>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "yue2-score-control",
+    "title": "YuE2 melody control pilot",
+    "source": "experiments/006_yue2_score_control/README.md",
+    "description": "Two seeds comparing a supplied melody with model-composed melodies, with recordings and measured limits.",
+    "status": "Rendered; audible note adherence unmeasured"
+  },
+  {
+    "id": "yue2-original-song",
+    "title": "YuE2 original Yard song",
+    "source": "experiments/009_yard_original_song/README.md",
+    "description": "A complete song generated from original lyrics and a style prompt, with the exact request and run measurements.",
+    "status": "Generated; preferred in the author’s listening assessment"
+  }
+]
