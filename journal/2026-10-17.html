@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music representations and YuE2 investigation in progress — Maestro</title>
+<meta name="description" content="In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-10-17.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Music representations and YuE2 investigation in progress — Maestro">
+<meta property="og:description" content="In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-10-17.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Music representations and YuE2 investigation in progress — Maestro">
+<meta name="twitter:description" content="In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Weekly journal · week of October 12, 2026</p>
+      <h1>Music representations and YuE2 investigation in progress</h1>
+      <p class="journal-description">In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.</p>
+      <p class="journal-meta"><time datetime="2026-10-17">October 17, 2026</time> · Henry Tan · <a href="entries/2026-10-17.md">Entry source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/2026-10-17.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/2026-10-17.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <dl class="state-grid"><div><dt>Stage</dt><dd>Weekly placeholder. Experiments 013–015 prepared locally; setup failures recorded; no generated results found.</dd></div><div><dt>Current focus</dt><dd>Separate score-reading and format-conversion errors from audible melody-following errors.</dd></div><div><dt>Next experiment</dt><dd>Validate a short PDF/image-to-score passage, then test sound/humming-to-score and simple vocal rendering before adding accompaniment.</dd></div></dl><div class="journal-prose"><p><strong>Weekly placeholder — October 17, 2026.</strong> This week I am studying how music moves between sound, notation and model inputs. The question is where the musical information gets lost before or during generation.</p>
+<h2 id="reading-this-week">Reading this week</h2>
+<ul>
+<li><strong>Meinard Müller, <em>Fundamentals of Music Processing: Audio, Analysis, Algorithms, Applications</em></strong>, Springer, 2015, first edition. <strong>Chapter 1: Music Representations</strong> — sheet music, symbolic representations and audio. <a href="https://link.springer.com/book/10.1007/978-3-319-21945-5">Book</a> · <a href="https://www.audiolabs-erlangen.de/resources/MIR/FMP/C0/C0.html">Companion notebooks</a>.</li>
+<li><strong>Jade Copet et al., <em>Simple and Controllable Music Generation</em> (MusicGen)</strong>, NeurIPS 2023. Reading for its discrete audio tokens and text/melody conditioning. <a href="https://arxiv.org/abs/2306.05284">Paper</a>.</li>
+<li><strong>Alexandre Défossez et al., <em>High Fidelity Neural Audio Compression</em> (EnCodec)</strong>, 2022. Reading for the audio representation underlying MusicGen. <a href="https://arxiv.org/abs/2210.13438">Paper</a>.</li>
+</ul>
+<p>I added a <a href="snapshots/2026-10-17/ai-music-researchers.html">researcher directory</a>: the AudioCraft/MusicGen and Jukebox/MuseNet contributors; Anna Huang, Eran Egozy, Joseph Paradiso and Tod Machover at MIT; Chris Donahue, Hao-Wen Dong, Xu Tan, Tie-Yan Liu and Meinard Müller. It connects their work to representation, generation and musical interaction.</p>
+<h2 id="this-morning-s-work-recovered">This morning's work recovered</h2>
+<p>The lost Claude session was found. Three local experiment folders survive:</p>
+<ul>
+<li><strong>013 — Score reading:</strong> scripts for PDF/image-to-MusicXML comparisons using Audiveris, homr and oemer.</li>
+<li><strong>014 — YuE2 excerpt test:</strong> five requests prepared for a 44.32-second passage: melody only, melody plus chords, melody plus chords and a constructed bass line, and model-composed music.</li>
+<li><strong>015 — Stable Audio Open:</strong> separate text/audio-conditioning trials prepared.</li>
+</ul>
+<p>No generated outputs were found for these experiments. Setup logs show missing dependencies, and the session's wait task stopped at 08:30 PDT. <a href="snapshots/2026-10-17/yue2-recovery-2026-10-17.html">Recovery record and limitations</a>.</p>
+<h2 id="investigation-planned">Investigation planned</h2>
+<p>Two input paths need separate tests:</p>
+<pre><code class="language-text">PDF/image → score reading → MusicXML → checked musical events → ABC
+Sound/humming → transcription → checked musical events → ABC/MusicXML
+</code></pre>
+<p>First check whether the notes, rhythms and rests survive conversion. For piano scores, track the melody, left hand, chord tones and bass separately. Then test simple melody imitation and an isolated vocal before adding accompaniment.</p>
+<p>The earlier Color Purple trial used a manual melody/chord reduction, not the full piano arrangement. The documented YuE2 input workflow uses two monophonic lines plus chord symbols; that does not preserve every written piano note. Whether it follows even the retained melody in the audio remains the test.</p>
+<p>These are prepared experiments and plans, not new quality results. The separate October 19 draft remains unfinished.</p>
+</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"><article class="artifact-item"><p class="artifact-status">Working directory · October 17, 2026</p><h3><a href="snapshots/2026-10-17/ai-music-researchers.html">Researchers in AI music and musical interaction</a></h3><p>Seventeen researchers, their contributions, primary sources, and the October 17 reading list.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-17/ai-music-researchers.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Preparation recovered · no generated results found</p><h3><a href="snapshots/2026-10-17/yue2-recovery-2026-10-17.html">October 17 experiment recovery record</a></h3><p>Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-17/yue2-recovery-2026-10-17.md">Frozen source on GitHub ↗</a></p></article></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-10-12.html">← Earlier: YuE2 experiments in musical control</a><a href="./">All entries</a></nav>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

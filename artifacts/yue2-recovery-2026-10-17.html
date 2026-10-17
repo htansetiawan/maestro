@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>October 17 experiment recovery record — Maestro</title>
+<meta name="description" content="Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/yue2-recovery-2026-10-17.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="October 17 experiment recovery record — Maestro">
+<meta property="og:description" content="Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/yue2-recovery-2026-10-17.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="October 17 experiment recovery record — Maestro">
+<meta name="twitter:description" content="Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Working artifact</p>
+      <h1>October 17 experiment recovery record</h1>
+      <p class="journal-description">Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.</p>
+      <p class="journal-meta">Preparation recovered · no generated results found · <a href="../research/notes/10-yue2-session-recovery-2026-10-17.md">Markdown source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/artifacts/yue2-recovery-2026-10-17.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/artifacts/yue2-recovery-2026-10-17.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <div class="journal-prose"><p>The morning Claude session was located locally. Its first request at 07:10 PDT asked for Stable Audio trials, image-score-to-ABC fidelity checks, and a closer investigation of humming and score control. This record describes recovered preparation, not completed experiments.</p>
+<h2 id="files-recovered">Files recovered</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Prepared work</th>
+<th>Result status at recovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>013_score_reading_fidelity</code></td>
+<td>Scripts to run Audiveris, homr and oemer on the five score pages, compare MusicXML readings with the earlier manual melody, and render a listening comparison.</td>
+<td>No OMR outputs or comparison results found.</td>
+</tr>
+<tr>
+<td><code>014_yue2_excerpt_ablation</code></td>
+<td>Pickup through bar 16: 51 melody notes, 17 chord events, nominal duration 44.32 seconds. Five prepared requests across four conditions.</td>
+<td>ABC requests and MIDI files exist; no generated audio or evaluation outputs found.</td>
+</tr>
+<tr>
+<td><code>015_stable_audio_open</code></td>
+<td>Text-to-audio and audio-to-audio scripts, using a 47-second piano excerpt and several noise levels.</td>
+<td>No generated results found; setup logs report missing <code>stable_audio_tools</code>. The session also reported gated model access.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The YuE2 conditions are melody only, melody plus chords, melody plus chords with a constructed bass line, and model-composed music. The melody-plus-chords condition has two seeds; the other conditions have one. The bass is derived from chord symbols, not transcribed from the printed left hand. Putting it into the <code>Vocal</code> part is an experimental use of the interface, not verified piano-bass control. Melody-only also changes <code>cot</code> mode, so it is not a pure chord-removal comparison.</p>
+<h2 id="where-the-session-stopped">Where the session stopped</h2>
+<p>Runtime setup moved to <code>~/maestro-runtime/</code>. The analysis log ends with missing <code>audioread</code>; the Stable Audio log reports installation/import failure. A GPU job specification exists, but no queue status file or experiment output was found during recovery. The session records its environment-build wait task as stopped at <strong>08:30 PDT on October 17</strong>. The final assistant message's promise that jobs would proceed is not evidence that they ran.</p>
+<p>A separate, unfinished <strong>October 19</strong> journal draft also exists. It is preserved. The October 17 entry records this week's current reading and plans.</p>
+<h2 id="what-the-score-interface-tells-us">What the score interface tells us</h2>
+<p>The installed YuE2 workflow describes <code>Vocal</code> and <code>Ins</code> as monophonic lines, with harmony expressed through chord symbols. Its bounded ABC helper rejects polyphonic note stacks. That is a limitation of this documented input path; it does not establish that every possible YuE2 pipeline has the same limits. <a href="https://github.com/multimodal-art-projection/YuE/blob/3d21f8f5d31be867f4c3b2e6beafb0f2e52f8c10/skills/yue2-music/references/abc-editing.md">Upstream format reference</a>.</p>
+<p>Experiment 007 supplied a lead-line/chord reduction, omitting the written accompaniment, lower chord tones and pedal. Those details therefore could not be tested for exact reproduction. It remains unproven why the rendered melody or overall performance sounded wrong.</p>
+<p>The manual transcription is a provisional comparison reference, not independently established ground truth. A score-reading test must check it against the image before interpreting disagreement as an OMR error. Likewise, matching saved ABC to input ABC does not measure audible note adherence.</p>
+<h2 id="planned-continuation">Planned continuation</h2>
+<ol>
+<li>Verify a short passage from PDF/image through MusicXML and the model's ABC representation, recording omissions and timing changes.</li>
+<li>Try a separate short sound/humming-to-score path, retaining the raw transcription and human corrections in ABC/MusicXML.</li>
+<li>Test melody imitation, then an isolated vocal with explicit notes, lyrics and timing. Confirm whether the chosen workflow generates an isolated voice or a mixture before claiming vocal-only output.</li>
+<li>Add chords, bass and accompaniment only after the simpler cases can be evaluated.</li>
+</ol>
+<p>No new model run, dependency installation or queue restart was performed during this recovery.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

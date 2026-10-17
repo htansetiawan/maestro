@@ -90,6 +90,20 @@
       "source": "experiments/009_yard_original_song/README.md",
       "description": "A complete song generated from original lyrics and a style prompt, with the exact request and run measurements.",
       "status": "Generated; preferred in the author’s listening assessment"
+    },
+    {
+      "id": "ai-music-researchers",
+      "title": "Researchers in AI music and musical interaction",
+      "source": "research/AI-MUSIC-RESEARCHERS.md",
+      "description": "Seventeen researchers, their contributions, primary sources, and the October 17 reading list.",
+      "status": "Working directory · October 17, 2026"
+    },
+    {
+      "id": "yue2-recovery-2026-10-17",
+      "title": "October 17 experiment recovery record",
+      "source": "research/notes/10-yue2-session-recovery-2026-10-17.md",
+      "description": "Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.",
+      "status": "Preparation recovered · no generated results found"
     }
   ],
   "entries": [
@@ -335,6 +349,37 @@
         {
           "label": "012 · SoulX-Singer note control",
           "url": "https://htansetiawan.github.io/maestro/experiments/012_yard_note_control/"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "title": "Music representations and YuE2 investigation in progress",
+      "summary": "In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.",
+      "stage": "Weekly placeholder. Experiments 013–015 prepared locally; setup failures recorded; no generated results found.",
+      "focus": "Separate score-reading and format-conversion errors from audible melody-following errors.",
+      "next_step": "Validate a short PDF/image-to-score passage, then test sound/humming-to-score and simple vocal rendering before adding accompaniment.",
+      "artifacts": [
+        "ai-music-researchers",
+        "yue2-recovery-2026-10-17"
+      ],
+      "published": true,
+      "links": [
+        {
+          "label": "Researchers and reading",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/ai-music-researchers.html"
+        },
+        {
+          "label": "Recovered experiment preparation",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/yue2-recovery-2026-10-17.html"
+        },
+        {
+          "label": "MusicGen paper",
+          "url": "https://arxiv.org/abs/2306.05284"
+        },
+        {
+          "label": "EnCodec paper",
+          "url": "https://arxiv.org/abs/2210.13438"
         }
       ]
     }
