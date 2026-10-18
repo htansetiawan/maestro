@@ -1,0 +1,224 @@
+{
+  "manual": {
+    "measures": 88,
+    "melody_notes": 298,
+    "chord_events": 98
+  },
+  "engines": {
+    "audiveris": {
+      "status": "parsed",
+      "files": [
+        {
+          "file": "page-1.mxl",
+          "measures": 10,
+          "staves": 2
+        },
+        {
+          "file": "page-2.mxl",
+          "measures": 15,
+          "staves": 4
+        },
+        {
+          "file": "page-3.mxl",
+          "measures": 19,
+          "staves": 2
+        },
+        {
+          "file": "page-4.mvt1.mxl",
+          "measures": 4,
+          "staves": 2
+        },
+        {
+          "file": "page-4.mvt2.mxl",
+          "measures": 2,
+          "staves": 2
+        },
+        {
+          "file": "page-4.mvt3.mxl",
+          "measures": 2,
+          "staves": 2
+        },
+        {
+          "file": "page-4.mvt4.mxl",
+          "measures": 3,
+          "staves": 1
+        },
+        {
+          "file": "page-4.mvt5.mxl",
+          "measures": 3,
+          "staves": 2
+        },
+        {
+          "file": "page-5.mxl",
+          "measures": 19,
+          "staves": 2
+        }
+      ],
+      "pages_read": 5,
+      "melody_recall_on_pages_read": 0.5,
+      "measures_by_page": [
+        10,
+        15,
+        19,
+        14,
+        19
+      ],
+      "expected_measures_by_page": [
+        12,
+        17,
+        19,
+        20,
+        20
+      ],
+      "measures_total": 77,
+      "measure_grid_matches_manual": false,
+      "melody_recall": 0.5,
+      "exact_recall": 0.44966442953020136,
+      "skyline_precision": 0.8869047619047619,
+      "skyline_notes": 168,
+      "measures_exact": null,
+      "ledger": {
+        "right_hand_attacks": 168,
+        "right_hand_sounding_notes": 225,
+        "right_hand_chord_stacks": 39,
+        "left_hand_attacks": 323,
+        "left_hand_sounding_notes": 346,
+        "tuplet_events": 20,
+        "grace_notes": 0,
+        "chord_symbols": 0
+      },
+      "chords_read": [],
+      "two_hands_midi": true
+    },
+    "homr": {
+      "status": "parsed",
+      "files": [
+        {
+          "file": "page-1.musicxml",
+          "measures": 12,
+          "staves": 2
+        },
+        {
+          "file": "page-2.musicxml",
+          "measures": 17,
+          "staves": 2
+        },
+        {
+          "file": "page-3.musicxml",
+          "measures": 19,
+          "staves": 2
+        },
+        {
+          "file": "page-4.musicxml",
+          "measures": 15,
+          "staves": 2
+        },
+        {
+          "file": "page-5.musicxml",
+          "measures": 20,
+          "staves": 2
+        }
+      ],
+      "pages_read": 5,
+      "melody_recall_on_pages_read": 0.8557046979865772,
+      "measures_by_page": [
+        12,
+        17,
+        19,
+        15,
+        20
+      ],
+      "expected_measures_by_page": [
+        12,
+        17,
+        19,
+        20,
+        20
+      ],
+      "measures_total": 83,
+      "measure_grid_matches_manual": false,
+      "melody_recall": 0.8557046979865772,
+      "exact_recall": 0.8489932885906041,
+      "skyline_precision": 0.9239130434782609,
+      "skyline_notes": 276,
+      "measures_exact": null,
+      "ledger": {
+        "right_hand_attacks": 276,
+        "right_hand_sounding_notes": 465,
+        "right_hand_chord_stacks": 127,
+        "left_hand_attacks": 349,
+        "left_hand_sounding_notes": 373,
+        "tuplet_events": 35,
+        "grace_notes": 7,
+        "chord_symbols": 0
+      },
+      "chords_read": [],
+      "two_hands_midi": true
+    },
+    "oemer": {
+      "status": "parsed",
+      "files": [
+        {
+          "file": "page-1.musicxml",
+          "measures": 12,
+          "staves": 2
+        },
+        {
+          "file": "page-2.musicxml",
+          "measures": 16,
+          "staves": 2
+        },
+        {
+          "file": "page-3.musicxml",
+          "measures": 19,
+          "staves": 2
+        },
+        {
+          "file": "page-4.musicxml",
+          "measures": 18,
+          "staves": 2
+        },
+        {
+          "file": "page-5.musicxml",
+          "measures": 19,
+          "staves": 2
+        }
+      ],
+      "pages_read": 5,
+      "melody_recall_on_pages_read": 0.7348993288590604,
+      "measures_by_page": [
+        12,
+        16,
+        19,
+        18,
+        19
+      ],
+      "expected_measures_by_page": [
+        12,
+        17,
+        19,
+        20,
+        20
+      ],
+      "measures_total": 84,
+      "measure_grid_matches_manual": false,
+      "melody_recall": 0.7348993288590604,
+      "exact_recall": 0.6879194630872483,
+      "skyline_precision": 0.8423076923076923,
+      "skyline_notes": 260,
+      "measures_exact": null,
+      "ledger": {
+        "right_hand_attacks": 260,
+        "right_hand_sounding_notes": 373,
+        "right_hand_chord_stacks": 85,
+        "left_hand_attacks": 325,
+        "left_hand_sounding_notes": 342,
+        "tuplet_events": 0,
+        "grace_notes": 0,
+        "chord_symbols": 0
+      },
+      "chords_read": [],
+      "two_hands_midi": true
+    }
+  }
+}

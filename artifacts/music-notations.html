@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music notations: what each one keeps — Maestro</title>
+<meta name="description" content="Definitions, the notation and performance encodings, which corpora hold each, and what the generators in this project actually read.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/music-notations.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Music notations: what each one keeps — Maestro">
+<meta property="og:description" content="Definitions, the notation and performance encodings, which corpora hold each, and what the generators in this project actually read.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/music-notations.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Music notations: what each one keeps — Maestro">
+<meta name="twitter:description" content="Definitions, the notation and performance encodings, which corpora hold each, and what the generators in this project actually read.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Working artifact</p>
+      <h1>Music notations: what each one keeps</h1>
+      <p class="journal-description">Definitions, the notation and performance encodings, which corpora hold each, and what the generators in this project actually read.</p>
+      <p class="journal-meta">Reference note · October 2026 · <a href="../research/MUSIC-NOTATIONS.md">Markdown source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/artifacts/music-notations.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/artifacts/music-notations.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <div class="journal-prose"><p><em>October 2026. Written after the YuE2 score-conditioning trials showed that most of a printed piano arrangement never reaches the model. This note fixes the vocabulary and the sources so later experiments can say exactly which representation they tested.</em></p>
+<h2 id="1-definitions">1. Definitions</h2>
+<p>A music notation is a symbolic record of a piece. Seeger (1958) separated two purposes that are still the useful split: <strong>prescriptive</strong> notation tells a performer what to do (a score), <strong>descriptive</strong> notation records what was done (a transcription of a performance). Common Western notation is prescriptive. A MIDI file captured from a pianist is descriptive. Converting between the two is lossy in both directions: a score has no velocities or rubato, a performance capture has no pitch spelling, voices, rests or bar lines.</p>
+<p>Every representation in this note sits on one of four layers, and information drops at each step down:</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Example</th>
+<th>Holds</th>
+<th>Lacks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image of the page</td>
+<td>PDF or PNG scan</td>
+<td>Everything the engraver wrote</td>
+<td>Nothing is machine-readable</td>
+</tr>
+<tr>
+<td>Notation encoding</td>
+<td>MusicXML, MEI, Humdrum, ABC, LilyPond</td>
+<td>Pitch spelling, notated rhythm, voices, staves, chords, harmony labels, lyrics, expression marks</td>
+<td>Performed timing and dynamics</td>
+</tr>
+<tr>
+<td>Performance encoding</td>
+<td>Standard MIDI File, piano roll, event tokens</td>
+<td>Sounding pitch, onset, offset, velocity, pedal</td>
+<td>Spelling, voices, rests, beaming, tuplet grouping, most marks</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>WAV, FLAC, MP3</td>
+<td>The sound</td>
+<td>Any symbol at all</td>
+</tr>
+</tbody>
+</table></div>
+<p>Optical music recognition (OMR) moves up from the image layer; automatic music transcription moves up from audio. Rendering and synthesis move down. The systems in this project have a fixed entry point: YuE2 reads a notation encoding (a restricted ABC), ACE-Step reads only audio and text, SheetSage2 reads audio and writes notation.</p>
+<h2 id="2-notation-encodings">2. Notation encodings</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Origin</th>
+<th>Form</th>
+<th>Keeps</th>
+<th>Does not keep</th>
+<th>Canonical reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MusicXML</strong></td>
+<td>Recordare, 2004; W3C Music Notation Community Group since 2015; version 4.0 (2021)</td>
+<td>XML, compressed as <code>.mxl</code></td>
+<td>Parts, staves, voices, note stacks, exact durations and tuplets, ties, slurs, articulations, dynamics, harmony (chord symbols), lyrics, layout</td>
+<td>Nothing structural; it is the interchange format engravers export</td>
+<td>Good (2001); W3C (2021)</td>
+</tr>
+<tr>
+<td><strong>MEI</strong></td>
+<td>Music Encoding Initiative, 2000s; MEI 5 (2023)</td>
+<td>XML</td>
+<td>Everything MusicXML keeps, plus editorial apparatus, variants, sources, mensural and neume notation</td>
+<td>Wide tool support outside scholarship; Verovio renders it</td>
+<td>Roland (2002); MEI Guidelines</td>
+</tr>
+<tr>
+<td><strong>Humdrum <code>**kern</code></strong></td>
+<td>Huron, 1990s</td>
+<td>Plain text, one spine per voice, one row per time slice</td>
+<td>Pitch spelling, duration, voices, ties, beams, slurs, with parallel spines for harmony (<code>**harm</code>), lyrics and analysis</td>
+<td>Layout; expression marks are partial</td>
+<td>Huron (2002); Sapp (2005)</td>
+</tr>
+<tr>
+<td><strong>ABC</strong> (standard 2.1)</td>
+<td>Walshaw, 1991; standard 2.1 (2011)</td>
+<td>Plain text, one line of letters per voice</td>
+<td>Melody with key-relative spelling, chords in <code>[ ]</code>, chord symbols in quotes, tuplets, grace notes, ornaments, repeats, lyrics on <code>w:</code> lines, multiple voices</td>
+<td>Fine engraving control; polyphony is awkward beyond a few voices</td>
+<td>Walshaw (2011)</td>
+</tr>
+<tr>
+<td><strong>LilyPond</strong></td>
+<td>Nienhuys and Nieuwenhuizen, 1996</td>
+<td>Text program for an engraver</td>
+<td>Full engraving, including layout and typography</td>
+<td>It is an input language, so parsing it back is hard</td>
+<td>Nienhuys and Nieuwenhuizen (2003)</td>
+</tr>
+<tr>
+<td><strong>Tablature</strong></td>
+<td>Historical; Guitar Pro files today</td>
+<td>Fret and string per note plus rhythm</td>
+<td>Fingering, which pitch notation discards</td>
+<td>Pitch as an abstraction; voice leading</td>
+<td>Sarmento et al. (2021) for the ML corpus</td>
+</tr>
+<tr>
+<td><strong>Lead sheet</strong></td>
+<td>Jazz and popular practice</td>
+<td>Melody plus chord symbols plus lyrics, in any of the above or in iReal Pro and ChordPro</td>
+<td>The tune and the harmony as labels</td>
+<td>Voicings, bass lines, accompaniment figures</td>
+<td>Broze and Shanahan (2013) describe the iRb corpus</td>
+</tr>
+<tr>
+<td><strong>Numbered notation (jianpu)</strong></td>
+<td>Galin-Paris-Chevé method, 19th century; standard in China</td>
+<td>Scale degrees 1 to 7 with dots for octave and lines for duration</td>
+<td>Melody relative to a tonic, so it transposes freely</td>
+<td>Absolute pitch unless the tonic is stated; polyphony</td>
+<td>No single standards document</td>
+</tr>
+<tr>
+<td><strong>Roman numerals</strong></td>
+<td>Music theory; RomanText (2019)</td>
+<td>Text keyed to measures and beats</td>
+<td>Harmonic function relative to a key</td>
+<td>Any melody or rhythm</td>
+<td>Gotham, Tymoczko and Cuthbert (2019)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two facts matter for the current experiments. First, MusicXML is the only format in this table that every OMR engine and every notation editor emits, so it is the natural output of score reading. Second, the ABC accepted by YuE2 is not the ABC standard: it allows exactly two monophonic voices, chord symbols from fifteen qualities, durations on a power-of-two grid, no tuplets, graces, stacks, repeats, slurs or lyric lines, and an accidental rule of its own. It is a lead sheet, not a score. Every conversion from MusicXML into it is a reduction.</p>
+<h2 id="3-performance-encodings-and-tokenizations">3. Performance encodings and tokenizations</h2>
+<p>The <strong>Standard MIDI File</strong> (MIDI Association, 1988 onward) stores note-on and note-off events with velocity on 16 channels, with tempo and time-signature meta events and continuous controllers such as the sustain pedal (CC 64). It has no notion of pitch spelling, rests, voices within a channel, or notated duration, so a score exported to MIDI and read back is a transcription problem.</p>
+<p>Sequence models tokenize MIDI rather than read it directly. The main schemes are the performance-event vocabulary of Oore et al. (2020), which interleaves note-on, note-off, time-shift and velocity tokens; REMI (Huang and Yang, 2020), which adds bar and beat position tokens so metre is explicit; compound and multi-attribute tokens that pack one note into one step; and the arrival-time encoding of the Anticipatory Music Transformer (Thickstun et al., 2023). The MidiTok library (Fradet et al., 2021) implements most of them. All of them keep what MIDI keeps and nothing more.</p>
+<h2 id="4-repositories-and-datasets">4. Repositories and datasets</h2>
+<p>Counts are the published ones. Rights vary: most score repositories hold public-domain works, most MIDI corpora are of unverified provenance, and most pop lead-sheet corpora are redistributed without rights.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>Corpus</th>
+<th>Content</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page images</td>
+<td>IMSLP (Petrucci Music Library)</td>
+<td>Public-domain scores as scanned PDFs, the largest open collection</td>
+<td>imslp.org</td>
+</tr>
+<tr>
+<td>Page images for OMR</td>
+<td>PrIMuS</td>
+<td>87,678 real incipits from RISM with semantic and agnostic encodings</td>
+<td>Calvo-Zaragoza and Rizo (2018)</td>
+</tr>
+<tr>
+<td></td>
+<td>MUSCIMA++</td>
+<td>140 handwritten pages with symbol-level annotation</td>
+<td>Hajič and Pecina (2017)</td>
+</tr>
+<tr>
+<td></td>
+<td>DeepScores</td>
+<td>Synthetic rendered pages for symbol detection</td>
+<td>Tuggener et al. (2018)</td>
+</tr>
+<tr>
+<td></td>
+<td>GrandStaff</td>
+<td>Synthetic pianoform systems, the first end-to-end two-staff OMR benchmark</td>
+<td>Ríos-Vila et al. (2023)</td>
+</tr>
+<tr>
+<td>MusicXML and MuseScore</td>
+<td>OpenScore Lieder Corpus</td>
+<td>Over 1,300 public-domain art songs, transcribed and reviewed</td>
+<td>Gotham and Jonas (2022)</td>
+</tr>
+<tr>
+<td></td>
+<td>OpenScore String Quartets</td>
+<td>Complete quartets by Haydn, Mozart, Beethoven and others</td>
+<td>Gotham et al. (2023)</td>
+</tr>
+<tr>
+<td></td>
+<td>ASAP</td>
+<td>222 scores in MusicXML aligned to 1,068 MIDI performances and audio</td>
+<td>Foscarin et al. (2020)</td>
+</tr>
+<tr>
+<td>Humdrum</td>
+<td>KernScores</td>
+<td>Thousands of classical scores in <code>**kern</code>, including the 371 Bach chorales</td>
+<td>Sapp (2005); kern.ccarh.org</td>
+</tr>
+<tr>
+<td>ABC</td>
+<td>The Session</td>
+<td>Irish traditional tunes with public data dumps, the folk-rnn training source</td>
+<td>thesession.org; Sturm et al. (2016)</td>
+</tr>
+<tr>
+<td></td>
+<td>abcnotation.com</td>
+<td>Index of folk and traditional tune collections in ABC</td>
+<td>Walshaw</td>
+</tr>
+<tr>
+<td></td>
+<td>Nottingham Music Database</td>
+<td>About 1,200 British and American folk tunes with chords</td>
+<td>Foxley; used by Boulanger-Lewandowski et al. (2012)</td>
+</tr>
+<tr>
+<td>LilyPond</td>
+<td>Mutopia Project</td>
+<td>Public-domain scores as LilyPond source and PDF</td>
+<td>mutopiaproject.org</td>
+</tr>
+<tr>
+<td>Lead sheets and harmony</td>
+<td>Hooktheory TheoryTab</td>
+<td>Crowd-sourced melody and chord transcriptions of popular songs; SheetSage's training data</td>
+<td>Donahue, Thickstun and Liang (2022)</td>
+</tr>
+<tr>
+<td></td>
+<td>iRb</td>
+<td>1,186 jazz standards as chord charts</td>
+<td>Broze and Shanahan (2013)</td>
+</tr>
+<tr>
+<td></td>
+<td>Weimar Jazz Database</td>
+<td>456 transcribed jazz solos with chords and metadata</td>
+<td>Pfleiderer et al. (2017)</td>
+</tr>
+<tr>
+<td></td>
+<td>McGill Billboard</td>
+<td>Expert chord annotations of Billboard Hot 100 songs, 1958 to 1991</td>
+<td>Burgoyne, Wild and Fujinaga (2011)</td>
+</tr>
+<tr>
+<td></td>
+<td>Chordonomicon</td>
+<td>666,000 chord progressions scraped from guitar tabs</td>
+<td>Kantarelis et al. (2024)</td>
+</tr>
+<tr>
+<td></td>
+<td>When in Rome</td>
+<td>Roman-numeral analyses in RomanText</td>
+<td>Gotham, Tymoczko and Cuthbert (2019)</td>
+</tr>
+<tr>
+<td>Tablature</td>
+<td>DadaGP</td>
+<td>26,181 Guitar Pro songs with a token encoding</td>
+<td>Sarmento et al. (2021)</td>
+</tr>
+<tr>
+<td>MIDI</td>
+<td>Lakh MIDI Dataset</td>
+<td>176,581 files, 45,129 matched to the Million Song Dataset</td>
+<td>Raffel (2016)</td>
+</tr>
+<tr>
+<td></td>
+<td>MetaMIDI Dataset</td>
+<td>436,631 files linked to audio and metadata</td>
+<td>Ens and Pasquier (2021)</td>
+</tr>
+<tr>
+<td></td>
+<td>MAESTRO</td>
+<td>About 200 hours of piano competition performances as aligned MIDI and audio</td>
+<td>Hawthorne et al. (2019)</td>
+</tr>
+<tr>
+<td></td>
+<td>GiantMIDI-Piano</td>
+<td>10,855 classical piano works, transcribed from audio by a neural model</td>
+<td>Kong et al. (2022)</td>
+</tr>
+<tr>
+<td></td>
+<td>POP909</td>
+<td>909 pop songs as piano arrangements with melody, bridge and accompaniment tracks</td>
+<td>Wang et al. (2020)</td>
+</tr>
+<tr>
+<td>Aligned audio and symbols</td>
+<td>MusicNet</td>
+<td>330 classical recordings with note-level labels</td>
+<td>Thickstun, Harchaoui and Kakade (2017)</td>
+</tr>
+<tr>
+<td></td>
+<td>Slakh2100</td>
+<td>2,100 Lakh MIDI songs synthesized to multitrack audio</td>
+<td>Manilow et al. (2019)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two caveats. GiantMIDI-Piano and every &quot;transcribed&quot; corpus inherit the errors of the transcriber, so they are descriptive data of a model, not of a performer. Wikifonia, the lead-sheet collection cited in many older papers, closed in 2013 and survives only as unofficial copies.</p>
+<h2 id="5-what-the-generators-in-this-project-actually-read">5. What the generators in this project actually read</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>System</th>
+<th>Symbolic input</th>
+<th>Layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YuE2</td>
+<td>Two monophonic voices and chord symbols in a restricted ABC dialect; or none, in which case it writes that plan itself</td>
+<td>Lead sheet</td>
+</tr>
+<tr>
+<td>SheetSage2 (YuE2's transcriber)</td>
+<td>Audio in; melody, chords, beats, key and structure out as ABC and MIDI</td>
+<td>Audio to lead sheet</td>
+</tr>
+<tr>
+<td>ACE-Step 1.5</td>
+<td>None; audio latents, text and lyrics</td>
+<td>Performance encoding of its own</td>
+</tr>
+<tr>
+<td>SoulX-Singer</td>
+<td>Note list with MIDI pitch, duration and phonemes on a 20 ms grid</td>
+<td>Performance encoding</td>
+</tr>
+<tr>
+<td>Anticipatory Music Transformer</td>
+<td>MIDI event tokens</td>
+<td>Performance encoding</td>
+</tr>
+</tbody>
+</table></div>
+<p>None of them reads a score. The chain for a composer who has a printed arrangement is therefore image, then MusicXML through OMR, then a reduction into whatever the chosen model accepts, and the reduction is where the arrangement is lost. Experiments 013 and 014 measure the first and last of those steps.</p>
+<h2 id="references">References</h2>
+<p>Boulanger-Lewandowski, N., Bengio, Y., and Vincent, P. (2012). Modeling temporal dependencies in high-dimensional sequences: Application to polyphonic music generation and transcription. <em>ICML 2012</em>.</p>
+<p>Broze, Y., and Shanahan, D. (2013). Diachronic changes in jazz harmony: A cognitive perspective. <em>Music Perception</em>, 31(1), 32–45.</p>
+<p>Burgoyne, J. A., Wild, J., and Fujinaga, I. (2011). An expert ground truth set for audio chord recognition and music analysis. <em>ISMIR 2011</em>.</p>
+<p>Calvo-Zaragoza, J., and Rizo, D. (2018). End-to-end neural optical music recognition of monophonic scores. <em>Applied Sciences</em>, 8(4), 606.</p>
+<p>Calvo-Zaragoza, J., Hajič, J., and Pacha, A. (2020). Understanding optical music recognition. <em>ACM Computing Surveys</em>, 53(4), 1–35.</p>
+<p>Cuthbert, M. S., and Ariza, C. (2010). music21: A toolkit for computer-aided musicology and symbolic music data. <em>ISMIR 2010</em>.</p>
+<p>Donahue, C., Thickstun, J., and Liang, P. (2022). Melody transcription via generative pre-training. <em>ISMIR 2022</em>.</p>
+<p>Ens, J., and Pasquier, P. (2021). Building the MetaMIDI Dataset: Linking symbolic and audio musical data. <em>ISMIR 2021</em>.</p>
+<p>Foscarin, F., McLeod, A., Rigaux, P., Jacquemard, F., and Sakai, M. (2020). ASAP: A dataset of aligned scores and performances for piano transcription. <em>ISMIR 2020</em>.</p>
+<p>Fradet, N., Briot, J.-P., Chhel, F., El Fallah Seghrouchni, A., and Gutowski, N. (2021). MidiTok: A Python package for MIDI file tokenization. <em>ISMIR 2021, late-breaking demo</em>.</p>
+<p>Good, M. (2001). MusicXML: An internet-friendly format for sheet music. <em>XML Conference and Expo 2001</em>.</p>
+<p>Gotham, M., and Jonas, P. (2022). The OpenScore Lieder Corpus. <em>Music Encoding Conference Proceedings 2021</em>.</p>
+<p>Gotham, M., Redbond, M., Bower, B., and Jonas, P. (2023). The &quot;OpenScore String Quartet&quot; corpus. <em>Digital Libraries for Musicology (DLfM) 2023</em>.</p>
+<p>Gotham, M., Tymoczko, D., and Cuthbert, M. S. (2019). The RomanText format: A flexible and standard method for representing Roman numeral analyses. <em>ISMIR 2019</em>.</p>
+<p>Hajič, J., and Pecina, P. (2017). The MUSCIMA++ dataset for handwritten optical music recognition. <em>ICDAR 2017</em>.</p>
+<p>Hawthorne, C., Stasyuk, A., Roberts, A., Simon, I., Huang, C.-Z. A., Dieleman, S., Elsen, E., Engel, J., and Eck, D. (2019). Enabling factorized piano music modeling and generation with the MAESTRO dataset. <em>ICLR 2019</em>.</p>
+<p>Huang, Y.-S., and Yang, Y.-H. (2020). Pop Music Transformer: Beat-based modeling and generation of expressive pop piano compositions. <em>ACM Multimedia 2020</em>.</p>
+<p>Huron, D. (2002). Music information processing using the Humdrum Toolkit: Concepts, examples, and lessons. <em>Computer Music Journal</em>, 26(2), 11–26.</p>
+<p>Kantarelis, S., Dervakos, T., Kotsani, N., and Stamou, G. (2024). Chordonomicon: A dataset of 666,000 songs and their chord progressions. arXiv:2410.22046.</p>
+<p>Kong, Q., Li, B., Chen, J., and Wang, Y. (2022). GiantMIDI-Piano: A large-scale MIDI dataset for classical piano music. <em>Transactions of the International Society for Music Information Retrieval</em>, 5(1), 87–98.</p>
+<p>Manilow, E., Wichern, G., Seetharaman, P., and Le Roux, J. (2019). Cutting music source separation some Slakh: A dataset to study the impact of training data quality and quantity. <em>WASPAA 2019</em>.</p>
+<p>MIDI Association. <em>MIDI 1.0 Detailed Specification</em> and <em>Standard MIDI Files 1.0</em>. midi.org.</p>
+<p>Music Encoding Initiative. <em>MEI Guidelines</em>, version 5. music-encoding.org.</p>
+<p>Nienhuys, H.-W., and Nieuwenhuizen, J. (2003). LilyPond, a system for automated music engraving. <em>XIV Colloquium on Musical Informatics (CIM 2003)</em>.</p>
+<p>Oore, S., Simon, I., Dieleman, S., Eck, D., and Simonyan, K. (2020). This time with feeling: Learning expressive musical performance. <em>Neural Computing and Applications</em>, 32, 955–967.</p>
+<p>Pfleiderer, M., Frieler, K., Abeßer, J., Zaddach, W.-G., and Burkhart, B. (Eds.) (2017). <em>Inside the Jazzomat: New Perspectives for Jazz Research</em>. Schott Campus.</p>
+<p>Raffel, C. (2016). <em>Learning-Based Methods for Comparing Sequences, with Applications to Audio-to-MIDI Alignment and Matching</em>. PhD thesis, Columbia University.</p>
+<p>Ríos-Vila, A., Rizo, D., Iñesta, J. M., and Calvo-Zaragoza, J. (2023). End-to-end optical music recognition for pianoform sheet music. <em>International Journal on Document Analysis and Recognition</em>, 26, 347–362.</p>
+<p>Roland, P. (2002). The Music Encoding Initiative (MEI). <em>First International Conference on Musical Applications Using XML</em>.</p>
+<p>Sapp, C. S. (2005). Online database of scores in the Humdrum file format. <em>ISMIR 2005</em>.</p>
+<p>Sarmento, P., Kumar, A., Carr, C. J., Zukowski, Z., Barthet, M., and Yang, Y.-H. (2021). DadaGP: A dataset of tokenized GuitarPro songs for sequence models. <em>ISMIR 2021</em>.</p>
+<p>Seeger, C. (1958). Prescriptive and descriptive music-writing. <em>The Musical Quarterly</em>, 44(2), 184–195.</p>
+<p>Sturm, B. L., Santos, J. F., Ben-Tal, O., and Korshunova, I. (2016). Music transcription modelling and composition using deep learning. arXiv:1604.08723.</p>
+<p>Thickstun, J., Hall, D., Donahue, C., and Liang, P. (2023). Anticipatory Music Transformer. arXiv:2306.08620.</p>
+<p>Thickstun, J., Harchaoui, Z., and Kakade, S. (2017). Learning features of music from scratch. <em>ICLR 2017</em>.</p>
+<p>Tuggener, L., Elezi, I., Schmidhuber, J., Pelillo, M., and Stadelmann, T. (2018). DeepScores: A dataset for segmentation, detection and classification of tiny objects. <em>ICPR 2018</em>.</p>
+<p>W3C Music Notation Community Group (2021). <em>MusicXML 4.0</em>. w3.org/2021/06/musicxml40.</p>
+<p>Walshaw, C. (2011). <em>The ABC music standard 2.1</em>. abcnotation.com/wiki/abc:standard:v2.1.</p>
+<p>Wang, Z., Chen, K., Jiang, J., Zhang, Y., Xu, M., Dai, S., Gu, X., and Xia, G. (2020). POP909: A pop-song dataset for music arrangement generation. <em>ISMIR 2020</em>.</p>
+<p>Yuan, R., et al. (2026). YuE2: Unifying symbolic and audio music generation at frontier quality. arXiv:2609.33757.</p>
+</div>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

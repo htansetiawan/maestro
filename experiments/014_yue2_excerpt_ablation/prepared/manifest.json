@@ -1,0 +1,20 @@
+{
+  "requests": [
+    "melody-only-20261017",
+    "melody-chords-20261017",
+    "melody-chords-20261018",
+    "melody-chords-bass-20261017",
+    "model-composed-20261017"
+  ],
+  "conditions": [
+    "melody-only",
+    "melody-chords",
+    "melody-chords-bass",
+    "model-composed"
+  ],
+  "melody_notes": 51,
+  "bass_notes": 17,
+  "chord_events": 17,
+  "nominal_seconds": 44.31818181818182,
+  "official_compiler_identical": true
+}

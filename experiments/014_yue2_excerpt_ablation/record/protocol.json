@@ -1,0 +1,24 @@
+{
+  "source_revision": "3d21f8f5d31be867f4c3b2e6beafb0f2e52f8c10",
+  "model_revision": "c044757a011169583f363168348ae380946efff8",
+  "vae_revision": "152733a19ad43aa67e367f9b5503ef8075bb5126",
+  "runtime": {
+    "yue2-infer": "0.1.6",
+    "torch": "2.10.0+cu128",
+    "transformers": "4.57.6",
+    "numpy": "2.2.6",
+    "huggingface-hub": "0.36.2"
+  },
+  "pipeline": {
+    "device": "cuda",
+    "memory_budget_gib": 17,
+    "offload_ar": true,
+    "vae_core_frames": 512,
+    "backend": "torch",
+    "quantization": "none"
+  },
+  "semantic_sampling": {
+    "max_tokens": 3500
+  },
+  "audio_policy": "MP3 256k retained; FLAC and latent/token arrays deleted after validation"
+}

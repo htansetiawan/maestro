@@ -1,0 +1,14 @@
+{
+  "seconds": 79.58320219104644,
+  "peak_allocated_gib": 7.946792125701904,
+  "audio_seconds": 139.99866666666668,
+  "audio_peak": 0.8310366868972778,
+  "audio_rms": 0.12058887334614467,
+  "truncated": {
+    "abc": false,
+    "semantic": true
+  },
+  "mp3_seconds": 140.04,
+  "lossless_deleted": true,
+  "adherence_measured": false
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "label": "original-recording-full",
+    "audio": "experiments/005_color_purple_orchestra/data/source.wav",
+    "reference_notes": 298,
+    "transcribed_notes": 1010,
+    "skyline_notes": 586,
+    "exact_pitch_matches": 135,
+    "octave_matches": 99,
+    "melody_recall": 0.785234899328859,
+    "exact_recall": 0.45302013422818793,
+    "skyline_precision": 0.3993174061433447,
+    "tempo_ratio": 0.9162092819589446,
+    "aligned_onset_rms_seconds": 3.212026763446236,
+    "longest_exact_run": 18,
+    "method": "ByteDance piano_transcription_inference (CPU) -> skyline -> global pitch alignment"
+  },
+  {
+    "label": "experiment-007-full",
+    "audio": "experiments/007_color_purple_sheet_yue2/outputs/sheet-piano-20261005/audio.mp3",
+    "reference_notes": 298,
+    "transcribed_notes": 843,
+    "skyline_notes": 499,
+    "exact_pitch_matches": 54,
+    "octave_matches": 135,
+    "melody_recall": 0.6342281879194631,
+    "exact_recall": 0.18120805369127516,
+    "skyline_precision": 0.3787575150300601,
+    "tempo_ratio": 1.5289852479537906,
+    "aligned_onset_rms_seconds": 6.7745675532834335,
+    "longest_exact_run": 7,
+    "method": "ByteDance piano_transcription_inference (CPU) -> skyline -> global pitch alignment"
+  }
+]

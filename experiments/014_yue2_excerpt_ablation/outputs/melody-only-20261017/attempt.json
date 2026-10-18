@@ -1,0 +1,11 @@
+{
+  "request": {
+    "id": "melody-only-20261017",
+    "style": "Instrumental, solo acoustic grand piano, lyrical pastoral piano theme, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, no vocals, no singing, no choir, no spoken words, no drums.",
+    "lyrics": "",
+    "cot": "melody",
+    "seed": 20261017
+  },
+  "abc_sha256": "1b4cb2d8cf98a0a53c3ad70c6c9367e9bbed9ad508738fd85f9d7c61a394407a",
+  "status": "completed"
+}

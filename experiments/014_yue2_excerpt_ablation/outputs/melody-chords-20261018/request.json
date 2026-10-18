@@ -1,0 +1,9 @@
+{
+  "style": "Instrumental, solo acoustic grand piano, lyrical pastoral piano theme, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, no vocals, no singing, no choir, no spoken words, no drums.",
+  "lyrics": "",
+  "cot": "full",
+  "seed": 20261018,
+  "abc": "X:1\nT:\nM:1/4\nL:1/128\nQ:1/4=88\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:F\n% intro\nV: Vocal\nZ|\nV: Ins\nf16e16|\nV: Vocal\nM:4/4\n\"F\"z48z48z32|\"Eb/F\"z48z48z32|\"Bb/F\"z48z48z32|\"Bbm/F\"z48z48z32|\nV: Ins\nM:4/4\nf48-f48c16=B16|c48-c48F16E16|F48-F48F16C4-CB,6A,4-A,|B,48-B,16z32f16e16|\nV: Vocal\n\"F\"z48z48z32|\"Eb/F\"z48z48z32|\"Bb/F\"z48z48z32|\"Bbm/F\"z48z48z32|\nV: Ins\nf48-f48c16=B16|c48-c48F16E16|F48-F48-F16A,16|B,48-B,48B,32|\n% verse\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z16\"Bbm/F\"z48z16|\"F\"z48z48z32|\"Bb/F\"z48z48z32|\nV: Ins\nA,32C32F32A32|D32F32B48G16|A48-A48-A32|Z|\nV: Vocal\n\"F\"z48z48z32|\"Bb/F\"z48z48z32|\"Am\"z48z48z32|\"Dm\"z48z48z32|\nV: Ins\nz32C32F32A32|D32F32B32d32|c32C16D16E48A,8G,8|A,48-A,16d48f16|\n",
+  "cfg_scale": null,
+  "id": "melody-chords-20261018"
+}

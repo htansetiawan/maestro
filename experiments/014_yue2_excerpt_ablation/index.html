@@ -1,0 +1,238 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Color Purple — what YuE2 keeps of a score</title><style>
+body{font:17px/1.65 system-ui;color:#37352f;background:#fff;margin:0}main{max-width:1100px;margin:auto;padding:40px 22px}h1{font-size:clamp(30px,5vw,44px);line-height:1.2}small,.muted{color:#777}a{color:inherit}audio{width:100%}.players{display:grid;grid-template-columns:1fr 1fr;gap:22px}.player{background:#f7f7f5;padding:16px;border-radius:8px}.player h2{font-size:18px;margin:0 0 8px}section{margin-top:32px;border-top:1px solid #e6e5e2;padding-top:16px}pre{white-space:pre-wrap;font:13px/1.4 ui-monospace,monospace;background:#fff;padding:10px;border-radius:6px;overflow:auto}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.stats span{background:#eceee9;padding:6px 10px;border-radius:5px;font-size:14px}.stats .dim{background:none;color:#777}table{border-collapse:collapse;width:100%;font-size:15px}td,th{text-align:left;padding:8px;border-bottom:1px solid #eee;vertical-align:top}code{font-size:13px}@media(max-width:650px){.players{grid-template-columns:1fr}}
+</style><link rel="stylesheet" href="../../assets/listening.css"><script defer src="../../assets/listening.js"></script></head><body><main>
+<nav class="listening-nav" aria-label="Listening experiments"><a class="journal-link" href="../../journal/2026-10-17.html">← October 17 journal</a><div><a href="../013_score_reading_fidelity/">013 · Reading the printed score</a><a href="../014_yue2_excerpt_ablation/" aria-current="page">014 · What YuE2 keeps of a score</a><a href="../015_stable_audio_open/">015 · Stable Audio Open</a></div></nav>
+<small>MAESTRO · EXPERIMENT 014</small><h1>Same 17 bars.<br>Four ways to tell YuE2 what to play.</h1>
+<p>The pickup, intro and first theme of <em>Theme from The Color Purple</em> (measures 0–16, F major, 88 BPM, 44 s as written). YuE2's score interface accepts two single-line voices and quoted chord symbols, so the printed left hand and chord voicings can never be sent as notes. These runs vary only what the score carries; the style prompt (solo piano, no vocals) and the empty lyrics are shared. One seed per condition, two for the 007 recipe. Four of the five clips ran to the token cap instead of ending where the score ends.</p>
+<div class="players"><div class="player"><h2>Reference: the melody as written</h2><p class="muted">Deterministic synth of the 51 transcribed lead notes. Not a model output.</p><audio controls preload="metadata" src="inputs/melody-guide.mp3"></audio><a href="inputs/melody.mid">MIDI</a></div>
+<div class="player"><h2>Reference: melody + chord-root bass</h2><p class="muted">The bass line sent in the fourth condition: one held note per chord symbol.</p><audio controls preload="metadata" src="inputs/melody-bass-guide.mp3"></audio><a href="inputs/melody-bass.mid">MIDI</a></div></div>
+<section><h2>Generated piano</h2><div class="players"><div class="player"><h2>Melody only, no chord symbols (cot=melody)</h2><p class="muted">140 s · stopped by the 3,500-token cap · seed 20261017 · 115 s to render</p><audio controls preload="metadata" src="outputs/melody-only-20261017/audio.mp3"></audio><a href="outputs/melody-only-20261017/audio.mp3" download>Download MP3</a><div class="stats"><span><b>80%</b> melody recall in the first 60 s</span><span>63% in the written octave</span><span>33% top-line precision</span><span>longest exact run 10</span><span>tempo 1.33×</span><span class="dim">whole clip: 92% recall, run 10</span></div><details><summary>ABC the model received</summary><pre>X:1
+T:
+M:1/4
+L:1/128
+Q:1/4=88
+V: Vocal clef=treble name=&quot;Vocal Melody&quot; snm=&quot;Vocal&quot;
+V: Ins clef=treble name=&quot;Ins Melody&quot; snm=&quot;Inst.&quot;
+K:F
+% intro
+V: Vocal
+Z|
+V: Ins
+f16e16|
+V: Vocal
+M:4/4
+Z4|
+V: Ins
+M:4/4
+f48-f48c16=B16|c48-c48F16E16|F48-F48F16C4-CB,6A,4-A,|B,48-B,16z32f16e16|
+V: Vocal
+Z4|
+V: Ins
+f48-f48c16=B16|c48-c48F16E16|F48-F48-F16A,16|B,48-B,48B,32|
+% verse
+V: Vocal
+Z4|
+V: Ins
+A,32C32F32A32|D32F32B48G16|A48-A48-A32|Z|
+V: Vocal
+Z4|
+V: Ins
+z32C32F32A32|D32F32B32d32|c32C16D16E48A,8G,8|A,48-A,16d48f16|
+</pre></details></div><div class="player"><h2>Melody + chord symbols, the 007 recipe (cot=full)</h2><p class="muted">140 s · stopped by the 3,500-token cap · seed 20261017 · 57 s to render</p><audio controls preload="metadata" src="outputs/melody-chords-20261017/audio.mp3"></audio><a href="outputs/melody-chords-20261017/audio.mp3" download>Download MP3</a><div class="stats"><span><b>67%</b> melody recall in the first 60 s</span><span>14% in the written octave</span><span>26% top-line precision</span><span>longest exact run 2</span><span>tempo 0.96×</span><span class="dim">whole clip: 92% recall, run 3</span></div><details><summary>ABC the model received</summary><pre>X:1
+T:
+M:1/4
+L:1/128
+Q:1/4=88
+V: Vocal clef=treble name=&quot;Vocal Melody&quot; snm=&quot;Vocal&quot;
+V: Ins clef=treble name=&quot;Ins Melody&quot; snm=&quot;Inst.&quot;
+K:F
+% intro
+V: Vocal
+Z|
+V: Ins
+f16e16|
+V: Vocal
+M:4/4
+&quot;F&quot;z48z48z32|&quot;Eb/F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|&quot;Bbm/F&quot;z48z48z32|
+V: Ins
+M:4/4
+f48-f48c16=B16|c48-c48F16E16|F48-F48F16C4-CB,6A,4-A,|B,48-B,16z32f16e16|
+V: Vocal
+&quot;F&quot;z48z48z32|&quot;Eb/F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|&quot;Bbm/F&quot;z48z48z32|
+V: Ins
+f48-f48c16=B16|c48-c48F16E16|F48-F48-F16A,16|B,48-B,48B,32|
+% verse
+V: Vocal
+&quot;F&quot;z48z48z32|&quot;Bb/F&quot;z48z16&quot;Bbm/F&quot;z48z16|&quot;F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|
+V: Ins
+A,32C32F32A32|D32F32B48G16|A48-A48-A32|Z|
+V: Vocal
+&quot;F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|&quot;Am&quot;z48z48z32|&quot;Dm&quot;z48z48z32|
+V: Ins
+z32C32F32A32|D32F32B32d32|c32C16D16E48A,8G,8|A,48-A,16d48f16|
+</pre></details></div><div class="player"><h2>Melody + chord symbols, the 007 recipe (cot=full)</h2><p class="muted">140 s · stopped by the 3,500-token cap · seed 20261018 · 56 s to render</p><audio controls preload="metadata" src="outputs/melody-chords-20261018/audio.mp3"></audio><a href="outputs/melody-chords-20261018/audio.mp3" download>Download MP3</a><div class="stats"><span><b>67%</b> melody recall in the first 60 s</span><span>39% in the written octave</span><span>37% top-line precision</span><span>longest exact run 5</span><span>tempo 1.28×</span><span class="dim">whole clip: 73% recall, run 5</span></div><details><summary>ABC the model received</summary><pre>X:1
+T:
+M:1/4
+L:1/128
+Q:1/4=88
+V: Vocal clef=treble name=&quot;Vocal Melody&quot; snm=&quot;Vocal&quot;
+V: Ins clef=treble name=&quot;Ins Melody&quot; snm=&quot;Inst.&quot;
+K:F
+% intro
+V: Vocal
+Z|
+V: Ins
+f16e16|
+V: Vocal
+M:4/4
+&quot;F&quot;z48z48z32|&quot;Eb/F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|&quot;Bbm/F&quot;z48z48z32|
+V: Ins
+M:4/4
+f48-f48c16=B16|c48-c48F16E16|F48-F48F16C4-CB,6A,4-A,|B,48-B,16z32f16e16|
+V: Vocal
+&quot;F&quot;z48z48z32|&quot;Eb/F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|&quot;Bbm/F&quot;z48z48z32|
+V: Ins
+f48-f48c16=B16|c48-c48F16E16|F48-F48-F16A,16|B,48-B,48B,32|
+% verse
+V: Vocal
+&quot;F&quot;z48z48z32|&quot;Bb/F&quot;z48z16&quot;Bbm/F&quot;z48z16|&quot;F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|
+V: Ins
+A,32C32F32A32|D32F32B48G16|A48-A48-A32|Z|
+V: Vocal
+&quot;F&quot;z48z48z32|&quot;Bb/F&quot;z48z48z32|&quot;Am&quot;z48z48z32|&quot;Dm&quot;z48z48z32|
+V: Ins
+z32C32F32A32|D32F32B32d32|c32C16D16E48A,8G,8|A,48-A,16d48f16|
+</pre></details></div><div class="player"><h2>Melody + chord symbols + bass line in the Vocal voice</h2><p class="muted">85 s · ended on its own · seed 20261017 · 42 s to render</p><audio controls preload="metadata" src="outputs/melody-chords-bass-20261017/audio.mp3"></audio><a href="outputs/melody-chords-bass-20261017/audio.mp3" download>Download MP3</a><div class="stats"><span><b>75%</b> melody recall in the first 60 s</span><span>45% in the written octave</span><span>19% top-line precision</span><span>longest exact run 7</span><span>tempo 1.10×</span><span class="dim">whole clip: 80% recall, run 7</span></div><details><summary>ABC the model received</summary><pre>X:1
+T:
+M:1/4
+L:1/128
+Q:1/4=88
+V: Vocal clef=treble name=&quot;Vocal Melody&quot; snm=&quot;Vocal&quot;
+V: Ins clef=treble name=&quot;Ins Melody&quot; snm=&quot;Inst.&quot;
+K:F
+% intro
+V: Vocal
+Z|
+V: Ins
+f16e16|
+V: Vocal
+M:4/4
+&quot;F&quot;F,,48-F,,48-F,,32|&quot;Eb/F&quot;F,,48-F,,48-F,,32|&quot;Bb/F&quot;F,,48-F,,48-F,,32|&quot;Bbm/F&quot;F,,48-F,,48-F,,32|
+V: Ins
+M:4/4
+f48-f48c16=B16|c48-c48F16E16|F48-F48F16C4-CB,6A,4-A,|B,48-B,16z32f16e16|
+V: Vocal
+&quot;F&quot;F,,48-F,,48-F,,32|&quot;Eb/F&quot;F,,48-F,,48-F,,32|&quot;Bb/F&quot;F,,48-F,,48-F,,32|&quot;Bbm/F&quot;F,,48-F,,48-F,,32|
+V: Ins
+f48-f48c16=B16|c48-c48F16E16|F48-F48-F16A,16|B,48-B,48B,32|
+% verse
+V: Vocal
+&quot;F&quot;F,,48-F,,48-F,,32|&quot;Bb/F&quot;F,,48-F,,16&quot;Bbm/F&quot;F,,48-F,,16|&quot;F&quot;F,,48-F,,48-F,,32|&quot;Bb/F&quot;F,,48-F,,48-F,,32|
+V: Ins
+A,32C32F32A32|D32F32B48G16|A48-A48-A32|Z|
+V: Vocal
+&quot;F&quot;F,,48-F,,48-F,,32|&quot;Bb/F&quot;F,,48-F,,48-F,,32|&quot;Am&quot;A,,48-A,,48-A,,32|&quot;Dm&quot;D,48-D,48-D,32|
+V: Ins
+z32C32F32A32|D32F32B32d32|c32C16D16E48A,8G,8|A,48-A,16d48f16|
+</pre></details></div><div class="player"><h2>No score: YuE2 composes from the same style prompt</h2><p class="muted">140 s · stopped by the 3,500-token cap · seed 20261017 · 80 s to render</p><audio controls preload="metadata" src="outputs/model-composed-20261017/audio.mp3"></audio><a href="outputs/model-composed-20261017/audio.mp3" download>Download MP3</a><div class="stats"><span><b>53%</b> melody recall in the first 60 s</span><span>35% in the written octave</span><span>14% top-line precision</span><span>longest exact run 4</span><span>tempo 1.18×</span><span class="dim">whole clip: 67% recall, run 4</span></div><details><summary>ABC the model received</summary><pre>X:1
+T:
+M:4/4
+L:1/32
+Q:1/4=87
+V: Vocal clef=treble name=&quot;Vocal Melody&quot; snm=&quot;Vocal&quot;
+V: Ins clef=treble name=&quot;Ins Melody&quot; snm=&quot;Inst.&quot;
+K:G
+% intro
+V: Vocal
+z24z4&quot;G&quot;z4|&quot;G&quot;z32|&quot;D/F#&quot;z32|&quot;Em7&quot;z32|
+V: Ins
+z24z6dd|d2G2D2d2G2D2d2G2D2d2G2D2c2B2A2G2|d2A2D2d2A2D2d2A2D2d2A2D2c2B2A2G2|d2G2D2d2G2D2d2G2D2d2G2D2c2B2A2G2|
+V: Vocal
+&quot;C&quot;z32|&quot;G&quot;z32|&quot;D/F#&quot;z32|&quot;Em7&quot;z32|
+V: Ins
+d6G6d6G6A4B4|d6G6d6G6c2B2A2G2|d6G6d6G6c2B2A2G2|d6G6d6G6c2B2A2G2|
+V: Vocal
+&quot;C&quot;z32|
+V: Ins
+d32|
+% verse
+V: Vocal
+&quot;G&quot;z4B4B4B2B6A4A4G4|&quot;D/F#&quot;A6B6D4z16|&quot;Em7&quot;z4B4B4B2B6A4A4G4|&quot;C&quot;A6B6E8z12|
+V: Ins
+Z4|
+V: Vocal
+&quot;G&quot;z4d4d4d2d6G4A4G4|&quot;D/F#&quot;A6d6A8z8B2c2|&quot;Em7&quot;d6G6G8F4G4A4|&quot;C&quot;A6G8z16z2|
+V: Ins
+Z3|z16z4D4G2F2D2G2|
+V: Vocal
+&quot;G&quot;z4B4B4B2B6A4A4G4|&quot;D/F#&quot;A6B6D8z12|&quot;Em7&quot;z4B4B4B2B6A4A4G4|&quot;C&quot;A6B6E8z12|
+V: Ins
+Z3|z16z4D4G2F2D2G2|
+V: Vocal
+&quot;G&quot;z4d4d4d2d6G4A4G4|&quot;D/F#&quot;A6d6A8z8B2c2|&quot;Em7&quot;d6G6G8F4G4A4|&quot;C&quot;A6G16z8z2|
+V: Ins
+Z3|z24G2F2D2G2|
+V: Vocal
+&quot;C&quot;z32|
+V: Ins
+d2G2D2d2G2D2d2G2D2d2G2D2d2G2D2d2|
+% chorus
+V: Vocal
+&quot;G&quot;z4d4d4d4g4f4e4d4|&quot;D/F#&quot;A6B6A8z12|&quot;Em7&quot;z4d4d4d4g4f4e4d4|&quot;C&quot;A6B6E8z12|
+V: Ins
+Z|z16z6D2c2B2A2G2|Z|z16z6D2c2B2A2G2|
+V: Vocal
+&quot;G&quot;z4d4d4d2d6G4A4G4|&quot;D/F#&quot;A6d6A8z8B2c2|&quot;Em7&quot;d6G6G8F4G4A4|&quot;C&quot;A6G8z16z2|
+V: Ins
+Z3|z16z6D2G2F2D2G2|
+V: Vocal
+&quot;G&quot;z4d4d4d4g4f4e4d4|&quot;D/F#&quot;A6B6A8z12|&quot;Em7&quot;z4d4d4d4g4f4e4d4|&quot;C&quot;A6B6E8z12|
+V: Ins
+Z|z16z6D2c2B2A2G2|Z|z16z6D2c2B2A2G2|
+V: Vocal
+&quot;G&quot;z4d4d4d2d6G4A4G4|&quot;D/F#&quot;A6d6A8z8B2c2|&quot;Em7&quot;d6G6G8F4G4A4|&quot;C&quot;A6G16z8z2|
+V: Ins
+Z3|z16z6D2c2B2A2G2|
+% interlude
+V: Vocal
+&quot;G&quot;z32|&quot;D/F#&quot;z32|&quot;Em7&quot;z32|&quot;C&quot;z32|
+V: Ins
+d6G6d6G6c2B2A2G2|d6G6d6G6c2B2A2G2|d6G6d6G6c2B2A2G2|d6G6d6G4D2c2B2A2G2|
+V: Vocal
+&quot;G&quot;z32|&quot;D/F#&quot;z32|&quot;Em7&quot;z32|&quot;C&quot;z32|
+V: Ins
+d6G6d6G4D2c2B2A2G2|d6G6d6G4D2c2B2A2G2|d6G6d6G4D2c2B2A2G2|d6G6d16z4|
+% chorus
+V: Vocal
+&quot;G&quot;z4d4d4d4g4f4e4d4|&quot;D/F#&quot;A6B6A8z12|&quot;Em7&quot;z4d4d4d4g4f4e4d4|&quot;C&quot;A6B6E8z12|
+V: Ins
+Z|z16z4D2D2c2B2A2G2|Z|z16z6D2c2B2A2G2|
+V: Vocal
+&quot;G&quot;z4d4d4d2d6G4A4G4|&quot;D/F#&quot;A6d6A8z8B2c2|&quot;Em7&quot;d6G6G8F4G4A4|&quot;C&quot;A6G16z8z2|
+V: Ins
+Z3|z16z6D2c2B2A2G2|
+V: Vocal
+&quot;G&quot;z4d4d4d4g4f4e4d4|&quot;D/F#&quot;A6B6A8z12|&quot;Em7&quot;z4d4d4d4g4f4e4d4|&quot;C&quot;A6B6E8z12|
+V: Ins
+Z|z16z6D2c2B2A2G2|Z|z16z6D2c2B2A2G2|
+V: Vocal
+&quot;G&quot;z4d4d4d2d6G4A4G4|&quot;D/F#&quot;A6d6A8z8B2c2|&quot;Em7&quot;d6G6G8F4G4A4|&quot;C&quot;A6G16z8z2|
+V: Ins
+Z3|z16z6D2c2B2A2G2|
+% outro
+V: Vocal
+&quot;G&quot;z32|&quot;D/F#&quot;z32|&quot;Em7&quot;z32|&quot;C&quot;z32|
+V: Ins
+d6G6d6G4D2c2B2A2G2|d6G6d6G4D2c2B2A2G2|d6G6d6G4D2c2B2A2G2|d6G6d16-d4-|
+V: Vocal
+&quot;C&quot;z32|
+V: Ins
+d12z16z4|
+</pre></details></div></div></section>
+<section><h2>How adherence is measured, and the ceiling</h2><p>Each clip is transcribed to notes with the ByteDance piano transcription model, the highest note at each attack is taken as the top line, and that sequence is aligned globally to the written melody. <strong>Melody recall</strong> is the share of written notes found in order (any octave); <strong>written octave</strong> requires the register on the page; <strong>top-line precision</strong> is the share of top-line attacks that belong to the melody, which is low even for a real pianist because accompaniment attacks also reach the top line; the <strong>longest exact run</strong> counts consecutive written notes reproduced in order and octave; <strong>tempo</strong> is the fitted time stretch of the matched notes relative to 88 BPM. The first 60 seconds of each clip is the fair window, since the written excerpt lasts 44 seconds and the clips run on.</p>
+<table><tr><th>Reference audio</th><th>Melody recall</th><th>Written octave</th><th>Top-line precision</th><th>Longest run</th><th>Tempo</th></tr><tr><td>Your recording, first 52 s, against bars 0–16</td><td>96%</td><td>84%</td><td>38%</td><td>13</td><td>1.09×</td></tr><tr><td>Your recording, all 3:30, against all 87 bars</td><td>79%</td><td>45%</td><td>40%</td><td>18</td><td>0.92×</td></tr><tr><td>Last week's 007 output (5:39) against all 87 bars</td><td>63%</td><td>18%</td><td>38%</td><td>7</td><td>1.53×</td></tr></table>
+<p class="muted">The 007 row grades last week's full-score run with the same method: its 1.53× stretch matches the 5:39 output against a 3:49 score.</p></section>
+<section><h2>Singing diagnostic</h2><p>Whisper (base.en) on each clip. On instrumental music Whisper hallucinates stock phrases such as "thank you for watching"; a long run of sung syllables is the signal. This is an automatic diagnostic, not a listening judgement.</p>
+<table><tr><th>Condition</th><th>Whisper output, first 140 characters</th></tr><tr><td>Melody + chord symbols + bass line in the Vocal voice</td><td><code>............................. Thank you so much for watching, and I will see you in the next video. One, oh, son, soul, One, ah, ah, ah, ah,</code></td></tr><tr><td>Melody + chord symbols, the 007 recipe (cot=full)</td><td><code>............................. Thank you very much for watching, and I will see you in the next video. And a bond&#x27;s long like you are a jiggl</code></td></tr><tr><td>Melody only, no chord symbols (cot=melody)</td><td><code>............................. Thank you very much for watching, and we will see you in the next video.............................. I&#x27;m goin</code></td></tr><tr><td>No score: YuE2 composes from the same style prompt</td><td><code>Lidew short and high, nigh yin tro ji Shui shan ji wai ji nai da jao pou Kai leo do you pou you lu tai tou me Tou me dao mein ti lee tai jao</code></td></tr></table></section>
+<p><a href="README.md">Full experiment record</a> · <a href="record/adherence-outputs-first60.json">Measurements, first 60 s</a> · <a href="record/adherence-outputs-full.json">whole clips</a> · <a href="record/adherence-full-score.json">full-score references</a> · <a href="inputs/excerpt-events.json">Excerpt events</a> · <a href="prepared/manifest.json">Conditions</a></p>
+</main></body></html>

@@ -1,0 +1,62 @@
+{
+  "model": "stabilityai/stable-audio-open-1.0",
+  "sample_rate": 44100,
+  "sample_size": 2097152,
+  "model_seconds": 47.55446712018141,
+  "steps": 100,
+  "cfg_scale": 7.0,
+  "sampler": "dpmpp-3m-sde",
+  "sigma_min": 0.3,
+  "sigma_max": 500,
+  "source": "experiments/005_color_purple_orchestra/data/source.wav",
+  "source_excerpt_seconds": 47,
+  "runtime": {
+    "stable-audio-tools": "0.0.19",
+    "torch": "2.10.0+cu128",
+    "torchaudio": "2.10.0+cu128"
+  },
+  "load_seconds": 498.1249517670367,
+  "conditions": [
+    {
+      "id": "t2a-piano-20261017",
+      "prompt": "Solo acoustic grand piano, lyrical pastoral ballad, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, intimate studio recording",
+      "seed": 20261017
+    },
+    {
+      "id": "t2a-piano-20261018",
+      "prompt": "Solo acoustic grand piano, lyrical pastoral ballad, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, intimate studio recording",
+      "seed": 20261018
+    },
+    {
+      "id": "a2a-piano-sigma0.5",
+      "prompt": "Solo acoustic grand piano, lyrical pastoral ballad, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, intimate studio recording",
+      "seed": 20261017,
+      "init_noise_level": 0.5
+    },
+    {
+      "id": "a2a-piano-sigma2",
+      "prompt": "Solo acoustic grand piano, lyrical pastoral ballad, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, intimate studio recording",
+      "seed": 20261017,
+      "init_noise_level": 2.0
+    },
+    {
+      "id": "a2a-piano-sigma8",
+      "prompt": "Solo acoustic grand piano, lyrical pastoral ballad, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, intimate studio recording",
+      "seed": 20261017,
+      "init_noise_level": 8.0
+    },
+    {
+      "id": "a2a-orchestra-sigma2",
+      "prompt": "Solo piano accompanied by a warm string orchestra and soft woodwinds, cinematic film score arrangement, lyrical pastoral theme, F major, 88 BPM",
+      "seed": 20261017,
+      "init_noise_level": 2.0
+    },
+    {
+      "id": "a2a-orchestra-sigma8",
+      "prompt": "Solo piano accompanied by a warm string orchestra and soft woodwinds, cinematic film score arrangement, lyrical pastoral theme, F major, 88 BPM",
+      "seed": 20261017,
+      "init_noise_level": 8.0
+    }
+  ],
+  "note": "init_noise_level is the k-diffusion sigma at which sampling starts from the encoded source; lower keeps more of the source. Levels are a first sweep, not tuned values."
+}

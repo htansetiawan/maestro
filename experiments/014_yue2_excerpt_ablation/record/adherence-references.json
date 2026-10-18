@@ -1,0 +1,18 @@
+[
+  {
+    "label": "original-recording",
+    "audio": "experiments/014_yue2_excerpt_ablation/work/source-first-52s.mp3",
+    "reference_notes": 51,
+    "transcribed_notes": 201,
+    "skyline_notes": 128,
+    "exact_pitch_matches": 43,
+    "octave_matches": 6,
+    "melody_recall": 0.9607843137254902,
+    "exact_recall": 0.8431372549019608,
+    "skyline_precision": 0.3828125,
+    "tempo_ratio": 1.0901287176656254,
+    "aligned_onset_rms_seconds": 0.9208758077518735,
+    "longest_exact_run": 13,
+    "method": "ByteDance piano_transcription_inference (CPU) -> skyline -> global pitch alignment"
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "label": "source-mp3-ceiling",
+    "chroma_similarity": 1.0,
+    "source_topline_recall": 0.9910714285714286,
+    "exact_recall": 0.9910714285714286,
+    "topline_precision": 0.9910714285714286,
+    "transcribed_topline_notes": 112
+  },
+  {
+    "label": "t2a-piano-20261017",
+    "chroma_similarity": 0.4341281056404114,
+    "source_topline_recall": 0.3482142857142857,
+    "exact_recall": 0.017857142857142856,
+    "topline_precision": 0.3046875,
+    "transcribed_topline_notes": 128
+  },
+  {
+    "label": "t2a-piano-20261018",
+    "chroma_similarity": 0.4054039716720581,
+    "source_topline_recall": 0.36607142857142855,
+    "exact_recall": 0.05357142857142857,
+    "topline_precision": 0.5061728395061729,
+    "transcribed_topline_notes": 81
+  },
+  {
+    "label": "a2a-piano-sigma0.5",
+    "chroma_similarity": 0.9867948889732361,
+    "source_topline_recall": 0.7142857142857143,
+    "exact_recall": 0.5089285714285714,
+    "topline_precision": 0.6611570247933884,
+    "transcribed_topline_notes": 121
+  },
+  {
+    "label": "a2a-piano-sigma2",
+    "chroma_similarity": 0.9229909777641296,
+    "source_topline_recall": 0.7589285714285714,
+    "exact_recall": 0.5535714285714286,
+    "topline_precision": 0.4644808743169399,
+    "transcribed_topline_notes": 183
+  },
+  {
+    "label": "a2a-piano-sigma8",
+    "chroma_similarity": 0.5439516305923462,
+    "source_topline_recall": 0.42857142857142855,
+    "exact_recall": 0.20535714285714285,
+    "topline_precision": 0.46601941747572817,
+    "transcribed_topline_notes": 103
+  },
+  {
+    "label": "a2a-orchestra-sigma2",
+    "chroma_similarity": 0.9262475371360779,
+    "source_topline_recall": 0.7410714285714286,
+    "exact_recall": 0.5267857142857143,
+    "topline_precision": 0.4742857142857143,
+    "transcribed_topline_notes": 175
+  },
+  {
+    "label": "a2a-orchestra-sigma8",
+    "chroma_similarity": 0.5620890259742737,
+    "source_topline_recall": 0.48214285714285715,
+    "exact_recall": 0.16071428571428573,
+    "topline_precision": 0.48214285714285715,
+    "transcribed_topline_notes": 112
+  }
+]

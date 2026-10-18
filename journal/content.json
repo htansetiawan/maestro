@@ -104,6 +104,13 @@
       "source": "research/notes/10-yue2-session-recovery-2026-10-17.md",
       "description": "Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.",
       "status": "Preparation recovered · no generated results found"
+    },
+    {
+      "id": "music-notations",
+      "title": "Music notations: what each one keeps",
+      "source": "research/MUSIC-NOTATIONS.md",
+      "description": "Definitions, the notation and performance encodings, which corpora hold each, and what the generators in this project actually read.",
+      "status": "Reference note · October 2026"
     }
   ],
   "entries": [
@@ -354,11 +361,11 @@
     },
     {
       "date": "2026-10-17",
-      "title": "Music representations and YuE2 investigation in progress",
-      "summary": "In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.",
-      "stage": "Weekly placeholder. Experiments 013–015 prepared locally; setup failures recorded; no generated results found.",
-      "focus": "Separate score-reading and format-conversion errors from audible melody-following errors.",
-      "next_step": "Validate a short PDF/image-to-score passage, then test sound/humming-to-score and simple vocal rendering before adding accompaniment.",
+      "title": "Where the score gets lost",
+      "summary": "YuE2's score input is a lead sheet: a third of the printed notes can be sent at all, OMR reads the melody but no chord symbols, the melody that is sent comes back loosely (80% recall alone, worse with chord symbols), and Stable Audio Open keeps the recording's harmony but not its register.",
+      "stage": "Score reading, interface capacity and melody following measured on one arrangement; Stable Audio Open text and audio-to-audio trials rendered and measured. No training.",
+      "focus": "Locate where a printed arrangement is lost on its way into a generator, and measure adherence instead of describing it.",
+      "next_step": "Listen to the 014 and 015 clips and the OMR renderings, compare the Stable Audio orchestra clips with the October 5 LEGO attempt, test the audio-first SheetSage2 path, and rerun the full 87 bars melody-only.",
       "artifacts": [
         "ai-music-researchers",
         "yue2-recovery-2026-10-17"
@@ -366,20 +373,24 @@
       "published": true,
       "links": [
         {
+          "label": "013 · Reading the printed score",
+          "url": "https://htansetiawan.github.io/maestro/experiments/013_score_reading_fidelity/"
+        },
+        {
+          "label": "014 · What YuE2 keeps of a score",
+          "url": "https://htansetiawan.github.io/maestro/experiments/014_yue2_excerpt_ablation/"
+        },
+        {
+          "label": "015 · Stable Audio Open",
+          "url": "https://htansetiawan.github.io/maestro/experiments/015_stable_audio_open/"
+        },
+        {
+          "label": "Music notations note",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/music-notations.html"
+        },
+        {
           "label": "Researchers and reading",
           "url": "https://htansetiawan.github.io/maestro/artifacts/ai-music-researchers.html"
-        },
-        {
-          "label": "Recovered experiment preparation",
-          "url": "https://htansetiawan.github.io/maestro/artifacts/yue2-recovery-2026-10-17.html"
-        },
-        {
-          "label": "MusicGen paper",
-          "url": "https://arxiv.org/abs/2306.05284"
-        },
-        {
-          "label": "EnCodec paper",
-          "url": "https://arxiv.org/abs/2210.13438"
         }
       ]
     }

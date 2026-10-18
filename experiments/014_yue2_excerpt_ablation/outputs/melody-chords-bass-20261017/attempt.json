@@ -1,0 +1,11 @@
+{
+  "request": {
+    "id": "melody-chords-bass-20261017",
+    "style": "Instrumental, solo acoustic grand piano, lyrical pastoral piano theme, gentle flowing arpeggio accompaniment, expressive legato melody, F major, 88 BPM, no vocals, no singing, no choir, no spoken words, no drums.",
+    "lyrics": "",
+    "cot": "full",
+    "seed": 20261017
+  },
+  "abc_sha256": "193f1909cf201c49852be7e34fc98ca0eeb782b2484285b88db9ddcecdd81699",
+  "status": "completed"
+}

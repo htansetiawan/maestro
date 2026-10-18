@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Music representations and YuE2 investigation in progress — Maestro</title>
-<meta name="description" content="In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.">
+<title>Where the score gets lost — Maestro</title>
+<meta name="description" content="YuE2&#x27;s score input is a lead sheet: a third of the printed notes can be sent at all, OMR reads the melody but no chord symbols, the melody that is sent comes back loosely (80% recall alone, worse with chord symbols), and Stable Audio Open keeps the recording&#x27;s harmony but not its register.">
 <meta name="author" content="Henry Tan">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-10-17.html">
 <link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
 <meta property="og:site_name" content="Maestro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Music representations and YuE2 investigation in progress — Maestro">
-<meta property="og:description" content="In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.">
+<meta property="og:title" content="Where the score gets lost — Maestro">
+<meta property="og:description" content="YuE2&#x27;s score input is a lead sheet: a third of the printed notes can be sent at all, OMR reads the melody but no chord symbols, the melody that is sent comes back loosely (80% recall alone, worse with chord symbols), and Stable Audio Open keeps the recording&#x27;s harmony but not its register.">
 <meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-10-17.html">
 <meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Music representations and YuE2 investigation in progress — Maestro">
-<meta name="twitter:description" content="In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.">
+<meta name="twitter:title" content="Where the score gets lost — Maestro">
+<meta name="twitter:description" content="YuE2&#x27;s score input is a lead sheet: a third of the printed notes can be sent at all, OMR reads the melody but no chord symbols, the melody that is sent comes back loosely (80% recall alone, worse with chord symbols), and Stable Audio Open keeps the recording&#x27;s harmony but not its register.">
 <meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
 <link rel="icon" href="../assets/favicon.ico">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -41,8 +41,8 @@
   <main id="content">
     <header class="journal-head">
       <p class="eyebrow">Weekly journal · week of October 12, 2026</p>
-      <h1>Music representations and YuE2 investigation in progress</h1>
-      <p class="journal-description">In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.</p>
+      <h1>Where the score gets lost</h1>
+      <p class="journal-description">YuE2&#x27;s score input is a lead sheet: a third of the printed notes can be sent at all, OMR reads the melody but no chord symbols, the melody that is sent comes back loosely (80% recall alone, worse with chord symbols), and Stable Audio Open keeps the recording&#x27;s harmony but not its register.</p>
       <p class="journal-meta"><time datetime="2026-10-17">October 17, 2026</time> · Henry Tan · <a href="entries/2026-10-17.md">Entry source</a></p>
       <div class="share-actions">
         <a href="https://htansetiawan.github.io/maestro/journal/2026-10-17.html">Permalink</a>
@@ -50,30 +50,166 @@
         <span class="share-status" role="status" aria-live="polite"></span>
       </div>
     </header>
-    <dl class="state-grid"><div><dt>Stage</dt><dd>Weekly placeholder. Experiments 013–015 prepared locally; setup failures recorded; no generated results found.</dd></div><div><dt>Current focus</dt><dd>Separate score-reading and format-conversion errors from audible melody-following errors.</dd></div><div><dt>Next experiment</dt><dd>Validate a short PDF/image-to-score passage, then test sound/humming-to-score and simple vocal rendering before adding accompaniment.</dd></div></dl><div class="journal-prose"><p><strong>Weekly placeholder — October 17, 2026.</strong> This week I am studying how music moves between sound, notation and model inputs. The question is where the musical information gets lost before or during generation.</p>
+    <dl class="state-grid"><div><dt>Stage</dt><dd>Score reading, interface capacity and melody following measured on one arrangement; Stable Audio Open text and audio-to-audio trials rendered and measured. No training.</dd></div><div><dt>Current focus</dt><dd>Locate where a printed arrangement is lost on its way into a generator, and measure adherence instead of describing it.</dd></div><div><dt>Next experiment</dt><dd>Listen to the 014 and 015 clips and the OMR renderings, compare the Stable Audio orchestra clips with the October 5 LEGO attempt, test the audio-first SheetSage2 path, and rerun the full 87 bars melody-only.</dd></div></dl><div class="journal-prose"><p>Last week's question was why conditioning YuE2 on the printed <em>Theme from The Color Purple</em> did not give back the arrangement. This week locates the loss. Most of it is structural: the model's score input is a lead sheet, not a score. The rest is measured for the first time.</p>
+<p><em>A version of this entry published at midday recorded experiments 013 to 015 as prepared but unrun, after the morning session was cut off. The runs completed in the evening; the results are below, and the midday <a href="../artifacts/yue2-recovery-2026-10-17.html">recovery record</a> stands as a dated snapshot.</em></p>
+<h2 id="find-the-work">Find the work</h2>
+<ul>
+<li><a href="../experiments/013_score_reading_fidelity/index.html">013 · Reading the printed score</a>: three OMR engines against the manual lead line, with each reading rendered to audio.</li>
+<li><a href="../experiments/014_yue2_excerpt_ablation/index.html">014 · What YuE2 keeps of a score</a>: the same 17 bars sent four ways, with measured melody following.</li>
+<li><a href="../experiments/015_stable_audio_open/index.html">015 · Stable Audio Open</a>: the same piano prompt with no score, and the recording itself as the starting point at three noise levels, including an &quot;add orchestra&quot; request.</li>
+<li><a href="../artifacts/music-notations.html">Music notations: what each one keeps</a>: a reference note on notation formats, what each captures, and the corpora that hold them.</li>
+<li><a href="../artifacts/ai-music-researchers.html">Researchers and reading</a>: the directory added this week.</li>
+</ul>
+<h2 id="what-yue2-can-receive">What YuE2 can receive</h2>
+<p>YuE2 accepts a bounded ABC dialect: two monophonic voices, <code>Vocal</code> and <code>Ins</code>, plus quoted chord symbols from fifteen qualities, on a power-of-two rhythmic grid with no tuplets, grace notes, note stacks, repeats or expression marks. A piano arrangement cannot be sent as notes. The left hand and the chord voicings reach the model only as labels, and the accompaniment is always the model's own.</p>
+<p>Counting the printed notes from the best OMR reading: 838 sounding notes on the five pages, of which 276, the top of the right hand, can be expressed in the model's input. That is a third. The other two thirds, 189 right-hand chord tones and 373 left-hand notes, were never in play in experiment 007.</p>
+<h2 id="can-software-read-the-sheet">Can software read the sheet</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>Measures found (of 88)</th>
+<th>Melody recall</th>
+<th>Written octave</th>
+<th>Chord symbols (of 98)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>homr 0.7</td>
+<td>83</td>
+<td>86%</td>
+<td>85%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>oemer 0.1.8</td>
+<td>84</td>
+<td>73%</td>
+<td>69%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Audiveris 5.11</td>
+<td>77</td>
+<td>50%</td>
+<td>45%</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>homr read four of the five pages completely and lost five measures on page 4. No engine read a chord symbol, so the harmony still has to come from a person. The manual lead line from experiment 007 holds up as the reference: against the human recording, the same alignment method finds 79% of its notes over the whole piece and 96% over the first 17 bars.</p>
+<h2 id="does-the-model-follow-the-melody-it-is-given">Does the model follow the melody it is given</h2>
+<p>Seventeen bars, one seed each, first 60 seconds graded by transcribing the output and aligning its top line to the written melody. The pianist's own recording scores 96% recall with a longest exact run of 13 notes.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>What the score carried</th>
+<th>Melody recall</th>
+<th>Written octave</th>
+<th>Longest exact run</th>
+<th>Tempo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Melody only</td>
+<td>80%</td>
+<td>63%</td>
+<td>10</td>
+<td>1.33×</td>
+</tr>
+<tr>
+<td>Melody + chord symbols (007 recipe), two seeds</td>
+<td>67%, 67%</td>
+<td>14%, 39%</td>
+<td>2, 5</td>
+<td>0.96×, 1.28×</td>
+</tr>
+<tr>
+<td>Melody + chords + bass line in the Vocal voice</td>
+<td>75%</td>
+<td>45%</td>
+<td>7</td>
+<td>1.10×</td>
+</tr>
+<tr>
+<td>No score</td>
+<td>53%</td>
+<td>35%</td>
+<td>4</td>
+<td>1.18×</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three things follow. The melody alone is imitated loosely but recognisably: four notes in five, ten in a row in the right octave, a third slower than marked. Adding chord symbols, which is what 007 did, made the following worse in both seeds; the two seeds also disagree enough that this is a direction rather than a ranking. The bass line in the second voice was sung: Whisper hears a long run of &quot;ah&quot; syllables despite the no-vocals prompt, so the second voice cannot carry an instrument. Four of the five clips also ran to the token cap at 140 s instead of stopping where the 44-second score stops.</p>
+<p>Grading last week's 007 output with the same method gives 63% recall, 18% in the written octave, runs of at most 7 notes, and a 1.53× stretch that matches its 5:39 against a 3:49 score. The impression from listening, that the piano had changed too much, now has a number.</p>
+<h2 id="a-model-with-no-score-input-for-contrast">A model with no score input, for contrast</h2>
+<p>Stable Audio Open 1.0 takes text, or text plus a starting recording, and nothing symbolic. From the piano prompt alone it produces piano that shares 35% of the recording's top-line pitch classes in order and 2–5% in the right octave, which is the floor for unrelated music in the same style. Starting from the recording itself, the outcome depends on how much noise is added before sampling:</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Start</th>
+<th>Noise level σ</th>
+<th>Chroma similarity to the recording</th>
+<th>Top-line notes kept</th>
+<th>In the right octave</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recording, piano prompt</td>
+<td>0.5</td>
+<td>0.99</td>
+<td>71%</td>
+<td>51%</td>
+</tr>
+<tr>
+<td>Recording, piano prompt</td>
+<td>2</td>
+<td>0.92</td>
+<td>76%</td>
+<td>55%</td>
+</tr>
+<tr>
+<td>Recording, piano prompt</td>
+<td>8</td>
+<td>0.54</td>
+<td>43%</td>
+<td>21%</td>
+</tr>
+<tr>
+<td>Recording, orchestra prompt</td>
+<td>2</td>
+<td>0.93</td>
+<td>74%</td>
+<td>53%</td>
+</tr>
+<tr>
+<td>Recording, orchestra prompt</td>
+<td>8</td>
+<td>0.56</td>
+<td>48%</td>
+<td>16%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Even the lightest pass, which keeps the harmony almost exactly, loses half the top-line notes' octaves on the way through the autoencoder and sampler. At σ = 2 the harmony survives under either prompt; at σ = 8 the piece is mostly regenerated. Whether the orchestra prompt added an orchestra rather than a different piano is a listening question. Each clip took 20 seconds to render.</p>
+<h2 id="what-this-changes">What this changes</h2>
+<p>The composer's path from a printed arrangement is image, then MusicXML through OMR, then a reduction to whatever the model accepts, and the reduction is where the arrangement is lost. For Music Kitchen the implication is that a score-conditioned generator needs an interface that accepts at least two hands and voicings as notes, or the product must treat the model as an accompanist to a melody and the arrangement as the person's work. Measuring adherence rather than describing it is now routine: the transcription-and-alignment script runs in seconds on the GPU and applies to any piano clip.</p>
 <h2 id="reading-this-week">Reading this week</h2>
 <ul>
-<li><strong>Meinard Müller, <em>Fundamentals of Music Processing: Audio, Analysis, Algorithms, Applications</em></strong>, Springer, 2015, first edition. <strong>Chapter 1: Music Representations</strong> — sheet music, symbolic representations and audio. <a href="https://link.springer.com/book/10.1007/978-3-319-21945-5">Book</a> · <a href="https://www.audiolabs-erlangen.de/resources/MIR/FMP/C0/C0.html">Companion notebooks</a>.</li>
-<li><strong>Jade Copet et al., <em>Simple and Controllable Music Generation</em> (MusicGen)</strong>, NeurIPS 2023. Reading for its discrete audio tokens and text/melody conditioning. <a href="https://arxiv.org/abs/2306.05284">Paper</a>.</li>
-<li><strong>Alexandre Défossez et al., <em>High Fidelity Neural Audio Compression</em> (EnCodec)</strong>, 2022. Reading for the audio representation underlying MusicGen. <a href="https://arxiv.org/abs/2210.13438">Paper</a>.</li>
+<li>Meinard Müller, <em>Fundamentals of Music Processing</em>, Springer, 2015, Chapter 1, Music Representations: sheet music, symbolic representations and audio. <a href="https://link.springer.com/book/10.1007/978-3-319-21945-5">Book</a> · <a href="https://www.audiolabs-erlangen.de/resources/MIR/FMP/C0/C0.html">Companion notebooks</a>.</li>
+<li>Jade Copet et al., <em>Simple and Controllable Music Generation</em> (MusicGen), NeurIPS 2023, for its discrete audio tokens and text and melody conditioning. <a href="https://arxiv.org/abs/2306.05284">Paper</a>.</li>
+<li>Alexandre Défossez et al., <em>High Fidelity Neural Audio Compression</em> (EnCodec), 2022, for the audio representation under MusicGen. <a href="https://arxiv.org/abs/2210.13438">Paper</a>.</li>
 </ul>
-<p>I added a <a href="snapshots/2026-10-17/ai-music-researchers.html">researcher directory</a>: the AudioCraft/MusicGen and Jukebox/MuseNet contributors; Anna Huang, Eran Egozy, Joseph Paradiso and Tod Machover at MIT; Chris Donahue, Hao-Wen Dong, Xu Tan, Tie-Yan Liu and Meinard Müller. It connects their work to representation, generation and musical interaction.</p>
-<h2 id="this-morning-s-work-recovered">This morning's work recovered</h2>
-<p>The lost Claude session was found. Three local experiment folders survive:</p>
-<ul>
-<li><strong>013 — Score reading:</strong> scripts for PDF/image-to-MusicXML comparisons using Audiveris, homr and oemer.</li>
-<li><strong>014 — YuE2 excerpt test:</strong> five requests prepared for a 44.32-second passage: melody only, melody plus chords, melody plus chords and a constructed bass line, and model-composed music.</li>
-<li><strong>015 — Stable Audio Open:</strong> separate text/audio-conditioning trials prepared.</li>
-</ul>
-<p>No generated outputs were found for these experiments. Setup logs show missing dependencies, and the session's wait task stopped at 08:30 PDT. <a href="snapshots/2026-10-17/yue2-recovery-2026-10-17.html">Recovery record and limitations</a>.</p>
-<h2 id="investigation-planned">Investigation planned</h2>
-<p>Two input paths need separate tests:</p>
-<pre><code class="language-text">PDF/image → score reading → MusicXML → checked musical events → ABC
-Sound/humming → transcription → checked musical events → ABC/MusicXML
-</code></pre>
-<p>First check whether the notes, rhythms and rests survive conversion. For piano scores, track the melody, left hand, chord tones and bass separately. Then test simple melody imitation and an isolated vocal before adding accompaniment.</p>
-<p>The earlier Color Purple trial used a manual melody/chord reduction, not the full piano arrangement. The documented YuE2 input workflow uses two monophonic lines plus chord symbols; that does not preserve every written piano note. Whether it follows even the retained melody in the audio remains the test.</p>
-<p>These are prepared experiments and plans, not new quality results. The separate October 19 draft remains unfinished.</p>
+<h2 id="next">Next</h2>
+<ol>
+<li>Listen to the five 014 clips, the seven 015 clips and the three OMR renderings; the numbers grade notes, not music.</li>
+<li>Compare the 015 &quot;add orchestra&quot; clips with the ACE-Step LEGO attempt from October 5 by ear; both keep the piano's harmony, neither was asked for the written arrangement.</li>
+<li>Test the audio-first path: SheetSage2 on the recording, then YuE2 with <code>cot=melody</code>, graded the same way.</li>
+<li>Rerun the full 87 bars melody-only, since that condition followed best and the 007 recipe did not.</li>
+</ol>
 </div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"><article class="artifact-item"><p class="artifact-status">Working directory · October 17, 2026</p><h3><a href="snapshots/2026-10-17/ai-music-researchers.html">Researchers in AI music and musical interaction</a></h3><p>Seventeen researchers, their contributions, primary sources, and the October 17 reading list.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-17/ai-music-researchers.md">Frozen source on GitHub ↗</a></p></article><article class="artifact-item"><p class="artifact-status">Preparation recovered · no generated results found</p><h3><a href="snapshots/2026-10-17/yue2-recovery-2026-10-17.html">October 17 experiment recovery record</a></h3><p>Recovered score-reading, YuE2 excerpt and Stable Audio preparation; setup failures and proposed next steps.</p><p class="artifact-source"><a href="https://github.com/htansetiawan/maestro/blob/main/journal/snapshots/2026-10-17/yue2-recovery-2026-10-17.md">Frozen source on GitHub ↗</a></p></article></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-10-12.html">← Earlier: YuE2 experiments in musical control</a><a href="./">All entries</a></nav>
   </main>
   <footer class="journal-footer">

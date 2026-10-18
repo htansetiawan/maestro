@@ -9,12 +9,12 @@
     <name>Henry Tan</name>
   </author>
   <entry>
-    <title>Music representations and YuE2 investigation in progress</title>
+    <title>Where the score gets lost</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-10-17.html</id>
     <link href="https://htansetiawan.github.io/maestro/journal/2026-10-17.html" />
     <updated>2026-10-17T00:00:00-07:00</updated>
     <published>2026-10-17T00:00:00-07:00</published>
-    <summary>In-progress notes: Müller Chapter 1, MusicGen and EnCodec; a researcher directory; recovered preparation for score-reading and YuE2 melody-fidelity experiments.</summary>
+    <summary>YuE2's score input is a lead sheet: a third of the printed notes can be sent at all, OMR reads the melody but no chord symbols, the melody that is sent comes back loosely (80% recall alone, worse with chord symbols), and Stable Audio Open keeps the recording's harmony but not its register.</summary>
   </entry>
   <entry>
     <title>YuE2 experiments in musical control</title>

@@ -1,0 +1,9 @@
+# Machine-readable OMR output of the copyrighted arrangement stays local; the comparison summaries and renderings are published.
+outputs/**/*.mxl
+outputs/**/*.musicxml
+outputs/**/*.omr
+outputs/**/*.mid
+outputs/**/reading.json
+outputs/**/*.log
+outputs/**/*.png
+source-private/

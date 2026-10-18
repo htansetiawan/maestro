@@ -1,0 +1,16 @@
+{
+  "engine": "homr",
+  "melody_notes": 276,
+  "rh_inner_notes": 189,
+  "lh_notes": 373,
+  "chord_symbols": 98,
+  "unsupported_chords": 1,
+  "unsupported_chord_list": [
+    "E7+5"
+  ],
+  "graces": 7,
+  "tuplets": 35,
+  "total_sounding_notes": 838,
+  "carried_fraction": 0.32935560859188545,
+  "note": "Counts come from the best-agreeing OMR reading of the two staves; the top note of each right-hand attack is the only layer YuE2 can take as notes."
+}
