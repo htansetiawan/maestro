@@ -1,0 +1,22 @@
+{
+  "k545-1": {
+    "source": "k545-1.krn",
+    "staves": 2,
+    "notes_per_staff": [
+      585,
+      593
+    ],
+    "measures": 74,
+    "pages": 4
+  },
+  "ode-to-joy": {
+    "source": "ode-to-joy.musicxml",
+    "staves": 2,
+    "notes_per_staff": [
+      62,
+      32
+    ],
+    "measures": 16,
+    "pages": 1
+  }
+}

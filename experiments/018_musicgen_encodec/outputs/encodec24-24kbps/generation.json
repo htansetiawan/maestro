@@ -1,0 +1,7 @@
+{
+  "condition": "encodec24-24kbps",
+  "model": "facebook/encodec_24khz",
+  "bandwidth_kbps": 24.0,
+  "codebooks": 32,
+  "seconds_audio": 46.0
+}

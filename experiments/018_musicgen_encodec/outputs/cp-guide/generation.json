@@ -1,0 +1,13 @@
+{
+  "condition": "cp-guide",
+  "reference": "014_yue2_excerpt_ablation/inputs/melody-guide.mp3",
+  "prompt": "solo acoustic grand piano, expressive ballad, no vocals",
+  "seed": 20261018,
+  "guidance_scale": 3.0,
+  "max_new_tokens": 1500,
+  "audio_seconds": 29.94,
+  "seconds": 43.459229946136475,
+  "peak_allocated_gib": 8.540828704833984,
+  "model": "facebook/musicgen-melody",
+  "transformers": "5.20.1"
+}

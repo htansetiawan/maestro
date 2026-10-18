@@ -1,0 +1,23 @@
+{
+ "audiveris-homr": {
+  "exact_matches": 102,
+  "a_notes": 125,
+  "b_notes": 253,
+  "exact_fraction_of_a": 0.816,
+  "exact_fraction_of_b": 0.4031620553359684
+ },
+ "audiveris-oemer": {
+  "exact_matches": 49,
+  "a_notes": 125,
+  "b_notes": 178,
+  "exact_fraction_of_a": 0.392,
+  "exact_fraction_of_b": 0.2752808988764045
+ },
+ "homr-oemer": {
+  "exact_matches": 113,
+  "a_notes": 253,
+  "b_notes": 178,
+  "exact_fraction_of_a": 0.44664031620553357,
+  "exact_fraction_of_b": 0.6348314606741573
+ }
+}

@@ -1,0 +1,10 @@
+source-private/
+outputs/**/*.mxl
+outputs/**/*.musicxml
+outputs/**/*.omr
+outputs/**/*.mid
+outputs/**/*.png
+outputs/**/*.log
+record/*.log
+work/
+prepared/lyrics.txt

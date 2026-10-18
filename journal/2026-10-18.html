@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What the reader keeps and what the singer keeps — Maestro</title>
+<meta name="description" content="On clean engravings open OMR reads both hands and the chord tones completely (homr 100% of K. 545, also from a phone photograph), so the 79–86% on commercial sheets is a layout and typography gap; YuE2 sings She in register but keeps 37% of the line against a 71% ceiling; MusicGen-melody, with no notation input, follows the same lines better (96% of She in order, an 18-note run), and EnCodec loses none of the harmony.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-10-18.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What the reader keeps and what the singer keeps — Maestro">
+<meta property="og:description" content="On clean engravings open OMR reads both hands and the chord tones completely (homr 100% of K. 545, also from a phone photograph), so the 79–86% on commercial sheets is a layout and typography gap; YuE2 sings She in register but keeps 37% of the line against a 71% ceiling; MusicGen-melody, with no notation input, follows the same lines better (96% of She in order, an 18-note run), and EnCodec loses none of the harmony.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-10-18.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What the reader keeps and what the singer keeps — Maestro">
+<meta name="twitter:description" content="On clean engravings open OMR reads both hands and the chord tones completely (homr 100% of K. 545, also from a phone photograph), so the 79–86% on commercial sheets is a layout and typography gap; YuE2 sings She in register but keeps 37% of the line against a 71% ceiling; MusicGen-melody, with no notation input, follows the same lines better (96% of She in order, an 18-note run), and EnCodec loses none of the harmony.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Weekly journal · week of October 12, 2026</p>
+      <h1>What the reader keeps and what the singer keeps</h1>
+      <p class="journal-description">On clean engravings open OMR reads both hands and the chord tones completely (homr 100% of K. 545, also from a phone photograph), so the 79–86% on commercial sheets is a layout and typography gap; YuE2 sings She in register but keeps 37% of the line against a 71% ceiling; MusicGen-melody, with no notation input, follows the same lines better (96% of She in order, an 18-note run), and EnCodec loses none of the harmony.</p>
+      <p class="journal-meta"><time datetime="2026-10-18">October 18, 2026</time> · Henry Tan · <a href="entries/2026-10-18.md">Entry source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/2026-10-18.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/2026-10-18.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <dl class="state-grid"><div><dt>Stage</dt><dd>OMR graded against exact ground truth in three page conditions; She read, transcribed, sung by YuE2 and measured; MusicGen-melody and EnCodec round trips rendered and measured. No training.</dd></div><div><dt>Current focus</dt><dd>Separate the page reader from the melody follower, and measure each against a known answer.</dd></div><div><dt>Next experiment</dt><dd>Extend the benchmark toward real pages one feature at a time (lyrics, vocal-plus-piano systems, chord symbols, older fonts, repeats); longer MusicGen windows by continuation; YuE2 on the She line with cot=melody and no chord symbols; listen to the 016 and 018 clips.</dd></div></dl><div class="journal-prose"><p>Yesterday's entry located the loss between a printed score and YuE2 in the model's lead-sheet interface. Today separates the two readers: software that reads the page, and models that follow a melody once they have it. The reader turns out to be nearly solved on the pages it was built for, and the best melody follower measured so far takes no notation at all.</p>
+<h2 id="find-the-work">Find the work</h2>
+<ul>
+<li><a href="../experiments/016_she_sheet_to_voice/index.html">016 · She: from a scanned song sheet to a singer</a>: three OMR engines on a piano-vocal score, then YuE2 singing the transcribed line with the printed lyrics.</li>
+<li><a href="../experiments/017_omr_benchmark/index.html">017 · OMR against exact ground truth</a>: K. 545 and an Ode to Joy arrangement rendered to pages, clean and damaged, and read back note for note.</li>
+<li><a href="../experiments/018_musicgen_encodec/index.html">018 · MusicGen-melody and EnCodec</a>: a melody-conditioned generator with no symbolic input, and its codec on its own.</li>
+</ul>
+<h2 id="reading-a-page-with-a-known-answer">Reading a page with a known answer</h2>
+<p>Two pieces with exact encodings, Mozart's K. 545 first movement from KernScores (74 bars, 1,278 notes on two staves) and a 16-bar easy arrangement of Ode to Joy encoded for this test, were rendered by Verovio and read by homr, oemer and Audiveris in three conditions: clean, a light photocopy imitation (half-degree skew, blur, hard threshold), and a phone-photograph imitation (150 dpi, 1.5° skew, uneven light, blur, noise, JPEG).</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Pages</th>
+<th>Engine</th>
+<th>K. 545 right hand, notes exact</th>
+<th>K. 545 left hand, notes incl. chord tones</th>
+<th>Ode to Joy right hand</th>
+<th>Ode to Joy left hand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clean</td>
+<td>homr 0.7</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>clean</td>
+<td>oemer 0.1.8</td>
+<td>99%</td>
+<td>99%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>clean</td>
+<td>Audiveris 5.11</td>
+<td>100%</td>
+<td>92%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>phone photo</td>
+<td>homr 0.7</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>phone photo</td>
+<td>oemer 0.1.8</td>
+<td>74%</td>
+<td>88%</td>
+<td>63%</td>
+<td>78%</td>
+</tr>
+<tr>
+<td>phone photo</td>
+<td>Audiveris 5.11</td>
+<td>36%</td>
+<td>32%</td>
+<td>100%</td>
+<td>81%</td>
+</tr>
+</tbody>
+</table></div>
+<p>On a clean modern engraving, note recognition is not the problem: homr returns all 585 right-hand attacks of the Mozart in one unbroken run, every left-hand chord tone, and 99% of durations, and it does the same from the phone photograph. The photocopy condition changed almost nothing for any engine. The phone photograph separates them: oemer loses a quarter of the Mozart, Audiveris loses a page to a crash and half of the rest.</p>
+<p>This reframes the 86% and 79% melody recall measured on the Color Purple and She sheets. The same homr reads 100% here. What the commercial pages have and these renderings do not is a three-staff piano-vocal layout, lyrics between the staves, chord symbols and older engraving. The reading gap is a layout and typography gap, and chord symbols and lyrics are still returned by no engine at all.</p>
+<h2 id="a-song-sheet-end-to-end">A song sheet, end to end</h2>
+<p><em>She</em> (Aznavour and Kretzmer), three pages. A manual transcription of the vocal staff (33 bars, 195 notes) is the reference.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>Vocal line recall</th>
+<th>Written octave</th>
+<th>Longest exact run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>homr 0.7</td>
+<td>79%</td>
+<td>74%</td>
+<td>43</td>
+</tr>
+<tr>
+<td>oemer 0.1.8</td>
+<td>45%</td>
+<td>42%</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Audiveris 5.11</td>
+<td>44%</td>
+<td>42%</td>
+<td>14</td>
+</tr>
+</tbody>
+</table></div>
+<p>All three engines misread the same bars: the verse opens with a phrase stated three times, a third lower each time, and each engine collapses two of the three onto the middle one. homr read the bridge and coda almost perfectly.</p>
+<p>The transcribed line, 58 chord symbols and the printed lyrics went to YuE2 as a complete lead sheet (<code>cot=full</code>, male baritone, piano). It sang for 180 s, to the token cap, against a 134-second sheet. The voice was separated and pitch-tracked back against the line. On the synthesized guide the tracker itself recovers 71% of the notes (repeated pitches merge), so that is the ceiling. YuE2 reached 37%, in the right register an octave below the written treble line, with exact runs of at most six notes and a tempo 1.27× slower than marked. The singer sings the song; it does not sing the notes.</p>
+<h2 id="a-model-that-follows-a-melody-without-reading-one">A model that follows a melody without reading one</h2>
+<p>MusicGen-melody (Meta, 2023) is a language model over EnCodec audio tokens. It takes text and a reference recording reduced to a chromagram, generates 30 s, and has no notation input. It received the same two melodies as sound, with a solo piano prompt, one seed each.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Reference given to MusicGen</th>
+<th>Chroma similarity to it</th>
+<th>Written notes in order</th>
+<th>Written octave</th>
+<th>Longest exact run</th>
+<th>Tempo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color Purple written line, synthesized</td>
+<td>0.74</td>
+<td>89%</td>
+<td>57%</td>
+<td>7</td>
+<td>0.98×</td>
+</tr>
+<tr>
+<td>Color Purple recording</td>
+<td>0.85</td>
+<td>89%</td>
+<td>49%</td>
+<td>8</td>
+<td>1.10×</td>
+</tr>
+<tr>
+<td>None (text only, the floor)</td>
+<td>0.37</td>
+<td>60%</td>
+<td>37%</td>
+<td>4</td>
+<td>0.93×</td>
+</tr>
+<tr>
+<td>She transcribed line, synthesized</td>
+<td>0.72</td>
+<td>96%</td>
+<td>75%</td>
+<td>18</td>
+<td>0.99×</td>
+</tr>
+</tbody>
+</table></div>
+<p>MusicGen's piano is dense, so unrelated piano already scores 60% recall by this method and the floor row matters. Against it, the She line comes back with an 18-note exact run at the written tempo, better than any YuE2 condition in 014 (best run 10, 1.33× slower). The reference recording gives more of the harmony than the monophonic guide, because the chromagram carries the accompaniment's pitch classes.</p>
+<p>EnCodec alone, encoding and decoding the Color Purple recording, keeps the harmony at every bitrate (chroma 0.97 at 1.5 kbps, 1.00 at 12 kbps and above) and the top line (92–96% recall). Low bitrates add pitched artefacts that the transcriber hears as extra notes, so top-line precision drops from 38% to 12% below 24 kbps. The melody losses of 014 and 015 happen in the generators, not in their tokens. AudioGen, the same recipe trained on sound effects, has no melody input and was not run.</p>
+<h2 id="what-this-changes">What this changes</h2>
+<p>Open OMR reads notes from clean engravings completely, both hands and chord tones included, and the best engine survives a phone photograph. The research opportunity is not note recognition but what sits around the notes on real pages: vocal-plus-piano systems with lyrics, chord symbols, older fonts, and whole-score structure such as repeats, and none of the open engines returns chord symbols or lyrics. On the generation side, the strongest melody following measured here came from audio conditioning, not from notation: a generator that hears the melody keeps more of it than one that reads a lead sheet.</p>
+<h2 id="next">Next</h2>
+<ol>
+<li>Extend the ground-truth benchmark toward the real pages one feature at a time: lyrics under a vocal staff, a vocal-plus-piano system, chord symbols, an older engraving font, and a repeat structure, to find which one costs homr its last 15–20%.</li>
+<li>Give MusicGen-melody a longer window by continuation, and give YuE2 the same She line with <code>cot=melody</code> and no chord symbols, since 014 found chord symbols hurt following.</li>
+<li>Listen to the 016 and 018 clips; the numbers grade notes, not music.</li>
+</ol>
+</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-10-17.html">← Earlier: Where the score gets lost</a><a href="./">All entries</a></nav>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

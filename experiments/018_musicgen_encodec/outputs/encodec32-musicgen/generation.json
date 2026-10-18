@@ -1,0 +1,7 @@
+{
+  "condition": "encodec32-musicgen",
+  "model": "musicgen-melody audio_encoder (EnCodec 32 kHz)",
+  "codebooks": 4,
+  "frame_rate_hz": 50,
+  "seconds_audio": 46.0
+}

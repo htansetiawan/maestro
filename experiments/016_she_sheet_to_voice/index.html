@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>She — sheet to voice</title><style>
+body{font:17px/1.65 system-ui;color:#37352f;background:#fff;margin:0}main{max-width:1100px;margin:auto;padding:40px 22px}h1{font-size:clamp(30px,5vw,44px);line-height:1.2}small,.muted{color:#777}a{color:inherit}audio{width:100%}.players{display:grid;grid-template-columns:1fr 1fr;gap:22px}.player{background:#f7f7f5;padding:16px;border-radius:8px}.player h2{font-size:18px;margin:0 0 8px}section{margin-top:32px;border-top:1px solid #e6e5e2;padding-top:16px}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.stats span{background:#eceee9;padding:6px 10px;border-radius:5px;font-size:14px}table{border-collapse:collapse;width:100%;font-size:15px}td,th{text-align:left;padding:8px;border-bottom:1px solid #eee}pre{white-space:pre-wrap;font:13px/1.4 ui-monospace,monospace;background:#f7f7f5;padding:10px;border-radius:6px}@media(max-width:650px){.players{grid-template-columns:1fr}}
+</style><link rel="stylesheet" href="../../assets/listening.css"><script defer src="../../assets/listening.js"></script></head><body><main>
+<nav class="listening-nav" aria-label="Listening experiments"><a class="journal-link" href="../../journal/">← Journal</a><div><a href="../013_score_reading_fidelity/">013 · Reading the printed score</a><a href="../014_yue2_excerpt_ablation/">014 · What YuE2 keeps of a score</a><a href="../016_she_sheet_to_voice/" aria-current="page">016 · She: sheet to voice</a></div></nav>
+<small>MAESTRO · EXPERIMENT 016</small><h1>From a scanned song sheet<br>to a singer.</h1>
+<p><em>She</em> (Aznavour and Kretzmer), a three-page piano-vocal score. Three OMR engines read the vocal staff; a manual transcription of the same staff (195 printed notes, 33 bars, both lyric lines) is the reference. The transcribed line, its chord symbols and the printed lyrics then go to YuE2 as a complete lead sheet, and the singer's pitch is tracked back against the line it was given. The same tracker recovers 71% of the synthesized guide (repeated pitches merge into one segment), so 71% is the ceiling of this measurement, not 100%.</p>
+<div class="players"><div class="player"><h2>Reference: the vocal line as transcribed</h2><p class="muted">Deterministic synth of the linearized song (intro, two verses, bridge, third verse, coda). Not a model output.</p><audio controls preload="metadata" src="inputs/melody-guide.mp3"></audio><a href="inputs/melody.mid">MIDI</a> · <a href="inputs/vocal-transcription.json">Transcription</a></div><div class="player"><h2>YuE2: piano and singer from the transcribed line</h2><p class="muted">180 s · stopped by the 4,500-token cap · 58 s to render</p><audio controls preload="metadata" src="outputs/she-vocal-20261018/audio.mp3"></audio><a href="outputs/she-vocal-20261018/audio.mp3" download>Download MP3</a><div class="stats"><span><b>37%</b> of written notes sung in order</span><span>8% in the written octave</span><span>longest exact run 6</span><span>187 sung notes vs 248 written</span><span>tempo 1.27×</span></div></div><div class="player"><h2>The separated voice (Demucs)</h2><p class="muted">What the pitch tracker heard; separation artefacts included.</p><audio controls preload="metadata" src="outputs/she-vocal-20261018/vocals.mp3"></audio></div></div>
+<section><h2>How much of the vocal line each engine read</h2>
+<table><tr><th>Engine</th><th>Notes in its first part</th><th>Melody recall</th><th>Exact octave</th><th>Precision</th><th>Longest exact run</th></tr><tr><td>Audiveris 5.11</td><td>125</td><td>44%</td><td>42%</td><td>69%</td><td>14</td></tr><tr><td>homr 0.7</td><td>253</td><td>79%</td><td>74%</td><td>61%</td><td>43</td></tr><tr><td>oemer 0.1.8</td><td>178</td><td>45%</td><td>42%</td><td>49%</td><td>9</td></tr></table>
+<p>Global pitch alignment of the engine's first-part note sequence against the transcribed vocal line. All three engines misread the opening bars of each verse in the same way, collapsing the descending sequence (E5, C5, A4) onto its middle bar; the bridge and coda were read almost perfectly by homr. No engine returned the chord symbols or the lyrics; those were typed from the sheet.</p></section>
+<section><h2>The lead sheet YuE2 received</h2><details><summary>ABC (Vocal voice with chord symbols; Ins voice rests)</summary><pre>X:1
+T:
+M:4/4
+L:1/128
+Q:1/4=70
+V: Vocal clef=treble name=&quot;Vocal Melody&quot; snm=&quot;Vocal&quot;
+V: Ins clef=treble name=&quot;Ins Melody&quot; snm=&quot;Inst.&quot;
+K:C
+% intro
+V: Vocal
+&quot;C&quot;z48z48z32|&quot;F&quot;z48z16&quot;Gsus4&quot;z32&quot;G&quot;z32|
+V: Ins
+Z2|
+% verse
+V: Vocal
+&quot;C&quot;e32-e8e8e8e8f16e16d16c16|&quot;Ebdim&quot;c32-c8c8c8c8d16c16B16A16|&quot;F&quot;A32-A8A8A8A8B16A16G16F16|&quot;C&quot;G24F8E16F16&quot;A7&quot;G32z32|
+V: Ins
+Z4|
+V: Vocal
+&quot;Dm&quot;z16F24F8F8F8A16G16F16E16|&quot;Abdim&quot;E32-E8E8E8E8G16F16E16D16|&quot;C&quot;D32-D8C8C8C8F16E16D16C16|&quot;F&quot;D32-D8C8C8C8&quot;G&quot;F16E16D16C16|
+V: Ins
+Z4|
+V: Vocal
+&quot;C&quot;C32&quot;F&quot;z32&quot;Gsus4&quot;z32&quot;G&quot;z32|&quot;C&quot;e32-e8e8e8e8f16e16d16c16|&quot;Ebdim&quot;c32-c8c8c8c8d16c16B16A16|&quot;F&quot;A32-A8A8A8A8B16A16G16F16|
+V: Ins
+Z4|
+V: Vocal
+&quot;C&quot;G16F16z16E8F8&quot;A7&quot;G32z32|&quot;Dm&quot;z16F24F8F8F8A16G16F16E16|&quot;Abdim&quot;E32-E8E8E8E8G16F16E16D16|&quot;C&quot;D32-D8C8C8C8&quot;Cmaj7&quot;F16E16D16C16|
+V: Ins
+Z4|
+V: Vocal
+&quot;D&quot;D48C16&quot;G&quot;D32C32|&quot;C&quot;C48-C16z48z16|
+V: Ins
+Z2|
+% bridge
+V: Vocal
+&quot;Ab&quot;c32-c8_E8F8G8_A16_B16c8e8c8c8|&quot;Eb&quot;_B48G16A8B8_e8B8_A8G8A8B8|&quot;Db&quot;_A32-A8_D8_E8=E8F24G8A16d16|&quot;C&quot;G16_A16G32z48z16|
+V: Ins
+Z4|
+V: Vocal
+&quot;Fm&quot;_A32-A8A8G8A8&quot;Bb&quot;_B16A16G8F8G8A8|&quot;Eb&quot;G32-G8G8_G8=G8&quot;C&quot;c16G16G8E8_G8=G8|&quot;D&quot;_G32-G8D8E8G8&quot;D7&quot;=G8A24z16B8B8|&quot;G&quot;c32B16B16-&quot;G7&quot;B32z32|
+V: Ins
+Z4|
+% verse
+V: Vocal
+&quot;C&quot;e32-e8e8e8e8f16e16d16c16|&quot;Ebdim&quot;c32-c8c8c8c8d16c16B16A16|&quot;F&quot;A32-A8A8A8A8B16A16G16F16|&quot;C&quot;G16F16z16E8F8&quot;A7&quot;G32z32|
+V: Ins
+Z4|
+V: Vocal
+&quot;Dm&quot;z16F24F8F8F8A16G16F16E16|&quot;Abdim&quot;E32-E8E8E8E8G16F16E16D16|&quot;C&quot;D32-D8C8C8C8&quot;Cmaj7&quot;F16E16D16C16|
+V: Ins
+Z3|
+% outro
+V: Vocal
+&quot;D&quot;D32A,8B,8C8E8&quot;G&quot;D16C16B,32|&quot;F&quot;z16A,16C48-C48|&quot;C&quot;c48-c48-c32|&quot;Dm&quot;z48z16&quot;G&quot;D48-D16|
+V: Ins
+Z4|
+V: Vocal
+&quot;C&quot;E48-E48-E32|
+V: Ins
+Z|
+</pre></details><p class="muted">The lyrics were typed from the sheet and tagged by section ([Verse] ×2, [Bridge], [Verse], [Outro]); they stay out of the public record because they are in copyright.</p>
+<p><a href="README.md">Full experiment record</a> · <a href="outputs/vocal-recall.json">OMR grading</a> · <a href="record/vocal-adherence.json">Vocal adherence</a></p></section>
+</main></body></html>

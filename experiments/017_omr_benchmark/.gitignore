@@ -1,0 +1,8 @@
+pages/
+outputs/**/*.mxl
+outputs/**/*.musicxml
+outputs/**/*.omr
+outputs/**/*.png
+outputs/**/*.log
+record/*.log
+work/

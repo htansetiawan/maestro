@@ -1,0 +1,18 @@
+[
+  {
+    "label": "she-guide",
+    "audio": "outputs/she-guide/audio.mp3",
+    "reference_notes": 51,
+    "transcribed_notes": 290,
+    "skyline_notes": 170,
+    "exact_pitch_matches": 38,
+    "octave_matches": 11,
+    "melody_recall": 0.9607843137254902,
+    "exact_recall": 0.7450980392156863,
+    "skyline_precision": 0.28823529411764703,
+    "tempo_ratio": 0.9933640813877465,
+    "aligned_onset_rms_seconds": 0.6060825152137926,
+    "longest_exact_run": 18,
+    "method": "ByteDance piano_transcription_inference (CPU) -> skyline -> global pitch alignment"
+  }
+]

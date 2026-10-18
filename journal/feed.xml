@@ -4,10 +4,18 @@
   <id>https://htansetiawan.github.io/maestro/journal/</id>
   <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
   <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-10-17T00:00:00-07:00</updated>
+  <updated>2026-10-18T00:00:00-07:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
+  <entry>
+    <title>What the reader keeps and what the singer keeps</title>
+    <id>https://htansetiawan.github.io/maestro/journal/2026-10-18.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-10-18.html" />
+    <updated>2026-10-18T00:00:00-07:00</updated>
+    <published>2026-10-18T00:00:00-07:00</published>
+    <summary>On clean engravings open OMR reads both hands and the chord tones completely (homr 100% of K. 545, also from a phone photograph), so the 79–86% on commercial sheets is a layout and typography gap; YuE2 sings She in register but keeps 37% of the line against a 71% ceiling; MusicGen-melody, with no notation input, follows the same lines better (96% of She in order, an 18-note run), and EnCodec loses none of the harmony.</summary>
+  </entry>
   <entry>
     <title>Where the score gets lost</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-10-17.html</id>

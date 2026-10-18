@@ -1,0 +1,1046 @@
+{
+ "pages": [
+  {
+   "file": "page-1.mvt1.mxl",
+   "measures": 3,
+   "notes": 7
+  },
+  {
+   "file": "page-1.mvt2.mxl",
+   "measures": 4,
+   "notes": 12
+  },
+  {
+   "file": "page-1.mvt3.mxl",
+   "measures": 6,
+   "notes": 11
+  },
+  {
+   "file": "page-1.mvt4.mxl",
+   "measures": 2,
+   "notes": 11
+  },
+  {
+   "file": "page-2.mxl",
+   "measures": 10,
+   "notes": 29
+  },
+  {
+   "file": "page-3.mvt1.mxl",
+   "measures": 3,
+   "notes": 20
+  },
+  {
+   "file": "page-3.mvt2.mxl",
+   "measures": 11,
+   "notes": 21
+  },
+  {
+   "file": "page-3.mvt3.mxl",
+   "measures": 9,
+   "notes": 14
+  }
+ ],
+ "notes": [
+  {
+   "measure": 2,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 2,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 2,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 2,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 2,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 74,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 2,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 2,
+   "offset": "3",
+   "duration": "1/2",
+   "pitch": 69,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 3,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 3,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 3,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 3,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 3,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 74,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 3,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 3,
+   "offset": "3",
+   "duration": "1/2",
+   "pitch": 69,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 4,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 4,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 4,
+   "offset": "3/2",
+   "duration": "1/2",
+   "pitch": 74,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 4,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 72,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 4,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 69,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 7,
+   "offset": "0",
+   "duration": "1/2",
+   "pitch": 64,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 7,
+   "offset": "1/2",
+   "duration": "1/2",
+   "pitch": 65,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 7,
+   "offset": "1",
+   "duration": "1",
+   "pitch": 67,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 7,
+   "offset": "2",
+   "duration": "1",
+   "pitch": 64,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 8,
+   "offset": "1/2",
+   "duration": "1/2",
+   "pitch": 65,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 8,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 65,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 8,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 64,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 8,
+   "offset": "0",
+   "duration": "2",
+   "pitch": 62,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 8,
+   "offset": "7/4",
+   "duration": "1/2",
+   "pitch": 67,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 8,
+   "offset": "9/4",
+   "duration": "1/2",
+   "pitch": 65,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 8,
+   "offset": "11/4",
+   "duration": "1/2",
+   "pitch": 62,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 13,
+   "offset": "0",
+   "duration": "1/2",
+   "pitch": 47,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 13,
+   "offset": "1/2",
+   "duration": "1/2",
+   "pitch": 45,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 13,
+   "offset": "1",
+   "duration": "1/2",
+   "pitch": 43,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 13,
+   "offset": "3/2",
+   "duration": "1/2",
+   "pitch": 41,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 14,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 43,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 14,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 35,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 14,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 40,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 14,
+   "offset": "7/4",
+   "duration": "1/2",
+   "pitch": 45,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 14,
+   "offset": "9/4",
+   "duration": "1/2",
+   "pitch": 40,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 14,
+   "offset": "0",
+   "duration": "2",
+   "pitch": 40,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 14,
+   "offset": "7/4",
+   "duration": "2",
+   "pitch": 40,
+   "lyric": null,
+   "page": 1
+  },
+  {
+   "measure": 18,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 72,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 18,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 18,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 72,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 18,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 18,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 74,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 18,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 72,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 18,
+   "offset": "3",
+   "duration": "1/2",
+   "pitch": 71,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 18,
+   "offset": "7/2",
+   "duration": "1/2",
+   "pitch": 69,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 72,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "5/4",
+   "duration": "1/2",
+   "pitch": 71,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 72,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "2",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "9/4",
+   "duration": "1/2",
+   "pitch": 74,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "11/4",
+   "duration": "1/2",
+   "pitch": 72,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "13/4",
+   "duration": "1/2",
+   "pitch": 71,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 19,
+   "offset": "15/4",
+   "duration": "1/2",
+   "pitch": 69,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 20,
+   "offset": "0",
+   "duration": "1/2",
+   "pitch": 67,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 20,
+   "offset": "1/2",
+   "duration": "1/2",
+   "pitch": 65,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 20,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 64,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 20,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 65,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 20,
+   "offset": "2",
+   "duration": "1",
+   "pitch": 67,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 65,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 64,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 65,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 64,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 67,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 65,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "3",
+   "duration": "1/2",
+   "pitch": 64,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 21,
+   "offset": "7/2",
+   "duration": "1/2",
+   "pitch": 62,
+   "lyric": null,
+   "page": 2
+  },
+  {
+   "measure": 26,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 72,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 63,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 65,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 68,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 70,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "3",
+   "duration": "1/4",
+   "pitch": 72,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "13/4",
+   "duration": "1/4",
+   "pitch": 75,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "7/2",
+   "duration": "1/4",
+   "pitch": 72,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 26,
+   "offset": "15/4",
+   "duration": "1/4",
+   "pitch": 72,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "0",
+   "duration": "3/2",
+   "pitch": 70,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "3/2",
+   "duration": "1/2",
+   "pitch": 70,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "2",
+   "duration": "1/4",
+   "pitch": 69,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "9/4",
+   "duration": "1/4",
+   "pitch": 70,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "5/2",
+   "duration": "1/4",
+   "pitch": 75,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "11/4",
+   "duration": "1/4",
+   "pitch": 70,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "3",
+   "duration": "1/4",
+   "pitch": 68,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "13/4",
+   "duration": "1/4",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "7/2",
+   "duration": "1/4",
+   "pitch": 68,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 27,
+   "offset": "15/4",
+   "duration": "1/4",
+   "pitch": 70,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 66,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 72,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "3",
+   "duration": "1/4",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "13/4",
+   "duration": "1/4",
+   "pitch": 64,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "7/2",
+   "duration": "1/4",
+   "pitch": 66,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 36,
+   "offset": "15/4",
+   "duration": "1/4",
+   "pitch": 67,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 66,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "5/4",
+   "duration": "1/4",
+   "pitch": 62,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "3/2",
+   "duration": "1/4",
+   "pitch": 64,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "7/4",
+   "duration": "1/4",
+   "pitch": 65,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 66,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "5/2",
+   "duration": "3/4",
+   "pitch": 69,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "15/4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 37,
+   "offset": "4",
+   "duration": "1/4",
+   "pitch": 71,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 38,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 72,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 38,
+   "offset": "1",
+   "duration": "1/2",
+   "pitch": 71,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 38,
+   "offset": "3/2",
+   "duration": "1/2",
+   "pitch": 71,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 44,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 43,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 44,
+   "offset": "1",
+   "duration": "1",
+   "pitch": 47,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 44,
+   "offset": "2",
+   "duration": "1/2",
+   "pitch": 45,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 44,
+   "offset": "5/2",
+   "duration": "1/2",
+   "pitch": 43,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 44,
+   "offset": "7/2",
+   "duration": "1/2",
+   "pitch": 43,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 45,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 55,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 45,
+   "offset": "1",
+   "duration": "1",
+   "pitch": 55,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 45,
+   "offset": "2",
+   "duration": "1",
+   "pitch": 55,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 45,
+   "offset": "3",
+   "duration": "1",
+   "pitch": 55,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 46,
+   "offset": "0",
+   "duration": "1",
+   "pitch": 57,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 46,
+   "offset": "1",
+   "duration": "1",
+   "pitch": 57,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 46,
+   "offset": "2",
+   "duration": "1",
+   "pitch": 57,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 46,
+   "offset": "3",
+   "duration": "1",
+   "pitch": 57,
+   "lyric": null,
+   "page": 3
+  },
+  {
+   "measure": 47,
+   "offset": "0",
+   "duration": "4",
+   "pitch": 59,
+   "lyric": null,
+   "page": 3
+  }
+ ]
+}

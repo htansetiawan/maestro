@@ -1,0 +1,13 @@
+{
+  "condition": "cp-text-only",
+  "reference": null,
+  "prompt": "solo acoustic grand piano, expressive ballad, no vocals",
+  "seed": 20261018,
+  "guidance_scale": 3.0,
+  "max_new_tokens": 1500,
+  "audio_seconds": 29.94,
+  "seconds": 37.32720112800598,
+  "peak_allocated_gib": 8.544729709625244,
+  "model": "facebook/musicgen-melody",
+  "transformers": "5.20.1"
+}

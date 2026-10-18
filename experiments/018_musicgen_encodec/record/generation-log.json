@@ -1,0 +1,96 @@
+[
+  {
+    "condition": "cp-guide",
+    "reference": "014_yue2_excerpt_ablation/inputs/melody-guide.mp3",
+    "prompt": "solo acoustic grand piano, expressive ballad, no vocals",
+    "seed": 20261018,
+    "guidance_scale": 3.0,
+    "max_new_tokens": 1500,
+    "audio_seconds": 29.94,
+    "seconds": 43.459229946136475,
+    "peak_allocated_gib": 8.540828704833984,
+    "model": "facebook/musicgen-melody",
+    "transformers": "5.20.1"
+  },
+  {
+    "condition": "cp-recording",
+    "reference": "005_color_purple_orchestra/data/source.wav",
+    "prompt": "solo acoustic grand piano, expressive ballad, no vocals",
+    "seed": 20261018,
+    "guidance_scale": 3.0,
+    "max_new_tokens": 1500,
+    "audio_seconds": 29.94,
+    "seconds": 34.52761268615723,
+    "peak_allocated_gib": 8.544729709625244,
+    "model": "facebook/musicgen-melody",
+    "transformers": "5.20.1"
+  },
+  {
+    "condition": "cp-text-only",
+    "reference": null,
+    "prompt": "solo acoustic grand piano, expressive ballad, no vocals",
+    "seed": 20261018,
+    "guidance_scale": 3.0,
+    "max_new_tokens": 1500,
+    "audio_seconds": 29.94,
+    "seconds": 37.32720112800598,
+    "peak_allocated_gib": 8.544729709625244,
+    "model": "facebook/musicgen-melody",
+    "transformers": "5.20.1"
+  },
+  {
+    "condition": "she-guide",
+    "reference": "016_she_sheet_to_voice/inputs/melody-guide.mp3",
+    "prompt": "solo acoustic grand piano, expressive ballad, no vocals",
+    "seed": 20261018,
+    "guidance_scale": 3.0,
+    "max_new_tokens": 1500,
+    "audio_seconds": 29.94,
+    "seconds": 39.77975130081177,
+    "peak_allocated_gib": 8.544729709625244,
+    "model": "facebook/musicgen-melody",
+    "transformers": "5.20.1"
+  },
+  {
+    "condition": "encodec24-1.5kbps",
+    "model": "facebook/encodec_24khz",
+    "bandwidth_kbps": 1.5,
+    "codebooks": 2,
+    "seconds_audio": 46.0
+  },
+  {
+    "condition": "encodec24-3kbps",
+    "model": "facebook/encodec_24khz",
+    "bandwidth_kbps": 3.0,
+    "codebooks": 4,
+    "seconds_audio": 46.0
+  },
+  {
+    "condition": "encodec24-6kbps",
+    "model": "facebook/encodec_24khz",
+    "bandwidth_kbps": 6.0,
+    "codebooks": 8,
+    "seconds_audio": 46.0
+  },
+  {
+    "condition": "encodec24-12kbps",
+    "model": "facebook/encodec_24khz",
+    "bandwidth_kbps": 12.0,
+    "codebooks": 16,
+    "seconds_audio": 46.0
+  },
+  {
+    "condition": "encodec24-24kbps",
+    "model": "facebook/encodec_24khz",
+    "bandwidth_kbps": 24.0,
+    "codebooks": 32,
+    "seconds_audio": 46.0
+  },
+  {
+    "condition": "encodec32-musicgen",
+    "model": "musicgen-melody audio_encoder (EnCodec 32 kHz)",
+    "codebooks": 4,
+    "frame_rate_hz": 50,
+    "seconds_audio": 46.0
+  }
+]

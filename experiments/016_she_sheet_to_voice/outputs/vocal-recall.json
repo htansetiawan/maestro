@@ -1,0 +1,65 @@
+{
+ "manual_notes": 195,
+ "engines": {
+  "audiveris": {
+   "first_part": {
+    "engine_notes": 125,
+    "exact": 82,
+    "octave_only": 4,
+    "recall_any_octave": 0.441025641025641,
+    "exact_recall": 0.4205128205128205,
+    "precision": 0.688,
+    "longest_exact_run": 14
+   },
+   "vocal_register": {
+    "engine_notes": 105,
+    "exact": 81,
+    "octave_only": 2,
+    "recall_any_octave": 0.4256410256410256,
+    "exact_recall": 0.4153846153846154,
+    "precision": 0.7904761904761904,
+    "longest_exact_run": 14
+   }
+  },
+  "homr": {
+   "first_part": {
+    "engine_notes": 253,
+    "exact": 145,
+    "octave_only": 10,
+    "recall_any_octave": 0.7948717948717948,
+    "exact_recall": 0.7435897435897436,
+    "precision": 0.6126482213438735,
+    "longest_exact_run": 43
+   },
+   "vocal_register": {
+    "engine_notes": 237,
+    "exact": 150,
+    "octave_only": 2,
+    "recall_any_octave": 0.7794871794871795,
+    "exact_recall": 0.7692307692307693,
+    "precision": 0.6413502109704642,
+    "longest_exact_run": 43
+   }
+  },
+  "oemer": {
+   "first_part": {
+    "engine_notes": 178,
+    "exact": 81,
+    "octave_only": 7,
+    "recall_any_octave": 0.4512820512820513,
+    "exact_recall": 0.4153846153846154,
+    "precision": 0.4943820224719101,
+    "longest_exact_run": 9
+   },
+   "vocal_register": {
+    "engine_notes": 141,
+    "exact": 82,
+    "octave_only": 1,
+    "recall_any_octave": 0.4256410256410256,
+    "exact_recall": 0.4205128205128205,
+    "precision": 0.5886524822695035,
+    "longest_exact_run": 8
+   }
+  }
+ }
+}

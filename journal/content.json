@@ -388,6 +388,30 @@
           "url": "https://htansetiawan.github.io/maestro/artifacts/ai-music-researchers.html"
         }
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "title": "What the reader keeps and what the singer keeps",
+      "summary": "On clean engravings open OMR reads both hands and the chord tones completely (homr 100% of K. 545, also from a phone photograph), so the 79–86% on commercial sheets is a layout and typography gap; YuE2 sings She in register but keeps 37% of the line against a 71% ceiling; MusicGen-melody, with no notation input, follows the same lines better (96% of She in order, an 18-note run), and EnCodec loses none of the harmony.",
+      "stage": "OMR graded against exact ground truth in three page conditions; She read, transcribed, sung by YuE2 and measured; MusicGen-melody and EnCodec round trips rendered and measured. No training.",
+      "focus": "Separate the page reader from the melody follower, and measure each against a known answer.",
+      "next_step": "Extend the benchmark toward real pages one feature at a time (lyrics, vocal-plus-piano systems, chord symbols, older fonts, repeats); longer MusicGen windows by continuation; YuE2 on the She line with cot=melody and no chord symbols; listen to the 016 and 018 clips.",
+      "artifacts": [],
+      "published": true,
+      "links": [
+        {
+          "label": "016 · She: sheet to voice",
+          "url": "https://htansetiawan.github.io/maestro/experiments/016_she_sheet_to_voice/"
+        },
+        {
+          "label": "017 · OMR against ground truth",
+          "url": "https://htansetiawan.github.io/maestro/experiments/017_omr_benchmark/"
+        },
+        {
+          "label": "018 · MusicGen-melody and EnCodec",
+          "url": "https://htansetiawan.github.io/maestro/experiments/018_musicgen_encodec/"
+        }
+      ]
     }
   ]
 }

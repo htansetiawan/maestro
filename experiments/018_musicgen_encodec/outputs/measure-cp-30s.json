@@ -1,0 +1,50 @@
+[
+  {
+    "label": "cp-guide",
+    "audio": "outputs/cp-guide/audio.mp3",
+    "reference_notes": 35,
+    "transcribed_notes": 342,
+    "skyline_notes": 200,
+    "exact_pitch_matches": 20,
+    "octave_matches": 11,
+    "melody_recall": 0.8857142857142857,
+    "exact_recall": 0.5714285714285714,
+    "skyline_precision": 0.155,
+    "tempo_ratio": 0.9772887433769556,
+    "aligned_onset_rms_seconds": 0.8103535949096087,
+    "longest_exact_run": 7,
+    "method": "ByteDance piano_transcription_inference (CPU) -> skyline -> global pitch alignment"
+  },
+  {
+    "label": "cp-recording",
+    "audio": "outputs/cp-recording/audio.mp3",
+    "reference_notes": 35,
+    "transcribed_notes": 462,
+    "skyline_notes": 226,
+    "exact_pitch_matches": 17,
+    "octave_matches": 14,
+    "melody_recall": 0.8857142857142857,
+    "exact_recall": 0.4857142857142857,
+    "skyline_precision": 0.13716814159292035,
+    "tempo_ratio": 1.0969937725748284,
+    "aligned_onset_rms_seconds": 0.7806977281875285,
+    "longest_exact_run": 8,
+    "method": "ByteDance piano_transcription_inference (CPU) -> skyline -> global pitch alignment"
+  },
+  {
+    "label": "cp-text-only",
+    "audio": "outputs/cp-text-only/audio.mp3",
+    "reference_notes": 35,
+    "transcribed_notes": 404,
+    "skyline_notes": 218,
+    "exact_pitch_matches": 13,
+    "octave_matches": 8,
+    "melody_recall": 0.6,
+    "exact_recall": 0.37142857142857144,
+    "skyline_precision": 0.0963302752293578,
+    "tempo_ratio": 0.9256709166525144,
+    "aligned_onset_rms_seconds": 3.750591003987981,
+    "longest_exact_run": 4,
+    "method": "ByteDance piano_transcription_inference (CPU) -> skyline -> global pitch alignment"
+  }
+]

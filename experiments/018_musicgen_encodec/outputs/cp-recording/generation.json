@@ -1,0 +1,13 @@
+{
+  "condition": "cp-recording",
+  "reference": "005_color_purple_orchestra/data/source.wav",
+  "prompt": "solo acoustic grand piano, expressive ballad, no vocals",
+  "seed": 20261018,
+  "guidance_scale": 3.0,
+  "max_new_tokens": 1500,
+  "audio_seconds": 29.94,
+  "seconds": 34.52761268615723,
+  "peak_allocated_gib": 8.544729709625244,
+  "model": "facebook/musicgen-melody",
+  "transformers": "5.20.1"
+}
