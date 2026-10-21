@@ -1,0 +1,406 @@
+{
+ "soundfont": "FluidR3_GM.sf2",
+ "program": "acoustic grand piano (bank 0, preset 0)",
+ "rate": 32000,
+ "hold_seconds": 4.0,
+ "tail_seconds": 1.0,
+ "pitches": [
+  21,
+  24,
+  27,
+  30,
+  33,
+  36,
+  39,
+  42,
+  45,
+  48,
+  51,
+  54,
+  57,
+  60,
+  63,
+  66,
+  69,
+  72,
+  75,
+  78,
+  81,
+  84,
+  87,
+  90,
+  93,
+  96,
+  99,
+  102,
+  105,
+  108
+ ],
+ "velocities": [
+  56,
+  104
+ ],
+ "samples": [
+  {
+   "pitch": 21,
+   "velocity": 56,
+   "file": "p21_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 21,
+   "velocity": 104,
+   "file": "p21_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 24,
+   "velocity": 56,
+   "file": "p24_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 24,
+   "velocity": 104,
+   "file": "p24_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 27,
+   "velocity": 56,
+   "file": "p27_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 27,
+   "velocity": 104,
+   "file": "p27_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 30,
+   "velocity": 56,
+   "file": "p30_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 30,
+   "velocity": 104,
+   "file": "p30_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 33,
+   "velocity": 56,
+   "file": "p33_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 33,
+   "velocity": 104,
+   "file": "p33_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 36,
+   "velocity": 56,
+   "file": "p36_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 36,
+   "velocity": 104,
+   "file": "p36_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 39,
+   "velocity": 56,
+   "file": "p39_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 39,
+   "velocity": 104,
+   "file": "p39_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 42,
+   "velocity": 56,
+   "file": "p42_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 42,
+   "velocity": 104,
+   "file": "p42_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 45,
+   "velocity": 56,
+   "file": "p45_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 45,
+   "velocity": 104,
+   "file": "p45_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 48,
+   "velocity": 56,
+   "file": "p48_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 48,
+   "velocity": 104,
+   "file": "p48_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 51,
+   "velocity": 56,
+   "file": "p51_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 51,
+   "velocity": 104,
+   "file": "p51_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 54,
+   "velocity": 56,
+   "file": "p54_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 54,
+   "velocity": 104,
+   "file": "p54_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 57,
+   "velocity": 56,
+   "file": "p57_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 57,
+   "velocity": 104,
+   "file": "p57_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 60,
+   "velocity": 56,
+   "file": "p60_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 60,
+   "velocity": 104,
+   "file": "p60_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 63,
+   "velocity": 56,
+   "file": "p63_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 63,
+   "velocity": 104,
+   "file": "p63_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 66,
+   "velocity": 56,
+   "file": "p66_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 66,
+   "velocity": 104,
+   "file": "p66_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 69,
+   "velocity": 56,
+   "file": "p69_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 69,
+   "velocity": 104,
+   "file": "p69_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 72,
+   "velocity": 56,
+   "file": "p72_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 72,
+   "velocity": 104,
+   "file": "p72_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 75,
+   "velocity": 56,
+   "file": "p75_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 75,
+   "velocity": 104,
+   "file": "p75_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 78,
+   "velocity": 56,
+   "file": "p78_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 78,
+   "velocity": 104,
+   "file": "p78_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 81,
+   "velocity": 56,
+   "file": "p81_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 81,
+   "velocity": 104,
+   "file": "p81_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 84,
+   "velocity": 56,
+   "file": "p84_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 84,
+   "velocity": 104,
+   "file": "p84_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 87,
+   "velocity": 56,
+   "file": "p87_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 87,
+   "velocity": 104,
+   "file": "p87_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 90,
+   "velocity": 56,
+   "file": "p90_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 90,
+   "velocity": 104,
+   "file": "p90_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 93,
+   "velocity": 56,
+   "file": "p93_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 93,
+   "velocity": 104,
+   "file": "p93_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 96,
+   "velocity": 56,
+   "file": "p96_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 96,
+   "velocity": 104,
+   "file": "p96_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 99,
+   "velocity": 56,
+   "file": "p99_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 99,
+   "velocity": 104,
+   "file": "p99_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 102,
+   "velocity": 56,
+   "file": "p102_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 102,
+   "velocity": 104,
+   "file": "p102_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 105,
+   "velocity": 56,
+   "file": "p105_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 105,
+   "velocity": 104,
+   "file": "p105_v104.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 108,
+   "velocity": 56,
+   "file": "p108_v56.mp3",
+   "bytes": 40653
+  },
+  {
+   "pitch": 108,
+   "velocity": 104,
+   "file": "p108_v104.mp3",
+   "bytes": 40653
+  }
+ ],
+ "total_bytes": 2439180
+}

@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music Transformer, live — Maestro</title>
+<meta name="description" content="The reproduced Music Transformer runs inside this page. Give it a MAESTRO opening or silence and hear it continue, then test your ear: pianist or model?">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/music-transformer-live.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Music Transformer, live — Maestro">
+<meta property="og:description" content="The reproduced Music Transformer runs inside this page. Give it a MAESTRO opening or silence and hear it continue, then test your ear: pianist or model?">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/music-transformer-live.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Music Transformer, live — Maestro">
+<meta name="twitter:description" content="The reproduced Music Transformer runs inside this page. Give it a MAESTRO opening or silence and hear it continue, then test your ear: pianist or model?">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+<style>
+  .viz-root { --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100; }
+  @media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .viz-root { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; } }
+  :root[data-theme="dark"] .viz-root { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; margin: 1.5rem 0 2.5rem; }
+  .stat { border-top: 2px solid var(--rule); padding-top: .6rem; }
+  .stat .label { font-size: .8rem; color: var(--ink-2); margin: 0 0 .2rem; }
+  .stat .value { font-family: var(--f-body); font-weight: 600; font-size: 2rem; line-height: 1.1; margin: 0; }
+  .stat .note { font-size: .78rem; color: var(--ink-3); margin: .25rem 0 0; }
+  .status-line { font-family: var(--f-mono); font-size: .78rem; color: var(--ink-2); letter-spacing: .04em; }
+  .panel { border: 1px solid var(--rule); border-radius: 4px; padding: 1.1rem 1.2rem 1.2rem; margin: 1.2rem 0 2rem; background: var(--paper); }
+  .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: .8rem 1.2rem; align-items: end; margin: 0 0 1rem; }
+  .controls label { display: block; font-size: .78rem; color: var(--ink-2); margin-bottom: .25rem; }
+  .controls .wide { grid-column: 1 / -1; }
+  .controls select, .controls input[type=number] { width: 100%; font: inherit; font-size: .92rem; color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px; padding: .45rem .5rem; }
+  .controls input[type=range] { width: 100%; accent-color: var(--ink-2); }
+  .controls output { font-family: var(--f-mono); font-size: .8rem; color: var(--ink-2); margin-left: .4rem; }
+  .btn { font: inherit; font-size: .9rem; color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px; padding: .5rem .95rem; cursor: pointer; }
+  .btn:hover { border-color: var(--ink-3); }
+  .btn:disabled { opacity: .5; cursor: default; }
+  .btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn.primary:hover { opacity: .9; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .6rem 0; }
+  .progress-wrap { display: flex; gap: .8rem; align-items: center; margin: .6rem 0 0; }
+  progress { width: 14rem; max-width: 100%; height: .5rem; accent-color: var(--ink-2); }
+  .status { font-size: .86rem; color: var(--ink-2); margin: .4rem 0 0; min-height: 1.3em; }
+  .status.error { color: #c0392b; }
+  figure.roll { margin: 1.2rem 0 .4rem; position: relative; }
+  canvas.roll { width: 100%; height: 280px; display: block; border: 1px solid var(--rule-soft); border-radius: 3px; background: var(--paper-2); }
+  figure.roll figcaption { font-size: .8rem; color: var(--ink-3); margin: .4rem 0 0; }
+  .roll-legend { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .82rem; color: var(--ink-2); margin: .5rem 0 0; padding: 0; list-style: none; max-width: none; }
+  .roll-legend li { display: flex; align-items: center; gap: .5rem; margin: 0; }
+  .roll-legend .key { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+  .roll-legend .k1 { background: var(--series-1); } .roll-legend .k2 { background: var(--series-2); }
+  .transport { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .8rem 0 0; }
+  .transport .clock { font-family: var(--f-mono); font-size: .86rem; color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 7.5em; }
+  .blind-head { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; align-items: baseline; font-size: .86rem; color: var(--ink-2); }
+  .blind-head strong { color: var(--ink); font-weight: 600; }
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .choice { border: 1px solid var(--rule-soft); border-radius: 4px; padding: .9rem 1rem 1rem; }
+  .choice h3 { margin: 0 0 .5rem; font-size: 1rem; }
+  .choice audio { display: block; width: 100%; margin: 0 0 .6rem; }
+  .choice .mini { font-size: .78rem; color: var(--ink-3); margin: 0 0 .6rem; }
+  .reveal { font-size: .95rem; margin: .6rem 0 0; }
+  .reveal strong { font-weight: 600; }
+  .reveal.right { color: #1e7d3b; } .reveal.wrong { color: #b0412e; }
+  @media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .reveal.right { color: #3fbf6a; } :root:where(:not([data-theme="light"])) .reveal.wrong { color: #e6765d; } :root:where(:not([data-theme="light"])) .status.error { color: #e6765d; } }
+  :root[data-theme="dark"] .reveal.right { color: #3fbf6a; } :root[data-theme="dark"] .reveal.wrong { color: #e6765d; } :root[data-theme="dark"] .status.error { color: #e6765d; }
+  .score-line { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
+  details.tech { margin: 1rem 0 2.5rem; font-size: .9rem; }
+  li code, td code, p code { overflow-wrap: anywhere; }
+  details.tech summary { cursor: pointer; color: var(--ink-2); }
+  .facts td:first-child { color: var(--ink-2); white-space: nowrap; }
+  .notice { font-size: .86rem; color: var(--ink-2); border-left: 2px solid var(--rule); padding: .2rem 0 .2rem .9rem; margin: 1rem 0; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Reproduction · live</p>
+      <h1>Music Transformer, live</h1>
+      <p class="journal-description">The reproduced Music Transformer runs inside this page. Give it a MAESTRO opening or silence and hear it continue, then test your ear: pianist or model?</p>
+      <p class="journal-meta">Page built October 21, 2026 · <span class="status-line">checkpoint step 984,000 · runs locally, nothing is uploaded</span> · <a href="music-transformer-reproduction.html">How it was reproduced</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/artifacts/music-transformer-live.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/artifacts/music-transformer-live.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="Headline numbers">
+      <div class="stat"><p class="label">Validation NLL, full set</p><p class="value">1.827</p><p class="note">nats per event · the paper reports 1.835</p></div>
+      <div class="stat"><p class="label">Test NLL, reported once</p><p class="value">1.801</p><p class="note">MAESTRO v1 test split, 2.29M events</p></div>
+      <div class="stat"><p class="label">Download to run it</p><p class="value">53 MB</p><p class="note">36 MB model · 14 MB runtime · 2.4 MB piano</p></div>
+    </section>
+
+    <section id="live" aria-labelledby="live-h">
+      <h2 id="live-h">Continue a performance</h2>
+      <p>This is the trained model itself, exported from the best checkpoint and executed by WebAssembly in your browser, one event at a time with a key-value cache. Choose one of the twenty frozen MAESTRO openings (the same prompt set as the listening pool) or start from silence. Sampling defaults match the pool: temperature 1, nucleus 0.98.</p>
+      <div class="panel viz-root">
+        <div class="controls">
+          <div class="wide"><label for="prompt">Opening</label>
+            <select id="prompt"><option value="-1">From silence (no prompt)</option><option value="0">v1-01 · Alexander Scriabin, Two Impromptus, Op. 14 (Complete)</option><option value="1">v1-02 · Frédéric Chopin, Scherzo No. 3</option><option value="2">v1-03 · Ludwig van Beethoven, Sonata No. 3 in C Major, Op. 2 No. 3, I. Allegro con brio</option><option value="3">v1-04 · Robert Schumann, Toccata in C, Op. 7</option><option value="4">v1-05 · Domenico Scarlatti, Sonata K. 54</option><option value="5">v1-06 · Frédéric Chopin, Scherzo No. 1 in B Minor, Op. 20</option><option value="6">v1-07 · Johann Sebastian Bach, Prelude and Fugue in C-sharp Major, BWV 848</option><option value="7">v1-08 · Frédéric Chopin, Nocturne in C-Sharp Minor, Op. Posth.</option><option value="8">v1-09 · Johann Sebastian Bach, French Suite No. 5 in G Major</option><option value="9">v1-10 · Franz Liszt, Valse de l&#x27;opera Faust de Charles Gounod, S.407</option><option value="10">v1-11 · Johannes Brahms, Sonata No. 1</option><option value="11">v1-12 · Joseph Haydn, Sonata in E flat Major, Hob. XVI: 49, I. Allegro</option><option value="12">v1-13 · Alexander Scriabin, Fragilite, Op.51</option><option value="13">v1-14 · Ludwig van Beethoven, Bagatelles, Op. 126 (Complete)</option><option value="14">v1-15 · Franz Liszt, Concert Etude &quot;Waldesrauschen&quot;</option><option value="15">v1-16 · Robert Schumann, Sonata No. 2 in G Minor, Op. 22 (Complete)</option><option value="16">v1-17 · Ludwig van Beethoven, Sonata No. 11 in B-flat Major, Op. 22, I. Allegro con brio</option><option value="17">v1-18 · Ludwig van Beethoven, Bagatelles Op126</option><option value="18">v1-19 · Franz Liszt, Transcendental Etude No. 4 &quot;Mazeppa&quot;</option><option value="19">v1-20 · Franz Liszt, Ballade No. 2 in B Minor, S. 171</option></select></div>
+          <div><label for="length">New events</label>
+            <select id="length"><option value="256">256 (about 10 s)</option><option value="512" selected>512 (about 20 s)</option><option value="1024">1024 (about 40 s)</option></select></div>
+          <div><label for="temperature">Temperature <output id="temperature-out">1.00</output></label>
+            <input type="range" id="temperature" min="0.5" max="1.5" step="0.05" value="1"></div>
+          <div><label for="topp">Nucleus (top-p) <output id="topp-out">0.98</output></label>
+            <input type="range" id="topp" min="0.5" max="1" step="0.01" value="0.98"></div>
+          <div><label for="seed">Seed</label><input type="number" id="seed" min="0" max="999999" step="1" value="1"></div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn primary" id="load">Load the model (36 MB)</button>
+          <button type="button" class="btn primary hidden" id="generate">Compose</button>
+          <button type="button" class="btn hidden" id="cancel">Stop composing</button>
+        </div>
+        <div class="progress-wrap"><progress id="progress" max="1" value="0" hidden></progress><span class="status" id="status" role="status" aria-live="polite">The model has not been loaded yet. Loading fetches 36 MB of weights and a 14 MB runtime once.</span></div>
+        <figure class="roll">
+          <canvas class="roll" id="roll" aria-label="Piano roll of the opening and the model's continuation"></canvas>
+          <ul class="roll-legend"><li><span class="key k1"></span>Opening (the pianist)</li><li><span class="key k2"></span>Continuation (the model)</li></ul>
+          <figcaption id="roll-caption">Pitch runs upward; time runs left to right. The roll fills in as events are sampled.</figcaption>
+        </figure>
+        <div class="transport">
+          <button type="button" class="btn" id="play" disabled>Play</button>
+          <button type="button" class="btn" id="play-entry" disabled>Play from the model's entry</button>
+          <button type="button" class="btn" id="stop" disabled>Stop</button>
+          <span class="clock" id="clock">0:00 / 0:00</span>
+          <a class="btn hidden" id="download" download="music-transformer-continuation.mid">Download MIDI</a>
+        </div>
+        <p class="notice">Playback uses sampled notes of the same FluidR3 General MIDI piano that rendered every clip on this site, so the sound is the renderer's, not the model's. The MIDI download has the exact events.</p>
+      </div>
+      <details class="tech"><summary>What exactly runs, and how it was checked</summary>
+        <div class="table-scroll" role="region" aria-label="Export facts" tabindex="0"><table class="facts">
+          <tr><td>Graph</td><td>One decoding step: next event in, logits and the extended key-value cache out (6 layers, 8 heads, relative attention over a 1,024-position table, 2,048-event context). The relative term for one query is its dot product with every relative embedding, gathered by each key's distance.</td></tr>
+          <tr><td>Weights</td><td>Stored as 16-bit floats and cast to 32-bit inside the graph (the runtime folds the casts at load), so arithmetic is 32-bit. File hash <code>9ebb82972f6b3d4a…</code>, from checkpoint <code>0d6bd8eb0231d5fc…</code>.</td></tr>
+          <tr><td>Check against PyTorch</td><td>Over 301 positions of the first frozen opening: largest logit difference 0.011, identical most-likely event at 100% of positions, mean NLL 2.53407 (graph) against 2.53411 (PyTorch).</td></tr>
+          <tr><td>Sampling</td><td>Reserved ids masked; temperature, then nucleus filtering with the same rule as the pool sampler; a seeded 32-bit generator, so a seed replays. The pool itself was sampled on the GPU with seed 20261020; browser samples will differ from it by construction (different generator).</td></tr>
+          <tr><td>Speed</td><td id="speed-cell">Measured in this browser once the model runs.</td></tr>
+          <tr><td>Runtime</td><td>onnxruntime-web 1.30.0, WebAssembly backend, single thread (this site does not set cross-origin isolation headers). Prompt set v1 hash <code>9d5e74824c41f470…</code>.</td></tr>
+        </table></div>
+      </details>
+    </section>
+
+    <section id="blind" aria-labelledby="blind-h">
+      <h2 id="blind-h">Pianist or model?</h2>
+      <p>Each round takes one of the 20 openings. Both clips begin with the same opening, played by the pianist. After it, one clip continues with the pianist's own next 1,024 events from the MAESTRO recording; the other continues with the model's first sample for that opening (candidate 0 at seed 20261020, never chosen by ear). Both are rendered by the same piano. Pick the pianist.</p>
+      <div class="panel" id="blind-panel">
+        <div class="blind-head"><span>Round <strong id="round-n">1</strong> of 20</span><span id="round-piece">Composer and piece are revealed after you answer.</span><span id="round-opening"></span></div>
+        <div class="pair">
+          <div class="choice"><h3>Clip A</h3><audio controls preload="none" id="audio-a"></audio><p class="mini"><button type="button" class="btn" id="skip-a">Skip the opening</button></p><button type="button" class="btn primary" id="pick-a">A is the pianist</button></div>
+          <div class="choice"><h3>Clip B</h3><audio controls preload="none" id="audio-b"></audio><p class="mini"><button type="button" class="btn" id="skip-b">Skip the opening</button></p><button type="button" class="btn primary" id="pick-b">B is the pianist</button></div>
+        </div>
+        <p class="reveal" id="reveal" aria-live="polite"></p>
+        <div class="btn-row"><button type="button" class="btn hidden" id="next">Next round</button><button type="button" class="btn" id="restart">Start over</button></div>
+        <p class="score-line" id="score">No answers yet. With 20 rounds, 15 or more correct is better than guessing at the 5% level (binomial, p = 0.021); 14 is not (p = 0.058).</p>
+        <p class="notice">Your answers stay in this browser; nothing is sent anywhere. Known pieces are easy to spot by memory, so the fair test is the openings you do not recognise.</p>
+      </div>
+    </section>
+
+    <section id="facts" aria-labelledby="facts-h">
+      <h2 id="facts-h">What is being tested</h2>
+      <div class="table-scroll" role="region" aria-label="Model numbers" tabindex="0"><table>
+        <thead><tr><th>Quantity</th><th>This model</th><th>Paper, relative attention</th></tr></thead>
+        <tbody>
+          <tr><td>Validation NLL, 128 fixed windows (model-selection metric)</td><td>1.835</td><td>1.835</td></tr>
+          <tr><td>Validation NLL, every validation event (2.20M)</td><td>1.827</td><td>—</td></tr>
+          <tr><td>Test NLL, every test event (2.29M), reported once</td><td>1.801</td><td>—</td></tr>
+          <tr><td>Final step (1,000,000) checkpoint, full validation</td><td>1.836</td><td>—</td></tr>
+        </tbody>
+      </table></div>
+      <p>The page serves the best checkpoint (step 984,000, chosen on the 128-window validation metric during training). Learning curves, the numerical parity check against the original Tensor2Tensor code, the paper's Table 3 comparison and the ablation runs are on the <a href="music-transformer-reproduction.html">reproduction page</a>.</p>
+      <h3>Credits and licenses</h3>
+      <ul>
+        <li>Model: Huang et al., <a href="https://arxiv.org/abs/1809.04281">Music Transformer</a> (ICLR 2019), released configuration <code>t_rel_len2048_h512_att512_fs1024_n6_dropout10</code>, retrained here in PyTorch.</li>
+        <li>Data and clips: <a href="https://magenta.tensorflow.org/datasets/maestro">MAESTRO v1.0.0</a> (Hawthorne et al., 2019), CC BY-NC-SA 4.0. The openings and the pianists' continuations are excerpts of its validation-split performances; the model clips are derived from them. Non-commercial use only.</li>
+        <li>Runtime: <a href="https://onnxruntime.ai/">onnxruntime-web</a> 1.30.0 (MIT), vendored under <code>assets/vendor/</code>.</li>
+        <li>Piano: FluidR3 General MIDI SoundFont (MIT), acoustic grand, rendered to single-note samples and played back with at most one semitone of pitch shift.</li>
+      </ul>
+    </section>
+
+    <section id="reproduce" aria-labelledby="reproduce-h">
+      <h2 id="reproduce-h">Reproduce this page</h2>
+      <pre><code>cd experiments/020_music_transformer_reproduction
+python3 export_onnx.py --out ../../artifacts/music-transformer/model/music-transformer-step984k-fp16.onnx --check 300 --record record/onnx-export.json
+python3 piano_samples.py --out ../../artifacts/music-transformer/piano
+python3 real_continuations.py            # pianists' continuations for prompt set v1
+python3 ../../scripts/build_mt_live.py   # this page</code></pre>
+    </section>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> · <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+<script id="live-data" type="application/json">{"model":{"file":"music-transformer/model/music-transformer-step984k-fp16.onnx","bytes":36415348,"sha256":"9ebb82972f6b3d4abc0d370212bea7ae4e7b5be25785c84c875815ee473fbb9e","step":984000,"checkpointSha256":"0d6bd8eb0231d5fc64d1d942e44baac5493f130b1cdbc7708e897187585e5cf6","layers":6,"heads":8,"depth":64,"context":2048,"vocab":310},"ort":{"dir":"../assets/vendor/onnxruntime-web-1.30.0/","script":"../assets/vendor/onnxruntime-web-1.30.0/ort.wasm.min.js","version":"1.30.0","wasmBytes":14239897},"piano":{"dir":"music-transformer/piano/","pitches":[21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99,102,105,108],"velocities":[56,104],"bytes":2439180,"rate":32000},"sampling":{"candidates":4,"new_tokens":1024,"temperature":1.0,"top_k":0,"top_p":0.98,"seed":20261020,"device":"cuda","dtype":"float32"},"prompts":[{"id":"v1-01","composer":"Alexander Scriabin","title":"Two Impromptus, Op. 14 (Complete)","placeholder":false,"tokens":[231,289,59,219,290,64,184,284,54,181,47,179,45,188,294,63,195,147,295,59,179,286,52,178,288,44,187,152,142,133,151,180,135,296,58,208,147,292,59,179,140,178,146,286,53,206,292,62,201,288,37,221,290,61,195,57,182,287,42,186,132,147,141,150,125,149,238,288,54,178,287,45,213,291,52,181,290,49,191,145,295,57,211,292,61,180,288,51,182,47,178,133,286,45,178,142,140,137,145,193,297,59,194,139,51,178,135,290,47,178,289,44,189,297,52,198,295,57,178,130,149,133,147,139,135,287,49,178,42,181,140,178,132,179,130,196,290,37,180,292,52,184,296,56,193,144,293,56,184,287,36,186,145,137,125,140,244,288,54,181,283,52,285,45,224,288,51,182,133,285,45,35,178,144,124,140,184,142,179,139,195,293,54,181,288,33,178,287,49,179,288,39,207,285,32,181,287,42,183,292,57,180,287,48,184,133,123,142,121,137,127,192,295,56,197,136,292,48,179,130,145,144,179,287,40,286,44,193,295,51,194,297,49,193,290,33,297,54,180,137,292,39,294,49,199,297,57,179,136,291,48,290,42,178,120,128,132,139,121,137,178,142,178,127,291,32,192,299,56,194,145,136,130,179,296,48,179,144,289,44,178,290,40,182,120,187,298,49,198,297,56,189,289,61,180,298,60,194,149,297,61,201,295,66,178,136,132,128,137,144,148,181,286,28,181,149,234,49,179,285,37,180,286,44,202,292,64,201,56,199,294,55,186,154,116,137,125,132,152,144,178,288,30,208,294,63,185,287,46,206,143,292,55,205,290,54,180,286,39,179,284,47,178,286,35,186,118,151,134,143,187,292,58,225,288,61,181,287,42,179,286,51,185,142,135,146,183,127,241,291,59,216,64,181,285,54,286,47,184,123,149,130,139,147,188,295,63,197,59,180,287,44,178,152,142,286,52,180,151,188,297,58,209,147,292,59,180,135,140,178,287,53,178,146,215,290,62,199,287,37,230,289,61,195,57,178,287,42,191,132,147,141,150,125,149,231,288,54,180,285,45,212,292,52,180,289,49,194,145,292,57,209,291,61,178,288,51,181,286,47,180,142,133,140,137,145,178,285,45,186,130,183,295,59,194,139,296,51,180,135,290,47,178,44,189,297,52,198,149,133,147,139],"openingSeconds":19.79,"real":{"file":"music-transformer/real_v1-01.mp3","seconds":55.25,"notes":379},"model":{"file":"music-transformer/v1-01_c00.mp3","midi":"music-transformer/v1-01_c00.mid","seconds":45.84,"notes":363},"prompt":{"file":"music-transformer/prompt_v1-01.mp3"}},{"id":"v1-02","composer":"Fr\u00e9d\u00e9ric Chopin","title":"Scherzo No. 3","placeholder":false,"tokens":[192,290,35,181,285,23,189,291,38,286,26,179,123,111,181,114,179,126,289,21,178,292,33,185,109,179,121,179,287,22,290,34,184,110,182,293,43,179,122,287,31,211,131,119,218,22,291,34,185,292,25,179,110,178,294,37,178,122,184,113,32,179,289,20,182,108,178,125,178,120,294,33,291,21,187,109,178,296,42,178,292,30,179,121,187,118,182,130,208,296,41,178,294,29,179,129,179,117,182,296,41,203,290,36,180,292,24,181,294,31,180,291,19,183,297,32,179,293,20,183,129,124,112,119,107,180,108,297,40,180,120,28,242,295,47,301,71,299,59,178,128,293,32,292,40,294,35,182,281,44,182,159,147,302,71,299,59,178,135,128,296,47,290,40,178,120,123,288,32,297,35,277,264,116,132,159,147,135,128,120,123,181,287,20,178,290,32,185,23,181,292,35,183,290,19,180,108,120,111,178,292,31,179,123,182,107,179,290,20,178,294,32,179,119,183,108,181,290,28,178,294,40,180,120,210,116,128,207,287,19,178,292,31,189,291,23,180,295,35,186,296,30,178,290,18,183,107,119,111,123,106,293,19,178,118,297,31,187,107,178,40,295,28,180,119,209,128,116,184,297,39,178,296,27,180,127,178,115,181,298,39,178,27,199,295,32,179,294,20,184,295,28,179,292,16,184,296,29,178,295,17,181,127,115,120,108,116,104,180,301,38,179,298,26,178,105,178,117,184,114,228,296,47,304,71,178,301,59,292,32,178,126,294,35,295,38,182,280,44,182,135,159,147,126,298,47,300,71,293,38,299,59,178,123,298,35,180,288,45,178,132,280,44,277,213,296,29,292,17,183,120,135,159,126,147,123,133,132,193,296,11,299,23,191,26,178,296,14,197,117,105,99,111,114,102,299,38,178,295,26,190,114,225,303,71,295,43,301,59,178,296,47,178,126,292,35,293,38,185,159,135,300,47,301,71,178,147,300,59,277,229,301,26,178,298,14,184,131,123,126,135,159,147,277,196,297,23,178,295,11,199,298,12,299,24,192,114,300,26,178,102,299,14,195,301,17,5,181,111,99,100,112,114,102,239,105,180,93,306,66,303,54,299,6,178,303,18,185,94,233,301,38,302,62,303,50,178,298,26,178,154,142,106,223,61,299,49,178,294,37,181,286],"openingSeconds":16.88,"real":{"file":"music-transformer/real_v1-02.mp3","seconds":34.23,"notes":376},"model":{"file":"music-transformer/v1-02_c00.mp3","midi":"music-transformer/v1-02_c00.mid","seconds":45.47,"notes":399},"prompt":{"file":"music-transformer/prompt_v1-02.mp3"}},{"id":"v1-03","composer":"Ludwig van Beethoven","title":"Sonata No. 3 in C Major, Op. 2 No. 3, I. Allegro con brio","placeholder":false,"tokens":[275,292,45,179,285,36,288,41,286,29,265,292,43,178,289,40,181,133,129,128,178,131,179,291,41,179,290,45,182,129,133,178,292,40,178,293,43,181,128,182,131,295,45,178,289,41,178,124,179,117,179,129,290,43,178,295,46,180,133,179,131,181,134,187,292,41,295,45,182,129,133,192,293,40,43,289,24,178,288,36,180,128,178,131,124,179,112,211,292,48,178,289,40,179,288,36,178,287,24,183,128,124,178,136,179,112,277,200,291,46,179,288,24,289,40,43,262,293,45,290,42,186,134,131,293,46,290,43,179,112,128,133,130,181,131,179,134,293,42,180,290,45,179,130,180,133,178,293,46,178,43,183,131,178,134,295,48,296,45,182,133,180,136,188,293,43,292,46,181,131,179,134,191,296,45,291,36,178,292,41,289,29,182,124,129,178,117,178,133,214,294,53,179,291,45,178,288,29,36,186,133,124,179,141,117,277,203,291,53,179,287,36,45,216,288,29,216,289,31,179,292,52,179,289,46,181,141,133,117,140,179,294,53,183,141,179,293,52,185,296,53,178,140,185,141,288,24,295,55,183,143,181,119,188,292,52,182,140,178,134,192,48,218,297,53,178,124,112,136,178,292,45,178,288,29,178,287,36,216,294,52,178,291,31,178,290,46,182,141,133,117,140,178,294,53,184,141,178,52,185,296,53,178,140,186,297,55,178,141,289,24,179,119,181,143,189,296,52,183,140,195,295,48,178,290,33,178,112,181,134,210,297,53,180,289,29,215,295,43,181,288,38,290,41,178,286,34,179,124,136,121,141,117,213,293,50,179,288,31,218,131,292,43,178,289,40,178,36,178,126,129,122,138,119,217,291,48,179,288,24,215,131,128,124,136,112,178,291,45,178,290,29,41,191,294,36,189,297,35,181,117,129,124,178,133,179,123,182,296,34,182,122,183,33,182,121,184,31,183,119,187,29,218,294,36,298,48,178,45,221,291,28,178,43,180,117,179,133,116,180,292,29,179,131,182,117,179,295,28,186,293,29,180,116,182,46,179,124,117,295,31,292,43,184,119,186,131,181,294,28,182,116,182,134,185,136,179,45,178,292,36,178,291,24,178,41,216,299,48,178,124,296,36,178,133,295,29,297,45,185,112,129,208,117,178,133,179,292,28,178,291,43],"openingSeconds":16.78,"real":{"file":"music-transformer/real_v1-03.mp3","seconds":35.41,"notes":362},"model":{"file":"music-transformer/v1-03_c00.mp3","midi":"music-transformer/v1-03_c00.mid","seconds":43.52,"notes":348},"prompt":{"file":"music-transformer/prompt_v1-03.mp3"}},{"id":"v1-04","composer":"Robert Schumann","title":"Toccata in C, Op. 7","placeholder":false,"tokens":[277,181,300,12,301,24,303,36,221,124,299,64,295,36,298,52,178,299,31,43,300,58,180,290,62,217,286,56,189,299,41,29,178,124,302,65,295,36,299,53,57,183,100,112,152,140,119,131,146,150,144,129,117,153,124,141,145,197,300,47,178,59,297,53,31,295,38,178,297,26,179,141,294,36,178,114,178,135,126,178,147,124,178,119,199,301,62,178,297,31,300,35,53,298,50,299,23,231,119,298,36,24,299,60,297,31,178,299,48,298,52,216,150,123,141,138,111,124,112,148,119,136,140,197,289,29,178,290,53,178,285,41,288,45,181,117,185,292,52,179,289,36,180,283,46,185,141,292,29,293,53,180,129,133,287,45,284,41,186,140,292,52,178,134,288,46,178,124,289,36,189,141,292,53,178,133,129,289,45,288,41,187,140,293,52,178,124,291,36,179,134,290,46,186,117,141,292,53,29,178,133,129,288,41,292,45,188,124,295,54,290,36,178,291,48,188,140,134,141,117,129,133,142,124,136,296,55,292,46,178,29,178,289,43,180,134,117,180,131,179,143,180,294,54,180,291,37,178,288,49,185,295,55,178,289,29,178,290,46,180,283,43,184,142,296,54,180,137,288,49,178,125,291,37,185,143,295,55,178,134,292,46,178,131,291,43,188,142,137,294,49,295,54,178,125,292,37,188,117,29,178,134,46,295,57,178,131,284,43,186,143,295,55,179,290,36,289,52,190,295,53,178,117,289,29,178,287,41,289,45,184,137,142,125,134,145,131,143,124,140,141,117,129,133,181,292,52,179,290,36,179,286,46,185,293,53,179,290,29,291,45,187,140,294,52,180,124,134,291,36,288,46,188,141,293,53,178,133,45,291,41,187,140,294,52,179,124,134,292,36,291,46,187,141,294,53,178,133,293,45,178,117,29,178,129,290,41,187,295,54,178,124,291,36,48,189,134,117,293,46,296,55,292,29,179,289,43,179,140,141,133,129,142,124,136,178,134,117,178,131,179,143,182,295,54,178,292,37,178,289,49,182,125,179,137,179,142,291,29,178,294,55,178,291,46,180,280,43,185,295,54,178,290,49,179,291,37,187,143,294,55,178,134,293,46,178,131,291,43,187,142,295,54,178,137,293,49,178,125,37,188,117,143,134,46,292,55,293,29,178,131,289],"openingSeconds":7.52,"real":{"file":"music-transformer/real_v1-04.mp3","seconds":17.15,"notes":397},"model":{"file":"music-transformer/v1-04_c00.mp3","midi":"music-transformer/v1-04_c00.mid","seconds":16.9,"notes":408},"prompt":{"file":"music-transformer/prompt_v1-04.mp3"}},{"id":"v1-05","composer":"Domenico Scarlatti","title":"Sonata K. 54","placeholder":false,"tokens":[277,186,284,34,217,286,61,211,290,65,208,149,61,210,291,58,181,122,286,34,180,283,46,194,153,149,182,146,182,289,53,207,290,54,209,49,210,51,182,285,39,287,36,179,134,284,46,185,122,141,142,137,194,291,60,209,293,63,208,148,60,208,292,57,181,127,284,45,286,39,179,124,36,186,139,134,151,179,148,193,145,179,291,53,207,54,208,290,51,209,141,53,181,287,37,179,284,46,286,41,183,133,127,124,142,139,195,292,58,208,294,61,207,146,58,210,141,291,53,180,125,287,37,179,129,286,41,192,134,149,146,188,290,49,178,141,194,129,188,291,46,210,41,217,292,54,182,287,39,178,42,183,125,137,134,129,202,288,45,211,289,46,179,285,41,178,286,37,199,142,127,130,133,183,289,53,210,48,178,286,36,181,283,39,178,129,125,182,134,197,289,51,208,290,49,180,288,29,287,46,179,141,136,124,127,181,139,183,134,194,290,48,181,288,45,215,137,291,49,181,286,34,185,117,136,133,212,289,46,212,137,293,49,206,134,291,46,178,122,137,205,42,185,134,198,289,39,178,130,198,127,182,287,36,181,291,57,196,293,58,184,288,45,185,295,60,199,148,292,60,181,146,290,58,178,288,37,188,124,145,133,148,190,290,57,186,285,46,186,146,292,58,198,49,198,125,145,134,146,183,137,179,291,46,205,292,42,189,134,193,290,39,186,130,189,127,182,287,36,180,292,57,198,294,58,181,288,45,190,295,60,197,148,293,60,181,146,292,58,287,37,186,124,145,133,148,191,291,57,186,286,46,188,146,293,58,196,292,49,193,125,145,134,146,190,137,179,290,46,204,292,43,182,134,200,46,181,131,201,289,36,292,55,179,134,195,295,56,188,288,40,184,295,58,197,146,294,58,183,289,29,178,144,291,56,187,124,143,128,146,192,289,55,183,288,41,190,291,53,197,44,191,117,144,143,129,141,192,132,289,41,205,290,37,187,129,197,288,41,178,125,206,289,52,178,129,179,284,31,196,292,53,184,286,40,185,293,55,199,143,289,55,179,288,32,178,141,289,53,189,140,119,128,143,190,52,179,141,180,120,287,41,190,291,53,197,290,44,191,140,129,189,141,181,289,41,179,132,205,290,37,186,129,197,288,41,178,125,208,129,178,52],"openingSeconds":23.26,"real":{"file":"music-transformer/real_v1-05.mp3","seconds":71.08,"notes":367},"model":{"file":"music-transformer/v1-05_c00.mp3","midi":"music-transformer/v1-05_c00.mid","seconds":54.26,"notes":373},"prompt":{"file":"music-transformer/prompt_v1-05.mp3"}},{"id":"v1-06","composer":"Fr\u00e9d\u00e9ric Chopin","title":"Scherzo No. 1 in B Minor, Op. 20","placeholder":false,"tokens":[277,180,305,76,302,64,300,69,178,299,60,297,48,300,57,178,297,54,277,277,250,302,35,47,303,27,298,45,299,42,178,15,181,164,152,157,148,136,145,142,277,277,213,297,31,178,295,22,179,123,135,115,133,130,103,178,119,110,178,292,23,186,293,16,178,111,180,104,188,288,34,182,122,178,290,35,184,123,293,40,186,128,178,294,43,293,36,292,33,183,131,179,289,39,180,121,179,124,127,178,295,42,293,31,178,289,35,180,130,119,178,123,182,294,40,183,128,180,292,43,183,131,179,294,47,183,300,52,179,135,294,22,31,184,293,23,183,296,16,188,140,110,119,111,104,182,291,34,183,293,35,178,122,184,294,40,178,123,183,295,36,296,43,178,128,293,33,182,131,180,296,39,179,124,180,121,127,180,295,42,178,292,31,294,35,180,130,178,123,178,119,181,293,40,182,128,178,295,43,184,131,179,293,47,182,135,178,295,53,298,55,178,296,28,196,297,58,178,293,57,180,141,143,116,146,145,180,295,51,183,139,297,55,181,143,181,295,52,182,140,178,300,60,179,293,43,179,148,288,35,179,131,179,123,180,297,54,179,295,28,178,142,294,59,180,116,180,147,181,296,55,180,143,178,295,35,178,292,43,178,301,66,178,131,178,123,182,154,178,299,58,181,297,28,178,146,180,296,64,185,299,59,183,295,43,35,178,300,69,180,284,68,182,116,152,147,131,123,156,178,157,295,63,181,297,67,295,28,178,151,181,116,178,155,180,300,64,181,152,179,304,76,178,298,35,296,43,210,164,123,131,198,299,33,179,295,23,184,294,24,183,295,16,185,121,111,112,104,182,292,39,182,293,40,179,127,183,45,178,128,185,296,48,178,133,179,297,41,178,292,38,182,136,126,294,44,178,129,183,47,178,132,178,291,40,292,36,180,128,178,135,178,124,181,294,45,183,133,179,295,48,183,136,178,296,52,183,140,300,57,179,296,33,178,294,23,178,145,185,24,182,296,16,190,294,39,178,121,111,112,104,182,127,295,40,186,294,45,178,128,183,298,48,178,41,178,133,296,38,184,136,295,44,185,296,47,178,126,132,178,129,295,40,178,293,36,180,135,128,179,124,179,295,45,182,133,179,48,181,136,179,298,52,183,140,299,60,180,296,28,179,148],"openingSeconds":12.1,"real":{"file":"music-transformer/real_v1-06.mp3","seconds":28.76,"notes":373},"model":{"file":"music-transformer/v1-06_c00.mp3","midi":"music-transformer/v1-06_c00.mid","seconds":30.74,"notes":350},"prompt":{"file":"music-transformer/prompt_v1-06.mp3"}},{"id":"v1-07","composer":"Johann Sebastian Bach","title":"Prelude and Fugue in C-sharp Major, BWV 848","placeholder":false,"tokens":[277,180,294,58,178,289,30,186,146,180,293,54,187,142,178,294,49,184,137,180,296,54,178,118,184,142,180,295,58,180,292,42,182,146,181,297,54,184,142,179,130,179,59,178,291,32,183,147,181,295,54,184,142,181,59,185,147,180,54,184,142,181,120,296,59,179,290,42,184,147,178,130,178,296,54,185,142,181,297,61,178,290,34,185,149,180,297,54,186,142,179,299,61,185,149,181,298,54,186,142,178,122,178,61,179,292,42,181,149,179,130,180,299,54,186,142,180,293,35,299,63,181,288,61,180,149,179,151,179,297,54,186,142,179,298,63,184,151,182,297,54,179,123,183,142,180,63,182,288,42,180,151,181,293,54,181,130,179,142,181,296,61,179,289,34,183,149,182,293,54,185,142,180,295,61,182,149,183,54,178,122,182,142,181,61,178,290,42,182,130,179,149,180,294,54,186,142,178,291,32,180,294,59,185,147,180,295,58,186,146,179,298,56,185,144,178,299,58,179,120,187,298,59,292,41,178,146,182,129,179,147,179,298,56,185,144,181,295,58,291,30,189,295,56,180,146,183,297,54,179,144,178,118,185,56,180,142,188,296,58,178,144,297,42,186,54,179,146,187,298,56,184,142,182,58,178,144,186,130,178,56,178,296,41,179,146,182,144,179,298,54,179,296,39,178,129,183,142,179,127,178,295,53,178,37,182,141,182,297,51,178,125,295,39,183,139,127,182,49,294,41,185,129,182,37,179,137,279,49,183,125,181,293,32,179,137,184,120,179,37,182,125,181,61,178,41,181,149,178,129,181,294,37,186,125,180,293,51,294,42,184,130,182,293,37,186,125,178,294,42,184,130,178,139,180,295,37,187,125,178,296,42,179,61,183,130,179,149,179,37,186,125,180,297,44,178,53,183,132,182,296,37,187,125,178,44,184,141,179,132,180,297,37,186,125,178,61,298,44,184,132,178,149,181,297,37,185,125,180,299,54,178,296,46,187,134,179,295,37,185,125,181,46,183,134,181,142,294,37,183,125,181,295,61,178,294,46,182,149,178,134,182,37,187,125,178,53,179,292,44,182,132,182,294,37,183,125,181,44,181,141,181,132,180,37,185,125,181,295,61,296,44,182,132,179,149,180,295,37,187,125,179,42,51,184,130,182,294,41,188,129,297],"openingSeconds":10.05,"real":{"file":"music-transformer/real_v1-07.mp3","seconds":28.32,"notes":330},"model":{"file":"music-transformer/v1-07_c00.mp3","midi":"music-transformer/v1-07_c00.mid","seconds":27.42,"notes":331},"prompt":{"file":"music-transformer/prompt_v1-07.mp3"}},{"id":"v1-08","composer":"Fr\u00e9d\u00e9ric Chopin","title":"Nocturne in C-Sharp Minor, Op. Posth.","placeholder":false,"tokens":[274,288,54,180,287,45,180,284,18,286,49,277,186,142,133,106,137,220,290,52,179,287,30,42,290,49,225,289,50,178,286,35,179,47,180,118,181,137,181,140,256,130,138,123,135,235,291,49,179,287,30,178,288,45,178,287,42,230,291,48,287,26,187,118,181,137,212,133,242,283,25,179,284,41,286,49,179,285,44,181,130,114,183,136,277,183,113,129,137,132,277,261,286,54,178,283,18,179,45,179,284,49,269,142,106,133,137,220,285,52,179,284,42,178,285,30,178,283,49,227,286,50,179,285,47,178,284,35,184,137,179,118,181,140,250,130,138,135,123,235,289,49,179,285,45,178,284,42,178,30,238,288,48,180,285,26,188,137,181,118,277,192,286,49,181,283,25,281,41,179,44,193,133,130,136,114,277,224,137,113,129,132,277,256,291,61,187,284,30,251,282,37,224,284,45,222,285,42,229,118,286,30,183,287,59,184,149,125,133,130,201,289,61,190,147,291,59,187,149,61,179,287,38,184,147,293,59,188,149,61,186,147,294,59,187,149,292,61,180,289,44,183,147,292,59,184,149,61,184,147,59,182,149,295,61,187,147,294,59,189,289,42,183,294,57,194,147,296,59,208,149,294,61,182,118,285,30,192,126,132,130,178,145,147,204,37,221,284,45,222,282,42,223,287,54,180,118,284,30,197,125,133,130,182,149,194,285,37,216,284,45,223,283,42,232,142,282,54,187,296,66,180,118,285,30,198,125,133,130,142,212,288,37,219,289,46,216,42,226,118,288,30,178,154,296,66,198,125,134,130,199,291,37,199,295,64,212,154,66,178,286,46,212,152,294,64,189,287,42,198,293,62,221,150,291,62,180,286,35,199,118,125,154,134,152,130,204,284,38,219,286,47,217,42,222,123,35,198,150,126,135,130,197,285,38,219,47,223,283,42,232,294,61,178,285,29,197,123,126,135,130,206,286,37,225,288,47,219,286,44,219,293,56,182,117,285,29,197,125,135,132,192,149,183,289,37,219,287,47,219,286,44,228,289,57,180,285,30,193,117,125,135,132,180,144,201,287,37,218,286,45,220,285,42,222,291,59,182,286,26,186,118,125,133,130,210,287,32,217,289,54,182,285,42,217,283,35,219,142,287,54,179,286,25,186,145,147,114,120,130,123,188],"openingSeconds":41.27,"real":{"file":"music-transformer/real_v1-08.mp3","seconds":94.29,"notes":377},"model":{"file":"music-transformer/v1-08_c00.mp3","midi":"music-transformer/v1-08_c00.mid","seconds":96.41,"notes":379},"prompt":{"file":"music-transformer/prompt_v1-08.mp3"}},{"id":"v1-09","composer":"Johann Sebastian Bach","title":"French Suite No. 5 in G Major","placeholder":false,"tokens":[277,180,288,52,204,140,52,179,287,36,203,40,197,288,43,194,291,53,180,287,48,197,290,38,178,291,55,185,140,124,128,131,141,136,143,180,290,53,184,141,178,289,48,179,294,55,185,295,53,187,143,55,290,47,183,141,295,53,186,288,45,178,293,52,185,126,136,143,135,141,178,140,178,294,53,190,286,40,178,291,55,181,133,141,195,289,43,198,286,47,182,131,193,135,179,284,48,193,128,178,143,180,290,52,198,294,55,181,140,192,289,40,179,294,59,184,128,178,143,187,295,60,190,147,186,148,294,57,179,289,41,188,129,186,290,60,178,145,186,148,188,291,55,178,288,40,192,128,181,290,60,181,143,182,148,188,291,53,181,286,38,192,141,179,291,52,191,136,181,140,179,292,53,180,284,47,185,135,188,293,62,179,141,198,150,290,36,178,53,183,126,190,291,52,181,141,195,40,178,292,50,180,140,182,128,188,138,178,293,48,198,290,43,179,136,292,52,194,124,179,293,35,178,131,198,292,48,178,291,33,178,123,184,136,185,121,180,288,31,204,289,45,287,30,178,119,195,140,292,57,178,133,190,145,183,50,179,289,33,185,121,188,138,57,182,145,192,48,178,288,38,182,118,188,136,181,47,199,289,48,288,30,180,135,183,118,187,136,178,290,57,199,145,178,287,31,178,289,48,192,126,180,290,47,181,136,196,291,35,179,45,180,135,184,123,185,133,179,43,197,292,45,293,38,179,131,181,119,192,291,47,180,133,197,135,48,178,290,29,183,117,189,292,47,178,136,199,290,48,178,31,178,135,181,283,28,181,126,190,136,291,50,180,119,196,138,178,48,293,36,199,136,292,50,196,138,178,293,52,179,288,26,180,116,181,140,178,294,50,184,138,180,52,184,140,178,295,50,184,138,178,124,178,288,35,178,293,52,185,140,179,50,183,138,181,290,48,190,136,178,292,50,191,114,180,286,36,178,123,178,288,52,179,138,197,24,198,289,28,178,124,178,112,195,290,31,179,116,194,140,119,181,289,36,198,293,52,196,290,38,178,295,57,179,140,178,124,193,297,56,179,126,145,179,288,40,196,294,57,178,128,178,290,41,180,144,192,129,180,294,59,179,145,196,295,45,179,147,292,57,178,289,36,186,124,186,294,59,181,145,191,147],"openingSeconds":15.76,"real":{"file":"music-transformer/real_v1-09.mp3","seconds":46.37,"notes":336},"model":{"file":"music-transformer/v1-09_c00.mp3","midi":"music-transformer/v1-09_c00.mid","seconds":48.53,"notes":339},"prompt":{"file":"music-transformer/prompt_v1-09.mp3"}},{"id":"v1-10","composer":"Franz Liszt","title":"Valse de l'opera Faust de Charles Gounod, S.407","placeholder":false,"tokens":[276,301,57,303,50,178,298,45,178,296,38,198,145,138,133,126,302,45,303,50,57,298,38,214,133,145,301,45,303,57,178,138,126,299,38,303,50,197,133,145,126,138,45,304,50,301,38,303,57,215,133,126,300,45,298,38,178,138,145,303,50,302,57,199,133,126,138,145,301,57,303,50,300,45,38,206,145,138,133,126,189,294,38,179,291,33,178,30,178,290,14,181,102,182,289,26,178,126,118,179,121,114,181,295,39,178,292,14,178,291,31,179,285,34,178,127,102,178,119,179,292,26,178,122,180,114,184,293,13,182,101,181,25,183,113,183,294,39,291,12,178,34,31,180,100,182,287,24,182,112,180,293,10,182,122,98,179,127,119,180,292,22,187,12,178,294,43,179,292,34,178,287,39,183,292,24,189,290,13,184,122,295,34,178,110,100,131,127,112,101,290,31,179,292,25,179,122,179,119,113,180,294,39,180,291,14,280,31,289,34,178,127,180,102,178,122,178,119,179,291,26,181,114,185,287,13,181,101,181,293,25,182,113,179,294,39,178,290,34,178,288,31,179,293,12,181,100,181,24,181,112,182,122,119,296,10,179,127,180,98,182,22,183,298,46,178,296,12,178,291,43,185,296,24,187,294,13,182,131,292,43,293,39,178,295,34,180,110,134,100,112,101,131,294,25,178,127,122,180,113,181,297,26,295,14,298,42,178,297,33,296,38,180,102,121,178,126,201,114,130,193,301,50,303,62,298,38,299,45,306,69,303,57,204,138,150,126,133,157,145,302,50,301,45,303,57,304,62,69,300,38,218,138,133,145,150,157,302,57,304,69,302,62,299,45,302,50,178,126,298,38,197,145,157,150,133,138,126,299,45,38,302,62,50,303,57,304,69,215,133,150,138,145,157,300,45,301,50,303,69,299,62,301,57,178,126,298,38,198,133,157,150,145,302,62,304,69,300,45,303,57,178,138,126,50,300,38,210,150,157,133,145,138,126,186,294,50,178,45,178,291,42,179,290,14,181,102,181,138,178,130,292,26,182,114,179,133,43,296,51,179,291,14,178,290,46,178,131,139,179,102,134,182,292,26,182,114,181,291,13,182,101,182,294,25,183,113,180,291,46,297,51,178,291,43,178,12,39,181,100,181,293,24,178,131,179,127,179,134,112,182,295],"openingSeconds":8.46,"real":{"file":"music-transformer/real_v1-10.mp3","seconds":20.72,"notes":422},"model":{"file":"music-transformer/v1-10_c00.mp3","midi":"music-transformer/v1-10_c00.mid","seconds":20.09,"notes":370},"prompt":{"file":"music-transformer/prompt_v1-10.mp3"}},{"id":"v1-11","composer":"Johannes Brahms","title":"Sonata No. 1","placeholder":false,"tokens":[271,292,29,187,295,36,190,41,185,301,45,178,303,53,302,65,300,57,301,60,245,299,33,178,129,133,296,45,295,41,178,117,293,24,291,17,29,186,124,141,153,145,148,121,133,129,112,105,117,186,301,33,298,29,45,178,296,24,41,295,17,210,121,117,133,112,129,105,178,298,31,297,34,46,296,19,180,119,288,41,178,122,107,178,134,179,129,188,297,36,293,41,178,298,33,296,48,295,21,180,124,121,178,109,179,129,178,136,188,300,34,301,38,300,50,178,299,41,296,22,297,29,179,122,196,126,138,129,110,117,197,298,36,48,296,41,178,33,178,295,29,292,21,213,124,136,129,121,117,109,238,296,33,293,41,178,291,45,178,290,24,291,29,178,121,178,129,133,285,17,178,117,178,112,180,105,187,296,33,295,29,293,45,178,24,294,41,17,180,121,117,203,133,112,129,105,181,293,34,178,294,46,296,31,178,294,19,179,122,119,178,134,107,281,41,182,129,185,295,48,294,33,293,36,178,292,21,179,124,178,136,178,121,109,192,297,38,50,178,294,34,178,292,29,290,22,292,41,179,126,138,206,298,36,178,296,48,297,33,178,295,21,178,122,117,110,129,178,124,178,121,109,178,281,41,178,136,180,129,185,298,50,296,34,38,293,22,179,292,41,178,122,285,29,178,110,178,138,126,178,129,179,117,189,298,41,301,36,302,39,301,51,178,298,24,296,29,204,129,124,127,139,112,117,192,298,50,299,38,296,41,178,297,34,294,22,178,295,29,180,126,122,110,178,138,117,205,129,217,292,21,293,29,36,48,292,33,178,289,41,180,109,124,136,178,117,121,129,190,293,34,292,41,297,50,178,295,38,178,288,22,178,122,138,126,178,129,179,110,191,298,52,296,31,295,40,178,296,19,294,46,203,140,119,128,107,134,189,301,53,178,300,33,298,41,296,45,178,298,21,210,141,121,129,133,109,183,300,43,301,55,178,302,28,297,48,178,301,16,179,116,178,104,205,131,143,136,186,302,29,301,48,304,57,301,45,178,299,17,180,133,178,117,105,214,136,145,184,55,301,59,304,26,178,298,53,178,14,19,194,297,60,188,147,295,59,184,148,293,60,186,147,294,59,185,148,60,186,147,292,59,182,148,293,60,184,147,295,59,184,57,185],"openingSeconds":10.05,"real":{"file":"music-transformer/real_v1-11.mp3","seconds":32.41,"notes":404},"model":{"file":"music-transformer/v1-11_c00.mp3","midi":"music-transformer/v1-11_c00.mid","seconds":31.92,"notes":384},"prompt":{"file":"music-transformer/prompt_v1-11.mp3"}},{"id":"v1-12","composer":"Joseph Haydn","title":"Sonata in E flat Major, Hob. XVI: 49, I. Allegro","placeholder":false,"tokens":[274,292,20,179,293,24,178,296,27,180,298,32,178,302,44,297,39,178,298,36,247,301,48,178,108,112,115,120,132,127,124,297,30,295,27,293,20,299,44,178,293,24,298,42,231,136,130,299,48,298,42,179,115,296,27,178,118,132,294,30,44,178,108,112,292,24,291,20,189,302,49,178,132,300,41,296,44,178,108,29,20,178,25,183,136,130,115,118,112,266,137,295,49,185,48,184,46,183,132,108,296,44,290,20,179,292,22,183,113,294,25,179,296,31,179,298,43,179,296,37,178,295,39,178,129,117,137,136,134,132,228,300,46,181,108,295,20,179,110,293,22,182,113,296,25,179,119,297,31,179,301,51,178,131,298,43,180,125,127,190,108,215,300,49,194,297,48,180,292,27,294,39,290,24,294,44,289,20,178,134,110,113,119,139,131,137,291,32,239,108,178,127,179,112,132,178,136,115,120,251,289,49,288,55,178,287,46,39,185,137,134,127,222,297,58,178,143,195,288,46,289,49,178,296,63,178,146,287,39,182,127,178,134,137,227,292,61,178,151,285,43,186,131,182,149,181,291,60,179,284,44,196,148,178,132,245,293,61,65,180,289,39,187,127,178,153,178,149,181,290,41,178,292,63,60,184,129,182,148,180,290,43,179,151,293,61,290,58,181,146,178,131,179,149,189,293,60,178,289,44,290,56,190,144,180,148,178,132,247,288,65,61,179,285,39,188,127,179,153,149,181,287,41,178,290,60,178,289,63,185,129,181,148,180,151,178,286,43,178,290,58,179,289,61,179,146,182,131,179,149,187,60,178,288,56,178,285,44,185,144,181,148,178,132,259,300,65,178,299,61,194,298,63,178,301,60,191,149,300,61,178,298,58,185,153,151,148,146,186,56,178,299,60,181,149,180,144,180,148,184,65,300,61,185,149,186,298,63,300,60,193,61,297,58,193,153,151,148,149,146,179,298,60,296,56,186,148,144,185,60,178,297,63,192,298,61,178,297,58,192,148,60,178,56,190,151,149,146,179,148,179,296,55,58,179,144,192,297,56,178,296,53,193,143,55,178,297,51,186,146,144,141,183,143,178,49,296,53,178,139,193,295,51,179,294,48,191,137,296,49,178,295,46,187,141,139,136,179,134,180,137,178,294,48,178,293,44,182,132,187,295,46],"openingSeconds":15.08,"real":{"file":"music-transformer/real_v1-12.mp3","seconds":44.48,"notes":372},"model":{"file":"music-transformer/v1-12_c00.mp3","midi":"music-transformer/v1-12_c00.mid","seconds":33.82,"notes":355},"prompt":{"file":"music-transformer/prompt_v1-12.mp3"}},{"id":"v1-13","composer":"Alexander Scriabin","title":"Fragilite, Op.51","placeholder":false,"tokens":[273,288,49,220,285,44,200,289,56,179,286,53,188,284,41,207,286,33,179,287,61,180,141,286,53,220,144,291,56,180,137,286,49,188,129,292,41,212,289,43,189,132,121,149,141,144,137,129,178,60,180,286,49,55,205,287,37,195,290,65,181,143,285,55,179,148,286,60,186,27,202,291,64,180,125,287,37,179,143,286,55,201,131,287,43,188,143,291,55,179,288,52,188,137,294,49,211,137,292,49,188,287,53,178,58,179,153,148,115,152,125,131,143,140,200,289,44,191,291,56,179,141,288,53,187,287,41,206,33,181,289,61,178,141,287,53,215,144,292,56,179,137,291,49,188,129,294,41,209,291,43,190,146,132,121,149,141,144,137,129,290,60,178,286,55,178,49,183,143,137,199,290,37,189,292,65,180,288,55,181,148,283,60,186,289,27,202,125,143,37,292,63,55,180,148,287,60,196,131,290,43,192,294,67,179,151,293,63,180,148,281,60,185,296,51,210,131,294,43,187,70,179,290,61,199,125,293,37,195,297,68,179,148,292,60,179,153,115,143,155,151,139,131,158,149,185,125,178,295,44,210,291,29,183,65,179,290,56,179,148,286,60,217,148,293,60,181,288,53,178,144,287,56,183,132,294,44,218,292,48,183,156,117,153,148,141,144,132,202,286,38,186,290,55,178,284,50,181,286,44,193,278,32,203,285,22,288,60,182,284,53,202,120,287,32,189,290,52,179,132,288,44,187,126,290,38,203,136,294,48,185,143,291,55,182,138,282,50,199,132,290,44,186,293,54,179,138,287,50,190,126,290,38,201,289,34,179,148,292,60,178,138,288,50,179,142,54,200,126,38,189,141,293,53,179,138,289,50,189,136,297,48,182,132,285,44,209,136,293,48,180,287,43,185,110,120,140,143,122,148,142,126,141,138,132,178,288,53,179,49,203,291,37,196,292,51,178,137,290,49,189,291,27,209,293,45,182,125,288,37,187,287,60,180,137,286,49,179,285,55,183,136,131,141,139,115,197,290,43,200,58,178,143,286,55,179,137,285,49,192,292,46,226,137,49,192,133,125,148,131,146,143,134,206,287,44,189,288,56,180,287,53,193,284,41,205,287,33,180,288,61,179,144,141,287,53,280,56,212,144,292,56,179,137,289,49,187,129,294,41,208,292],"openingSeconds":18.17,"real":{"file":"music-transformer/real_v1-13.mp3","seconds":49.66,"notes":393},"model":{"file":"music-transformer/v1-13_c00.mp3","midi":"music-transformer/v1-13_c00.mid","seconds":45.23,"notes":416},"prompt":{"file":"music-transformer/prompt_v1-13.mp3"}},{"id":"v1-14","composer":"Ludwig van Beethoven","title":"Bagatelles, Op. 126 (Complete)","placeholder":false,"tokens":[277,179,290,48,179,285,40,178,31,242,290,47,179,136,128,119,285,31,43,234,287,41,178,119,31,228,294,48,178,119,286,31,178,288,40,226,294,50,178,135,131,129,136,119,128,287,41,31,224,119,178,289,35,288,31,225,129,123,119,180,294,52,178,288,36,31,225,138,124,119,180,287,33,178,31,294,53,213,140,292,52,191,121,119,141,140,178,293,50,178,286,31,178,285,34,196,138,187,119,199,31,178,35,178,291,55,189,122,190,143,213,52,180,284,36,181,123,196,288,35,182,124,179,119,195,123,178,295,60,180,289,33,183,140,192,291,31,179,121,179,148,201,295,60,178,119,178,289,29,178,286,33,198,117,180,121,178,287,28,178,31,212,116,180,26,29,186,119,229,291,59,183,148,195,293,62,189,147,191,290,31,178,293,60,178,290,28,178,114,117,181,150,225,292,33,178,29,182,119,179,116,225,50,200,295,53,205,292,31,36,178,121,117,138,52,183,148,178,141,224,124,293,33,36,209,292,53,187,119,289,31,179,293,34,181,140,121,124,178,119,181,122,184,289,29,178,292,57,178,291,33,220,141,117,121,192,287,26,179,286,29,208,290,59,178,287,53,178,288,31,178,117,184,145,180,114,180,141,181,119,191,147,188,290,62,178,286,24,283,31,288,53,257,286,60,179,52,178,150,141,284,36,190,119,268,112,148,140,124,188,288,48,180,283,40,204,284,31,212,290,47,178,286,43,186,136,119,180,128,193,287,31,202,290,41,199,119,289,31,202,292,48,178,288,40,188,291,50,185,136,292,48,179,119,286,31,186,138,293,50,185,136,48,190,129,138,287,41,292,50,187,135,131,128,119,136,193,289,31,201,290,35,199,119,31,201,289,36,181,291,52,185,53,185,140,292,52,181,119,288,31,181,141,292,53,186,140,293,52,189,141,53,180,129,138,123,124,140,178,119,178,288,33,198,31,191,293,52,178,141,186,140,179,50,291,34,180,121,119,195,138,179,289,31,200,295,55,179,292,35,179,119,185,122,190,143,291,31,206,293,52,178,123,291,36,201,293,35,181,124,178,119,196,123,296,60,179,292,33,180,140,194,31,180,121,190,148,191,119,179,296,62,290,29,178,288,33,200,117,183,28,31,293,60,179,121,180,150,211,116,181,290],"openingSeconds":22.39,"real":{"file":"music-transformer/real_v1-14.mp3","seconds":65.76,"notes":381},"model":{"file":"music-transformer/v1-14_c00.mp3","midi":"music-transformer/v1-14_c00.mid","seconds":53.2,"notes":345},"prompt":{"file":"music-transformer/prompt_v1-14.mp3"}},{"id":"v1-15","composer":"Franz Liszt","title":"Concert Etude \"Waldesrauschen\"","placeholder":false,"tokens":[271,292,61,181,286,58,200,290,56,186,291,53,188,289,49,183,144,291,56,186,141,53,185,149,294,61,179,146,58,188,144,291,56,182,141,53,189,137,49,184,144,290,56,186,141,291,53,186,149,292,61,179,146,58,185,144,56,186,141,291,53,188,137,290,49,185,144,291,56,187,141,53,186,149,61,179,146,290,58,185,144,291,56,184,141,290,53,188,137,291,49,187,144,290,56,188,141,291,53,198,296,47,179,149,289,61,184,146,281,58,184,144,291,56,190,141,290,53,191,137,49,187,144,289,56,191,141,290,53,191,293,46,180,149,288,61,178,146,137,144,141,181,282,58,181,135,180,146,290,56,190,53,184,293,43,183,288,49,186,144,289,56,185,141,53,185,134,293,46,181,149,288,61,183,279,58,178,144,291,56,184,141,53,186,294,44,180,137,291,49,179,131,149,146,144,141,183,290,56,183,291,53,189,294,42,179,292,61,180,291,58,184,144,292,56,185,141,291,53,188,137,294,40,293,49,178,134,132,149,146,144,141,179,130,184,291,56,182,294,53,189,296,42,291,61,180,289,58,181,144,294,56,186,141,292,53,188,295,41,178,137,291,49,179,128,149,146,144,141,181,292,56,183,294,53,192,295,39,178,137,144,141,179,293,61,178,292,58,182,294,56,185,53,187,296,36,294,49,181,130,129,127,149,146,144,141,183,292,56,182,294,53,189,291,61,179,295,39,178,291,58,179,137,144,141,180,294,56,187,291,53,188,294,37,179,292,49,180,124,149,146,144,141,183,291,56,187,53,186,292,35,180,290,61,178,289,58,185,144,292,56,189,141,289,53,184,291,34,180,127,125,137,123,149,146,144,141,180,290,49,192,54,186,293,37,178,291,61,180,289,58,183,293,56,182,142,54,189,296,42,178,137,294,49,186,144,292,56,183,142,293,54,185,297,44,179,149,290,61,180,146,291,58,184,144,293,56,185,142,291,54,186,293,45,182,122,125,130,137,149,146,144,142,288,49,182,132,180,290,56,182,137,292,54,189,290,61,178,58,186,144,291,56,186,142,54,182,292,46,182,149,146,144,142,289,49,180,133,184,290,56,184,291,54,181,293,42,185,289,61,180,285,58,181,144,291,56,187,142,286,54,180,291,39,179,134,137,149,146,144,142,179],"openingSeconds":10.28,"real":{"file":"music-transformer/real_v1-15.mp3","seconds":27.15,"notes":396},"model":{"file":"music-transformer/v1-15_c00.mp3","midi":"music-transformer/v1-15_c00.mid","seconds":42.82,"notes":382},"prompt":{"file":"music-transformer/prompt_v1-15.mp3"}},{"id":"v1-16","composer":"Robert Schumann","title":"Sonata No. 2 in G Minor, Op. 22 (Complete)","placeholder":false,"tokens":[261,298,36,193,301,51,60,298,43,178,299,48,55,277,277,269,131,288,43,199,139,289,51,191,131,290,43,187,124,289,36,187,131,292,43,188,139,289,51,187,131,292,43,186,124,36,186,131,294,43,186,139,51,187,131,295,43,185,124,36,185,131,297,43,186,139,298,51,187,131,295,43,186,136,296,48,178,124,294,36,184,143,298,55,184,131,294,43,178,148,301,60,190,139,294,51,187,131,43,189,124,292,36,187,299,58,181,131,290,43,185,139,289,51,186,300,56,179,131,292,43,188,124,290,36,185,143,298,55,181,131,291,43,191,139,288,51,183,131,291,43,188,124,36,186,131,293,43,185,139,292,51,187,143,296,55,180,131,291,43,185,124,290,36,186,291,44,178,136,148,146,144,139,131,178,293,47,179,124,184,132,178,289,50,185,292,44,178,297,53,188,290,36,185,295,43,297,51,187,294,48,186,143,301,55,178,131,293,43,185,124,292,36,187,132,295,44,179,135,297,47,180,138,141,139,136,131,124,185,132,293,50,186,298,53,292,44,187,36,185,296,43,178,299,51,187,295,48,185,131,139,293,43,299,51,183,124,292,36,191,143,135,138,141,132,136,131,139,178,297,50,178,293,44,180,124,184,132,178,294,48,185,292,44,185,293,41,188,296,45,179,138,136,132,297,50,178,129,183,133,179,48,186,295,45,189,292,42,185,138,295,50,178,294,43,180,136,133,130,183,131,180,293,47,186,295,43,187,294,42,188,131,295,43,185,38,187,294,41,188,293,39,187,292,36,178,299,60,184,138,135,130,131,126,129,127,185,290,48,184,292,51,190,136,294,48,185,299,58,188,136,296,48,186,301,56,187,136,294,48,186,300,43,178,298,55,188,136,293,48,178,124,148,139,146,144,186,136,294,51,186,139,180,293,48,186,295,41,178,293,51,186,136,292,48,187,295,39,180,143,55,184,136,293,48,187,294,38,178,143,295,55,178,131,129,139,136,183,127,180,143,178,43,184,131,178,293,47,296,53,187,135,294,43,183,141,180,131,295,51,178,36,293,48,179,126,185,139,295,43,185,136,131,178,300,55,296,39,183,124,181,143,178,297,43,185,131,179,300,55,186,298,43,187,296,38,297,47,299,53,186,131,297,43,187,51,178,295,48,298,36,186],"openingSeconds":13.49,"real":{"file":"music-transformer/real_v1-16.mp3","seconds":28.14,"notes":381},"model":{"file":"music-transformer/v1-16_c00.mp3","midi":"music-transformer/v1-16_c00.mid","seconds":27.46,"notes":356},"prompt":{"file":"music-transformer/prompt_v1-16.mp3"}},{"id":"v1-17","composer":"Ludwig van Beethoven","title":"Sonata No. 11 in B-flat Major, Op. 22, I. Allegro con brio","placeholder":false,"tokens":[277,181,296,39,295,43,185,127,178,294,38,180,131,181,39,178,126,183,127,181,295,34,182,122,181,298,43,178,297,46,296,27,179,293,15,178,131,134,178,115,179,103,216,295,39,294,43,178,291,27,178,288,15,179,127,131,115,180,103,249,296,39,298,43,185,127,296,38,186,131,179,126,294,39,184,127,180,295,34,180,122,184,297,43,46,295,27,178,292,15,180,134,115,178,131,103,216,293,39,294,43,179,289,15,178,27,178,131,178,127,179,103,178,115,247,294,39,178,293,43,184,127,180,38,182,131,179,126,178,292,39,182,127,181,293,34,182,122,180,295,46,178,43,184,134,179,131,296,42,187,295,43,181,130,178,131,181,297,39,182,127,180,298,51,178,295,46,186,134,178,298,45,180,139,183,133,296,46,184,134,178,298,43,185,131,179,301,55,299,51,186,139,297,50,186,299,51,178,143,178,138,182,139,178,297,46,185,302,58,178,134,299,55,187,300,54,178,143,183,297,55,188,301,51,190,291,27,183,302,63,188,146,142,143,178,290,31,184,115,181,291,34,186,39,188,290,27,188,119,291,31,186,122,34,187,127,39,183,139,115,119,122,182,27,188,31,185,34,187,127,39,184,296,62,181,115,291,27,184,151,119,122,127,178,298,63,178,150,179,115,289,31,184,151,119,290,34,296,65,184,122,179,153,63,289,39,186,127,27,178,296,62,186,290,32,189,288,36,178,298,60,185,288,39,186,115,292,27,179,299,58,185,120,292,32,187,124,293,36,180,300,56,186,127,291,39,187,115,27,300,55,186,151,150,148,146,120,124,144,127,178,292,32,186,34,178,299,53,178,115,120,181,143,182,291,38,179,122,183,126,179,27,299,60,180,141,183,291,32,183,115,180,120,178,34,297,58,180,148,180,122,181,290,38,183,126,180,289,27,295,56,178,146,184,115,178,289,31,185,119,178,34,186,122,180,39,186,144,127,178,293,55,289,27,186,115,180,291,31,187,290,34,186,39,187,294,27,188,119,31,186,122,296,34,192,288,36,179,296,50,178,143,127,115,119,122,178,124,179,294,27,184,299,51,178,292,31,179,138,180,115,181,294,34,178,139,119,297,53,186,122,51,178,141,293,37,186,301,49,178,125,178,293,27,187,294,32,180,115,183,295,36],"openingSeconds":11.19,"real":{"file":"music-transformer/real_v1-17.mp3","seconds":28.58,"notes":347},"model":{"file":"music-transformer/v1-17_c00.mp3","midi":"music-transformer/v1-17_c00.mid","seconds":28.0,"notes":351},"prompt":{"file":"music-transformer/prompt_v1-17.mp3"}},{"id":"v1-18","composer":"Ludwig van Beethoven","title":"Bagatelles Op126","placeholder":false,"tokens":[271,292,48,179,288,40,179,286,31,253,294,47,186,289,43,181,119,286,31,183,136,128,240,288,41,179,119,280,31,232,294,48,180,290,40,182,119,287,31,182,135,131,129,228,295,50,183,288,41,179,119,285,31,185,136,128,236,288,35,179,119,286,31,231,295,52,185,287,36,178,138,129,119,178,286,31,182,123,221,295,53,180,119,287,31,181,288,33,180,140,179,124,207,295,52,179,141,184,121,180,296,50,178,140,179,292,34,193,138,218,122,294,55,180,289,35,197,143,213,293,52,182,123,179,287,36,208,119,184,35,184,124,197,292,60,181,123,288,33,184,140,196,291,31,206,148,297,60,182,121,291,33,179,289,29,186,119,193,117,180,288,28,289,31,186,121,206,292,29,288,26,181,116,187,119,237,294,59,190,148,195,295,62,180,147,204,60,184,290,31,179,288,28,180,117,150,180,114,231,116,292,33,180,291,29,181,119,254,50,207,293,53,179,148,184,138,197,292,52,178,141,181,288,36,179,285,31,181,117,180,121,240,124,291,36,179,33,214,296,53,187,140,119,179,121,179,292,31,196,297,57,178,124,180,119,288,33,179,141,290,29,228,117,291,29,179,289,26,197,121,188,294,59,180,290,53,179,145,179,117,289,31,188,114,210,292,62,181,141,289,53,179,119,287,31,179,288,24,179,147,259,60,180,287,52,180,150,141,119,179,284,36,261,294,48,184,289,40,196,112,148,140,124,200,285,31,199,294,47,185,292,43,178,136,128,191,119,195,288,31,196,294,41,182,131,184,119,194,291,31,197,293,48,180,40,186,288,50,183,136,294,48,183,138,291,50,182,136,295,48,181,119,290,31,180,138,295,50,182,136,294,48,187,135,297,47,181,129,128,138,136,182,296,48,178,135,186,136,178,290,41,295,50,204,119,189,290,31,202,293,35,182,129,186,119,192,294,31,199,138,123,178,52,182,291,36,178,140,181,295,53,178,119,185,294,52,181,141,53,184,140,297,52,180,290,31,180,141,294,53,184,140,295,52,187,50,184,140,296,52,180,124,141,138,183,140,53,181,290,33,188,119,207,31,185,141,293,52,187,140,178,294,50,180,121,181,289,34,187,119,183,138,189,31,195,122,181,295,55,181,290,35,184,119,189,143,186,289,31,201,123,179],"openingSeconds":23.8,"real":{"file":"music-transformer/real_v1-18.mp3","seconds":59.17,"notes":360},"model":{"file":"music-transformer/v1-18_c00.mp3","midi":"music-transformer/v1-18_c00.mid","seconds":63.83,"notes":342},"prompt":{"file":"music-transformer/prompt_v1-18.mp3"}},{"id":"v1-19","composer":"Franz Liszt","title":"Transcendental Etude No. 4 \"Mazeppa\"","placeholder":false,"tokens":[277,178,292,42,180,295,60,178,294,51,178,291,48,179,296,66,178,297,69,178,148,178,130,179,282,46,299,57,178,136,303,75,182,286,71,285,70,206,154,282,66,187,139,157,134,145,163,159,158,154,219,293,37,178,296,55,179,61,178,291,46,293,43,179,295,64,180,285,63,178,304,70,300,52,221,125,143,149,134,131,152,151,158,140,228,286,32,180,289,50,178,41,291,38,179,120,180,138,292,59,56,182,297,65,295,47,213,291,27,182,294,45,291,36,178,290,33,179,129,126,147,144,153,135,115,178,293,51,54,178,133,181,299,60,178,294,42,206,292,22,184,289,31,293,40,178,292,28,178,295,46,178,298,49,181,297,37,299,55,205,292,17,180,293,35,183,23,296,41,178,292,26,178,281,19,178,296,44,179,297,32,178,301,50,180,110,287,22,202,295,18,178,124,294,36,181,280,27,178,130,295,42,288,24,178,296,45,181,121,138,299,33,50,178,137,291,49,178,139,142,148,119,128,116,134,125,143,105,123,111,129,114,107,132,120,110,106,124,130,112,133,178,121,138,198,294,19,179,296,37,183,293,25,180,299,40,178,297,28,178,301,46,178,298,34,179,115,137,107,125,291,33,293,44,178,128,116,122,179,134,121,132,200,294,15,181,295,34,180,293,22,181,299,37,179,301,43,178,299,31,179,289,24,178,113,288,25,178,103,122,110,125,119,206,292,14,189,131,293,43,178,295,38,293,22,178,295,19,178,302,50,178,299,46,301,26,178,112,113,223,102,131,126,110,107,138,134,114,226,302,50,62,299,38,178,298,55,299,58,296,26,34,31,217,138,150,126,143,146,114,122,119,251,303,74,298,66,178,301,62,300,60,50,178,299,69,297,38,178,42,45,262,162,154,150,148,138,157,126,130,133,277,277,220,282,14,200,288,27,180,286,15,192,285,18,179,286,30,186,287,22,181,288,34,192,283,33,186,288,31,179,278,19,186,118,288,30,180,106,284,18,186,103,15,178,115,280,27,185,288,26,181,102,284,14,184,103,288,15,181,115,287,27,184,106,290,18,178,118,291,30,187,119,290,31,178,107,282,19,183,121,291,21,293,33,188,122,294,34,179,110,288,22,185,115,289,27,178,293,39,186,114,291,26,182,38,183,24,178,293,36,187],"openingSeconds":13.71,"real":{"file":"music-transformer/real_v1-19.mp3","seconds":26.25,"notes":403},"model":{"file":"music-transformer/v1-19_c00.mp3","midi":"music-transformer/v1-19_c00.mid","seconds":26.59,"notes":411},"prompt":{"file":"music-transformer/prompt_v1-19.mp3"}},{"id":"v1-20","composer":"Franz Liszt","title":"Ballade No. 2 in B Minor, S. 171","placeholder":false,"tokens":[274,286,11,248,285,16,205,286,17,193,287,18,188,19,185,290,20,186,289,21,186,290,22,187,291,23,184,290,24,185,111,294,23,197,109,291,21,187,108,292,20,189,107,289,19,185,106,18,178,99,104,105,110,112,111,109,108,107,181,106,184,17,189,286,16,194,285,11,197,104,287,16,189,105,286,17,187,291,18,188,289,19,183,293,20,186,290,21,187,289,22,185,291,23,185,290,24,185,111,292,23,189,99,104,105,106,107,108,109,110,112,111,187,291,21,186,20,191,279,19,186,286,18,191,280,17,187,286,16,206,282,11,196,104,285,16,192,296,35,202,105,288,17,187,106,292,18,187,107,288,19,183,108,292,20,186,109,289,21,183,291,22,289,28,291,31,188,23,184,290,24,183,99,104,105,106,107,108,109,110,111,112,178,292,23,194,281,22,178,119,111,179,110,178,291,21,178,116,185,20,188,285,19,185,290,18,190,286,17,194,289,31,179,284,28,200,285,11,198,288,16,179,296,36,199,105,289,17,187,106,292,18,186,107,288,19,183,108,292,20,186,109,289,21,181,119,296,31,178,116,291,28,178,293,22,187,294,23,185,292,24,188,111,23,179,299,38,184,123,99,104,105,106,107,108,109,119,116,110,112,111,183,287,22,184,293,21,187,20,189,287,19,185,290,18,191,286,17,186,292,31,178,289,28,185,284,16,206,285,11,194,104,290,16,186,298,40,183,124,110,109,108,107,106,105,119,116,181,126,189,290,17,186,293,18,187,289,19,183,293,20,187,289,21,182,293,31,290,28,179,99,104,105,106,107,108,109,292,22,183,110,180,295,23,186,291,24,183,111,112,178,116,292,23,192,282,22,181,119,111,110,178,292,21,186,291,20,186,288,19,187,289,18,188,290,17,194,31,178,286,28,180,282,16,199,285,11,194,104,289,16,179,109,108,107,106,105,180,99,182,288,17,189,293,18,187,287,19,183,292,20,187,289,21,186,292,22,182,119,298,31,35,178,116,295,28,183,292,23,193,291,24,188,111,292,23,184,299,38,183,110,290,22,178,128,104,105,106,107,108,109,112,111,186,292,21,186,294,20,188,290,19,186,291,18,191,290,17,194,298,36,178,116,292,28,184,281,16,200,286,11,195,104,290,16,181,124,299,36,186,119,123],"openingSeconds":15.05,"real":{"file":"music-transformer/real_v1-20.mp3","seconds":45.09,"notes":384},"model":{"file":"music-transformer/v1-20_c00.mp3","midi":"music-transformer/v1-20_c00.mid","seconds":29.54,"notes":387},"prompt":{"file":"music-transformer/prompt_v1-20.mp3"}}]}</script>
+<script>
+(() => {
+  'use strict';
+  const DATA = JSON.parse(document.getElementById('live-data').textContent);
+  const RESERVED = 2, NOTE_ON = 2, NOTE_OFF = 90, TIME_SHIFT = 178, VELOCITY = 278;
+  const MIN_PITCH = 21, MAX_PITCH = 108, STEP_SECONDS = 0.01, MAX_NOTE_SECONDS = 5.0;
+  const $ = (id) => document.getElementById(id);
+
+  // ---- Event decoding (port of note_seq Performance.to_sequence as used by midi_io.py) ----
+  function decodeTokens(tokens) {
+    const active = new Map();
+    const notes = [];
+    let step = 0, velocity = 100;
+    const close = (pitch, startStep, vel, endStep) => {
+      if (endStep === startStep) return;
+      const start = startStep * STEP_SECONDS;
+      let end = endStep * STEP_SECONDS;
+      if (end - start > MAX_NOTE_SECONDS) end = start + MAX_NOTE_SECONDS;
+      notes.push({ pitch, start, end, velocity: vel });
+    };
+    for (const raw of tokens) {
+      const t = Number(raw);
+      if (t < RESERVED) continue;
+      if (t < NOTE_OFF) {
+        const pitch = MIN_PITCH + (t - NOTE_ON);
+        if (!active.has(pitch)) active.set(pitch, []);
+        active.get(pitch).push([step, velocity]);
+      } else if (t < TIME_SHIFT) {
+        const pitch = MIN_PITCH + (t - NOTE_OFF);
+        const list = active.get(pitch);
+        if (list && list.length) { const [s, v] = list.shift(); close(pitch, s, v, step); }
+      } else if (t < VELOCITY) {
+        step += (t - TIME_SHIFT) + 1;
+      } else {
+        velocity = 1 + (t - VELOCITY) * 4;
+      }
+    }
+    for (const [pitch, list] of active) for (const [s, v] of list) close(pitch, s, v, step);
+    notes.sort((a, b) => a.start - b.start || a.pitch - b.pitch);
+    let total = step * STEP_SECONDS;
+    for (const n of notes) if (n.end > total) total = n.end;
+    return { notes, seconds: total, lastStep: step };
+  }
+
+  function promptSeconds(tokens) {
+    let step = 0;
+    for (const raw of tokens) { const t = Number(raw); if (t >= TIME_SHIFT && t < VELOCITY) step += (t - TIME_SHIFT) + 1; }
+    return step * STEP_SECONDS;
+  }
+
+  // ---- Standard MIDI file, format 0, 220 ticks per quarter at 120 bpm (note_seq's defaults) ----
+  function midiFile(notes) {
+    const ppq = 220, ticksPerSecond = ppq * 2;
+    const events = [];
+    for (const n of notes) { events.push([n.start, 1, n.pitch, n.velocity]); events.push([n.end, 0, n.pitch, 0]); }
+    events.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const bytes = [0x00, 0xFF, 0x51, 0x03, 0x07, 0xA1, 0x20, 0x00, 0xC0, 0x00];
+    const vlq = (v) => { const out = [v & 0x7f]; v = Math.floor(v / 128); while (v > 0) { out.unshift((v & 0x7f) | 0x80); v = Math.floor(v / 128); } return out; };
+    let last = 0;
+    for (const [t, on, pitch, vel] of events) {
+      const tick = Math.round(t * ticksPerSecond);
+      for (const b of vlq(tick - last)) bytes.push(b);
+      last = tick;
+      bytes.push(on ? 0x90 : 0x80, pitch, on ? Math.max(1, Math.min(127, vel)) : 0);
+    }
+    bytes.push(0x00, 0xFF, 0x2F, 0x00);
+    const n = bytes.length;
+    const head = [0x4D, 0x54, 0x68, 0x64, 0, 0, 0, 6, 0, 0, 0, 1, (ppq >> 8) & 0xff, ppq & 0xff,
+                  0x4D, 0x54, 0x72, 0x6B, (n >>> 24) & 0xff, (n >>> 16) & 0xff, (n >>> 8) & 0xff, n & 0xff];
+    const out = new Uint8Array(head.length + n);
+    out.set(head, 0); out.set(bytes, head.length);
+    return out;
+  }
+
+  // ---- Sampling (same rule as sample.py filter_logits) ----
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function sampleNext(logits, temperature, topP, rng) {
+    const n = logits.length, scale = 1 / Math.max(temperature, 1e-6);
+    let max = -Infinity;
+    for (let i = RESERVED; i < n; i++) { const v = logits[i] * scale; if (v > max) max = v; }
+    const probs = new Float64Array(n);
+    let sum = 0;
+    for (let i = RESERVED; i < n; i++) { probs[i] = Math.exp(logits[i] * scale - max); sum += probs[i]; }
+    for (let i = RESERVED; i < n; i++) probs[i] /= sum;
+    let order = [];
+    for (let i = RESERVED; i < n; i++) order.push(i);
+    order.sort((a, b) => probs[b] - probs[a]);
+    if (topP < 1) {
+      let cumulative = 0, keep = 0;
+      for (; keep < order.length; keep++) {
+        const p = probs[order[keep]];
+        cumulative += p;
+        if (cumulative - p > topP) break;
+      }
+      order = order.slice(0, Math.max(1, keep));
+    }
+    let total = 0;
+    for (const i of order) total += probs[i];
+    let r = rng() * total;
+    for (const i of order) { r -= probs[i]; if (r <= 0) return i; }
+    return order[order.length - 1];
+  }
+
+  // ---- The model ----
+  let ort = null, session = null;
+  const timing = { prefill: [], generate: [] };
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src; s.onload = resolve; s.onerror = () => reject(new Error('could not load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+  async function fetchWithProgress(url, onProgress) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
+    const total = Number(response.headers.get('content-length')) || 0;
+    if (!response.body || !total) return new Uint8Array(await response.arrayBuffer());
+    const reader = response.body.getReader();
+    const out = new Uint8Array(total);
+    let received = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (received + value.length > out.length) throw new Error('response longer than announced');
+      out.set(value, received); received += value.length;
+      onProgress(received, total);
+    }
+    return out.subarray(0, received);
+  }
+  class Engine {
+    constructor(session, model) { this.session = session; this.L = model.layers; this.H = model.heads; this.D = model.depth; this.reset(); }
+    reset() { this.m = 0; this.k = new Float32Array(0); this.v = new Float32Array(0); }
+    async step(token) {
+      const dims = [this.L, this.H, this.m, this.D];
+      const feeds = {
+        token: new ort.Tensor('int64', BigInt64Array.from([BigInt(token)]), [1]),
+        past_k: new ort.Tensor('float32', this.k, dims),
+        past_v: new ort.Tensor('float32', this.v, dims),
+      };
+      const out = await this.session.run(feeds);
+      this.k = out.present_k.data; this.v = out.present_v.data; this.m += 1;
+      return out.logits.data;
+    }
+  }
+  let engine = null, cancelled = false, busy = false;
+
+  const ui = {
+    load: $('load'), generate: $('generate'), cancel: $('cancel'), progress: $('progress'), status: $('status'),
+    prompt: $('prompt'), length: $('length'), temperature: $('temperature'), topp: $('topp'), seed: $('seed'),
+    play: $('play'), playEntry: $('play-entry'), stop: $('stop'), clock: $('clock'), download: $('download'),
+    roll: $('roll'), caption: $('roll-caption'), speed: $('speed-cell'),
+  };
+  const setStatus = (text, error) => { ui.status.textContent = text; ui.status.classList.toggle('error', !!error); };
+  const setProgress = (value) => { if (value == null) { ui.progress.hidden = true; } else { ui.progress.hidden = false; ui.progress.value = value; } };
+  ui.temperature.addEventListener('input', () => { $('temperature-out').textContent = Number(ui.temperature.value).toFixed(2); });
+  ui.topp.addEventListener('input', () => { $('topp-out').textContent = Number(ui.topp.value).toFixed(2); });
+
+  async function loadModel() {
+    ui.load.disabled = true;
+    try {
+      setStatus('Loading the runtime…'); setProgress(0);
+      if (!window.ort) await loadScript(new URL(DATA.ort.script, location.href).href);
+      ort = window.ort;
+      ort.env.wasm.wasmPaths = new URL(DATA.ort.dir, location.href).href;
+      ort.env.wasm.numThreads = 1;
+      const bytes = await fetchWithProgress(new URL(DATA.model.file, location.href).href, (got, total) => {
+        setProgress(got / total); setStatus(`Downloading the model: ${(got / 1e6).toFixed(0)} of ${(total / 1e6).toFixed(0)} MB`);
+      });
+      setStatus('Preparing the model (folding the 16-bit weights to 32-bit)…');
+      const started = performance.now();
+      session = await ort.InferenceSession.create(bytes, { executionProviders: ['wasm'], graphOptimizationLevel: 'all' });
+      engine = new Engine(session, DATA.model);
+      const warm = performance.now();
+      await engine.step(0); engine.reset();
+      setProgress(null);
+      setStatus(`Model ready (prepared in ${((warm - started) / 1000).toFixed(1)} s; first step ${(performance.now() - warm).toFixed(0)} ms). Choose an opening and compose.`);
+      ui.load.classList.add('hidden'); ui.generate.classList.remove('hidden');
+    } catch (error) {
+      console.error(error);
+      setProgress(null); ui.load.disabled = false;
+      setStatus(`The model could not be loaded: ${error.message}`, true);
+    }
+  }
+
+  // ---- Piano roll ----
+  const state = { promptTokens: [], tokens: [], notes: [], seconds: 0, promptSeconds: 0, generatedFrom: 0 };
+  function css(name) { return getComputedStyle(ui.roll.parentElement).getPropertyValue(name).trim(); }
+  function drawRoll(playhead) {
+    const canvas = ui.roll, dpr = window.devicePixelRatio || 1;
+    const width = canvas.clientWidth, height = canvas.clientHeight;
+    if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) { canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); }
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+    const total = Math.max(state.seconds, state.promptSeconds + 1, 4);
+    const pad = { l: 6, r: 6, t: 8, b: 18 };
+    const sx = (t) => pad.l + (t / total) * (width - pad.l - pad.r);
+    const rowH = (height - pad.t - pad.b) / (MAX_PITCH - MIN_PITCH + 1);
+    const sy = (p) => pad.t + (MAX_PITCH - p) * rowH;
+    ctx.fillStyle = css('--rule-soft');
+    for (let p = MIN_PITCH; p <= MAX_PITCH; p++) { const k = p % 12; if (k === 1 || k === 3 || k === 6 || k === 8 || k === 10) ctx.fillRect(pad.l, sy(p), width - pad.l - pad.r, rowH); }
+    ctx.strokeStyle = css('--rule'); ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let s = 0; s <= total; s += total > 60 ? 10 : 5) { const x = Math.round(sx(s)) + .5; ctx.moveTo(x, pad.t); ctx.lineTo(x, height - pad.b); }
+    ctx.stroke();
+    ctx.fillStyle = css('--ink-3'); ctx.font = `11px ${css('--f-mono') || 'monospace'}`; ctx.textAlign = 'center';
+    for (let s = 0; s <= total; s += total > 60 ? 10 : 5) { ctx.textAlign = s === 0 ? 'left' : 'center'; ctx.fillText(`${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`, s === 0 ? pad.l + 2 : sx(s), height - 5); }
+    if (state.promptSeconds > 0) {
+      const x = Math.round(sx(state.promptSeconds)) + .5;
+      ctx.strokeStyle = css('--ink-2'); ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, height - pad.b); ctx.stroke(); ctx.setLineDash([]);
+    }
+    const c1 = css('--series-1'), c2 = css('--series-2');
+    for (const n of state.notes) {
+      ctx.fillStyle = n.start < state.promptSeconds - 1e-6 ? c1 : c2;
+      ctx.globalAlpha = 0.45 + 0.55 * Math.min(1, n.velocity / 110);
+      const x = sx(n.start), w = Math.max(2, sx(n.end) - x), y = sy(n.pitch);
+      ctx.fillRect(x, y + 0.5, w, Math.max(1.5, rowH - 1));
+    }
+    ctx.globalAlpha = 1;
+    if (playhead != null && playhead >= 0) {
+      const x = Math.round(sx(Math.min(playhead, total))) + .5;
+      ctx.strokeStyle = css('--ink'); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, height - pad.b); ctx.stroke();
+    }
+  }
+  new ResizeObserver(() => drawRoll(player.position())).observe(ui.roll);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => drawRoll(player.position()));
+
+  // ---- Piano sampler ----
+  const player = {
+    ctx: null, buffers: new Map(), loading: null, sources: [], startedAt: 0, offset: 0, playing: false, raf: 0,
+    async ensure() {
+      if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      if (this.ctx.state === 'suspended') await this.ctx.resume();
+      if (!this.loading) this.loading = (async () => {
+        const jobs = [];
+        for (const pitch of DATA.piano.pitches) for (const velocity of DATA.piano.velocities) {
+          const url = new URL(`${DATA.piano.dir}p${pitch}_v${velocity}.mp3`, location.href).href;
+          jobs.push(fetch(url).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`); return r.arrayBuffer(); })
+            .then((b) => this.ctx.decodeAudioData(b)).then((buffer) => this.buffers.set(`${pitch}_${velocity}`, buffer)));
+        }
+        await Promise.all(jobs);
+      })();
+      await this.loading;
+    },
+    nearest(list, value) { let best = list[0]; for (const x of list) if (Math.abs(x - value) < Math.abs(best - value)) best = x; return best; },
+    play(notes, from) {
+      this.stop();
+      const ctx = this.ctx, t0 = ctx.currentTime + 0.08;
+      this.offset = from; this.startedAt = t0; this.playing = true;
+      const master = ctx.createGain(); master.gain.value = 0.9; master.connect(ctx.destination);
+      for (const n of notes) {
+        if (n.end <= from) continue;
+        const pitch = this.nearest(DATA.piano.pitches, n.pitch);
+        const layer = this.nearest(DATA.piano.velocities, n.velocity);
+        const buffer = this.buffers.get(`${pitch}_${layer}`);
+        if (!buffer) continue;
+        const start = t0 + Math.max(0, n.start - from);
+        const skip = Math.max(0, from - n.start);
+        const source = ctx.createBufferSource();
+        source.buffer = buffer; source.playbackRate.value = Math.pow(2, (n.pitch - pitch) / 12);
+        const gain = ctx.createGain();
+        const level = Math.min(1.6, Math.max(0.15, n.velocity / layer));
+        gain.gain.setValueAtTime(level, start);
+        const release = t0 + (n.end - from);
+        gain.gain.setTargetAtTime(0.0001, release, 0.06);
+        source.connect(gain); gain.connect(master);
+        source.start(start, skip); source.stop(release + 0.5);
+        this.sources.push(source);
+      }
+      const end = t0 + (state.seconds - from) + 1.0;
+      const tick = () => {
+        if (!this.playing) return;
+        const pos = this.position();
+        ui.clock.textContent = `${fmt(pos)} / ${fmt(state.seconds)}`;
+        drawRoll(pos);
+        if (ctx.currentTime > end) { this.stop(); return; }
+        this.raf = requestAnimationFrame(tick);
+      };
+      this.raf = requestAnimationFrame(tick);
+      ui.stop.disabled = false;
+    },
+    position() { if (!this.playing || !this.ctx) return null; return Math.max(0, this.ctx.currentTime - this.startedAt) + this.offset; },
+    stop() {
+      for (const s of this.sources) { try { s.stop(); } catch (e) { /* already stopped */ } }
+      this.sources = []; this.playing = false; cancelAnimationFrame(this.raf);
+      ui.stop.disabled = true; ui.clock.textContent = `0:00 / ${fmt(state.seconds)}`; drawRoll(null);
+    },
+  };
+  const fmt = (s) => { s = Math.max(0, Math.floor(s || 0)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+
+  async function playFrom(from) {
+    try {
+      ui.play.disabled = ui.playEntry.disabled = true;
+      setStatus(player.buffers.size ? '' : 'Loading the piano samples (2.4 MB)…');
+      await player.ensure();
+      setStatus('');
+      player.play(state.notes, from);
+    } catch (error) { console.error(error); setStatus(`Playback failed: ${error.message}`, true); }
+    finally { ui.play.disabled = ui.playEntry.disabled = false; }
+  }
+  ui.play.addEventListener('click', () => playFrom(0));
+  ui.playEntry.addEventListener('click', () => playFrom(Math.max(0, state.promptSeconds - 2)));
+  ui.stop.addEventListener('click', () => player.stop());
+
+  // ---- Compose ----
+  function showTokens(tokens, promptLength) {
+    state.tokens = tokens;
+    const decoded = decodeTokens(tokens);
+    state.notes = decoded.notes; state.seconds = decoded.seconds;
+    state.promptSeconds = promptLength ? promptSeconds(tokens.slice(0, promptLength)) : 0;
+    drawRoll(player.position());
+  }
+  async function compose() {
+    if (busy || !engine) return;
+    busy = true; cancelled = false; player.stop();
+    ui.generate.classList.add('hidden'); ui.cancel.classList.remove('hidden');
+    ui.play.disabled = ui.playEntry.disabled = true; ui.download.classList.add('hidden');
+    const index = Number(ui.prompt.value);
+    const prompt = index >= 0 ? DATA.prompts[index].tokens.slice() : [];
+    const newTokens = Math.min(Number(ui.length.value), DATA.model.context - prompt.length - 1);
+    const temperature = Number(ui.temperature.value), topP = Number(ui.topp.value), seed = Number(ui.seed.value) || 0;
+    const label = index >= 0 ? `${DATA.prompts[index].composer}, ${DATA.prompts[index].title}` : 'silence';
+    try {
+      engine.reset();
+      const sequence = [0].concat(prompt);
+      let logits = null;
+      timing.prefill = [];
+      for (let i = 0; i < sequence.length; i++) {
+        const t = performance.now();
+        logits = await engine.step(sequence[i]);
+        timing.prefill.push(performance.now() - t);
+        if (i % 8 === 0 || i === sequence.length - 1) {
+          setProgress(i / (sequence.length + newTokens));
+          setStatus(`Reading the opening: event ${i + 1} of ${sequence.length}`);
+          if (i === 0) showTokens(prompt, prompt.length);
+        }
+        if (cancelled) throw new Error('cancelled');
+      }
+      const rng = mulberry32(seed >>> 0);
+      const out = prompt.slice();
+      timing.generate = [];
+      for (let i = 0; i < newTokens; i++) {
+        const next = sampleNext(logits, temperature, topP, rng);
+        out.push(next);
+        const t = performance.now();
+        logits = await engine.step(next);
+        timing.generate.push(performance.now() - t);
+        if (i % 8 === 7 || i === newTokens - 1) {
+          setProgress((sequence.length + i + 1) / (sequence.length + newTokens));
+          const avg = timing.generate.reduce((a, b) => a + b, 0) / timing.generate.length;
+          setStatus(`Composing: event ${i + 1} of ${newTokens} · ${avg.toFixed(0)} ms per event`);
+          showTokens(out, prompt.length);
+        }
+        if (cancelled) break;
+      }
+      showTokens(out, prompt.length);
+      const median = (xs) => { if (!xs.length) return 0; const s = xs.slice().sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+      const perEvent = median(timing.generate);
+      ui.speed.textContent = `Median ${perEvent.toFixed(0)} ms per event while composing (${median(timing.prefill).toFixed(0)} ms per event while reading the opening) in this browser, single WebAssembly thread; ${navigator.hardwareConcurrency || '?'} logical cores reported.`;
+      const generated = out.length - prompt.length;
+      setProgress(null);
+      setStatus(`${cancelled ? 'Stopped after' : 'Composed'} ${generated} new events after ${label} (seed ${seed}, temperature ${temperature}, top-p ${topP}): ${state.notes.length} notes, ${fmt(state.seconds)} in all${state.promptSeconds ? `, the model enters at ${fmt(state.promptSeconds)}` : ''}.`);
+      ui.caption.textContent = index >= 0
+        ? `Blue: the pianist's opening (${fmt(state.promptSeconds)}). Orange: the model's continuation, ${generated} events. Dashed line: where the model takes over.`
+        : `Orange: ${generated} events composed from silence.`;
+      const blob = new Blob([midiFile(state.notes)], { type: 'audio/midi' });
+      if (ui.download.href) URL.revokeObjectURL(ui.download.href);
+      ui.download.href = URL.createObjectURL(blob);
+      ui.download.download = `music-transformer-${index >= 0 ? DATA.prompts[index].id : 'silence'}-seed${seed}.mid`;
+      ui.download.classList.remove('hidden');
+      ui.play.disabled = ui.playEntry.disabled = false;
+      ui.playEntry.classList.toggle('hidden', index < 0);
+    } catch (error) {
+      setProgress(null);
+      if (error.message === 'cancelled') { setStatus('Stopped before the opening was read.'); }
+      else { console.error(error); setStatus(`Composing failed: ${error.message}`, true); }
+    } finally {
+      busy = false; ui.cancel.classList.add('hidden'); ui.generate.classList.remove('hidden');
+    }
+  }
+  ui.load.addEventListener('click', loadModel);
+  ui.generate.addEventListener('click', compose);
+  ui.cancel.addEventListener('click', () => { cancelled = true; });
+  ui.prompt.addEventListener('change', () => {
+    if (busy) return;
+    const index = Number(ui.prompt.value);
+    const prompt = index >= 0 ? DATA.prompts[index].tokens : [];
+    showTokens(prompt.slice(), prompt.length);
+    ui.play.disabled = ui.playEntry.disabled = !prompt.length; ui.playEntry.classList.toggle('hidden', index < 0);
+    ui.download.classList.add('hidden');
+    ui.caption.textContent = index >= 0 ? `The pianist's opening of ${DATA.prompts[index].composer}, ${DATA.prompts[index].title} (${fmt(promptSeconds(prompt))}). Compose to hear the model continue it.` : 'Compose to hear the model begin from silence.';
+  });
+  ui.prompt.value = '0'; ui.prompt.dispatchEvent(new Event('change'));
+
+  // ---- Blind test ----
+  const blind = { index: 0, correct: 0, answered: 0, order: [], key: 'maestro-mt-blind-v1', current: null };
+  const store = {
+    read() { try { return JSON.parse(localStorage.getItem(blind.key) || 'null'); } catch (e) { return null; } },
+    write(value) { try { localStorage.setItem(blind.key, JSON.stringify(value)); } catch (e) { /* storage unavailable */ } },
+    clear() { try { localStorage.removeItem(blind.key); } catch (e) { /* storage unavailable */ } },
+  };
+  const bui = { n: $('round-n'), piece: $('round-piece'), opening: $('round-opening'), a: $('audio-a'), b: $('audio-b'), pickA: $('pick-a'), pickB: $('pick-b'),
+                skipA: $('skip-a'), skipB: $('skip-b'), reveal: $('reveal'), next: $('next'), restart: $('restart'), score: $('score') };
+  function scoreText() {
+    if (!blind.answered) return `No answers yet. With ${DATA.prompts.length} rounds, 15 or more correct is better than guessing at the 5% level (binomial, p = 0.021); 14 is not (p = 0.058).`;
+    return `${blind.correct} of ${blind.answered} correct so far` + (blind.answered === DATA.prompts.length ? (blind.correct >= 15 ? '. Better than chance at the 5% level.' : '. Not distinguishable from guessing at the 5% level.') : '.');
+  }
+  function showRound() {
+    const i = blind.index;
+    if (i >= DATA.prompts.length) {
+      bui.n.textContent = String(DATA.prompts.length); bui.piece.textContent = 'All rounds done.'; bui.opening.textContent = '';
+      bui.a.removeAttribute('src'); bui.b.removeAttribute('src');
+      bui.pickA.disabled = bui.pickB.disabled = true; bui.next.classList.add('hidden');
+      bui.reveal.textContent = `Finished: ${blind.correct} of ${DATA.prompts.length} pianists picked correctly.`; bui.reveal.className = 'reveal';
+      bui.score.textContent = scoreText();
+      return;
+    }
+    const p = DATA.prompts[i];
+    const realFirst = Math.random() < 0.5;
+    blind.current = { realFirst };
+    bui.n.textContent = String(i + 1);
+    bui.piece.textContent = 'Composer and piece are revealed after you answer.';
+    bui.opening.textContent = `Both clips share the opening until ${fmt(p.openingSeconds)}.`;
+    bui.a.pause(); bui.b.pause();
+    bui.a.src = (realFirst ? p.real : p.model).file; bui.b.src = (realFirst ? p.model : p.real).file;
+    bui.pickA.disabled = bui.pickB.disabled = false;
+    bui.reveal.textContent = ''; bui.reveal.className = 'reveal';
+    bui.next.classList.add('hidden');
+    bui.score.textContent = scoreText();
+  }
+  function answer(pickedA) {
+    if (!blind.current) return;
+    const p = DATA.prompts[blind.index];
+    const right = pickedA === blind.current.realFirst;
+    blind.answered += 1; if (right) blind.correct += 1;
+    bui.pickA.disabled = bui.pickB.disabled = true;
+    const pianist = blind.current.realFirst ? 'A' : 'B', model = blind.current.realFirst ? 'B' : 'A';
+    bui.reveal.innerHTML = '';
+    const strong = document.createElement('strong'); strong.textContent = right ? 'Right. ' : 'Not this time. ';
+    bui.reveal.appendChild(strong);
+    bui.reveal.appendChild(document.createTextNode(`Clip ${pianist} was the pianist; clip ${model} was the model.`));
+    bui.reveal.className = 'reveal ' + (right ? 'right' : 'wrong');
+    bui.piece.textContent = `${p.composer}, ${p.title}.`;
+    bui.next.classList.remove('hidden');
+    bui.score.textContent = scoreText();
+    store.write({ index: blind.index + 1, correct: blind.correct, answered: blind.answered });
+    blind.current = null;
+  }
+  bui.pickA.addEventListener('click', () => answer(true));
+  bui.pickB.addEventListener('click', () => answer(false));
+  bui.next.addEventListener('click', () => { blind.index += 1; showRound(); });
+  bui.restart.addEventListener('click', () => { blind.index = 0; blind.correct = 0; blind.answered = 0; store.clear(); showRound(); });
+  const skip = (audio) => { const p = DATA.prompts[blind.index]; if (!p) return; const go = () => { audio.currentTime = Math.max(0, p.openingSeconds - 1.5); }; if (audio.readyState >= 1) go(); else { audio.addEventListener('loadedmetadata', go, { once: true }); audio.load(); } };
+  bui.skipA.addEventListener('click', () => skip(bui.a));
+  bui.skipB.addEventListener('click', () => skip(bui.b));
+  bui.a.addEventListener('play', () => bui.b.pause()); bui.b.addEventListener('play', () => bui.a.pause());
+  const saved = store.read();
+  if (saved && Number.isInteger(saved.index) && saved.index > 0 && saved.index <= DATA.prompts.length) { blind.index = saved.index; blind.correct = saved.correct || 0; blind.answered = saved.answered || 0; }
+  showRound();
+
+  window.MTLive = { decodeTokens, promptSeconds, midiFile, sampleNext, mulberry32, state, timing, loadModel, compose, get engine() { return engine; }, DATA };
+})();
+</script>
+</body>
+</html>

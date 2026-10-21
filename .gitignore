@@ -14,3 +14,11 @@ experiments/out/
 experiments/checkpoints/
 experiments/data/
 *.mid.bak
+
+# Local collaboration channel; never stage or publish its contents.
+/chat/
+# Local agent instructions for this workspace.
+/AGENTS.md
+# New experiments stay local. Existing tracked experiments remain tracked;
+# ignoring a directory does not remove files already present in Git history.
+/experiments/

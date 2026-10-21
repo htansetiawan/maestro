@@ -1,0 +1,21 @@
+{
+  "built_utc": "2026-10-21T04:58:27.104323+00:00",
+  "html": "artifacts/music-transformer-live.html",
+  "html_bytes": 94259,
+  "model": {
+    "file": "music-transformer/model/music-transformer-step984k-fp16.onnx",
+    "bytes": 36415348,
+    "sha256": "9ebb82972f6b3d4abc0d370212bea7ae4e7b5be25785c84c875815ee473fbb9e",
+    "step": 984000,
+    "checkpointSha256": "0d6bd8eb0231d5fc64d1d942e44baac5493f130b1cdbc7708e897187585e5cf6",
+    "layers": 6,
+    "heads": 8,
+    "depth": 64,
+    "context": 2048,
+    "vocab": 310
+  },
+  "ort": "1.30.0",
+  "piano_samples": 60,
+  "prompts": 20,
+  "clip_bytes_copied": 42024817
+}

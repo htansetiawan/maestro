@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music Transformer, reproduced and running in the browser — Maestro</title>
+<meta name="description" content="The released Music Transformer configuration, re-implemented in PyTorch and trained for one million steps on the official MAESTRO v1 split, reaches validation NLL 1.835 on the selection metric (the paper reports 1.835), 1.827 on every validation event and 1.801 on test; the port matches the original Tensor2Tensor code to float32 rounding, and the trained model now runs in the browser at 29 ms per event with a pianist-or-model blind test.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-10-20.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Music Transformer, reproduced and running in the browser — Maestro">
+<meta property="og:description" content="The released Music Transformer configuration, re-implemented in PyTorch and trained for one million steps on the official MAESTRO v1 split, reaches validation NLL 1.835 on the selection metric (the paper reports 1.835), 1.827 on every validation event and 1.801 on test; the port matches the original Tensor2Tensor code to float32 rounding, and the trained model now runs in the browser at 29 ms per event with a pianist-or-model blind test.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-10-20.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Music Transformer, reproduced and running in the browser — Maestro">
+<meta name="twitter:description" content="The released Music Transformer configuration, re-implemented in PyTorch and trained for one million steps on the official MAESTRO v1 split, reaches validation NLL 1.835 on the selection metric (the paper reports 1.835), 1.827 on every validation event and 1.801 on test; the port matches the original Tensor2Tensor code to float32 rounding, and the trained model now runs in the browser at 29 ms per event with a pianist-or-model blind test.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Weekly journal · week of October 19, 2026</p>
+      <h1>Music Transformer, reproduced and running in the browser</h1>
+      <p class="journal-description">The released Music Transformer configuration, re-implemented in PyTorch and trained for one million steps on the official MAESTRO v1 split, reaches validation NLL 1.835 on the selection metric (the paper reports 1.835), 1.827 on every validation event and 1.801 on test; the port matches the original Tensor2Tensor code to float32 rounding, and the trained model now runs in the browser at 29 ms per event with a pianist-or-model blind test.</p>
+      <p class="journal-meta"><time datetime="2026-10-20">October 20, 2026</time> · Henry Tan · <a href="entries/2026-10-20.md">Entry source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/2026-10-20.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/2026-10-20.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <dl class="state-grid"><div><dt>Stage</dt><dd>Music Transformer reproduced and checked: 16.1M parameters, 1,000,000 steps, 9.1 GPU-hours; validation NLL 1.835 (128 windows), 1.827 (full), test 1.801. Attention ablations training. The model runs in the browser.</dd></div><div><dt>Current focus</dt><dd>Turn the reproduced model into the measuring instrument: the same held-out events for every extension, and ears only after the numbers.</dd></div><div><dt>Next experiment</dt><dd>Finish the attention ablations; evaluate whole performances and longer contexts without retraining; adapt the model to one composer at a two-minute budget and measure on that composer&#x27;s held-out pieces.</dd></div></dl><div class="journal-prose"><p>Before this project extends anything, the model it builds on had to exist here, trained from scratch and checked. Music Transformer (Huang et al., ICLR 2019) is the relative-attention Transformer for piano performances; the configuration Magenta released for it was re-implemented in PyTorch, trained for one million steps on the official MAESTRO v1 split, compared numerically with the original Tensor2Tensor code, and exported so that it runs inside a web page.</p>
+<h2 id="find-the-work">Find the work</h2>
+<ul>
+<li><a href="../artifacts/music-transformer-reproduction.html">Music Transformer, reproduced</a>: the numbers, learning curves, the parity check against the original code, the comparison with the paper, and continuations to hear.</li>
+<li><a href="../artifacts/music-transformer-live.html">Music Transformer, live</a>: the trained model running in the browser on any of twenty held-out openings or from silence, and a blind test: pianist or model?</li>
+</ul>
+<h2 id="the-numbers">The numbers</h2>
+<p>The released configuration: 6 layers, width 512, 8 heads, 1,024-wide feed-forward, relative attention over 1,024 positions, 2,048-event context, 310-event vocabulary, 16.1 million parameters. One process on one GPU, batch one 2,048-event crop per step, 32 ms per step, 9.1 GPU-hours in all.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>This reproduction</th>
+<th>Paper, relative attention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Validation NLL, 128 fixed windows (the model-selection metric), best checkpoint at step 984,000</td>
+<td>1.835</td>
+<td>1.835</td>
+</tr>
+<tr>
+<td>Validation NLL, every validation event (2.20M)</td>
+<td>1.827</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Test NLL, every test event (2.29M), reported once</td>
+<td>1.801</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Final checkpoint (step 1,000,000), every validation event</td>
+<td>1.836</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>NLL is negative log-likelihood in nats per event, lower is better. The paper's figure is on the authors' own partition of the same Piano-e-Competition recordings with a 2,048-wide feed-forward layer, so the match on the selection metric is agreement, not identity. The test figure was computed once, after training, and is not used for any decision.</p>
+<h2 id="the-checks">The checks</h2>
+<ul>
+<li><strong>Same function as the original code.</strong> With identical weights and inputs, the PyTorch port and Tensor2Tensor 1.15.7 agree on the logits to 2.5 × 10⁻⁵, the loss to 1 × 10⁻⁶, and the gradients to a cosine of 0.999999 (experiment 023). The model is a new implementation, not a converted checkpoint.</li>
+<li><strong>Same model in the browser.</strong> The exported graph (16-bit weights, 32-bit arithmetic, one decoding step with a key-value cache) matches the PyTorch model over 301 positions of a held-out opening: largest logit difference 0.011, the same most-likely event at every position, mean NLL 2.53407 against 2.53411.</li>
+<li><strong>Same notes.</strong> The page's event decoder reproduces note_seq's decoding note for note on a 363-note sample, and its sampler applies the pool's nucleus rule.</li>
+<li><strong>Speed.</strong> In headless Chrome on a single WebAssembly thread: 18 ms per event while reading a 512-event opening, 29 ms per event while composing, about 25 s for a 512-event continuation after a 20-second opening.</li>
+</ul>
+<h2 id="listening">Listening</h2>
+<p>The listening pool is fixed before anyone listens: twenty openings of 512 events from twenty distinct validation performances (nine composers), four continuations of 1,024 events each at temperature 1 and nucleus 0.98, seed 20261020, plus eight sequences of 1,536 events from silence. Every clip is rendered by the same FluidR3 piano, peak-normalised, so differences are in the notes. The reproduction page shows the first two candidates of the first eight openings in seed order; nothing is chosen by ear.</p>
+<p>The blind test pairs each opening's first candidate with the pianist's own next 1,024 events from the recording. Both clips share the opening; the listener picks the pianist. With twenty rounds, fifteen or more correct is better than guessing at the 5% level. Answers stay in the listener's browser.</p>
+<h2 id="what-this-changes">What this changes</h2>
+<p>The baseline that the field's later numbers are measured against (Perceiver AR reports 1.82 on this benchmark at 4,096 context) now exists locally with its full training record, a sampler, an evaluation harness, a renderer, and a browser build. Extensions can be measured against it on the same held-out events rather than against a figure in a paper.</p>
+<h2 id="next">Next</h2>
+<ol>
+<li>The ablations the paper's central claim rests on, training now on the same data and curves: the same sizes without relative attention, then relative and vanilla attention at the paper's Table 3 sizes.</li>
+<li>Evaluate the final checkpoint on whole performances rather than 2,048-event windows, and at longer contexts without retraining.</li>
+<li>The first extension: adapting the model to one composer's style at a two-minute budget, measured on that composer's held-out pieces.</li>
+</ol>
+</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-10-18.html">← Earlier: What the reader keeps and what the singer keeps</a><a href="./">All entries</a></nav>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

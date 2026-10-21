@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music Transformer, live — Maestro</title>
+<meta name="description" content="@@DESCRIPTION@@">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="@@CANONICAL@@">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Music Transformer, live — Maestro">
+<meta property="og:description" content="@@DESCRIPTION@@">
+<meta property="og:url" content="@@CANONICAL@@">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Music Transformer, live — Maestro">
+<meta name="twitter:description" content="@@DESCRIPTION@@">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+<style>
+  .viz-root { --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100; }
+  @media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .viz-root { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; } }
+  :root[data-theme="dark"] .viz-root { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; margin: 1.5rem 0 2.5rem; }
+  .stat { border-top: 2px solid var(--rule); padding-top: .6rem; }
+  .stat .label { font-size: .8rem; color: var(--ink-2); margin: 0 0 .2rem; }
+  .stat .value { font-family: var(--f-body); font-weight: 600; font-size: 2rem; line-height: 1.1; margin: 0; }
+  .stat .note { font-size: .78rem; color: var(--ink-3); margin: .25rem 0 0; }
+  .status-line { font-family: var(--f-mono); font-size: .78rem; color: var(--ink-2); letter-spacing: .04em; }
+  .panel { border: 1px solid var(--rule); border-radius: 4px; padding: 1.1rem 1.2rem 1.2rem; margin: 1.2rem 0 2rem; background: var(--paper); }
+  .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: .8rem 1.2rem; align-items: end; margin: 0 0 1rem; }
+  .controls label { display: block; font-size: .78rem; color: var(--ink-2); margin-bottom: .25rem; }
+  .controls .wide { grid-column: 1 / -1; }
+  .controls select, .controls input[type=number] { width: 100%; font: inherit; font-size: .92rem; color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px; padding: .45rem .5rem; }
+  .controls input[type=range] { width: 100%; accent-color: var(--ink-2); }
+  .controls output { font-family: var(--f-mono); font-size: .8rem; color: var(--ink-2); margin-left: .4rem; }
+  .btn { font: inherit; font-size: .9rem; color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px; padding: .5rem .95rem; cursor: pointer; }
+  .btn:hover { border-color: var(--ink-3); }
+  .btn:disabled { opacity: .5; cursor: default; }
+  .btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn.primary:hover { opacity: .9; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .6rem 0; }
+  .progress-wrap { display: flex; gap: .8rem; align-items: center; margin: .6rem 0 0; }
+  progress { width: 14rem; max-width: 100%; height: .5rem; accent-color: var(--ink-2); }
+  .status { font-size: .86rem; color: var(--ink-2); margin: .4rem 0 0; min-height: 1.3em; }
+  .status.error { color: #c0392b; }
+  figure.roll { margin: 1.2rem 0 .4rem; position: relative; }
+  canvas.roll { width: 100%; height: 280px; display: block; border: 1px solid var(--rule-soft); border-radius: 3px; background: var(--paper-2); }
+  figure.roll figcaption { font-size: .8rem; color: var(--ink-3); margin: .4rem 0 0; }
+  .roll-legend { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .82rem; color: var(--ink-2); margin: .5rem 0 0; padding: 0; list-style: none; max-width: none; }
+  .roll-legend li { display: flex; align-items: center; gap: .5rem; margin: 0; }
+  .roll-legend .key { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+  .roll-legend .k1 { background: var(--series-1); } .roll-legend .k2 { background: var(--series-2); }
+  .transport { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .8rem 0 0; }
+  .transport .clock { font-family: var(--f-mono); font-size: .86rem; color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 7.5em; }
+  .blind-head { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; align-items: baseline; font-size: .86rem; color: var(--ink-2); }
+  .blind-head strong { color: var(--ink); font-weight: 600; }
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .choice { border: 1px solid var(--rule-soft); border-radius: 4px; padding: .9rem 1rem 1rem; }
+  .choice h3 { margin: 0 0 .5rem; font-size: 1rem; }
+  .choice audio { display: block; width: 100%; margin: 0 0 .6rem; }
+  .choice .mini { font-size: .78rem; color: var(--ink-3); margin: 0 0 .6rem; }
+  .reveal { font-size: .95rem; margin: .6rem 0 0; }
+  .reveal strong { font-weight: 600; }
+  .reveal.right { color: #1e7d3b; } .reveal.wrong { color: #b0412e; }
+  @media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .reveal.right { color: #3fbf6a; } :root:where(:not([data-theme="light"])) .reveal.wrong { color: #e6765d; } :root:where(:not([data-theme="light"])) .status.error { color: #e6765d; } }
+  :root[data-theme="dark"] .reveal.right { color: #3fbf6a; } :root[data-theme="dark"] .reveal.wrong { color: #e6765d; } :root[data-theme="dark"] .status.error { color: #e6765d; }
+  .score-line { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
+  details.tech { margin: 1rem 0 2.5rem; font-size: .9rem; }
+  li code, td code, p code { overflow-wrap: anywhere; }
+  details.tech summary { cursor: pointer; color: var(--ink-2); }
+  .facts td:first-child { color: var(--ink-2); white-space: nowrap; }
+  .notice { font-size: .86rem; color: var(--ink-2); border-left: 2px solid var(--rule); padding: .2rem 0 .2rem .9rem; margin: 1rem 0; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Reproduction · live</p>
+      <h1>Music Transformer, live</h1>
+      <p class="journal-description">@@DESCRIPTION@@</p>
+      <p class="journal-meta">Page built @@BUILT@@ · <span class="status-line">checkpoint step @@STEP@@ · runs locally, nothing is uploaded</span> · <a href="music-transformer-reproduction.html">How it was reproduced</a></p>
+      <div class="share-actions">
+        <a href="@@CANONICAL@@">Permalink</a>
+        <button type="button" class="share-button" data-share-url="@@CANONICAL@@" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="Headline numbers">
+      <div class="stat"><p class="label">Validation NLL, full set</p><p class="value">@@VALFULL@@</p><p class="note">nats per event · the paper reports @@PAPER@@</p></div>
+      <div class="stat"><p class="label">Test NLL, reported once</p><p class="value">@@TEST@@</p><p class="note">MAESTRO v1 test split, 2.29M events</p></div>
+      <div class="stat"><p class="label">Download to run it</p><p class="value">@@TOTAL_MB@@ MB</p><p class="note">@@MODEL_MB@@ MB model · @@WASM_MB@@ MB runtime · @@PIANO_MB@@ MB piano</p></div>
+    </section>
+
+    <section id="live" aria-labelledby="live-h">
+      <h2 id="live-h">Continue a performance</h2>
+      <p>This is the trained model itself, exported from the best checkpoint and executed by WebAssembly in your browser, one event at a time with a key-value cache. Choose one of the twenty frozen MAESTRO openings (the same prompt set as the listening pool) or start from silence. Sampling defaults match the pool: temperature 1, nucleus @@TOPP@@.</p>
+      <div class="panel viz-root">
+        <div class="controls">
+          <div class="wide"><label for="prompt">Opening</label>
+            <select id="prompt"><option value="-1">From silence (no prompt)</option>@@PROMPT_OPTIONS@@</select></div>
+          <div><label for="length">New events</label>
+            <select id="length"><option value="256">256 (about 10 s)</option><option value="512" selected>512 (about 20 s)</option><option value="1024">1024 (about 40 s)</option></select></div>
+          <div><label for="temperature">Temperature <output id="temperature-out">1.00</output></label>
+            <input type="range" id="temperature" min="0.5" max="1.5" step="0.05" value="1"></div>
+          <div><label for="topp">Nucleus (top-p) <output id="topp-out">@@TOPP@@</output></label>
+            <input type="range" id="topp" min="0.5" max="1" step="0.01" value="@@TOPP@@"></div>
+          <div><label for="seed">Seed</label><input type="number" id="seed" min="0" max="999999" step="1" value="1"></div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn primary" id="load">Load the model (@@MODEL_MB@@ MB)</button>
+          <button type="button" class="btn primary hidden" id="generate">Compose</button>
+          <button type="button" class="btn hidden" id="cancel">Stop composing</button>
+        </div>
+        <div class="progress-wrap"><progress id="progress" max="1" value="0" hidden></progress><span class="status" id="status" role="status" aria-live="polite">The model has not been loaded yet. Loading fetches @@MODEL_MB@@ MB of weights and a @@WASM_MB@@ MB runtime once.</span></div>
+        <figure class="roll">
+          <canvas class="roll" id="roll" aria-label="Piano roll of the opening and the model's continuation"></canvas>
+          <ul class="roll-legend"><li><span class="key k1"></span>Opening (the pianist)</li><li><span class="key k2"></span>Continuation (the model)</li></ul>
+          <figcaption id="roll-caption">Pitch runs upward; time runs left to right. The roll fills in as events are sampled.</figcaption>
+        </figure>
+        <div class="transport">
+          <button type="button" class="btn" id="play" disabled>Play</button>
+          <button type="button" class="btn" id="play-entry" disabled>Play from the model's entry</button>
+          <button type="button" class="btn" id="stop" disabled>Stop</button>
+          <span class="clock" id="clock">0:00 / 0:00</span>
+          <a class="btn hidden" id="download" download="music-transformer-continuation.mid">Download MIDI</a>
+        </div>
+        <p class="notice">Playback uses sampled notes of the same FluidR3 General MIDI piano that rendered every clip on this site, so the sound is the renderer's, not the model's. The MIDI download has the exact events.</p>
+      </div>
+      <details class="tech"><summary>What exactly runs, and how it was checked</summary>
+        <div class="table-scroll" role="region" aria-label="Export facts" tabindex="0"><table class="facts">
+          <tr><td>Graph</td><td>One decoding step: next event in, logits and the extended key-value cache out (6 layers, 8 heads, relative attention over a 1,024-position table, 2,048-event context). The relative term for one query is its dot product with every relative embedding, gathered by each key's distance.</td></tr>
+          <tr><td>Weights</td><td>Stored as 16-bit floats and cast to 32-bit inside the graph (the runtime folds the casts at load), so arithmetic is 32-bit. File hash <code>@@MODEL_SHA@@…</code>, from checkpoint <code>@@CKPT_SHA@@…</code>.</td></tr>
+          <tr><td>Check against PyTorch</td><td>Over @@CHECK_POSITIONS@@ positions of the first frozen opening: largest logit difference @@CHECK_LOGIT@@, identical most-likely event at @@CHECK_AGREE@@% of positions, mean NLL @@CHECK_NLL_ONNX@@ (graph) against @@CHECK_NLL_TORCH@@ (PyTorch).</td></tr>
+          <tr><td>Sampling</td><td>Reserved ids masked; temperature, then nucleus filtering with the same rule as the pool sampler; a seeded 32-bit generator, so a seed replays. The pool itself was sampled on the GPU with seed @@SEED@@; browser samples will differ from it by construction (different generator).</td></tr>
+          <tr><td>Speed</td><td id="speed-cell">Measured in this browser once the model runs.</td></tr>
+          <tr><td>Runtime</td><td>onnxruntime-web 1.30.0, WebAssembly backend, single thread (this site does not set cross-origin isolation headers). Prompt set v1 hash <code>@@PROMPTS_SHA@@…</code>.</td></tr>
+        </table></div>
+      </details>
+    </section>
+
+    <section id="blind" aria-labelledby="blind-h">
+      <h2 id="blind-h">Pianist or model?</h2>
+      <p>Each round takes one of the @@N_PROMPTS@@ openings. Both clips begin with the same opening, played by the pianist. After it, one clip continues with the pianist's own next 1,024 events from the MAESTRO recording; the other continues with the model's first sample for that opening (candidate 0 at seed @@SEED@@, never chosen by ear). Both are rendered by the same piano. Pick the pianist.</p>
+      <div class="panel" id="blind-panel">
+        <div class="blind-head"><span>Round <strong id="round-n">1</strong> of @@N_PROMPTS@@</span><span id="round-piece">Composer and piece are revealed after you answer.</span><span id="round-opening"></span></div>
+        <div class="pair">
+          <div class="choice"><h3>Clip A</h3><audio controls preload="none" id="audio-a"></audio><p class="mini"><button type="button" class="btn" id="skip-a">Skip the opening</button></p><button type="button" class="btn primary" id="pick-a">A is the pianist</button></div>
+          <div class="choice"><h3>Clip B</h3><audio controls preload="none" id="audio-b"></audio><p class="mini"><button type="button" class="btn" id="skip-b">Skip the opening</button></p><button type="button" class="btn primary" id="pick-b">B is the pianist</button></div>
+        </div>
+        <p class="reveal" id="reveal" aria-live="polite"></p>
+        <div class="btn-row"><button type="button" class="btn hidden" id="next">Next round</button><button type="button" class="btn" id="restart">Start over</button></div>
+        <p class="score-line" id="score">No answers yet. With @@N_PROMPTS@@ rounds, 15 or more correct is better than guessing at the 5% level (binomial, p = 0.021); 14 is not (p = 0.058).</p>
+        <p class="notice">Your answers stay in this browser; nothing is sent anywhere. Known pieces are easy to spot by memory, so the fair test is the openings you do not recognise.</p>
+      </div>
+    </section>
+
+    <section id="facts" aria-labelledby="facts-h">
+      <h2 id="facts-h">What is being tested</h2>
+      <div class="table-scroll" role="region" aria-label="Model numbers" tabindex="0"><table>
+        <thead><tr><th>Quantity</th><th>This model</th><th>Paper, relative attention</th></tr></thead>
+        <tbody>
+          <tr><td>Validation NLL, 128 fixed windows (model-selection metric)</td><td>@@VAL128@@</td><td>@@PAPER@@</td></tr>
+          <tr><td>Validation NLL, every validation event (2.20M)</td><td>@@VALFULL@@</td><td>—</td></tr>
+          <tr><td>Test NLL, every test event (2.29M), reported once</td><td>@@TEST@@</td><td>—</td></tr>
+          <tr><td>Final step (1,000,000) checkpoint, full validation</td><td>@@LASTFULL@@</td><td>—</td></tr>
+        </tbody>
+      </table></div>
+      <p>The page serves the best checkpoint (step @@STEP@@, chosen on the 128-window validation metric during training). Learning curves, the numerical parity check against the original Tensor2Tensor code, the paper's Table 3 comparison and the ablation runs are on the <a href="music-transformer-reproduction.html">reproduction page</a>.</p>
+      <h3>Credits and licenses</h3>
+      <ul>
+        <li>Model: Huang et al., <a href="https://arxiv.org/abs/1809.04281">Music Transformer</a> (ICLR 2019), released configuration <code>t_rel_len2048_h512_att512_fs1024_n6_dropout10</code>, retrained here in PyTorch.</li>
+        <li>Data and clips: <a href="https://magenta.tensorflow.org/datasets/maestro">MAESTRO v1.0.0</a> (Hawthorne et al., 2019), CC BY-NC-SA 4.0. The openings and the pianists' continuations are excerpts of its validation-split performances; the model clips are derived from them. Non-commercial use only.</li>
+        <li>Runtime: <a href="https://onnxruntime.ai/">onnxruntime-web</a> 1.30.0 (MIT), vendored under <code>assets/vendor/</code>.</li>
+        <li>Piano: FluidR3 General MIDI SoundFont (MIT), acoustic grand, rendered to single-note samples and played back with at most one semitone of pitch shift.</li>
+      </ul>
+    </section>
+
+    <section id="reproduce" aria-labelledby="reproduce-h">
+      <h2 id="reproduce-h">Reproduce this page</h2>
+      <pre><code>cd experiments/020_music_transformer_reproduction
+python3 export_onnx.py --out ../../artifacts/music-transformer/model/music-transformer-step984k-fp16.onnx --check 300 --record record/onnx-export.json
+python3 piano_samples.py --out ../../artifacts/music-transformer/piano
+python3 real_continuations.py            # pianists' continuations for prompt set v1
+python3 ../../scripts/build_mt_live.py   # this page</code></pre>
+    </section>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> · <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+<script id="live-data" type="application/json">@@DATA@@</script>
+<script>
+(() => {
+  'use strict';
+  const DATA = JSON.parse(document.getElementById('live-data').textContent);
+  const RESERVED = 2, NOTE_ON = 2, NOTE_OFF = 90, TIME_SHIFT = 178, VELOCITY = 278;
+  const MIN_PITCH = 21, MAX_PITCH = 108, STEP_SECONDS = 0.01, MAX_NOTE_SECONDS = 5.0;
+  const $ = (id) => document.getElementById(id);
+
+  // ---- Event decoding (port of note_seq Performance.to_sequence as used by midi_io.py) ----
+  function decodeTokens(tokens) {
+    const active = new Map();
+    const notes = [];
+    let step = 0, velocity = 100;
+    const close = (pitch, startStep, vel, endStep) => {
+      if (endStep === startStep) return;
+      const start = startStep * STEP_SECONDS;
+      let end = endStep * STEP_SECONDS;
+      if (end - start > MAX_NOTE_SECONDS) end = start + MAX_NOTE_SECONDS;
+      notes.push({ pitch, start, end, velocity: vel });
+    };
+    for (const raw of tokens) {
+      const t = Number(raw);
+      if (t < RESERVED) continue;
+      if (t < NOTE_OFF) {
+        const pitch = MIN_PITCH + (t - NOTE_ON);
+        if (!active.has(pitch)) active.set(pitch, []);
+        active.get(pitch).push([step, velocity]);
+      } else if (t < TIME_SHIFT) {
+        const pitch = MIN_PITCH + (t - NOTE_OFF);
+        const list = active.get(pitch);
+        if (list && list.length) { const [s, v] = list.shift(); close(pitch, s, v, step); }
+      } else if (t < VELOCITY) {
+        step += (t - TIME_SHIFT) + 1;
+      } else {
+        velocity = 1 + (t - VELOCITY) * 4;
+      }
+    }
+    for (const [pitch, list] of active) for (const [s, v] of list) close(pitch, s, v, step);
+    notes.sort((a, b) => a.start - b.start || a.pitch - b.pitch);
+    let total = step * STEP_SECONDS;
+    for (const n of notes) if (n.end > total) total = n.end;
+    return { notes, seconds: total, lastStep: step };
+  }
+
+  function promptSeconds(tokens) {
+    let step = 0;
+    for (const raw of tokens) { const t = Number(raw); if (t >= TIME_SHIFT && t < VELOCITY) step += (t - TIME_SHIFT) + 1; }
+    return step * STEP_SECONDS;
+  }
+
+  // ---- Standard MIDI file, format 0, 220 ticks per quarter at 120 bpm (note_seq's defaults) ----
+  function midiFile(notes) {
+    const ppq = 220, ticksPerSecond = ppq * 2;
+    const events = [];
+    for (const n of notes) { events.push([n.start, 1, n.pitch, n.velocity]); events.push([n.end, 0, n.pitch, 0]); }
+    events.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const bytes = [0x00, 0xFF, 0x51, 0x03, 0x07, 0xA1, 0x20, 0x00, 0xC0, 0x00];
+    const vlq = (v) => { const out = [v & 0x7f]; v = Math.floor(v / 128); while (v > 0) { out.unshift((v & 0x7f) | 0x80); v = Math.floor(v / 128); } return out; };
+    let last = 0;
+    for (const [t, on, pitch, vel] of events) {
+      const tick = Math.round(t * ticksPerSecond);
+      for (const b of vlq(tick - last)) bytes.push(b);
+      last = tick;
+      bytes.push(on ? 0x90 : 0x80, pitch, on ? Math.max(1, Math.min(127, vel)) : 0);
+    }
+    bytes.push(0x00, 0xFF, 0x2F, 0x00);
+    const n = bytes.length;
+    const head = [0x4D, 0x54, 0x68, 0x64, 0, 0, 0, 6, 0, 0, 0, 1, (ppq >> 8) & 0xff, ppq & 0xff,
+                  0x4D, 0x54, 0x72, 0x6B, (n >>> 24) & 0xff, (n >>> 16) & 0xff, (n >>> 8) & 0xff, n & 0xff];
+    const out = new Uint8Array(head.length + n);
+    out.set(head, 0); out.set(bytes, head.length);
+    return out;
+  }
+
+  // ---- Sampling (same rule as sample.py filter_logits) ----
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function sampleNext(logits, temperature, topP, rng) {
+    const n = logits.length, scale = 1 / Math.max(temperature, 1e-6);
+    let max = -Infinity;
+    for (let i = RESERVED; i < n; i++) { const v = logits[i] * scale; if (v > max) max = v; }
+    const probs = new Float64Array(n);
+    let sum = 0;
+    for (let i = RESERVED; i < n; i++) { probs[i] = Math.exp(logits[i] * scale - max); sum += probs[i]; }
+    for (let i = RESERVED; i < n; i++) probs[i] /= sum;
+    let order = [];
+    for (let i = RESERVED; i < n; i++) order.push(i);
+    order.sort((a, b) => probs[b] - probs[a]);
+    if (topP < 1) {
+      let cumulative = 0, keep = 0;
+      for (; keep < order.length; keep++) {
+        const p = probs[order[keep]];
+        cumulative += p;
+        if (cumulative - p > topP) break;
+      }
+      order = order.slice(0, Math.max(1, keep));
+    }
+    let total = 0;
+    for (const i of order) total += probs[i];
+    let r = rng() * total;
+    for (const i of order) { r -= probs[i]; if (r <= 0) return i; }
+    return order[order.length - 1];
+  }
+
+  // ---- The model ----
+  let ort = null, session = null;
+  const timing = { prefill: [], generate: [] };
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src; s.onload = resolve; s.onerror = () => reject(new Error('could not load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+  async function fetchWithProgress(url, onProgress) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
+    const total = Number(response.headers.get('content-length')) || 0;
+    if (!response.body || !total) return new Uint8Array(await response.arrayBuffer());
+    const reader = response.body.getReader();
+    const out = new Uint8Array(total);
+    let received = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (received + value.length > out.length) throw new Error('response longer than announced');
+      out.set(value, received); received += value.length;
+      onProgress(received, total);
+    }
+    return out.subarray(0, received);
+  }
+  class Engine {
+    constructor(session, model) { this.session = session; this.L = model.layers; this.H = model.heads; this.D = model.depth; this.reset(); }
+    reset() { this.m = 0; this.k = new Float32Array(0); this.v = new Float32Array(0); }
+    async step(token) {
+      const dims = [this.L, this.H, this.m, this.D];
+      const feeds = {
+        token: new ort.Tensor('int64', BigInt64Array.from([BigInt(token)]), [1]),
+        past_k: new ort.Tensor('float32', this.k, dims),
+        past_v: new ort.Tensor('float32', this.v, dims),
+      };
+      const out = await this.session.run(feeds);
+      this.k = out.present_k.data; this.v = out.present_v.data; this.m += 1;
+      return out.logits.data;
+    }
+  }
+  let engine = null, cancelled = false, busy = false;
+
+  const ui = {
+    load: $('load'), generate: $('generate'), cancel: $('cancel'), progress: $('progress'), status: $('status'),
+    prompt: $('prompt'), length: $('length'), temperature: $('temperature'), topp: $('topp'), seed: $('seed'),
+    play: $('play'), playEntry: $('play-entry'), stop: $('stop'), clock: $('clock'), download: $('download'),
+    roll: $('roll'), caption: $('roll-caption'), speed: $('speed-cell'),
+  };
+  const setStatus = (text, error) => { ui.status.textContent = text; ui.status.classList.toggle('error', !!error); };
+  const setProgress = (value) => { if (value == null) { ui.progress.hidden = true; } else { ui.progress.hidden = false; ui.progress.value = value; } };
+  ui.temperature.addEventListener('input', () => { $('temperature-out').textContent = Number(ui.temperature.value).toFixed(2); });
+  ui.topp.addEventListener('input', () => { $('topp-out').textContent = Number(ui.topp.value).toFixed(2); });
+
+  async function loadModel() {
+    ui.load.disabled = true;
+    try {
+      setStatus('Loading the runtime…'); setProgress(0);
+      if (!window.ort) await loadScript(new URL(DATA.ort.script, location.href).href);
+      ort = window.ort;
+      ort.env.wasm.wasmPaths = new URL(DATA.ort.dir, location.href).href;
+      ort.env.wasm.numThreads = 1;
+      const bytes = await fetchWithProgress(new URL(DATA.model.file, location.href).href, (got, total) => {
+        setProgress(got / total); setStatus(`Downloading the model: ${(got / 1e6).toFixed(0)} of ${(total / 1e6).toFixed(0)} MB`);
+      });
+      setStatus('Preparing the model (folding the 16-bit weights to 32-bit)…');
+      const started = performance.now();
+      session = await ort.InferenceSession.create(bytes, { executionProviders: ['wasm'], graphOptimizationLevel: 'all' });
+      engine = new Engine(session, DATA.model);
+      const warm = performance.now();
+      await engine.step(0); engine.reset();
+      setProgress(null);
+      setStatus(`Model ready (prepared in ${((warm - started) / 1000).toFixed(1)} s; first step ${(performance.now() - warm).toFixed(0)} ms). Choose an opening and compose.`);
+      ui.load.classList.add('hidden'); ui.generate.classList.remove('hidden');
+    } catch (error) {
+      console.error(error);
+      setProgress(null); ui.load.disabled = false;
+      setStatus(`The model could not be loaded: ${error.message}`, true);
+    }
+  }
+
+  // ---- Piano roll ----
+  const state = { promptTokens: [], tokens: [], notes: [], seconds: 0, promptSeconds: 0, generatedFrom: 0 };
+  function css(name) { return getComputedStyle(ui.roll.parentElement).getPropertyValue(name).trim(); }
+  function drawRoll(playhead) {
+    const canvas = ui.roll, dpr = window.devicePixelRatio || 1;
+    const width = canvas.clientWidth, height = canvas.clientHeight;
+    if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) { canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); }
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+    const total = Math.max(state.seconds, state.promptSeconds + 1, 4);
+    const pad = { l: 6, r: 6, t: 8, b: 18 };
+    const sx = (t) => pad.l + (t / total) * (width - pad.l - pad.r);
+    const rowH = (height - pad.t - pad.b) / (MAX_PITCH - MIN_PITCH + 1);
+    const sy = (p) => pad.t + (MAX_PITCH - p) * rowH;
+    ctx.fillStyle = css('--rule-soft');
+    for (let p = MIN_PITCH; p <= MAX_PITCH; p++) { const k = p % 12; if (k === 1 || k === 3 || k === 6 || k === 8 || k === 10) ctx.fillRect(pad.l, sy(p), width - pad.l - pad.r, rowH); }
+    ctx.strokeStyle = css('--rule'); ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let s = 0; s <= total; s += total > 60 ? 10 : 5) { const x = Math.round(sx(s)) + .5; ctx.moveTo(x, pad.t); ctx.lineTo(x, height - pad.b); }
+    ctx.stroke();
+    ctx.fillStyle = css('--ink-3'); ctx.font = `11px ${css('--f-mono') || 'monospace'}`; ctx.textAlign = 'center';
+    for (let s = 0; s <= total; s += total > 60 ? 10 : 5) { ctx.textAlign = s === 0 ? 'left' : 'center'; ctx.fillText(`${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`, s === 0 ? pad.l + 2 : sx(s), height - 5); }
+    if (state.promptSeconds > 0) {
+      const x = Math.round(sx(state.promptSeconds)) + .5;
+      ctx.strokeStyle = css('--ink-2'); ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, height - pad.b); ctx.stroke(); ctx.setLineDash([]);
+    }
+    const c1 = css('--series-1'), c2 = css('--series-2');
+    for (const n of state.notes) {
+      ctx.fillStyle = n.start < state.promptSeconds - 1e-6 ? c1 : c2;
+      ctx.globalAlpha = 0.45 + 0.55 * Math.min(1, n.velocity / 110);
+      const x = sx(n.start), w = Math.max(2, sx(n.end) - x), y = sy(n.pitch);
+      ctx.fillRect(x, y + 0.5, w, Math.max(1.5, rowH - 1));
+    }
+    ctx.globalAlpha = 1;
+    if (playhead != null && playhead >= 0) {
+      const x = Math.round(sx(Math.min(playhead, total))) + .5;
+      ctx.strokeStyle = css('--ink'); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, height - pad.b); ctx.stroke();
+    }
+  }
+  new ResizeObserver(() => drawRoll(player.position())).observe(ui.roll);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => drawRoll(player.position()));
+
+  // ---- Piano sampler ----
+  const player = {
+    ctx: null, buffers: new Map(), loading: null, sources: [], startedAt: 0, offset: 0, playing: false, raf: 0,
+    async ensure() {
+      if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      if (this.ctx.state === 'suspended') await this.ctx.resume();
+      if (!this.loading) this.loading = (async () => {
+        const jobs = [];
+        for (const pitch of DATA.piano.pitches) for (const velocity of DATA.piano.velocities) {
+          const url = new URL(`${DATA.piano.dir}p${pitch}_v${velocity}.mp3`, location.href).href;
+          jobs.push(fetch(url).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`); return r.arrayBuffer(); })
+            .then((b) => this.ctx.decodeAudioData(b)).then((buffer) => this.buffers.set(`${pitch}_${velocity}`, buffer)));
+        }
+        await Promise.all(jobs);
+      })();
+      await this.loading;
+    },
+    nearest(list, value) { let best = list[0]; for (const x of list) if (Math.abs(x - value) < Math.abs(best - value)) best = x; return best; },
+    play(notes, from) {
+      this.stop();
+      const ctx = this.ctx, t0 = ctx.currentTime + 0.08;
+      this.offset = from; this.startedAt = t0; this.playing = true;
+      const master = ctx.createGain(); master.gain.value = 0.9; master.connect(ctx.destination);
+      for (const n of notes) {
+        if (n.end <= from) continue;
+        const pitch = this.nearest(DATA.piano.pitches, n.pitch);
+        const layer = this.nearest(DATA.piano.velocities, n.velocity);
+        const buffer = this.buffers.get(`${pitch}_${layer}`);
+        if (!buffer) continue;
+        const start = t0 + Math.max(0, n.start - from);
+        const skip = Math.max(0, from - n.start);
+        const source = ctx.createBufferSource();
+        source.buffer = buffer; source.playbackRate.value = Math.pow(2, (n.pitch - pitch) / 12);
+        const gain = ctx.createGain();
+        const level = Math.min(1.6, Math.max(0.15, n.velocity / layer));
+        gain.gain.setValueAtTime(level, start);
+        const release = t0 + (n.end - from);
+        gain.gain.setTargetAtTime(0.0001, release, 0.06);
+        source.connect(gain); gain.connect(master);
+        source.start(start, skip); source.stop(release + 0.5);
+        this.sources.push(source);
+      }
+      const end = t0 + (state.seconds - from) + 1.0;
+      const tick = () => {
+        if (!this.playing) return;
+        const pos = this.position();
+        ui.clock.textContent = `${fmt(pos)} / ${fmt(state.seconds)}`;
+        drawRoll(pos);
+        if (ctx.currentTime > end) { this.stop(); return; }
+        this.raf = requestAnimationFrame(tick);
+      };
+      this.raf = requestAnimationFrame(tick);
+      ui.stop.disabled = false;
+    },
+    position() { if (!this.playing || !this.ctx) return null; return Math.max(0, this.ctx.currentTime - this.startedAt) + this.offset; },
+    stop() {
+      for (const s of this.sources) { try { s.stop(); } catch (e) { /* already stopped */ } }
+      this.sources = []; this.playing = false; cancelAnimationFrame(this.raf);
+      ui.stop.disabled = true; ui.clock.textContent = `0:00 / ${fmt(state.seconds)}`; drawRoll(null);
+    },
+  };
+  const fmt = (s) => { s = Math.max(0, Math.floor(s || 0)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+
+  async function playFrom(from) {
+    try {
+      ui.play.disabled = ui.playEntry.disabled = true;
+      setStatus(player.buffers.size ? '' : 'Loading the piano samples (2.4 MB)…');
+      await player.ensure();
+      setStatus('');
+      player.play(state.notes, from);
+    } catch (error) { console.error(error); setStatus(`Playback failed: ${error.message}`, true); }
+    finally { ui.play.disabled = ui.playEntry.disabled = false; }
+  }
+  ui.play.addEventListener('click', () => playFrom(0));
+  ui.playEntry.addEventListener('click', () => playFrom(Math.max(0, state.promptSeconds - 2)));
+  ui.stop.addEventListener('click', () => player.stop());
+
+  // ---- Compose ----
+  function showTokens(tokens, promptLength) {
+    state.tokens = tokens;
+    const decoded = decodeTokens(tokens);
+    state.notes = decoded.notes; state.seconds = decoded.seconds;
+    state.promptSeconds = promptLength ? promptSeconds(tokens.slice(0, promptLength)) : 0;
+    drawRoll(player.position());
+  }
+  async function compose() {
+    if (busy || !engine) return;
+    busy = true; cancelled = false; player.stop();
+    ui.generate.classList.add('hidden'); ui.cancel.classList.remove('hidden');
+    ui.play.disabled = ui.playEntry.disabled = true; ui.download.classList.add('hidden');
+    const index = Number(ui.prompt.value);
+    const prompt = index >= 0 ? DATA.prompts[index].tokens.slice() : [];
+    const newTokens = Math.min(Number(ui.length.value), DATA.model.context - prompt.length - 1);
+    const temperature = Number(ui.temperature.value), topP = Number(ui.topp.value), seed = Number(ui.seed.value) || 0;
+    const label = index >= 0 ? `${DATA.prompts[index].composer}, ${DATA.prompts[index].title}` : 'silence';
+    try {
+      engine.reset();
+      const sequence = [0].concat(prompt);
+      let logits = null;
+      timing.prefill = [];
+      for (let i = 0; i < sequence.length; i++) {
+        const t = performance.now();
+        logits = await engine.step(sequence[i]);
+        timing.prefill.push(performance.now() - t);
+        if (i % 8 === 0 || i === sequence.length - 1) {
+          setProgress(i / (sequence.length + newTokens));
+          setStatus(`Reading the opening: event ${i + 1} of ${sequence.length}`);
+          if (i === 0) showTokens(prompt, prompt.length);
+        }
+        if (cancelled) throw new Error('cancelled');
+      }
+      const rng = mulberry32(seed >>> 0);
+      const out = prompt.slice();
+      timing.generate = [];
+      for (let i = 0; i < newTokens; i++) {
+        const next = sampleNext(logits, temperature, topP, rng);
+        out.push(next);
+        const t = performance.now();
+        logits = await engine.step(next);
+        timing.generate.push(performance.now() - t);
+        if (i % 8 === 7 || i === newTokens - 1) {
+          setProgress((sequence.length + i + 1) / (sequence.length + newTokens));
+          const avg = timing.generate.reduce((a, b) => a + b, 0) / timing.generate.length;
+          setStatus(`Composing: event ${i + 1} of ${newTokens} · ${avg.toFixed(0)} ms per event`);
+          showTokens(out, prompt.length);
+        }
+        if (cancelled) break;
+      }
+      showTokens(out, prompt.length);
+      const median = (xs) => { if (!xs.length) return 0; const s = xs.slice().sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+      const perEvent = median(timing.generate);
+      ui.speed.textContent = `Median ${perEvent.toFixed(0)} ms per event while composing (${median(timing.prefill).toFixed(0)} ms per event while reading the opening) in this browser, single WebAssembly thread; ${navigator.hardwareConcurrency || '?'} logical cores reported.`;
+      const generated = out.length - prompt.length;
+      setProgress(null);
+      setStatus(`${cancelled ? 'Stopped after' : 'Composed'} ${generated} new events after ${label} (seed ${seed}, temperature ${temperature}, top-p ${topP}): ${state.notes.length} notes, ${fmt(state.seconds)} in all${state.promptSeconds ? `, the model enters at ${fmt(state.promptSeconds)}` : ''}.`);
+      ui.caption.textContent = index >= 0
+        ? `Blue: the pianist's opening (${fmt(state.promptSeconds)}). Orange: the model's continuation, ${generated} events. Dashed line: where the model takes over.`
+        : `Orange: ${generated} events composed from silence.`;
+      const blob = new Blob([midiFile(state.notes)], { type: 'audio/midi' });
+      if (ui.download.href) URL.revokeObjectURL(ui.download.href);
+      ui.download.href = URL.createObjectURL(blob);
+      ui.download.download = `music-transformer-${index >= 0 ? DATA.prompts[index].id : 'silence'}-seed${seed}.mid`;
+      ui.download.classList.remove('hidden');
+      ui.play.disabled = ui.playEntry.disabled = false;
+      ui.playEntry.classList.toggle('hidden', index < 0);
+    } catch (error) {
+      setProgress(null);
+      if (error.message === 'cancelled') { setStatus('Stopped before the opening was read.'); }
+      else { console.error(error); setStatus(`Composing failed: ${error.message}`, true); }
+    } finally {
+      busy = false; ui.cancel.classList.add('hidden'); ui.generate.classList.remove('hidden');
+    }
+  }
+  ui.load.addEventListener('click', loadModel);
+  ui.generate.addEventListener('click', compose);
+  ui.cancel.addEventListener('click', () => { cancelled = true; });
+  ui.prompt.addEventListener('change', () => {
+    if (busy) return;
+    const index = Number(ui.prompt.value);
+    const prompt = index >= 0 ? DATA.prompts[index].tokens : [];
+    showTokens(prompt.slice(), prompt.length);
+    ui.play.disabled = ui.playEntry.disabled = !prompt.length; ui.playEntry.classList.toggle('hidden', index < 0);
+    ui.download.classList.add('hidden');
+    ui.caption.textContent = index >= 0 ? `The pianist's opening of ${DATA.prompts[index].composer}, ${DATA.prompts[index].title} (${fmt(promptSeconds(prompt))}). Compose to hear the model continue it.` : 'Compose to hear the model begin from silence.';
+  });
+  ui.prompt.value = '0'; ui.prompt.dispatchEvent(new Event('change'));
+
+  // ---- Blind test ----
+  const blind = { index: 0, correct: 0, answered: 0, order: [], key: 'maestro-mt-blind-v1', current: null };
+  const store = {
+    read() { try { return JSON.parse(localStorage.getItem(blind.key) || 'null'); } catch (e) { return null; } },
+    write(value) { try { localStorage.setItem(blind.key, JSON.stringify(value)); } catch (e) { /* storage unavailable */ } },
+    clear() { try { localStorage.removeItem(blind.key); } catch (e) { /* storage unavailable */ } },
+  };
+  const bui = { n: $('round-n'), piece: $('round-piece'), opening: $('round-opening'), a: $('audio-a'), b: $('audio-b'), pickA: $('pick-a'), pickB: $('pick-b'),
+                skipA: $('skip-a'), skipB: $('skip-b'), reveal: $('reveal'), next: $('next'), restart: $('restart'), score: $('score') };
+  function scoreText() {
+    if (!blind.answered) return `No answers yet. With ${DATA.prompts.length} rounds, 15 or more correct is better than guessing at the 5% level (binomial, p = 0.021); 14 is not (p = 0.058).`;
+    return `${blind.correct} of ${blind.answered} correct so far` + (blind.answered === DATA.prompts.length ? (blind.correct >= 15 ? '. Better than chance at the 5% level.' : '. Not distinguishable from guessing at the 5% level.') : '.');
+  }
+  function showRound() {
+    const i = blind.index;
+    if (i >= DATA.prompts.length) {
+      bui.n.textContent = String(DATA.prompts.length); bui.piece.textContent = 'All rounds done.'; bui.opening.textContent = '';
+      bui.a.removeAttribute('src'); bui.b.removeAttribute('src');
+      bui.pickA.disabled = bui.pickB.disabled = true; bui.next.classList.add('hidden');
+      bui.reveal.textContent = `Finished: ${blind.correct} of ${DATA.prompts.length} pianists picked correctly.`; bui.reveal.className = 'reveal';
+      bui.score.textContent = scoreText();
+      return;
+    }
+    const p = DATA.prompts[i];
+    const realFirst = Math.random() < 0.5;
+    blind.current = { realFirst };
+    bui.n.textContent = String(i + 1);
+    bui.piece.textContent = 'Composer and piece are revealed after you answer.';
+    bui.opening.textContent = `Both clips share the opening until ${fmt(p.openingSeconds)}.`;
+    bui.a.pause(); bui.b.pause();
+    bui.a.src = (realFirst ? p.real : p.model).file; bui.b.src = (realFirst ? p.model : p.real).file;
+    bui.pickA.disabled = bui.pickB.disabled = false;
+    bui.reveal.textContent = ''; bui.reveal.className = 'reveal';
+    bui.next.classList.add('hidden');
+    bui.score.textContent = scoreText();
+  }
+  function answer(pickedA) {
+    if (!blind.current) return;
+    const p = DATA.prompts[blind.index];
+    const right = pickedA === blind.current.realFirst;
+    blind.answered += 1; if (right) blind.correct += 1;
+    bui.pickA.disabled = bui.pickB.disabled = true;
+    const pianist = blind.current.realFirst ? 'A' : 'B', model = blind.current.realFirst ? 'B' : 'A';
+    bui.reveal.innerHTML = '';
+    const strong = document.createElement('strong'); strong.textContent = right ? 'Right. ' : 'Not this time. ';
+    bui.reveal.appendChild(strong);
+    bui.reveal.appendChild(document.createTextNode(`Clip ${pianist} was the pianist; clip ${model} was the model.`));
+    bui.reveal.className = 'reveal ' + (right ? 'right' : 'wrong');
+    bui.piece.textContent = `${p.composer}, ${p.title}.`;
+    bui.next.classList.remove('hidden');
+    bui.score.textContent = scoreText();
+    store.write({ index: blind.index + 1, correct: blind.correct, answered: blind.answered });
+    blind.current = null;
+  }
+  bui.pickA.addEventListener('click', () => answer(true));
+  bui.pickB.addEventListener('click', () => answer(false));
+  bui.next.addEventListener('click', () => { blind.index += 1; showRound(); });
+  bui.restart.addEventListener('click', () => { blind.index = 0; blind.correct = 0; blind.answered = 0; store.clear(); showRound(); });
+  const skip = (audio) => { const p = DATA.prompts[blind.index]; if (!p) return; const go = () => { audio.currentTime = Math.max(0, p.openingSeconds - 1.5); }; if (audio.readyState >= 1) go(); else { audio.addEventListener('loadedmetadata', go, { once: true }); audio.load(); } };
+  bui.skipA.addEventListener('click', () => skip(bui.a));
+  bui.skipB.addEventListener('click', () => skip(bui.b));
+  bui.a.addEventListener('play', () => bui.b.pause()); bui.b.addEventListener('play', () => bui.a.pause());
+  const saved = store.read();
+  if (saved && Number.isInteger(saved.index) && saved.index > 0 && saved.index <= DATA.prompts.length) { blind.index = saved.index; blind.correct = saved.correct || 0; blind.answered = saved.answered || 0; }
+  showRound();
+
+  window.MTLive = { decodeTokens, promptSeconds, midiFile, sampleNext, mulberry32, state, timing, loadModel, compose, get engine() { return engine; }, DATA };
+})();
+</script>
+</body>
+</html>

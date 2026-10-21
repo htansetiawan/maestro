@@ -412,6 +412,26 @@
           "url": "https://htansetiawan.github.io/maestro/experiments/018_musicgen_encodec/"
         }
       ]
+    },
+    {
+      "date": "2026-10-20",
+      "title": "Music Transformer, reproduced and running in the browser",
+      "summary": "The released Music Transformer configuration, re-implemented in PyTorch and trained for one million steps on the official MAESTRO v1 split, reaches validation NLL 1.835 on the selection metric (the paper reports 1.835), 1.827 on every validation event and 1.801 on test; the port matches the original Tensor2Tensor code to float32 rounding, and the trained model now runs in the browser at 29 ms per event with a pianist-or-model blind test.",
+      "stage": "Music Transformer reproduced and checked: 16.1M parameters, 1,000,000 steps, 9.1 GPU-hours; validation NLL 1.835 (128 windows), 1.827 (full), test 1.801. Attention ablations training. The model runs in the browser.",
+      "focus": "Turn the reproduced model into the measuring instrument: the same held-out events for every extension, and ears only after the numbers.",
+      "next_step": "Finish the attention ablations; evaluate whole performances and longer contexts without retraining; adapt the model to one composer at a two-minute budget and measure on that composer's held-out pieces.",
+      "artifacts": [],
+      "published": true,
+      "links": [
+        {
+          "label": "Music Transformer, reproduced",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/music-transformer-reproduction.html"
+        },
+        {
+          "label": "Music Transformer, live in the browser",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/music-transformer-live.html"
+        }
+      ]
     }
   ]
 }
