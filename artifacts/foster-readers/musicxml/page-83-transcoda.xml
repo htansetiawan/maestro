@@ -52,6 +52,10 @@
           <line>2</line>
         </clef>
       </attributes>
+      <note>
+        <rest measure="yes" />
+        <duration>40320</duration>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
       </barline>
@@ -75,6 +79,10 @@
           <line>2</line>
         </clef>
       </attributes>
+      <note>
+        <rest measure="yes" />
+        <duration>40320</duration>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
       </barline>
@@ -98,6 +106,10 @@
           <line>2</line>
         </clef>
       </attributes>
+      <note>
+        <rest measure="yes" />
+        <duration>40320</duration>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
       </barline>
@@ -121,6 +133,10 @@
           <line>2</line>
         </clef>
       </attributes>
+      <note>
+        <rest measure="yes" />
+        <duration>40320</duration>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
       </barline>
@@ -144,6 +160,10 @@
           <line>2</line>
         </clef>
       </attributes>
+      <note>
+        <rest measure="yes" />
+        <duration>40320</duration>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
       </barline>

@@ -444,8 +444,12 @@
       "published": true,
       "links": [
         {
-          "label": "Four score readers, heard: scans, MusicXML and playback",
+          "label": "Four score readers, heard: scan, MusicXML and playback excerpts",
           "url": "https://htansetiawan.github.io/maestro/artifacts/foster-readers/"
+        },
+        {
+          "label": "Foster recordings, transcribed: 24 tracks, thirty-second excerpts",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/foster-transcriptions/"
         },
         {
           "label": "017 · OMR against exact ground truth",
