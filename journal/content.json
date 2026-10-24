@@ -432,6 +432,30 @@
           "url": "https://htansetiawan.github.io/maestro/artifacts/music-transformer-live.html"
         }
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Four score readers on one ruler: the notes and the structure live in different engines",
+      "summary": "Four released score readers on the same pages and graders: homr reads the most notes on every set (100% on rendered truth, 91.7% of right-hand notes on 200 real IMSLP scans) but has the worst tree-edit score (0.475); Zeus, a 2024 model trained on renders of the same Lieder corpus, scores 0.144 with fewer notes right; the 2026 full-page models Transcoda and LEGATO are third and fourth on every set, with runaway decoding on dense commercial pages.",
+      "stage": "OMR standings on a shared ruler: note recall and tree edit distance measured for homr, Zeus, Transcoda and LEGATO on rendered truth, 200 real scans with exact truth, and commercial pages. homr for notes, Zeus for structure, no engine for both; LEGATO's row on the real scans pending.",
+      "focus": "A reader that scores on both rulers at once on the same 200 scanned systems: note recall at or above 92% and TEDn at or below 0.14.",
+      "next_step": "LEGATO on the 200 OLiMPiC systems; an engraving post-pass on homr's output to measure how much of its tree-edit gap is derivable; then a reader trained on renders of the target corpus with a decoder that cannot run away.",
+      "artifacts": [],
+      "published": true,
+      "links": [
+        {
+          "label": "Four score readers, heard: scans, MusicXML and playback",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/foster-readers/"
+        },
+        {
+          "label": "017 · OMR against exact ground truth",
+          "url": "https://htansetiawan.github.io/maestro/experiments/017_omr_benchmark/index.html"
+        },
+        {
+          "label": "016 · She: from a scanned song sheet to a singer",
+          "url": "https://htansetiawan.github.io/maestro/experiments/016_she_sheet_to_voice/index.html"
+        }
+      ]
     }
   ]
 }

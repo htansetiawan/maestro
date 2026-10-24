@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four score readers on one ruler: the notes and the structure live in different engines — Maestro</title>
+<meta name="description" content="Four released score readers on the same pages and graders: homr reads the most notes on every set (100% on rendered truth, 91.7% of right-hand notes on 200 real IMSLP scans) but has the worst tree-edit score (0.475); Zeus, a 2024 model trained on renders of the same Lieder corpus, scores 0.144 with fewer notes right; the 2026 full-page models Transcoda and LEGATO are third and fourth on every set, with runaway decoding on dense commercial pages.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/journal/2026-10-24.html">
+<link rel="alternate" type="application/atom+xml" title="Maestro journal" href="../journal/feed.xml">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Four score readers on one ruler: the notes and the structure live in different engines — Maestro">
+<meta property="og:description" content="Four released score readers on the same pages and graders: homr reads the most notes on every set (100% on rendered truth, 91.7% of right-hand notes on 200 real IMSLP scans) but has the worst tree-edit score (0.475); Zeus, a 2024 model trained on renders of the same Lieder corpus, scores 0.144 with fewer notes right; the 2026 full-page models Transcoda and LEGATO are third and fourth on every set, with runaway decoding on dense commercial pages.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/journal/2026-10-24.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Four score readers on one ruler: the notes and the structure live in different engines — Maestro">
+<meta name="twitter:description" content="Four released score readers on the same pages and graders: homr reads the most notes on every set (100% on rendered truth, 91.7% of right-hand notes on 200 real IMSLP scans) but has the worst tree-edit score (0.475); Zeus, a 2024 model trained on renders of the same Lieder corpus, scores 0.144 with fewer notes right; the 2026 full-page models Transcoda and LEGATO are third and fourth on every set, with runaway decoding on dense commercial pages.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/journal.css">
+<script src="../assets/share.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="journal-wrap">
+  <header class="journal-top">
+    <a class="wordmark" href="../">Maestro</a>
+    <nav aria-label="Main navigation">
+      <a href="../#now">Now</a>
+      <a href="../journal/">Journal</a>
+      <a href="../#artifacts">Artifacts</a>
+      <a href="../survey/literature-review.html">Research</a>
+      <a href="https://github.com/htansetiawan/maestro">GitHub</a>
+    </nav>
+  </header>
+  <main id="content">
+    <header class="journal-head">
+      <p class="eyebrow">Weekly journal · week of October 19, 2026</p>
+      <h1>Four score readers on one ruler: the notes and the structure live in different engines</h1>
+      <p class="journal-description">Four released score readers on the same pages and graders: homr reads the most notes on every set (100% on rendered truth, 91.7% of right-hand notes on 200 real IMSLP scans) but has the worst tree-edit score (0.475); Zeus, a 2024 model trained on renders of the same Lieder corpus, scores 0.144 with fewer notes right; the 2026 full-page models Transcoda and LEGATO are third and fourth on every set, with runaway decoding on dense commercial pages.</p>
+      <p class="journal-meta"><time datetime="2026-10-24">October 24, 2026</time> · Henry Tan · <a href="entries/2026-10-24.md">Entry source</a></p>
+      <div class="share-actions">
+        <a href="https://htansetiawan.github.io/maestro/journal/2026-10-24.html">Permalink</a>
+        <button type="button" class="share-button" data-share-url="https://htansetiawan.github.io/maestro/journal/2026-10-24.html" hidden>Copy link</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
+      </div>
+    </header>
+    <dl class="state-grid"><div><dt>Stage</dt><dd>OMR standings on a shared ruler: note recall and tree edit distance measured for homr, Zeus, Transcoda and LEGATO on rendered truth, 200 real scans with exact truth, and commercial pages. homr for notes, Zeus for structure, no engine for both; LEGATO&#x27;s row on the real scans pending.</dd></div><div><dt>Current focus</dt><dd>A reader that scores on both rulers at once on the same 200 scanned systems: note recall at or above 92% and TEDn at or below 0.14.</dd></div><div><dt>Next experiment</dt><dd>LEGATO on the 200 OLiMPiC systems; an engraving post-pass on homr&#x27;s output to measure how much of its tree-edit gap is derivable; then a reader trained on renders of the target corpus with a decoder that cannot run away.</dd></div></dl><div class="journal-prose"><p>Four released optical music recognition systems were run on the same pages and scored by the same graders: homr 0.7 (2024, a staff-by-staff reader), Zeus (Mayer et al., ICDAR 2024, trained on renders of the OpenScore Lieder), Transcoda (NeurIPS 2026, a 59-million-parameter full-page model run zero-shot) and LEGATO (ICLR 2026, a frozen Llama 3.2 vision encoder with an ABC decoder). Three kinds of page: the rendered ground truth of experiment 017, two hundred systems of real IMSLP scans with exact MusicXML truth from the OLiMPiC benchmark, and real commercial pages without truth. Two rulers: the note recall that 017 introduced, and the tree edit distance the OMR field reports. The two rulers disagree about who is best, and that disagreement is the finding.</p>
+<h2 id="find-the-work">Find the work</h2>
+<ul>
+<li><a href="../artifacts/foster-readers">Four score readers, heard</a>: sixteen songbook pages beside each engine's reading, with the scan, the MusicXML and a playback of every reading, and one recording transcribed from audio.</li>
+<li><a href="../experiments/017_omr_benchmark/index.html">017 · OMR against exact ground truth</a>: the rendered K. 545 and Ode to Joy pages, clean and damaged, and the note-level grader used throughout.</li>
+<li><a href="../experiments/016_she_sheet_to_voice/index.html">016 · She: from a scanned song sheet to a singer</a>: the piano-vocal page and its manual vocal transcription.</li>
+<li><a href="https://github.com/ufal/olimpic-icdar24">OLiMPiC</a>: the scanned Lieder benchmark, its tree-edit metric and the Zeus model (Mayer et al., 2024). Engines: <a href="https://github.com/liebharc/homr">homr</a>, <a href="https://huggingface.co/btrkeks/transcoda-59M-zeroshot-v1">Transcoda</a>, <a href="https://huggingface.co/guangyangmusic/legato">LEGATO</a>.</li>
+<li>The engine runs, converters and records of this comparison are experiment 028; its page is pending publication.</li>
+</ul>
+<h2 id="the-pages-and-the-rulers">The pages and the rulers</h2>
+<p>The 017 pages are Mozart's K. 545 first movement (74 bars, 1,278 notes) and a 16-bar Ode to Joy arrangement, rendered by Verovio and read clean, as a photocopy imitation and as a phone-photograph imitation. The OLiMPiC pages are 200 systems drawn by a fixed seed from the 1,493-system scanned test set: real nineteenth-century engravings scanned for IMSLP, each with its exact MusicXML. The commercial pages are ten pages of a Japanese piano-solo songbook with chord symbols, graded by agreement with homr because no truth exists for them, and the three-page She sheet with its 195-note vocal transcription.</p>
+<p>Note recall counts attacks: an engine's note is exact when its pitch and position match the truth's in sequence; precision is the share of the engine's attacks that match. Tree edit distance normalised by the truth (TEDn, Mayer et al.) counts every edit needed to turn the engine's MusicXML tree into the truth's, divided by the cost of the truth: 0 is perfect, 1.0 is an empty output, and it counts stems, beams, printed accidentals, rests, ties and tuplets as well as pitches. Engine outputs in kern and ABC were converted to MusicXML so that one grader scores every engine; parts are ordered treble first, and a staff written as several voices is merged into one attack per onset.</p>
+<h2 id="rendered-pages-with-exact-truth">Rendered pages with exact truth</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Engine, clean pages</th>
+<th>K. 545 right hand</th>
+<th>K. 545 left hand</th>
+<th>Precision RH / LH</th>
+<th>Measures found of 74</th>
+<th>Longest exact run</th>
+<th>Ode to Joy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>homr</td>
+<td>100%</td>
+<td>100%</td>
+<td>99% / 100%</td>
+<td>73</td>
+<td>585</td>
+<td>100% / 100%</td>
+</tr>
+<tr>
+<td>Transcoda</td>
+<td>97%</td>
+<td>85%</td>
+<td>99% / 98%</td>
+<td>71</td>
+<td>294</td>
+<td>100% / 100%</td>
+</tr>
+<tr>
+<td>LEGATO</td>
+<td>95%</td>
+<td>96%</td>
+<td>72% / 77%</td>
+<td>95</td>
+<td>69</td>
+<td>100% / 100%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Damage changes little: homr stays at 100% on the photocopy and the phone photograph, Transcoda reads 96% of the right hand and 85 to 91% of the left in both, LEGATO 95 and 96% in both. LEGATO's number to watch is not recall but the rest of the row: 95 to 119 measures for 74 printed, precision down to 47% on the photocopy, and exact runs of 69 to 86 notes against homr's 585, which means a small error every few bars from a reader that segments the page itself.</p>
+<h2 id="real-scans-with-exact-truth">Real scans with exact truth</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Engine, 200 OLiMPiC systems</th>
+<th>Systems returned</th>
+<th>RH exact recall</th>
+<th>LH exact recall</th>
+<th>TEDn</th>
+<th>TEDn without stems and beams</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>homr (2024, staff by staff, synthetic staves)</td>
+<td>200</td>
+<td>91.7%</td>
+<td>89.3%</td>
+<td>0.475</td>
+<td>0.343</td>
+</tr>
+<tr>
+<td>Zeus (2024, CNN and BiLSTM, in-domain renders)</td>
+<td>200</td>
+<td>86.4%</td>
+<td>85.3%</td>
+<td>0.144</td>
+<td>0.140</td>
+</tr>
+<tr>
+<td>Transcoda (2026, full page, zero-shot, no grammar)</td>
+<td>157</td>
+<td>82.1% (64.4% counting the failures)</td>
+<td>83.6%</td>
+<td>0.56</td>
+<td>0.472</td>
+</tr>
+<tr>
+<td>LEGATO (2026, full page, zero-shot)</td>
+<td>pending</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Transcoda's 43 missing systems are structural failures of its unconstrained decoder: kern whose spines disagree on rhythm, which neither music21 nor Verovio accepts. Zeus returns every system and, on the metric its own field reports, beats Transcoda by a factor of four with a 2024 architecture and no transformer, because it was trained on renders of the same corpus.</p>
+<p>homr is the mirror image: the best note reader of the three on real scans and the worst tree-edit score. Element counts over the first forty systems show why. The truth carries 2,749 stems and 1,841 beams, which Zeus reproduces (2,808 and 1,922) because its vocabulary encodes them; homr writes 53 and 99 and Transcoda none. The truth has 277 printed accidentals against homr's 7 (homr sets the pitch correctly and omits the mark). homr also writes 420 rests where the truth has 276, 81 tuplets against 251, and more voices per measure. Removing stems and beams from truth and prediction alike moves homr from 0.475 to 0.343 and Transcoda from 0.56 to 0.47, and leaves Zeus at 0.14: engraving attributes explain about a third of homr's gap, and the rest is rhythm and structure.</p>
+<h2 id="real-commercial-pages">Real commercial pages</h2>
+<p>On the songbook pages, Transcoda agrees with homr's reading on 52 to 81% of right-hand notes on eight pages, collapses on one and runs away to its token limit on another, emitting 169 measures for 8. LEGATO agrees on 46 to 79% on seven pages and loops to its token limit on three, repeating one bar; doubling the limit only doubles the loop. On the She sheet, homr reads 79% of the vocal line (longest exact run 43), LEGATO 71% (run 14) and lays the page out correctly as a voice staff over a grand staff, and Transcoda 52% on the two pages whose output parsed.</p>
+<h2 id="heard-not-only-counted">Heard, not only counted</h2>
+<p>The <a href="../artifacts/foster-readers">listening page</a> puts sixteen pages of the songbook (Hard To Say I'm Sorry, Love Theme from St. Elmo's Fire, Theme from The Color Purple, Water Fountain, Katie's Theme) beside the three engines' readings: the scan, the MusicXML as graded, and the MusicXML played back at a fixed 80 beats per minute by one piano soundfont, so that what the numbers call a loop or a collapse can be heard. Listening agrees with the counts: homr first, LEGATO second, Transcoda last, with Transcoda's first pages opening on invented bars before the reading locks onto the page (24 measures for 17 on Hard To Say I'm Sorry; 196 for 17 on Water Fountain). Every playback sounds mechanical, which is the renderer and the readings, not the format: no engine returns dynamics, pedal or tempo, and the playback puts every note at one velocity on an exact grid.</p>
+<p>Katie's Theme inverts the ranking on one page. Its first page has a tall title block, a blank half page, a tempo marked freely and two metre changes, and homr returned one staff with 17 notes for three full systems. LEGATO read 61 right-hand and 34 left-hand attacks over 15 measures there; Transcoda looped for 122. The staff-by-staff reader that wins everywhere else can drop an unusual page outright, and the full-page model survives it; on the second page homr reads normally again.</p>
+<p>The page also carries a reader of a different kind: the owner's own piano recording of the Color Purple theme (3:30), transcribed from audio by the ByteDance piano transcription model (Kong et al., 2021) into 1,010 notes and 108 pedal events in 14 seconds, and played back by the same soundfont. It is the one playback on the page with a performer's timing and dynamics, because they come from the recording, and its MusicXML is the roughest, because a freely played ballad has no beat grid to snap to. The same model run on two of the owner's Foster albums, 24 tracks and 102 minutes, returned 42,861 notes and 4,846 pedal events in 284 seconds, 22 times faster than real time; those are full productions, so strings and voice come back as piano notes too, and the transcriptions stay local.</p>
+<h2 id="what-this-says">What this says</h2>
+<p>The two halves of score reading sit in different engines. homr finds the notes: the best recall on every page set, every page returned, no runaway decoding. Zeus gets the rhythm and the layout: a tree-edit score three times better than anything else measured here, on the one corpus it was trained to render. Neither does both, and the two 2026 full-page models are third and fourth on every set they were run on. Across all four, training on renders of the target corpus mattered more than the year or the architecture.</p>
+<p>For the pages this project cares about, commercial piano books with chord symbols and piano-vocal sheets, homr remains the reader, as it was in the October 18 entry, and chord symbols are still returned by no engine. The target for a reader that would replace it is now two numbers on the same 200 systems at once: note recall at or above 92% and TEDn at or below 0.14.</p>
+<h2 id="next">Next</h2>
+<ol>
+<li>LEGATO on the 200 OLiMPiC systems, for the one row still missing and the direct check of its published scan results.</li>
+<li>An engraving post-pass on homr's output (stems from pitch and voice, beams from beat grouping, courtesy accidentals), to measure how much of its tree-edit gap is derivable from what it already reads.</li>
+<li>A reader trained on renders of the target corpus with a decoder that cannot run away, measured on both rulers.</li>
+</ol>
+</div><section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2><div class="artifact-list"></div></section><nav class="entry-navigation" aria-label="Journal entries"><a href="2026-10-20.html">← Earlier: Music Transformer, reproduced and running in the browser</a><a href="./">All entries</a></nav>
+  </main>
+  <footer class="journal-footer">
+    <p>Maestro · Henry Tan · <a href="../journal/">Weekly journal</a> ·
+      <a href="../journal/feed.xml">Subscribe via Atom</a></p>
+    <p>Writing licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      <a href="https://github.com/htansetiawan/maestro">Source and history</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

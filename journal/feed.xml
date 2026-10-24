@@ -4,10 +4,18 @@
   <id>https://htansetiawan.github.io/maestro/journal/</id>
   <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
   <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-10-20T00:00:00-07:00</updated>
+  <updated>2026-10-24T00:00:00-07:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
+  <entry>
+    <title>Four score readers on one ruler: the notes and the structure live in different engines</title>
+    <id>https://htansetiawan.github.io/maestro/journal/2026-10-24.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-10-24.html" />
+    <updated>2026-10-24T00:00:00-07:00</updated>
+    <published>2026-10-24T00:00:00-07:00</published>
+    <summary>Four released score readers on the same pages and graders: homr reads the most notes on every set (100% on rendered truth, 91.7% of right-hand notes on 200 real IMSLP scans) but has the worst tree-edit score (0.475); Zeus, a 2024 model trained on renders of the same Lieder corpus, scores 0.144 with fewer notes right; the 2026 full-page models Transcoda and LEGATO are third and fourth on every set, with runaway decoding on dense commercial pages.</summary>
+  </entry>
   <entry>
     <title>Music Transformer, reproduced and running in the browser</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-10-20.html</id>
