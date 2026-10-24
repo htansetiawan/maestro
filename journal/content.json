@@ -116,7 +116,7 @@
       "id": "foster-transcriptions",
       "title": "Foster recordings, transcribed",
       "page": "artifacts/foster-transcriptions/index.html",
-      "description": "Twenty-four album tracks read from the audio by the ByteDance piano transcription model: the notes found, and the first thirty seconds of each transcription engraved and played back, with MIDI and MusicXML excerpts.",
+      "description": "Twenty-four album tracks read from the audio by the ByteDance piano transcription model: the notes found, the first thirty seconds of each transcription played back, engraved where the piano carries the arrangement, with MIDI and MusicXML excerpts.",
       "status": "Listening page · October 24, 2026"
     }
   ],
