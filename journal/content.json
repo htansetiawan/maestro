@@ -118,6 +118,13 @@
       "page": "artifacts/foster-transcriptions/index.html",
       "description": "Twenty-four album tracks read from the audio by the ByteDance piano transcription model: the notes found, the first thirty seconds of each transcription played back, engraved where the piano carries the arrangement, with MIDI and MusicXML excerpts.",
       "status": "Listening page · October 24, 2026"
+    },
+    {
+      "id": "foster-demucs",
+      "title": "Foster recordings, separated first",
+      "page": "artifacts/foster-demucs/index.html",
+      "description": "The same twenty-four tracks transcribed from the full mix and from the Demucs piano stem: notes before and after, what survived, what appeared, and both thirty-second playbacks side by side.",
+      "status": "Listening page · October 24, 2026"
     }
   ],
   "entries": [
@@ -464,6 +471,10 @@
         {
           "label": "Foster recordings, transcribed: 24 tracks, thirty-second excerpts",
           "url": "https://htansetiawan.github.io/maestro/artifacts/foster-transcriptions/"
+        },
+        {
+          "label": "Foster recordings, separated first: the piano stem transcribed, beside the full mix",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/foster-demucs/"
         },
         {
           "label": "017 · OMR against exact ground truth",
