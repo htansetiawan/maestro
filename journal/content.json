@@ -123,7 +123,7 @@
       "id": "foster-demucs",
       "title": "Foster recordings, separated first",
       "page": "artifacts/foster-demucs/index.html",
-      "description": "The same twenty-four tracks transcribed from the full mix and from the Demucs piano stem: notes before and after, what survived, what appeared, and both thirty-second playbacks side by side.",
+      "description": "The same twenty-four tracks transcribed from the full mix and from two separated piano stems, Demucs and an open piano RoFormer, with a ground-truth test on the owner's own recording that says which separator helps.",
       "status": "Listening page · October 24, 2026"
     }
   ],
@@ -473,7 +473,7 @@
           "url": "https://htansetiawan.github.io/maestro/artifacts/foster-transcriptions/"
         },
         {
-          "label": "Foster recordings, separated first: the piano stem transcribed, beside the full mix",
+          "label": "Foster recordings, separated first: two piano separators beside the full mix, with a ground-truth test",
           "url": "https://htansetiawan.github.io/maestro/artifacts/foster-demucs/"
         },
         {
