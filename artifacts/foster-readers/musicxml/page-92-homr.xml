@@ -21,11 +21,11 @@
     <score-part id="P1">
       <part-name>Voice</part-name>
       <part-abbreviation>V</part-abbreviation>
-      <score-instrument id="I09c38c3d1eabc2e59219c9c302b52bba">
+      <score-instrument id="Ifc9eed275315651367900edf0dcf768c">
         <instrument-name>Voice</instrument-name>
         <instrument-abbreviation>V</instrument-abbreviation>
       </score-instrument>
-      <midi-instrument id="I09c38c3d1eabc2e59219c9c302b52bba">
+      <midi-instrument id="Ifc9eed275315651367900edf0dcf768c">
         <midi-channel>1</midi-channel>
         <midi-program>54</midi-program>
       </midi-instrument>
