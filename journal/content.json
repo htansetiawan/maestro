@@ -104,6 +104,20 @@
       "source": "research/MUSIC-NOTATIONS.md",
       "description": "Definitions, the notation and performance encodings, which corpora hold each, and what the generators in this project actually read.",
       "status": "Reference note · October 2026"
+    },
+    {
+      "id": "foster-readers",
+      "title": "Four score readers, heard",
+      "page": "artifacts/foster-readers/index.html",
+      "description": "Sixteen pages of a David Foster songbook beside homr, Transcoda and LEGATO readings, as excerpts: the top of each scan, eight bars of each MusicXML, thirty seconds of each playback, with credits; and one recording transcribed from audio.",
+      "status": "Listening page · October 24, 2026"
+    },
+    {
+      "id": "foster-transcriptions",
+      "title": "Foster recordings, transcribed",
+      "page": "artifacts/foster-transcriptions/index.html",
+      "description": "Twenty-four album tracks read from the audio by the ByteDance piano transcription model: the notes found, thirty-second playbacks, and MIDI and MusicXML excerpts.",
+      "status": "Listening page · October 24, 2026"
     }
   ],
   "entries": [

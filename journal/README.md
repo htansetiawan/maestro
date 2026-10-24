@@ -24,7 +24,7 @@ Draft source files follow the repository’s visibility; drafts are not access-c
 
 Update the current artifact Markdown files if the position has changed. New artifacts can be
 registered in the `artifacts` list in `journal/content.json`; use a stable ID and repository-relative
-source path. Choose which IDs to attach to the entry.
+source path. Choose which IDs to attach to the entry. A standalone HTML page with its own media (a listening page, a live demo) is registered with `page` (its repository-relative HTML path) instead of `source`; it gets a card but is not frozen into snapshots.
 
 Put a short “find the work” section near the top of technical entries with direct
 GitHub links to code, configuration, and a public results index. Artifact cards

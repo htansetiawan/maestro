@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "journal/content.json"
 BASE = "https://htansetiawan.github.io/maestro/"
 GITHUB_BLOB = "https://github.com/htansetiawan/maestro/blob/main/"
+GITHUB_TREE = "https://github.com/htansetiawan/maestro/tree/main/"
 BEGIN = "<!-- JOURNAL:START -->"
 END = "<!-- JOURNAL:END -->"
 
@@ -36,7 +37,7 @@ def load():
     for artifact in data["artifacts"]:
         if not re.fullmatch(r"[a-z0-9-]+", artifact["id"]):
             raise ValueError("Artifact IDs must be lowercase URL slugs")
-        if not (ROOT / artifact["source"]).resolve().is_relative_to(ROOT):
+        if not (ROOT / (artifact["source"] if "source" in artifact else artifact["page"])).resolve().is_relative_to(ROOT):
             raise ValueError("Artifact sources must be inside the repository")
     for entry in data["entries"]:
         if date.fromisoformat(entry["date"]).isoformat() != entry["date"]:
@@ -141,10 +142,14 @@ def quick_links(entry):
 def artifact_list(artifacts, output, snapshot=None):
     items = []
     for a in artifacts:
-        target = f"journal/snapshots/{snapshot}/{a['id']}.html" if snapshot else f"artifacts/{a['id']}.html"
-        source = f"journal/snapshots/{snapshot}/{a['id']}.md" if snapshot else a["source"]
-        source_url = escape(GITHUB_BLOB + quote(source, safe="/"), quote=True)
-        source_label = "Frozen source on GitHub" if snapshot else "Source on GitHub"
+        if "page" in a:  # a standalone HTML page (with its media) rather than a rendered Markdown document
+            target, source_label = a["page"], "Files on GitHub"
+            source_url = escape(GITHUB_TREE + quote(a["page"].rsplit("/", 1)[0], safe="/"), quote=True)
+        else:
+            target = f"journal/snapshots/{snapshot}/{a['id']}.html" if snapshot else f"artifacts/{a['id']}.html"
+            source = f"journal/snapshots/{snapshot}/{a['id']}.md" if snapshot else a["source"]
+            source_url = escape(GITHUB_BLOB + quote(source, safe="/"), quote=True)
+            source_label = "Frozen source on GitHub" if snapshot else "Source on GitHub"
         items.append(f'<article class="artifact-item"><p class="artifact-status">{escape(a["status"])}</p>'
                        f'<h3><a href="{relative(output, target)}">{escape(a["title"])}</a></h3>'
                        f'<p>{escape(a["description"])}</p>'
@@ -158,8 +163,10 @@ def build():
     if not entries:
         raise ValueError("Publish an entry before building the public journal")
     artifacts, latest = data["artifacts"], entries[0]
-    mapping = {(ROOT / a["source"]).resolve(): ROOT / f"artifacts/{a['id']}.html" for a in artifacts}
+    mapping = {(ROOT / a["source"]).resolve(): ROOT / f"artifacts/{a['id']}.html" for a in artifacts if "source" in a}
     for a in artifacts:
+        if "page" in a:
+            continue
         output = f"artifacts/{a['id']}.html"
         meta = escape(a["status"]) + f' · <a href="{relative(output, a["source"])}">Markdown source</a>'
         write_page(output, a["title"], a["description"], "Working artifact", meta,
@@ -277,7 +284,7 @@ def publish(day):
     source = ROOT / f"journal/entries/{day}.md"
     if any(not e[k].strip() for k in ["title", "summary", "stage", "focus", "next_step"]) or "TODO:" in source.read_text():
         raise ValueError("Complete the entry and its state metadata before publishing")
-    artifacts = [a for a in data["artifacts"] if a["id"] in e["artifacts"]]
+    artifacts = [a for a in data["artifacts"] if a["id"] in e["artifacts"] and "source" in a]
     copies = [(a, (ROOT / a["source"]).read_text()) for a in artifacts]
     destination = ROOT / f"journal/snapshots/{day}"
     destination.mkdir(parents=True, exist_ok=False)
