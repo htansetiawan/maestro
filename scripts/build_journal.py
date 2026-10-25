@@ -44,7 +44,7 @@ def load():
             raise ValueError("Journal dates must use YYYY-MM-DD")
         if not set(entry["artifacts"]).issubset(ids):
             raise ValueError(f"Unknown artifact in {entry['date']}")
-        for link in entry.get("links", []):
+        for link in entry.get("links", []) + ([entry["start_here"]] if entry.get("start_here") else []):
             url = urlsplit(link["url"])
             if not link["label"].strip() or url.scheme != "https" or not url.netloc:
                 raise ValueError(f"Invalid quick link in {entry['date']}")
@@ -127,6 +127,16 @@ def entry_list(entries, output):
     return '<ol class="journal-list">' + "".join(items) + "</ol>"
 
 
+def start_here(entry):
+    """The one page a reader should open first for this week, shown above everything else."""
+    s = entry.get("start_here")
+    if not s:
+        return ""
+    text = f' {escape(s["text"])}' if s.get("text") else ""
+    return ('<aside class="start-here"><p class="start-here-title">Start here</p>'
+            f'<p><a href="{escape(s["url"], quote=True)}">{escape(s["label"])}</a>.{text}</p></aside>')
+
+
 def quick_links(entry):
     links = entry.get("links", [])
     if not links:
@@ -186,7 +196,7 @@ def build():
             write_page(dest, a["title"], a["description"], "Dated artifact snapshot",
                        f'{label(day)} · {escape(a["status"])} · <a href="{a["id"]}.md">Snapshot source</a>',
                        note + markdown(src, dest, frozen_mapping, origin=a["source"]))
-        body = state(e) + markdown(f"journal/entries/{day}.md", output, frozen_mapping)
+        body = start_here(e) + state(e) + markdown(f"journal/entries/{day}.md", output, frozen_mapping)
         body += '<section aria-labelledby="snapshots"><h2 id="snapshots">Artifacts at this point</h2>'
         body += artifact_list(frozen, output, day) + "</section>"
         body += '<nav class="entry-navigation" aria-label="Journal entries">'
@@ -205,14 +215,14 @@ def build():
                "Working in public", f'Latest entry: {label(latest["date"])} · <a href="feed.xml">Subscribe via Atom</a>',
                '<p>Each entry records what changed, what the evidence supports, what remains open, and what comes next. '
                'Dated artifact snapshots preserve the thinking behind each update.</p>'
-               + quick_links(latest) + entry_list(entries, "journal/index.html"))
+               + start_here(latest) + quick_links(latest) + entry_list(entries, "journal/index.html"))
     homepage = ROOT / "index.html"
     html = homepage.read_text()
     if html.count(BEGIN) != 1 or html.count(END) != 1:
         raise ValueError("Homepage must contain one pair of journal markers")
     generated = (f'<section id="now"><p class="eyebrow">Current state · {label(latest["date"])}</p>'
                  '<h2>Building toward Music Kitchen</h2><p>A personal arranging studio: play piano, write lyrics, '
-                 'and shape the rest of the band through sound, examples, and gestures.</p>' + state(latest)
+                 'and shape the rest of the band through sound, examples, and gestures.</p>' + start_here(latest) + state(latest)
                  + quick_links(latest)
                  + f'<p><a href="journal/{latest["date"]}.html">Read the latest update →</a></p></section>'
                  + '<section id="journal"><h2>The weekly journal</h2><p>A dated record of the work: decisions, '

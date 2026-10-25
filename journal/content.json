@@ -506,7 +506,12 @@
           "label": "016 · She: from a scanned song sheet to a singer",
           "url": "https://htansetiawan.github.io/maestro/experiments/016_she_sheet_to_voice/index.html"
         }
-      ]
+      ],
+      "start_here": {
+        "label": "Read, Hear, Sing",
+        "url": "https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/",
+        "text": "This week's experiments on one page, with a 90-second video: reading printed scores, transcribing recordings, separating the piano from a band, and singing a written melody."
+      }
     }
   ]
 }
