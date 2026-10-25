@@ -229,7 +229,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
       <span class="kana jp" lang="ja">楽譜から歌声へ</span>
       <span class="seal jp" lang="ja" aria-hidden="true">二日間</span>
     </div>
-    <p class="tagline">Can a machine take a piece of music, printed on paper or caught in a recording, turn it into notes, and hand it back as a singing voice? Two days, open models only, every answer graded against the truth.</p>
+    <p class="tagline">Can a machine take a piece of music, printed on paper or recorded, turn it into notes, and sing it back? We tried this with open models over two days and checked the results against the right answers. This page summarizes what we found.</p>
     <p class="byline">Henry Tan · Maestro · October 24–25, 2026</p>
   </div>
 
@@ -276,7 +276,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
       <span class="node end">A voice</span>
     </div>
   </div>
-  <p class="body">The rule throughout: no grading by vibes. Wherever we could, we built pages, mixes and melodies whose right answer we already knew, then counted the notes that came back.</p>
+  <p class="body">Wherever we could, we tested on pages, mixes and melodies where we already knew the right notes, so we could count how many came back correctly.</p>
 </section>
 
 <section class="wrap sec" id="read">
@@ -373,7 +373,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
       <p class="caption">The hardest case, a singer 6 dB louder than the piano: 0.38 with no separation, 0.35 with Demucs, <b>0.64 with RoFormer</b>. RoFormer here is the band-split architecture (Lu et al., 2023) with open community weights trained for piano.</p>
     </div>
     <div>
-      <blockquote class="quote" style="margin-top:28px">A separator reduces the damage of a mix. It does not undo it.<small>Best mix 0.82, against 1.00 for the solo</small></blockquote>
+      <blockquote class="quote" style="margin-top:28px">Separating first helps a lot, but it doesn't fully recover the clean piano.<small>Best mix 0.82, against 1.00 for the solo</small></blockquote>
     </div>
   </div>
   <p class="label" style="margin-top:44px">Three Foster records, by ear · the same thirty seconds transcribed three ways</p>
@@ -452,7 +452,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
       <p class="notice"><b>Research notice.</b> The named-voice clips are synthetic imitations made with open research models from short excerpts of commercial recordings. They are not performances by the named artists, who are not involved and do not endorse them. Thirty-second excerpts, for research commentary only.</p>
     </div>
   </div>
-  <blockquote class="quote">To get your melody sung, hand the singer a score, not a prompt.<small>The difference between 3% and 100%</small></blockquote>
+  <blockquote class="quote">If you want a model to sing your melody, give it the score instead of a text prompt.<small>Score-driven singers 92–100%, song generators 3–27%</small></blockquote>
   <ul class="verdicts">
     <li><span class="m o" aria-hidden="true">✓</span><h3>SoulX-Singer</h3><p>Score in, singing out: every note's pitch, length and syllable. It clones a voice from a short clip, and its voice-conversion sibling covers Korean and Indonesian.</p></li>
     <li><span class="m t" aria-hidden="true">~</span><h3>Fitting the words</h3><p>Our first English lyrics crammed whole words onto single notes. Re-writing them one syllable per note, with "yeah" and "ooh" as filler, fixed it.</p></li>
