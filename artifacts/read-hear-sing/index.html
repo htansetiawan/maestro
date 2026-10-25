@@ -13,21 +13,30 @@
 <meta property="og:title" content="Read, Hear, Sing — Maestro">
 <meta property="og:description" content="From the printed page to a singing voice: what open models can read, hear, separate and sing today, in sixty seconds.">
 <meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/">
-<meta property="og:image" content="https://htansetiawan.github.io/maestro/assets/og-cover.png">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/og.png">
+<meta property="og:image:secure_url" content="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Read, Hear, Sing: from the printed page to a singing voice, with three headline results.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Read, Hear, Sing — Maestro">
+<meta name="twitter:description" content="From the printed page to a singing voice: what open models can read, hear, separate and sing today, in sixty seconds.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/og.png">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23B23A2B'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23F3EEE3' font-family='serif'%3E%E6%A5%BD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F3EEE3; --ink:#1B1A17; --shu:#B23A2B; --ai:#2F4B66; --grey:#77716A; --panel:#E8E0D0;
-  --track:rgba(27,26,23,.09); --rule:rgba(27,26,23,.24); --seal-ink:#F3EEE3; --sheet:#FBF8F1;
+  --paper:#FFFFFF; --ink:#55595E; --head:#26282B; --shu:#B23A2B; --ai:#8D949B; --grey:#8F9398; --panel:#F6F6F4;
+  --track:rgba(38,40,43,.07); --rule:rgba(38,40,43,.16); --seal-ink:#FFFFFF; --sheet:#FFFFFF;
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ --paper:#14130F; --ink:#E7E1D4; --shu:#D0503F; --ai:#7FA3C4; --grey:#9B9385; --panel:#1F1D18; --track:rgba(231,225,212,.10); --rule:rgba(231,225,212,.22); color-scheme:dark; }
+  :root:not([data-theme="light"]){ --paper:#131415; --ink:#B4B8BC; --head:#ECEDEE; --shu:#D0503F; --ai:#6E757C; --grey:#8A8F94; --panel:#1C1D1F; --track:rgba(236,237,238,.09); --rule:rgba(236,237,238,.16); --seal-ink:#FFFFFF; color-scheme:dark; }
 }
-:root[data-theme="dark"]{ --paper:#14130F; --ink:#E7E1D4; --shu:#D0503F; --ai:#7FA3C4; --grey:#9B9385; --panel:#1F1D18; --track:rgba(231,225,212,.10); --rule:rgba(231,225,212,.22); color-scheme:dark; }
+:root[data-theme="dark"]{ --paper:#131415; --ink:#B4B8BC; --head:#ECEDEE; --shu:#D0503F; --ai:#6E757C; --grey:#8A8F94; --panel:#1C1D1F; --track:rgba(236,237,238,.09); --rule:rgba(236,237,238,.16); --seal-ink:#FFFFFF; color-scheme:dark; }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -35,6 +44,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:'Cormorant Ga
 a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 a:hover{border-bottom-color:var(--shu)}
 img{max-width:100%}
+h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .jp{font-family:'Shippori Mincho','Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif}
 .num{font-variant-numeric:lining-nums tabular-nums}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -64,7 +74,7 @@ img{max-width:100%}
 /* hanging scroll: the sixty-second version */
 .scroll{margin:0 auto;width:min(420px,100%)}
 .cord{width:1px;height:28px;background:var(--ink);margin:0 auto;opacity:.6}
-.roller{height:12px;background:var(--ink);border-radius:6px;margin:0 -12px;position:relative}
+.roller{height:12px;background:var(--head);border-radius:6px;margin:0 -12px;position:relative}
 .roller::before,.roller::after{content:"";position:absolute;top:1px;width:10px;height:10px;border-radius:50%;background:var(--paper);opacity:.35}
 .roller::before{left:3px}.roller::after{right:3px}
 .mount{background:var(--panel);padding:22px 22px 18px;border-left:1px solid var(--rule);border-right:1px solid var(--rule)}
@@ -79,9 +89,9 @@ img{max-width:100%}
 /* sections */
 .sec{padding-block:64px 18px;border-top:1px solid var(--rule)}
 .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:22px;flex-wrap:wrap}
-.mark{color:var(--shu);font-size:44px;line-height:1}
+.mark{color:var(--shu);font-size:22px;line-height:1;letter-spacing:.08em}
 .sec h2{font-weight:500;font-size:clamp(30px,4vw,42px);margin:0;line-height:1.1;text-wrap:balance}
-.sec .sub{color:var(--grey);font-size:14px;letter-spacing:.3em;margin-left:auto}
+.sec .sub{color:var(--grey);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-left:auto}
 .lede{font-size:clamp(21px,2.2vw,24px);line-height:1.48;max-width:38em;margin:0}
 .body{max-width:40em;margin:16px 0 0}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:34px;align-items:start}
@@ -90,10 +100,10 @@ img{max-width:100%}
 /* the flow: page and recording to notes to voice */
 .flow{display:grid;gap:14px;margin-top:30px;max-width:900px}
 .lane{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px}
-.node{display:inline-flex;align-items:baseline;gap:8px;border:1px solid var(--ink);padding:6px 12px 5px;border-radius:2px;background:var(--paper);white-space:nowrap}
+.node{display:inline-flex;align-items:baseline;gap:8px;border:1px solid var(--rule);padding:6px 12px 5px;border-radius:2px;background:var(--paper);white-space:nowrap}
 .node .jp{font-size:18px}
 .node small{font-size:15px;color:var(--grey);letter-spacing:.04em}
-.node.end{background:var(--ink);color:var(--paper)}
+.node.end{background:var(--head);color:var(--paper);border-color:var(--head)}
 .node.end small{color:var(--paper);opacity:.75}
 .edge{display:inline-flex;align-items:center;gap:6px;color:var(--shu);font-size:15px;white-space:nowrap}
 .edge::after{content:"";display:inline-block;width:26px;height:1px;background:var(--shu)}
@@ -118,7 +128,7 @@ img{max-width:100%}
 /* verdicts: maru, sankaku, batsu */
 .verdicts{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .verdicts li{border-top:1px solid var(--ink);padding-top:14px;min-width:0}
-.verdicts .m{font-size:30px;line-height:1;display:block;margin-bottom:8px}
+.verdicts .m{font-size:22px;line-height:1;display:block;margin-bottom:8px;font-family:system-ui,sans-serif}
 .verdicts .m.o{color:var(--shu)}
 .verdicts .m.t{color:var(--ai)}
 .verdicts .m.x{color:var(--grey)}
@@ -131,14 +141,14 @@ img{max-width:100%}
 .play::before{content:"";position:absolute;inset:0;background:var(--track);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
 .play>*{position:relative}
 .play:hover{border-color:var(--shu)}
-.play .ic{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--paper);display:inline-grid;place-items:center;font-size:11px;flex:none}
+.play .ic{width:26px;height:26px;border-radius:50%;background:var(--head);color:var(--paper);display:inline-grid;place-items:center;font-size:11px;flex:none}
 .play.on{border-color:var(--shu)}
 .play.on .ic{background:var(--shu)}
 .play small{color:var(--grey);font-size:14px}
 .play:focus-visible{outline:2px solid var(--shu);outline-offset:2px}
 
 /* a sheet of paper for the engraved score, in both themes */
-.sheet{background:var(--sheet);border:1px solid var(--rule);padding:12px;margin:0}
+.sheet{background:#FFFFFF;border:1px solid var(--rule);padding:12px;margin:0}
 .sheet img{display:block;width:100%;height:auto}
 .sheet figcaption{font-size:14px;color:#6E675E;margin-top:6px;line-height:1.4}
 
@@ -177,7 +187,6 @@ img{max-width:100%}
 
 .more{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 40px;list-style:none;padding:0;margin:20px 0 0}
 .more li{font-size:18px;min-width:0}
-.more .jp{color:var(--shu);margin-right:8px}
 
 footer{border-top:1px solid var(--rule);margin-top:64px;padding-block:26px 46px;font-size:15px;color:var(--grey);line-height:1.5}
 footer p{margin:0 0 10px;max-width:72em}
@@ -205,13 +214,13 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
 
 <div class="wrap">
   <div class="top">
-    <a href="../../" class="jp" style="letter-spacing:.2em">楽 Maestro</a>
+    <a href="../../">Maestro</a>
     <nav aria-label="Chapters">
-      <a href="#read"><span class="jp" lang="ja">読</span>Read</a>
-      <a href="#hear"><span class="jp" lang="ja">聴</span>Hear</a>
-      <a href="#split"><span class="jp" lang="ja">分</span>Split</a>
-      <a href="#sing"><span class="jp" lang="ja">歌</span>Sing</a>
-      <a href="#learned"><span class="jp" lang="ja">結</span>Learned</a>
+      <a href="#read">Read</a>
+      <a href="#hear">Hear</a>
+      <a href="#split">Split</a>
+      <a href="#sing">Sing</a>
+      <a href="#learned">Learned</a>
     </nav>
   </div>
 </div>
@@ -248,27 +257,26 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
 
 <section class="wrap sec" id="idea">
   <div class="sec-head">
-    <span class="mark jp" lang="ja" aria-hidden="true">流</span>
     <h2>One question, four steps</h2>
-    <span class="sub jp" lang="ja" aria-hidden="true">楽譜・録音・旋律・歌声</span>
+    <span class="sub">Page · recording · melody · voice</span>
   </div>
   <p class="lede">Music arrives two ways: as ink on a page or as sound in a file. Before any model can arrange, accompany or sing a piece, it has to get the notes out. So we followed one path end to end and measured every step.</p>
   <div class="flow" aria-label="The path through the experiments">
     <div class="lane">
-      <span class="node"><span class="jp" lang="ja">楽譜</span><small>printed page</small></span>
-      <span class="edge"><span class="jp" lang="ja">読</span><span class="t">read · OMR</span></span>
-      <span class="node"><span class="jp" lang="ja">音符</span><small>notes</small></span>
+      <span class="node">Printed page</span>
+      <span class="edge"><span class="t">read · OMR</span></span>
+      <span class="node">Notes</span>
     </div>
     <div class="lane">
-      <span class="node"><span class="jp" lang="ja">録音</span><small>recording</small></span>
-      <span class="edge"><span class="jp" lang="ja">分</span><span class="t">split the piano out</span></span>
-      <span class="edge"><span class="jp" lang="ja">聴</span><span class="t">hear · AMT</span></span>
-      <span class="node"><span class="jp" lang="ja">音符</span><small>notes</small></span>
+      <span class="node">Recording</span>
+      <span class="edge"><span class="t">split the piano out</span></span>
+      <span class="edge"><span class="t">hear · AMT</span></span>
+      <span class="node">Notes</span>
     </div>
     <div class="lane">
-      <span class="node"><span class="jp" lang="ja">旋律</span><small>a melody</small></span>
-      <span class="edge"><span class="jp" lang="ja">歌</span><span class="t">sing · SVS</span></span>
-      <span class="node end"><span class="jp" lang="ja">歌声</span><small>a voice</small></span>
+      <span class="node">A melody</span>
+      <span class="edge"><span class="t">sing · SVS</span></span>
+      <span class="node end">A voice</span>
     </div>
   </div>
   <p class="body">The rule throughout: no grading by vibes. Wherever we could, we built pages, mixes and melodies whose right answer we already knew, then counted the notes that came back.</p>
@@ -276,9 +284,9 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
 
 <section class="wrap sec" id="read">
   <div class="sec-head">
-    <span class="mark jp" lang="ja" aria-hidden="true">読</span>
+    <span class="mark num" aria-hidden="true">01</span>
     <h2>Reading the page</h2>
-    <span class="sub jp" lang="ja" aria-hidden="true">光学楽譜認識 · OMR</span>
+    <span class="sub">Optical music recognition</span>
   </div>
   <p class="lede">Optical music recognition turns a picture of sheet music into notes a computer can play. We lined up six readers from three generations (rule-based, 2024 neural, 2026 full-page) and made them read pages we had the answers for.</p>
   <div class="two">
@@ -315,17 +323,17 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
     <p>When the page fails, go to the recording. That is where <a href="#danced">the film's love theme</a> turns up again, two chapters on.</p>
   </div>
   <ul class="verdicts">
-    <li><span class="m o jp" lang="ja">〇</span><h3>What worked</h3><p>homr: every note on clean, photocopied and phone-photo-quality pages; 86% of the melody on a commercial Color Purple songbook.</p></li>
-    <li><span class="m t jp" lang="ja">△</span><h3>Half there</h3><p>The 2026 full-page models read most notes but invent bars and sometimes loop on one measure until they run out of room.</p></li>
-    <li><span class="m x jp" lang="ja">×</span><h3>What didn't</h3><p>The readers we checked returned no chord symbols and no lyrics. Those still had to be typed by hand.</p></li>
+    <li><span class="m o" aria-hidden="true">✓</span><h3>What worked</h3><p>homr: every note on clean, photocopied and phone-photo-quality pages; 86% of the melody on a commercial Color Purple songbook.</p></li>
+    <li><span class="m t" aria-hidden="true">~</span><h3>Half there</h3><p>The 2026 full-page models read most notes but invent bars and sometimes loop on one measure until they run out of room.</p></li>
+    <li><span class="m x" aria-hidden="true">✕</span><h3>What didn't</h3><p>The readers we checked returned no chord symbols and no lyrics. Those still had to be typed by hand.</p></li>
   </ul>
 </section>
 
 <section class="wrap sec" id="hear">
   <div class="sec-head">
-    <span class="mark jp" lang="ja" aria-hidden="true">聴</span>
+    <span class="mark num" aria-hidden="true">02</span>
     <h2>Hearing the recording</h2>
-    <span class="sub jp" lang="ja" aria-hidden="true">自動採譜 · AMT</span>
+    <span class="sub">Automatic music transcription</span>
   </div>
   <p class="lede">Automatic music transcription does the same job by ear. I recorded myself playing the Theme from The Color Purple, and the ByteDance piano model (Kong et al., 2021) wrote it down: 1,010 notes and every pedal press, in 14 seconds. Played back, it sounds like me.</p>
   <div class="two">
@@ -343,17 +351,17 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
     </figure>
   </div>
   <ul class="verdicts">
-    <li><span class="m o jp" lang="ja">〇</span><h3>Solo piano</h3><p>Close to solved. Notes, timing, loudness and pedal come back, fast.</p></li>
-    <li><span class="m t jp" lang="ja">△</span><h3>Scores from audio</h3><p>Readable once we snapped notes to a beat grid and split the hands, but a free-tempo performance still needs a person to tidy it.</p></li>
-    <li><span class="m x jp" lang="ja">×</span><h3>A full band</h3><p>The model only knows piano, so strings, synths and voices come back as extra piano notes.</p></li>
+    <li><span class="m o" aria-hidden="true">✓</span><h3>Solo piano</h3><p>Close to solved. Notes, timing, loudness and pedal come back, fast.</p></li>
+    <li><span class="m t" aria-hidden="true">~</span><h3>Scores from audio</h3><p>Readable once we snapped notes to a beat grid and split the hands, but a free-tempo performance still needs a person to tidy it.</p></li>
+    <li><span class="m x" aria-hidden="true">✕</span><h3>A full band</h3><p>The model only knows piano, so strings, synths and voices come back as extra piano notes.</p></li>
   </ul>
 </section>
 
 <section class="wrap sec" id="split">
   <div class="sec-head">
-    <span class="mark jp" lang="ja" aria-hidden="true">分</span>
+    <span class="mark num" aria-hidden="true">03</span>
     <h2>Splitting the piano from the band</h2>
-    <span class="sub jp" lang="ja" aria-hidden="true">音源分離</span>
+    <span class="sub">Source separation</span>
   </div>
   <p class="lede">The fix seems obvious: separate the piano out first, then transcribe. But "separated" is not the same as "better", so we built a test with a known answer. I buried my own solo recording under three real backings (orchestra, a singer, a band) at three volumes, and asked each separator to give my notes back.</p>
   <div class="two">
@@ -408,17 +416,17 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
     </article>
   </div>
   <ul class="verdicts">
-    <li><span class="m o jp" lang="ja">〇</span><h3>RoFormer for piano</h3><p>Better than no separation in all nine mixes, by 0.1 to 0.3 of F1. It also passed the listening test on every record above.</p></li>
-    <li><span class="m t jp" lang="ja">△</span><h3>Demucs for voices</h3><p>Its piano stem hurts, but its voice and backing split is clean and useful.</p></li>
-    <li><span class="m x jp" lang="ja">×</span><h3>Electric piano</h3><p>Neither separator could pull out an electric piano; both were trained on the acoustic kind.</p></li>
+    <li><span class="m o" aria-hidden="true">✓</span><h3>RoFormer for piano</h3><p>Better than no separation in all nine mixes, by 0.1 to 0.3 of F1. It also passed the listening test on every record above.</p></li>
+    <li><span class="m t" aria-hidden="true">~</span><h3>Demucs for voices</h3><p>Its piano stem hurts, but its voice and backing split is clean and useful.</p></li>
+    <li><span class="m x" aria-hidden="true">✕</span><h3>Electric piano</h3><p>Neither separator could pull out an electric piano; both were trained on the acoustic kind.</p></li>
   </ul>
 </section>
 
 <section class="wrap sec" id="sing">
   <div class="sec-head">
-    <span class="mark jp" lang="ja" aria-hidden="true">歌</span>
+    <span class="mark num" aria-hidden="true">04</span>
     <h2>Singing the melody</h2>
-    <span class="sub jp" lang="ja" aria-hidden="true">歌声合成 · SVS</span>
+    <span class="sub">Singing voice synthesis</span>
   </div>
   <p class="lede">Last step: give a model a melody and words, get a singer back. The melody is ten bars I wrote out myself, and the words are mine too ("By the Road"). The question is simple: does the voice sing <em>my</em> notes?</p>
   <div class="two">
@@ -449,31 +457,29 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
   </div>
   <blockquote class="quote">To get your melody sung, hand the singer a score, not a prompt.<small>The difference between 3% and 100%</small></blockquote>
   <ul class="verdicts">
-    <li><span class="m o jp" lang="ja">〇</span><h3>SoulX-Singer</h3><p>Score in, singing out: every note's pitch, length and syllable. It clones a voice from a short clip, and its voice-conversion sibling covers Korean and Indonesian.</p></li>
-    <li><span class="m t jp" lang="ja">△</span><h3>Fitting the words</h3><p>Our first English lyrics crammed whole words onto single notes. Re-writing them one syllable per note, with "yeah" and "ooh" as filler, fixed it.</p></li>
-    <li><span class="m x jp" lang="ja">×</span><h3>Song generators</h3><p>YuE2 and Vevo2 write beautiful songs of their own, but ask them to follow a given line and they wander off it.</p></li>
+    <li><span class="m o" aria-hidden="true">✓</span><h3>SoulX-Singer</h3><p>Score in, singing out: every note's pitch, length and syllable. It clones a voice from a short clip, and its voice-conversion sibling covers Korean and Indonesian.</p></li>
+    <li><span class="m t" aria-hidden="true">~</span><h3>Fitting the words</h3><p>Our first English lyrics crammed whole words onto single notes. Re-writing them one syllable per note, with "yeah" and "ooh" as filler, fixed it.</p></li>
+    <li><span class="m x" aria-hidden="true">✕</span><h3>Song generators</h3><p>YuE2 and Vevo2 write beautiful songs of their own, but ask them to follow a given line and they wander off it.</p></li>
   </ul>
 </section>
 
 <section class="wrap sec" id="learned">
   <div class="sec-head">
-    <span class="mark jp" lang="ja" aria-hidden="true">結</span>
     <h2>What we learned</h2>
-    <span class="sub jp" lang="ja" aria-hidden="true">結論</span>
+    <span class="sub">Takeaways</span>
   </div>
   <ol class="lessons">
-    <li><span class="k jp" lang="ja">一</span><div><h3>Newest isn't best.</h3><p>On our pages the 2024 readers beat the 2026 ones. Training on the right kind of pages mattered more than size or year.</p></div></li>
-    <li><span class="k jp" lang="ja">二</span><div><h3>Every reader does half the job.</h3><p>One gets the notes, another the rhythm and layout. A reader that does both is the open gap, and the next thing to build.</p></div></li>
-    <li><span class="k jp" lang="ja">三</span><div><h3>Clean in, clean out.</h3><p>Solo piano transcription is close to solved; a band is not. A good separator wins back about half of what the mix takes away.</p></div></li>
-    <li><span class="k jp" lang="ja">四</span><div><h3>Control beats generation.</h3><p>Models that compose their own songs will not follow yours. Score-driven singers follow it note for note, in four languages.</p></div></li>
+    <li><span class="k num">1</span><div><h3>Newest isn't best.</h3><p>On our pages the 2024 readers beat the 2026 ones. Training on the right kind of pages mattered more than size or year.</p></div></li>
+    <li><span class="k num">2</span><div><h3>Every reader does half the job.</h3><p>One gets the notes, another the rhythm and layout. A reader that does both is the open gap, and the next thing to build.</p></div></li>
+    <li><span class="k num">3</span><div><h3>Clean in, clean out.</h3><p>Solo piano transcription is close to solved; a band is not. A good separator wins back about half of what the mix takes away.</p></div></li>
+    <li><span class="k num">4</span><div><h3>Control beats generation.</h3><p>Models that compose their own songs will not follow yours. Score-driven singers follow it note for note, in four languages.</p></div></li>
   </ol>
 </section>
 
 <section class="wrap sec" id="next">
   <div class="sec-head">
-    <span class="mark jp" lang="ja" aria-hidden="true">次</span>
     <h2>Next</h2>
-    <span class="sub jp" lang="ja" aria-hidden="true">次の一歩</span>
+    <span class="sub">What comes next</span>
   </div>
   <div class="next">
     <article><h3>A reader for both rulers</h3><p>At least 92% of notes and a structure score of 0.14 or better, on the same 200 real scans.</p></article>
@@ -482,19 +488,18 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
   </div>
   <p class="label" style="margin-top:44px">The full pages behind this one</p>
   <ul class="more">
-    <li><span class="jp" lang="ja">読</span><a href="../foster-readers/">Four score readers, heard</a></li>
-    <li><span class="jp" lang="ja">聴</span><a href="../foster-transcriptions/">Foster recordings, transcribed</a></li>
-    <li><span class="jp" lang="ja">分</span><a href="../foster-demucs/">Foster recordings, separated first</a></li>
-    <li><span class="jp" lang="ja">歌</span><a href="../own-performance-voice-strings/">One performance, a voice and strings</a></li>
-    <li><span class="jp" lang="ja">誌</span><a href="../../journal/">The research journal</a></li>
-    <li><span class="jp" lang="ja">源</span><a href="https://github.com/htansetiawan/maestro">Code on GitHub</a></li>
+    <li><a href="../foster-readers/">Four score readers, heard</a></li>
+    <li><a href="../foster-transcriptions/">Foster recordings, transcribed</a></li>
+    <li><a href="../foster-demucs/">Foster recordings, separated first</a></li>
+    <li><a href="../own-performance-voice-strings/">One performance, a voice and strings</a></li>
+    <li><a href="../../journal/">The research journal</a></li>
+    <li><a href="https://github.com/htansetiawan/maestro">Code on GitHub</a></li>
   </ul>
 </section>
 
 </main>
 
 <footer class="wrap">
-  <p class="end jp" lang="ja" aria-hidden="true">了</p>
   <p>Models: homr, oemer, Audiveris, Zeus (Mayer et al. 2024), Transcoda, LEGATO; ByteDance piano transcription (Kong et al. 2021); Demucs (Rouard et al. 2023); BS-RoFormer (Lu et al. 2023) with the open <code>tjpurdy/Piano-Separation-Model-small</code> weights; SoulX-Singer and SoulX-Singer-SVC (Soul AI Lab, Apache 2.0); TechSinger (AAAI 2025); YingMusic-Singer-Plus (CC BY 4.0); YuE2; Vevo2 (Amphion). Benchmarks: OLiMPiC (Mayer et al., ICDAR 2024); Mozart K. 545 from KernScores (CCARH).</p>
   <p>Music: Theme from The Color Purple, music by Quincy Jones, Rod Temperton and Jeremy Lubbock, played by Henry Tan. Album excerpts from David Foster's recordings of And When She Danced (Love Theme from Stealing Home), Ice Dance and Theme from The Color Purple; Katie's Theme, music by David Foster, piano arrangement by Asako Tanaka. Every clip is a thirty-second excerpt for research commentary; nothing here is for redistribution. "By the Road" lyrics and the ten-bar melody are the author's own.</p>
 </footer>
