@@ -19,6 +19,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Read, Hear, Sing: from the printed page to a singing voice, with three headline results.">
+<meta property="og:video" content="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/read-hear-sing.mp4">
+<meta property="og:video:secure_url" content="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/read-hear-sing.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="1920">
+<meta property="og:video:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Read, Hear, Sing — Maestro">
 <meta name="twitter:description" content="From the printed page to a singing voice: what open models can read, hear, separate and sing today, in sixty seconds.">
@@ -59,7 +64,7 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .top nav .jp{font-size:16px;letter-spacing:0;margin-right:4px;color:var(--ink)}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;padding-block:60px 56px;align-items:center}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding-block:60px 56px;align-items:center}
 .wordmark{display:flex;align-items:flex-start;gap:clamp(12px,2vw,24px)}
 .title{font-weight:500;font-size:clamp(64px,11vw,128px);line-height:.86;letter-spacing:-.01em;margin:0}
 .title span{display:block}
@@ -70,7 +75,14 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .byline{margin:20px 0 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
 
 /* hanging scroll: the sixty-second version */
-.scroll{margin:0 auto;width:min(420px,100%)}
+.scroll{margin:0 auto;width:min(560px,100%)}
+.video-box{aspect-ratio:16/9;max-width:100%;background:#FFFFFF;border:1px solid var(--head);overflow:hidden}
+.video-box video{display:block;width:100%;height:100%;object-fit:contain;background:#FFFFFF}
+.scroll figcaption{font-size:13.5px;line-height:1.55;color:var(--grey);margin-top:16px}
+.scroll figcaption b{color:var(--ink);font-weight:600}
+.glance{padding-block:0 56px}
+.glance .mount{border:1px solid var(--rule)}
+.glance ol{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px 36px}
 .cord{width:1px;height:28px;background:var(--ink);margin:0 auto;opacity:.6}
 .roller{height:12px;background:var(--head);border-radius:6px;margin:0 -12px;position:relative}
 .roller::before,.roller::after{content:"";position:absolute;top:1px;width:10px;height:10px;border-radius:50%;background:var(--paper);opacity:.35}
@@ -79,8 +91,8 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .mount h2{margin:0 0 14px;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);display:flex;justify-content:space-between;align-items:baseline}
 .mount h2 .jp{letter-spacing:.1em;color:var(--shu);font-size:16px}
 .mount ol{list-style:none;margin:0;padding:0;display:grid;gap:13px}
-.mount li{display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:16px;line-height:1.5}
-.mount li .k{font-size:22px;line-height:1.1;color:var(--shu)}
+.mount li{display:grid;grid-template-columns:52px 1fr;gap:10px;font-size:16px;line-height:1.5}
+.mount li .k{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding-top:3px;color:var(--shu)}
 .mount li .k.no{color:var(--grey)}
 .mount b{font-weight:600}
 
@@ -168,10 +180,6 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .track .listen{margin-top:2px;gap:8px}
 .track .play{font-size:15px;padding:6px 12px 6px 8px}
 .track .play .ic{width:22px;height:22px;font-size:10px}
-.watch{padding-block:8px 56px}
-.watch video{display:block;width:100%;max-width:1040px;aspect-ratio:16/9;background:#F6F6F4;border:1px solid var(--rule)}
-.watch figcaption{max-width:1040px;margin-top:12px;font-size:14px;line-height:1.55;color:var(--grey)}
-.watch figcaption b{color:var(--ink);font-weight:600}
 .notice{font-size:15px;color:var(--grey);border:1px solid var(--rule);padding:12px 16px;margin:22px 0 0;max-width:46em;line-height:1.45}
 .notice b{color:var(--ink);font-weight:600}
 
@@ -239,31 +247,32 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
     <p class="byline">Henry Tan · Maestro · October 2026</p>
   </div>
 
-  <figure class="scroll" style="margin:0 auto">
+  <figure class="scroll" id="watch">
     <div class="cord" aria-hidden="true"></div>
     <div class="roller" aria-hidden="true"></div>
     <div class="mount">
-      <h2><span>If you have 60 seconds</span><span class="jp" lang="ja">六十秒</span></h2>
-      <ol>
-        <li><span class="k jp" lang="ja">読</span><span>A <b>2024</b> reader read <b>every note</b> of a Mozart page degraded to look like a bad phone photo. The 2026 models did not beat it.</span></li>
-        <li><span class="k jp" lang="ja">聴</span><span>One model heard <b>102 minutes</b> of David Foster records and wrote down <b>42,861 notes</b> in under five minutes.</span></li>
-        <li><span class="k jp" lang="ja">分</span><span>Lifting the piano out of the band first (RoFormer) raised note accuracy from <b>0.55 to 0.73</b>. Demucs made it worse.</span></li>
-        <li><span class="k jp" lang="ja">歌</span><span>SoulX-Singer sang a ten-bar melody <b>note for note (92–100%)</b>, then again in Mandarin, Korean and Indonesian.</span></li>
-        <li><span class="k no jp" lang="ja">×</span><span>Song generators (YuE2, Vevo2) sing their own tune, not yours: <b>3–27%</b>.</span></li>
-      </ol>
+      <div class="video-box">
+        <video controls playsinline preload="metadata" poster="poster.jpg">
+          <source src="read-hear-sing.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
     <div class="roller" aria-hidden="true"></div>
+    <figcaption>The whole story in 80 seconds, with sound: my piano, the separation demo and one melody sung in four languages. Synthetic narration (ElevenLabs); edited in Final Cut Pro from a timeline built with <a href="https://github.com/This-Goober/REAL">REAL</a>. <b>Research notice:</b> the Mandarin, Korean and Indonesian voices are synthetic imitations made with open models from short excerpts of commercial recordings, not performances by the named artists.</figcaption>
   </figure>
 </header>
 
-<section class="wrap watch" id="watch" aria-label="The video version">
-  <p class="label">Watch the 80-second version</p>
-  <figure style="margin:0">
-    <video controls playsinline preload="metadata" poster="poster.jpg">
-      <source src="read-hear-sing.mp4" type="video/mp4">
-    </video>
-    <figcaption>The same story told in 80 seconds, with sound: my piano, the separation demo and one melody sung in four languages. Narration is synthetic (ElevenLabs). Edited in Final Cut Pro from a timeline built with <a href="https://github.com/This-Goober/REAL">REAL</a>. <b>Research notice:</b> the Mandarin, Korean and Indonesian voices are synthetic imitations made with open models from short excerpts of commercial recordings; they are not performances by the named artists.</figcaption>
-  </figure>
+<section class="wrap glance" id="glance" aria-label="The results at a glance">
+  <div class="mount">
+    <h2>If you have 60 seconds</h2>
+    <ol>
+      <li><span class="k">Read</span><span>A <b>2024</b> reader read <b>every note</b> of a Mozart page degraded to look like a bad phone photo. The 2026 models did not beat it.</span></li>
+      <li><span class="k">Hear</span><span>One model heard <b>102 minutes</b> of David Foster records and wrote down <b>42,861 notes</b> in under five minutes.</span></li>
+      <li><span class="k">Split</span><span>Lifting the piano out of the band first (RoFormer) raised note accuracy from <b>0.55 to 0.73</b>. Demucs made it worse.</span></li>
+      <li><span class="k">Sing</span><span>SoulX-Singer sang a ten-bar melody <b>note for note (92–100%)</b>, then again in Mandarin, Korean and Indonesian.</span></li>
+      <li><span class="k no">Miss</span><span>Song generators (YuE2, Vevo2) sing their own tune, not yours: <b>3–27%</b>.</span></li>
+    </ol>
+  </div>
 </section>
 
 <main>
