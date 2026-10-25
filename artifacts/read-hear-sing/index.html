@@ -168,6 +168,10 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .track .listen{margin-top:2px;gap:8px}
 .track .play{font-size:15px;padding:6px 12px 6px 8px}
 .track .play .ic{width:22px;height:22px;font-size:10px}
+.watch{padding-block:8px 56px}
+.watch video{display:block;width:100%;max-width:1040px;aspect-ratio:16/9;background:#F6F6F4;border:1px solid var(--rule)}
+.watch figcaption{max-width:1040px;margin-top:12px;font-size:14px;line-height:1.55;color:var(--grey)}
+.watch figcaption b{color:var(--ink);font-weight:600}
 .notice{font-size:15px;color:var(--grey);border:1px solid var(--rule);padding:12px 16px;margin:22px 0 0;max-width:46em;line-height:1.45}
 .notice b{color:var(--ink);font-weight:600}
 
@@ -214,6 +218,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
   <div class="top">
     <a href="../../">Maestro</a>
     <nav aria-label="Chapters">
+      <a href="#watch">Watch</a>
       <a href="#read">Read</a>
       <a href="#hear">Hear</a>
       <a href="#split">Split</a>
@@ -250,6 +255,16 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
     <div class="roller" aria-hidden="true"></div>
   </figure>
 </header>
+
+<section class="wrap watch" id="watch" aria-label="The video version">
+  <p class="label">Watch the 80-second version</p>
+  <figure style="margin:0">
+    <video controls playsinline preload="metadata" poster="poster.jpg">
+      <source src="read-hear-sing.mp4" type="video/mp4">
+    </video>
+    <figcaption>The same story told in 80 seconds, with sound: my piano, the separation demo and one melody sung in four languages. Narration is synthetic (ElevenLabs). Edited in Final Cut Pro from a timeline built with <a href="https://github.com/This-Goober/REAL">REAL</a>. <b>Research notice:</b> the Mandarin, Korean and Indonesian voices are synthetic imitations made with open models from short excerpts of commercial recordings; they are not performances by the named artists.</figcaption>
+  </figure>
+</section>
 
 <main>
 
