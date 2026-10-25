@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Melody in ABC — Maestro</title>
+<meta name="description" content="What ABC notation is, how to write a simple melody in it, and how a clean ten-bar melody written in ABC tells a singing-voice model exactly which note to sing, for how long, on which syllable.">
+<meta name="author" content="Henry Tan">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/abc-melody/">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Melody in ABC — Maestro">
+<meta property="og:description" content="How to write a melody in ABC, and how a clean melody steers a singing-voice model note by note.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/abc-melody/">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/artifacts/abc-melody/og.png">
+<meta property="og:image:secure_url" content="https://htansetiawan.github.io/maestro/artifacts/abc-melody/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A Melody in ABC: ten bars of Theme from The Color Purple written as plain text.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Melody in ABC — Maestro">
+<meta name="twitter:description" content="How to write a melody in ABC, and how a clean melody steers a singing-voice model note by note.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/artifacts/abc-melody/og.png">
+<link rel="icon" href="../../assets/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--text:#36393D;--head:#1E2023;--muted:#63686D;--rule:rgba(30,32,35,.14);--code:#F5F5F3;--accent:#B23A2B;color-scheme:light}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:780px;margin:0 auto;padding-block:40px 48px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.top{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap;margin-bottom:44px}
+.top a{color:var(--muted);text-decoration:none}
+.top a:hover{color:var(--accent)}
+a{color:var(--head);text-decoration-color:var(--rule);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent)}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:clamp(44px,9vw,72px);line-height:1.02;color:var(--head);margin:0}
+h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:clamp(28px,4.5vw,36px);line-height:1.15;color:var(--head);margin:56px 0 14px}
+h3{font-size:17px;font-weight:600;color:var(--head);margin:26px 0 6px}
+.lede{font-size:clamp(18px,2.4vw,20px);line-height:1.55;color:var(--head);margin:18px 0 0}
+.by{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:16px 0 0}
+p{margin:0 0 14px}
+pre{background:var(--code);border-radius:6px;padding:14px 16px;margin:10px 0 18px;overflow-x:auto;font:15px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--head)}
+code{font:.92em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--head);background:var(--code);padding:1px 5px;border-radius:4px}
+pre code{background:none;padding:0}
+.tbl{overflow-x:auto;margin:10px 0 20px}
+table{border-collapse:collapse;width:100%;font-size:15.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td code{white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+figure{margin:14px 0 22px}
+.score{border:1px solid var(--rule);border-radius:6px;padding:10px;background:#fff}
+.score img{display:block;width:100%;height:auto}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.listen{display:flex;flex-direction:column;gap:12px;margin:10px 0 20px}
+.listen div{min-width:0}
+.listen span{display:block;font-size:15px;color:var(--head);margin-bottom:4px}
+audio{width:100%;max-width:520px}
+.note{border-left:2px solid var(--accent);padding:2px 0 2px 16px;margin:18px 0}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+footer p{margin:0 0 8px}
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Site"><a href="../../">Maestro</a><a href="../read-hear-sing/">Read, Hear, Sing</a><a href="../../journal/">Journal</a></nav>
+
+  <h1>A melody in ABC</h1>
+  <p class="lede">ABC is a way to write music as ordinary text. A melody becomes a line of letters you can type, read, paste into a chat or feed to a program. This page explains the few rules you need, using the ten bars of Theme from The Color Purple that I wrote out myself, and shows how that clean melody tells a singing-voice model exactly what to sing.</p>
+  <p class="by">Henry Tan · Maestro · October 2026</p>
+
+  <h2>The melody</h2>
+  <p>This is the theme the way I hear it: ten bars, no chords, no accompaniment, just the line a singer would sing.</p>
+<pre><code>X:1
+T:Melody
+M:4/4
+L:1/4
+Q:1/4=90
+K:C
+z G, C E | A, C F3/2 D/ |
+E4 | Z |
+z G, C E | A, C F A |
+G4 | z E F G |
+A2 A/ B c/ | F4 |]</code></pre>
+  <figure class="score">
+    <img src="melody.svg" alt="The ten-bar melody engraved on a treble staff, two lines of five bars">
+    <figcaption>The same text, engraved. Bar 4 is a full bar of rest.</figcaption>
+  </figure>
+  <div class="listen">
+    <div><span>The melody on its own</span><audio controls preload="none" src="../own-performance-voice-strings/audio/23-lala.mp3"></audio></div>
+    <div><span>Sung with words by SoulX-Singer, one syllable per note</span><audio controls preload="none" src="../own-performance-voice-strings/audio/49-voices.mp3"></audio></div>
+  </div>
+  <p>It is two answering phrases and a longer last line. The first phrase climbs G, C, E, then A, C, F and settles on a long E. After a bar of rest the second phrase starts the same way but reaches higher, to A, and settles on G. The last line climbs step by step, E, F, G, A, B, up to the high C, and drops to F. The whole melody runs from the G below middle C to the C an octave above middle C, an easy range for most voices.</p>
+
+  <h2>How to read it</h2>
+  <h3>The header</h3>
+  <p>The first lines start with a letter and a colon. They say how to read the notes that follow.</p>
+  <div class="tbl"><table>
+    <tr><th>Line</th><th>Means</th><th>Here</th></tr>
+    <tr><td><code>X:1</code></td><td>Tune number</td><td>The first tune in the file</td></tr>
+    <tr><td><code>T:Melody</code></td><td>Title</td><td>Melody</td></tr>
+    <tr><td><code>M:4/4</code></td><td>Meter</td><td>Four beats in a bar</td></tr>
+    <tr><td><code>L:1/4</code></td><td>Default note length</td><td>A plain letter lasts a quarter note, one beat</td></tr>
+    <tr><td><code>Q:1/4=90</code></td><td>Tempo</td><td>90 quarter notes a minute, so one beat is 0.67 seconds</td></tr>
+    <tr><td><code>K:C</code></td><td>Key</td><td>No sharps or flats</td></tr>
+  </table></div>
+
+  <h3>Pitch</h3>
+  <p>Notes are letters. Capital <code>C</code> is middle C. A comma moves a note down an octave and a lower-case letter moves it up one.</p>
+  <div class="tbl"><table>
+    <tr><th>Write</th><th>Note</th></tr>
+    <tr><td><code>G,</code> <code>A,</code></td><td>G and A just below middle C</td></tr>
+    <tr><td><code>C D E F G A B</code></td><td>Middle C up to the B above it</td></tr>
+    <tr><td><code>c</code></td><td>The C above that</td></tr>
+    <tr><td><code>^F</code> <code>_B</code></td><td>F sharp, B flat (not needed in this melody)</td></tr>
+  </table></div>
+
+  <h3>Length</h3>
+  <p>A number after a note multiplies the default length. A slash divides it.</p>
+  <div class="tbl"><table>
+    <tr><th>Write</th><th>Lasts</th><th>Called</th></tr>
+    <tr><td><code>C</code></td><td class="num">1 beat</td><td>quarter note</td></tr>
+    <tr><td><code>C2</code></td><td class="num">2 beats</td><td>half note</td></tr>
+    <tr><td><code>C4</code></td><td class="num">4 beats</td><td>whole note</td></tr>
+    <tr><td><code>C/</code></td><td class="num">½ beat</td><td>eighth note</td></tr>
+    <tr><td><code>C3/2</code></td><td class="num">1½ beats</td><td>dotted quarter</td></tr>
+  </table></div>
+
+  <h3>Rests and bars</h3>
+  <p><code>z</code> is a rest, and it takes lengths like a note. <code>Z</code> is a whole bar of rest. <code>|</code> is a bar line and <code>|]</code> ends the tune. Every bar should add up to the meter: in this melody, four beats.</p>
+
+  <h3>Bar by bar</h3>
+  <div class="tbl"><table>
+    <tr><th>Bar</th><th>ABC</th><th>Notes</th></tr>
+    <tr><td class="num">1</td><td><code>z G, C E</code></td><td>rest, G, C, E</td></tr>
+    <tr><td class="num">2</td><td><code>A, C F3/2 D/</code></td><td>A, C, F held one and a half beats, a quick D</td></tr>
+    <tr><td class="num">3</td><td><code>E4</code></td><td>E for the whole bar</td></tr>
+    <tr><td class="num">4</td><td><code>Z</code></td><td>rest</td></tr>
+    <tr><td class="num">5</td><td><code>z G, C E</code></td><td>the opening again</td></tr>
+    <tr><td class="num">6</td><td><code>A, C F A</code></td><td>A, C, F, then up to A</td></tr>
+    <tr><td class="num">7</td><td><code>G4</code></td><td>G for the whole bar</td></tr>
+    <tr><td class="num">8</td><td><code>z E F G</code></td><td>rest, then E, F, G climbing</td></tr>
+    <tr><td class="num">9</td><td><code>A2 A/ B c/</code></td><td>A held, a quick A, B, a quick high C</td></tr>
+    <tr><td class="num">10</td><td><code>F4</code></td><td>F for the whole bar, the end</td></tr>
+  </table></div>
+
+  <h2>Why write it this way</h2>
+  <p>In my piano recording the theme sits in the middle of the texture, in the tenor register, under chords and pedal. When a program pulled the "melody" out of the recording automatically, it picked the highest notes, which were the wrong line. Ten bars of ABC fixed that in one message: no guessing which notes are the tune, no extra notes, exact lengths.</p>
+
+  <h2>From ABC to a singing voice</h2>
+  <p>A singing-voice model like SoulX-Singer does not read ABC directly. It reads a list with one row per note: the syllable, how it is pronounced, how many seconds it lasts and which pitch it is. Turning the ABC into that list is mechanical. Each beat is 0.67 seconds at 90 beats a minute, each letter becomes a MIDI pitch number, and the lyrics are split so every note gets exactly one syllable.</p>
+  <p>These are the first nine notes, with the words "Someone planted bricks by the road":</p>
+  <div class="tbl"><table>
+    <tr><th>ABC</th><th>Syllable</th><th>Pronounced</th><th>Seconds</th><th>Pitch</th></tr>
+    <tr><td><code>G,</code></td><td>Some</td><td><code>S AH M</code></td><td class="num">0.67</td><td class="num">55 (G3)</td></tr>
+    <tr><td><code>C</code></td><td>one</td><td><code>W AH N</code></td><td class="num">0.67</td><td class="num">60 (C4)</td></tr>
+    <tr><td><code>E</code></td><td>plan</td><td><code>P L AE N</code></td><td class="num">0.67</td><td class="num">64 (E4)</td></tr>
+    <tr><td><code>A,</code></td><td>ted</td><td><code>T IH D</code></td><td class="num">0.67</td><td class="num">57 (A3)</td></tr>
+    <tr><td><code>C</code></td><td>bricks</td><td><code>B R IH K S</code></td><td class="num">0.67</td><td class="num">60 (C4)</td></tr>
+    <tr><td><code>F3/2</code></td><td>by</td><td><code>B AY</code></td><td class="num">1.00</td><td class="num">65 (F4)</td></tr>
+    <tr><td><code>D/</code></td><td>the</td><td><code>DH AH</code></td><td class="num">0.33</td><td class="num">62 (D4)</td></tr>
+    <tr><td><code>E4</code></td><td>road</td><td><code>R OW D</code></td><td class="num">2.67</td><td class="num">64 (E4)</td></tr>
+    <tr><td><code>Z</code> <code>z</code></td><td>(rest)</td><td></td><td class="num">3.33</td><td></td></tr>
+  </table></div>
+  <p>A short voice recording sets the sound of the singer. Everything else, every pitch and every length, comes from the ABC. That is why it works: the model has no room to invent its own tune. Song generators that work from a text prompt and a melody hint, such as YuE2, sang at most 27% of the notes of a longer line from the same recording. Fed this table, SoulX-Singer sang 92 to 100% of these notes at the written pitch, within a fifth of a second, in five different English voices.</p>
+  <p class="note">Two habits make it work: write one syllable for every note, and write the words the way they are sung. Long notes are good places for open vowels ("road", "see", "ooh").</p>
+
+  <h2>Try one</h2>
+  <p>Here is the start of the Minuet in G from the Anna Magdalena Bach notebook, moved to C. It is in 3/4, so every bar adds up to three beats.</p>
+<pre><code>X:1
+T:Minuet (opening, in C)
+M:3/4
+L:1/4
+K:C
+G C/ D/ E/ F/ | G C C | A F/ G/ A/ B/ | c C C |]</code></pre>
+  <p>Bar 1 is one beat of G and four eighth notes. Bar 3 is the same shape a step higher, and bar 4 jumps up to the high C and back down. Paste it into any ABC editor, such as <a href="https://editor.drawthedots.com/">drawthedots</a>, to see and hear it.</p>
+
+  <footer>
+    <p>Theme from The Color Purple: music by Quincy Jones, Rod Temperton and Jeremy Lubbock; the ten-bar line written out by Henry Tan. Excerpts for research commentary only.</p>
+    <p>Minuet in G, BWV Anh. 114, from the Notebook for Anna Magdalena Bach, now credited to Christian Petzold. Score engraved with Verovio. ABC notation by Chris Walshaw (<a href="https://abcnotation.com/">abcnotation.com</a>).</p>
+    <p><a href="../read-hear-sing/">Read, Hear, Sing</a> · <a href="../own-performance-voice-strings/">All the voices</a> · <a href="../../journal/">Journal</a></p>
+  </footer>
+</main>
+</body>
+</html>

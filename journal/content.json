@@ -139,6 +139,13 @@
       "page": "artifacts/read-hear-sing/index.html",
       "description": "Our experiments in sixty seconds: open models reading printed scores, hearing recordings, splitting the piano from a band and singing a written melody, with the best results, the misses and thirty-second excerpts.",
       "status": "Overview · October 25, 2026"
+    },
+    {
+      "id": "abc-melody",
+      "title": "A melody in ABC",
+      "page": "artifacts/abc-melody/index.html",
+      "description": "The owner's ten-bar line of the Color Purple theme as ABC text: how to read and write ABC, and how a clean melody becomes the note-by-note input of a singing-voice model.",
+      "status": "Explainer · October 25, 2026"
     }
   ],
   "entries": [
@@ -481,6 +488,10 @@
         {
           "label": "Read, Hear, Sing: the experiments in sixty seconds",
           "url": "https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/"
+        },
+        {
+          "label": "A melody in ABC: the ten-bar theme as text, and how it steers the singer",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/abc-melody/"
         },
         {
           "label": "Four score readers, heard: scan, engraved score and playback excerpts",
