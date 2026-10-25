@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Read, Hear, Sing — Maestro</title>
-<meta name="description" content="Two days of music-understanding experiments in sixty seconds: machines reading printed scores, hearing recordings, splitting the piano out of a band, and singing a written melody, with the best results, the misses, and thirty-second excerpts.">
+<meta name="description" content="Music-understanding experiments with open models, in sixty seconds: machines reading printed scores, hearing recordings, splitting the piano out of a band, and singing a written melody, with the best results, the misses, and thirty-second excerpts.">
 <meta name="author" content="Henry Tan">
 <meta name="color-scheme" content="light">
 <link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/">
@@ -30,18 +30,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#FFFFFF; --ink:#55595E; --head:#26282B; --shu:#B23A2B; --ai:#8D949B; --grey:#8F9398; --panel:#F6F6F4;
+  --paper:#FFFFFF; --ink:#36393D; --head:#1E2023; --shu:#B23A2B; --ai:#8D949B; --grey:#63686D; --panel:#F6F6F4;
   --track:rgba(38,40,43,.07); --rule:rgba(38,40,43,.16); --seal-ink:#FFFFFF; --sheet:#FFFFFF;
   color-scheme:light;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 a:hover{border-bottom-color:var(--shu)}
 img{max-width:100%}
 h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
+.serif,.title,.sec h2,.mark,.lessons .k{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
 .jp{font-family:'Shippori Mincho','Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif}
 .num{font-variant-numeric:lining-nums tabular-nums}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -51,7 +52,7 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .thread{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--shu);transform-origin:0 50%;transform:scaleX(var(--read,0));z-index:20}
 
 /* top line */
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px 0;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);flex-wrap:wrap}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);flex-wrap:wrap}
 .top a{border:0}
 .top nav{display:flex;gap:18px;flex-wrap:wrap}
 .top nav a:hover{color:var(--shu)}
@@ -65,8 +66,8 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .title em{font-style:italic;color:var(--shu)}
 .kana{writing-mode:vertical-rl;text-orientation:upright;font-size:clamp(22px,3.4vw,34px);letter-spacing:.16em;line-height:1;margin-top:.2em}
 .seal{display:inline-block;writing-mode:vertical-rl;text-orientation:upright;background:var(--shu);color:var(--seal-ink);font-weight:700;font-size:clamp(15px,2vw,20px);line-height:1;letter-spacing:.12em;padding:9px 6px 7px;border-radius:4px;margin-top:.3em}
-.tagline{font-size:clamp(22px,2.5vw,29px);line-height:1.35;margin:34px 0 0;max-width:23em}
-.byline{margin:20px 0 0;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.tagline{font-size:clamp(19px,2vw,22px);line-height:1.55;margin:34px 0 0;max-width:23em}
+.byline{margin:20px 0 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
 
 /* hanging scroll: the sixty-second version */
 .scroll{margin:0 auto;width:min(420px,100%)}
@@ -75,10 +76,10 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .roller::before,.roller::after{content:"";position:absolute;top:1px;width:10px;height:10px;border-radius:50%;background:var(--paper);opacity:.35}
 .roller::before{left:3px}.roller::after{right:3px}
 .mount{background:var(--panel);padding:22px 22px 18px;border-left:1px solid var(--rule);border-right:1px solid var(--rule)}
-.mount h2{margin:0 0 14px;font-weight:500;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--grey);display:flex;justify-content:space-between;align-items:baseline}
+.mount h2{margin:0 0 14px;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);display:flex;justify-content:space-between;align-items:baseline}
 .mount h2 .jp{letter-spacing:.1em;color:var(--shu);font-size:16px}
 .mount ol{list-style:none;margin:0;padding:0;display:grid;gap:13px}
-.mount li{display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:18px;line-height:1.38}
+.mount li{display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:16px;line-height:1.5}
 .mount li .k{font-size:22px;line-height:1.1;color:var(--shu)}
 .mount li .k.no{color:var(--grey)}
 .mount b{font-weight:600}
@@ -88,39 +89,39 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:22px;flex-wrap:wrap}
 .mark{color:var(--shu);font-size:22px;line-height:1;letter-spacing:.08em}
 .sec h2{font-weight:500;font-size:clamp(30px,4vw,42px);margin:0;line-height:1.1;text-wrap:balance}
-.sec .sub{color:var(--grey);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-left:auto}
-.lede{font-size:clamp(21px,2.2vw,24px);line-height:1.48;max-width:38em;margin:0}
+.sec .sub{color:var(--grey);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-left:auto}
+.lede{font-size:clamp(18px,1.9vw,20px);line-height:1.6;max-width:38em;margin:0}
 .body{max-width:40em;margin:16px 0 0}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:34px;align-items:start}
-.label{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--grey);margin:0 0 12px}
+.label{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin:0 0 12px}
 
 /* the flow: page and recording to notes to voice */
 .flow{display:grid;gap:14px;margin-top:30px;max-width:900px}
 .lane{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px}
 .node{display:inline-flex;align-items:baseline;gap:8px;border:1px solid var(--rule);padding:6px 12px 5px;border-radius:2px;background:var(--paper);white-space:nowrap}
 .node .jp{font-size:18px}
-.node small{font-size:15px;color:var(--grey);letter-spacing:.04em}
+.node small{font-size:15px;color:var(--grey)}
 .node.end{background:var(--head);color:var(--paper);border-color:var(--head)}
 .node.end small{color:var(--paper);opacity:.75}
 .edge{display:inline-flex;align-items:center;gap:6px;color:var(--shu);font-size:15px;white-space:nowrap}
 .edge::after{content:"";display:inline-block;width:26px;height:1px;background:var(--shu)}
 .edge .jp{font-size:18px}
-.edge .t{color:var(--grey);letter-spacing:.06em}
+.edge .t{color:var(--grey)}
 
 /* bar charts */
 .bars{display:grid;gap:9px;margin:0}
-.bar{display:grid;grid-template-columns:minmax(0,9.5em) 1fr 3.4em;gap:12px;align-items:center;font-size:17px}
+.bar{display:grid;grid-template-columns:minmax(0,9.5em) 1fr 3.4em;gap:12px;align-items:center;font-size:15.5px}
 .bar .n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar .n small{color:var(--grey);font-size:14px}
 .bar .tr{height:12px;background:var(--track);position:relative;border-radius:1px}
 .bar .f{position:absolute;top:0;bottom:0;left:0;width:var(--v);background:var(--ai);border-radius:1px;transform-origin:0 50%;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
 .bar.best .f{background:var(--shu)}
-.bar .v{text-align:right;font-size:17px}
+.bar .v{text-align:right;font-size:15.5px;font-variant-numeric:tabular-nums}
 .bar.best .v{color:var(--shu);font-weight:600}
 .bar.ref .f{background:transparent;border:1px dashed var(--grey)}
 .bar.ref .n,.bar.ref .v{color:var(--grey)}
 .shown .bar .f{transform:scaleX(1)}
-.caption{font-size:15px;color:var(--grey);margin:12px 0 0;line-height:1.45;max-width:36em}
+.caption{font-size:15px;color:var(--grey);margin:12px 0 0;line-height:1.55;max-width:36em}
 
 /* verdicts: maru, sankaku, batsu */
 .verdicts{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
@@ -129,12 +130,12 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .verdicts .m.o{color:var(--shu)}
 .verdicts .m.t{color:var(--ai)}
 .verdicts .m.x{color:var(--grey)}
-.verdicts h3{font-weight:600;font-size:17px;margin:0 0 6px;letter-spacing:.01em}
-.verdicts p{margin:0;font-size:17px;line-height:1.48}
+.verdicts h3{font-weight:600;font-size:16.5px;margin:0 0 6px}
+.verdicts p{margin:0;font-size:16px;line-height:1.6}
 
 /* listening buttons */
 .listen{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.play{appearance:none;font:inherit;font-size:16px;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:2px;padding:8px 14px 8px 10px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;text-align:left;position:relative;overflow:hidden;max-width:100%}
+.play{appearance:none;font:inherit;font-size:15px;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:2px;padding:8px 14px 8px 10px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;text-align:left;position:relative;overflow:hidden;max-width:100%}
 .play::before{content:"";position:absolute;inset:0;background:var(--track);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
 .play>*{position:relative}
 .play:hover{border-color:var(--shu)}
@@ -147,22 +148,22 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 /* a sheet of paper for the engraved score, in both themes */
 .sheet{background:#FFFFFF;border:1px solid var(--rule);padding:12px;margin:0}
 .sheet img{display:block;width:100%;height:auto}
-.sheet figcaption{font-size:14px;color:#6E675E;margin-top:6px;line-height:1.4}
+.sheet figcaption{font-size:14px;color:#5E6368;margin-top:6px;line-height:1.4}
 
-.quote{font-style:italic;font-size:clamp(23px,2.8vw,30px);line-height:1.3;border-left:2px solid var(--shu);padding-left:22px;margin:34px 0 8px;max-width:26em}
-.quote small{display:block;font-style:normal;font-size:14px;letter-spacing:.12em;color:var(--grey);margin-top:10px;text-transform:uppercase}
+.quote{font-size:clamp(19px,2vw,22px);font-weight:500;line-height:1.45;color:var(--head);border-left:2px solid var(--shu);padding-left:22px;margin:34px 0 8px;max-width:26em}
+.quote small{display:block;font-weight:400;font-size:13px;letter-spacing:.08em;color:var(--grey);margin-top:10px;text-transform:uppercase}
 
 .case{margin:36px 0 0;border-left:2px solid var(--shu);padding:4px 0 4px 22px;max-width:50em}
-.case h3{font-weight:600;font-size:21px;margin:0 0 8px;line-height:1.3}
-.case p{margin:0 0 10px;font-size:18px}
+.case h3{font-weight:600;font-size:19px;margin:0 0 8px;line-height:1.3}
+.case p{margin:0 0 10px;font-size:16.5px}
 .case ul{margin:0 0 10px;padding:0;list-style:none;display:grid;gap:5px}
-.case li{font-size:17px;padding-left:24px;position:relative}
+.case li{font-size:16px;padding-left:24px;position:relative}
 .case li::before{content:"・";position:absolute;left:0;color:var(--shu)}
 .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:14px}
 .track{border-top:1px solid var(--ink);padding-top:14px;min-width:0;display:flex;flex-direction:column;gap:8px}
-.track h3{font-weight:600;font-size:19px;margin:0;line-height:1.25}
-.track .cr{font-size:14px;color:var(--grey);letter-spacing:.04em}
-.track p{margin:0;font-size:17px;line-height:1.48}
+.track h3{font-weight:600;font-size:17.5px;margin:0;line-height:1.25}
+.track .cr{font-size:14px;color:var(--grey)}
+.track p{margin:0;font-size:16px;line-height:1.6}
 .track .counts{font-size:15px;color:var(--grey)}
 .track .listen{margin-top:2px;gap:8px}
 .track .play{font-size:15px;padding:6px 12px 6px 8px}
@@ -174,18 +175,18 @@ h1,h2,h3,b,.title,.node,.lessons h3{color:var(--head)}
 .lessons{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:30px 48px;counter-reset:l}
 .lessons li{display:grid;grid-template-columns:48px 1fr;gap:12px;min-width:0}
 .lessons .k{font-size:34px;color:var(--shu);line-height:1}
-.lessons h3{font-weight:600;font-size:21px;margin:0 0 6px;line-height:1.25}
-.lessons p{margin:0;font-size:18px}
+.lessons h3{font-weight:600;font-size:18.5px;margin:0 0 6px;line-height:1.25}
+.lessons p{margin:0;font-size:16.5px}
 
 .next{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}
 .next article{border-top:1px solid var(--ink);padding-top:14px;min-width:0}
-.next h3{font-weight:600;font-size:18px;margin:0 0 6px}
-.next p{margin:0;font-size:17px}
+.next h3{font-weight:600;font-size:17px;margin:0 0 6px}
+.next p{margin:0;font-size:16px}
 
 .more{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 40px;list-style:none;padding:0;margin:20px 0 0}
-.more li{font-size:18px;min-width:0}
+.more li{font-size:16.5px;min-width:0}
 
-footer{border-top:1px solid var(--rule);margin-top:64px;padding-block:26px 46px;font-size:15px;color:var(--grey);line-height:1.5}
+footer{border-top:1px solid var(--rule);margin-top:64px;padding-block:26px 46px;font-size:14px;color:var(--grey);line-height:1.5}
 footer p{margin:0 0 10px;max-width:72em}
 footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
 
@@ -196,8 +197,8 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
   .sec .sub{margin-left:0;width:100%}
 }
 @media (max-width:480px){
-  body{font-size:18px}
-  .bar{grid-template-columns:minmax(0,7.2em) 1fr 3.1em;gap:8px;font-size:16px}
+  body{font-size:17px}
+  .bar{grid-template-columns:minmax(0,7.2em) 1fr 3.1em;gap:8px;font-size:14.5px}
   .top nav{gap:12px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -227,10 +228,10 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
     <div class="wordmark">
       <h1 class="title"><span>Read,</span><span>Hear,</span><span><em>Sing.</em></span></h1>
       <span class="kana jp" lang="ja">楽譜から歌声へ</span>
-      <span class="seal jp" lang="ja" aria-hidden="true">二日間</span>
+      <span class="seal jp" lang="ja" aria-hidden="true">研究</span>
     </div>
-    <p class="tagline">Can a machine take a piece of music, printed on paper or recorded, turn it into notes, and sing it back? We tried this with open models over two days and checked the results against the right answers. This page summarizes what we found.</p>
-    <p class="byline">Henry Tan · Maestro · October 24–25, 2026</p>
+    <p class="tagline">Can a machine take a piece of music, printed on paper or recorded, turn it into notes, and sing it back? We tried this with open models and checked the results against the right answers. This page summarizes what we found.</p>
+    <p class="byline">Henry Tan · Maestro · October 2026</p>
   </div>
 
   <figure class="scroll" style="margin:0 auto">
@@ -340,7 +341,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
         <button class="play" data-src="../foster-readers/audio/color_purple_recording.mp3"><span class="ic" aria-hidden="true">▶</span><span>My recording <small>· piano, as played</small></span></button>
         <button class="play" data-src="../foster-readers/audio/color_purple_kong.mp3"><span class="ic" aria-hidden="true">▶</span><span>What the model wrote <small>· played back</small></span></button>
       </div>
-      <p class="body" style="font-size:18px">Then the bigger test: 24 tracks from two David Foster albums, 102 minutes of audio, <b>42,861 notes</b> found in 284 seconds on one GPU, 22 times faster than listening. Each became MIDI and MusicXML, engraved where the piano leads.</p>
+      <p class="body" style="font-size:16.5px">Then the bigger test: 24 tracks from two David Foster albums, 102 minutes of audio, <b>42,861 notes</b> found in 284 seconds on one GPU, 22 times faster than listening. Each became MIDI and MusicXML, engraved where the piano leads.</p>
     </div>
     <figure class="sheet">
       <img src="../foster-readers/scores/color_purple_kong.svg" alt="The opening bars of the transcription of the author's Color Purple recording, engraved as piano sheet music" loading="lazy">

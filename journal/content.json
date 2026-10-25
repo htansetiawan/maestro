@@ -137,7 +137,7 @@
       "id": "read-hear-sing",
       "title": "Read, Hear, Sing",
       "page": "artifacts/read-hear-sing/index.html",
-      "description": "Two days of experiments in sixty seconds: open models reading printed scores, hearing recordings, splitting the piano from a band and singing a written melody, with the best results, the misses and thirty-second excerpts.",
+      "description": "Our experiments in sixty seconds: open models reading printed scores, hearing recordings, splitting the piano from a band and singing a written melody, with the best results, the misses and thirty-second excerpts.",
       "status": "Overview · October 25, 2026"
     }
   ],
@@ -479,7 +479,7 @@
       "published": true,
       "links": [
         {
-          "label": "Read, Hear, Sing: the two days in sixty seconds",
+          "label": "Read, Hear, Sing: the experiments in sixty seconds",
           "url": "https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/"
         },
         {
