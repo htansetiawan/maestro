@@ -145,6 +145,21 @@ img{max-width:100%}
 .quote{font-style:italic;font-size:clamp(23px,2.8vw,30px);line-height:1.3;border-left:2px solid var(--shu);padding-left:22px;margin:34px 0 8px;max-width:26em}
 .quote small{display:block;font-style:normal;font-size:14px;letter-spacing:.12em;color:var(--grey);margin-top:10px;text-transform:uppercase}
 
+.case{margin:36px 0 0;border-left:2px solid var(--shu);padding:4px 0 4px 22px;max-width:50em}
+.case h3{font-weight:600;font-size:21px;margin:0 0 8px;line-height:1.3}
+.case p{margin:0 0 10px;font-size:18px}
+.case ul{margin:0 0 10px;padding:0;list-style:none;display:grid;gap:5px}
+.case li{font-size:17px;padding-left:24px;position:relative}
+.case li::before{content:"・";position:absolute;left:0;color:var(--shu)}
+.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:14px}
+.track{border-top:1px solid var(--ink);padding-top:14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.track h3{font-weight:600;font-size:19px;margin:0;line-height:1.25}
+.track .cr{font-size:14px;color:var(--grey);letter-spacing:.04em}
+.track p{margin:0;font-size:17px;line-height:1.48}
+.track .counts{font-size:15px;color:var(--grey)}
+.track .listen{margin-top:2px;gap:8px}
+.track .play{font-size:15px;padding:6px 12px 6px 8px}
+.track .play .ic{width:22px;height:22px;font-size:10px}
 .notice{font-size:15px;color:var(--grey);border:1px solid var(--rule);padding:12px 16px;margin:22px 0 0;max-width:46em;line-height:1.45}
 .notice b{color:var(--ink);font-weight:600}
 
@@ -170,7 +185,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
 
 @media (max-width:860px){
   .hero,.two{grid-template-columns:1fr;gap:40px}
-  .verdicts,.next{grid-template-columns:1fr;gap:18px}
+  .verdicts,.next,.tracks{grid-template-columns:1fr;gap:18px}
   .lessons,.more{grid-template-columns:1fr}
   .sec .sub{margin-left:0;width:100%}
 }
@@ -288,6 +303,17 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
       <p class="caption">Flip to structure (rhythm, beams, layout; TEDn, lower is better) and the order flips too: <b>Zeus 0.14</b>, homr 0.48, Transcoda 0.56. homr gets the notes, Zeus gets the shape, and no reader does both.</p>
     </div>
   </div>
+  <div class="case">
+    <h3>The page no reader got through: Katie's Theme</h3>
+    <p>From the soundtrack of <i>Stealing Home</i>, in the same Foster songbook. homr found 17 notes and no left hand at all. Transcoda ran away to 122 bars. LEGATO matched 12%. The page breaks the habits these readers learned from:</p>
+    <ul>
+      <li>The music starts halfway down, under a large title block with Japanese text.</li>
+      <li>The meter changes four times in three lines (4/4, 3/4, 4/4, 2/4), and the tempo is marked "Freely".</li>
+      <li>Rolled chords, grace notes and slash chords like Dm7/G crowd the staves.</li>
+      <li>It is an old photocopy: staff lines break into dots, and the spiral binding prints as a black band down the edge.</li>
+    </ul>
+    <p>When the page fails, go to the recording. That is where <a href="#danced">the film's love theme</a> turns up again, two chapters on.</p>
+  </div>
   <ul class="verdicts">
     <li><span class="m o jp" lang="ja">〇</span><h3>What worked</h3><p>homr: every note on clean, photocopied and phone-photo-quality pages; 86% of the melody on a commercial Color Purple songbook.</p></li>
     <li><span class="m t jp" lang="ja">△</span><h3>Half there</h3><p>The 2026 full-page models read most notes but invent bars and sometimes loop on one measure until they run out of room.</p></li>
@@ -342,17 +368,47 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
       <p class="caption">The hardest case, a singer 6 dB louder than the piano: 0.38 with no separation, 0.35 with Demucs, <b>0.64 with RoFormer</b>. RoFormer here is the band-split architecture (Lu et al., 2023) with open community weights trained for piano.</p>
     </div>
     <div>
-      <p class="label">Listen · a Foster track with vocals, transcribed two ways</p>
-      <div class="listen">
-        <button class="play" data-src="../foster-transcriptions/audio/08_love_theme_from_st_elmo_s_fire_with_vocal.mp3"><span class="ic" aria-hidden="true">▶</span><span>From the full mix <small>· the voice leaks in as piano</small></span></button>
-        <button class="play" data-src="../foster-demucs/audio/roformer/08_love_theme_from_st_elmo_s_fire_with_vocal.mp3"><span class="ic" aria-hidden="true">▶</span><span>From the RoFormer piano stem</span></button>
-        <button class="play" data-src="../foster-demucs/audio/demucs/08_love_theme_from_st_elmo_s_fire_with_vocal.mp3"><span class="ic" aria-hidden="true">▶</span><span>From the Demucs piano stem</span></button>
-      </div>
-      <blockquote class="quote">A separator reduces the damage of a mix. It does not undo it.<small>Best mix 0.82, against 1.00 for the solo</small></blockquote>
+      <blockquote class="quote" style="margin-top:28px">A separator reduces the damage of a mix. It does not undo it.<small>Best mix 0.82, against 1.00 for the solo</small></blockquote>
     </div>
   </div>
+  <p class="label" style="margin-top:44px">Three Foster records, by ear · the same thirty seconds transcribed three ways</p>
+  <div class="tracks">
+    <article class="track" id="danced">
+      <h3>And When She Danced</h3>
+      <span class="cr">Love Theme from <i>Stealing Home</i></span>
+      <p>The hard one. From the full mix, strings and synths came back as a cloud of piano notes, almost eleven a second. Only after RoFormer did a clean piano line come through.</p>
+      <span class="counts num">Notes · mix 2,443 · Demucs 1,141 · RoFormer 972</span>
+      <div class="listen">
+        <button class="play" data-src="../foster-transcriptions/audio/07_and_when_she_danced_love_theme_from_stealing_home.mp3"><span class="ic" aria-hidden="true">▶</span><span>Full mix</span></button>
+        <button class="play" data-src="../foster-demucs/audio/demucs/07_and_when_she_danced_love_theme_from_stealing_home.mp3"><span class="ic" aria-hidden="true">▶</span><span>Demucs</span></button>
+        <button class="play" data-src="../foster-demucs/audio/roformer/07_and_when_she_danced_love_theme_from_stealing_home.mp3"><span class="ic" aria-hidden="true">▶</span><span>RoFormer</span></button>
+      </div>
+    </article>
+    <article class="track">
+      <h3>Theme from The Color Purple</h3>
+      <span class="cr">David Foster's album recording</span>
+      <p>The easy one. The record is mostly piano over a soft backing, so even the full mix was usable. RoFormer still made it cleaner. Demucs landed in between: you can hear backing sounds turned into piano notes.</p>
+      <span class="counts num">Notes · mix 1,108 · Demucs 1,512 · RoFormer 1,238</span>
+      <div class="listen">
+        <button class="play" data-src="../foster-transcriptions/audio/01_theme_from_the_color_purple.mp3"><span class="ic" aria-hidden="true">▶</span><span>Full mix</span></button>
+        <button class="play" data-src="../foster-demucs/audio/demucs/01_theme_from_the_color_purple.mp3"><span class="ic" aria-hidden="true">▶</span><span>Demucs</span></button>
+        <button class="play" data-src="../foster-demucs/audio/roformer/01_theme_from_the_color_purple.mp3"><span class="ic" aria-hidden="true">▶</span><span>RoFormer</span></button>
+      </div>
+    </article>
+    <article class="track">
+      <h3>Ice Dance</h3>
+      <span class="cr">A Foster waltz</span>
+      <p>After RoFormer the waltz plays almost like a piano part on its own. Demucs went the other way and added notes the mix never had.</p>
+      <span class="counts num">Notes · mix 2,137 · Demucs 2,486 · RoFormer 1,560</span>
+      <div class="listen">
+        <button class="play" data-src="../foster-transcriptions/audio/08_ice_dance.mp3"><span class="ic" aria-hidden="true">▶</span><span>Full mix</span></button>
+        <button class="play" data-src="../foster-demucs/audio/demucs/08_ice_dance.mp3"><span class="ic" aria-hidden="true">▶</span><span>Demucs</span></button>
+        <button class="play" data-src="../foster-demucs/audio/roformer/08_ice_dance.mp3"><span class="ic" aria-hidden="true">▶</span><span>RoFormer</span></button>
+      </div>
+    </article>
+  </div>
   <ul class="verdicts">
-    <li><span class="m o jp" lang="ja">〇</span><h3>RoFormer for piano</h3><p>Better than no separation in all nine mixes, by 0.1 to 0.3 of F1. It also passed our ears.</p></li>
+    <li><span class="m o jp" lang="ja">〇</span><h3>RoFormer for piano</h3><p>Better than no separation in all nine mixes, by 0.1 to 0.3 of F1. It also passed the listening test on every record above.</p></li>
     <li><span class="m t jp" lang="ja">△</span><h3>Demucs for voices</h3><p>Its piano stem hurts, but its voice and backing split is clean and useful.</p></li>
     <li><span class="m x jp" lang="ja">×</span><h3>Electric piano</h3><p>Neither separator could pull out an electric piano; both were trained on the acoustic kind.</p></li>
   </ul>
@@ -440,7 +496,7 @@ footer .end{font-size:26px;color:var(--shu);margin:0 0 12px}
 <footer class="wrap">
   <p class="end jp" lang="ja" aria-hidden="true">了</p>
   <p>Models: homr, oemer, Audiveris, Zeus (Mayer et al. 2024), Transcoda, LEGATO; ByteDance piano transcription (Kong et al. 2021); Demucs (Rouard et al. 2023); BS-RoFormer (Lu et al. 2023) with the open <code>tjpurdy/Piano-Separation-Model-small</code> weights; SoulX-Singer and SoulX-Singer-SVC (Soul AI Lab, Apache 2.0); TechSinger (AAAI 2025); YingMusic-Singer-Plus (CC BY 4.0); YuE2; Vevo2 (Amphion). Benchmarks: OLiMPiC (Mayer et al., ICDAR 2024); Mozart K. 545 from KernScores (CCARH).</p>
-  <p>Music: Theme from The Color Purple, music by Quincy Jones, Rod Temperton and Jeremy Lubbock, played by Henry Tan. Love Theme from St. Elmo's Fire, music by David Foster. Every clip is a thirty-second excerpt for research commentary; nothing here is for redistribution. "By the Road" lyrics and the ten-bar melody are the author's own.</p>
+  <p>Music: Theme from The Color Purple, music by Quincy Jones, Rod Temperton and Jeremy Lubbock, played by Henry Tan. Album excerpts from David Foster's recordings of And When She Danced (Love Theme from Stealing Home), Ice Dance and Theme from The Color Purple; Katie's Theme, music by David Foster, piano arrangement by Asako Tanaka. Every clip is a thirty-second excerpt for research commentary; nothing here is for redistribution. "By the Road" lyrics and the ten-bar melody are the author's own.</p>
 </footer>
 
 <script>
