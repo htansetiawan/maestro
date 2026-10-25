@@ -6,7 +6,7 @@
 <title>Read, Hear, Sing — Maestro</title>
 <meta name="description" content="Two days of music-understanding experiments in sixty seconds: machines reading printed scores, hearing recordings, splitting the piano out of a band, and singing a written melody, with the best results, the misses, and thirty-second excerpts.">
 <meta name="author" content="Henry Tan">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/">
 <meta property="og:site_name" content="Maestro">
 <meta property="og:type" content="article">
@@ -32,11 +32,8 @@
 :root{
   --paper:#FFFFFF; --ink:#55595E; --head:#26282B; --shu:#B23A2B; --ai:#8D949B; --grey:#8F9398; --panel:#F6F6F4;
   --track:rgba(38,40,43,.07); --rule:rgba(38,40,43,.16); --seal-ink:#FFFFFF; --sheet:#FFFFFF;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ --paper:#131415; --ink:#B4B8BC; --head:#ECEDEE; --shu:#D0503F; --ai:#6E757C; --grey:#8A8F94; --panel:#1C1D1F; --track:rgba(236,237,238,.09); --rule:rgba(236,237,238,.16); --seal-ink:#FFFFFF; color-scheme:dark; }
-}
-:root[data-theme="dark"]{ --paper:#131415; --ink:#B4B8BC; --head:#ECEDEE; --shu:#D0503F; --ai:#6E757C; --grey:#8A8F94; --panel:#1C1D1F; --track:rgba(236,237,238,.09); --rule:rgba(236,237,238,.16); --seal-ink:#FFFFFF; color-scheme:dark; }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
