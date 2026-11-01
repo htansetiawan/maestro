@@ -68,11 +68,18 @@ def week(day):
     return label((d - timedelta(days=d.weekday())).isoformat())
 
 
-def write_page(output, title, description, eyebrow, meta, body):
+def entry_image(e):
+    """An entry's link-preview card: its own `og_image`, else journal/og/<date>.png (scripts/build_journal_og.py)."""
+    return e.get("og_image") or f"journal/og/{e['date']}.png"
+
+
+def write_page(output, title, description, eyebrow, meta, body, image=None):
+    """`image`: a repository-relative 1200x630 PNG for link previews (iMessage, WhatsApp); the site cover otherwise."""
     template = Template((ROOT / "assets/journal.template.html").read_text())
     values = {k: escape(v, quote=True) for k, v in {
         "title": title, "description": description, "eyebrow": eyebrow,
         "canonical": BASE + output, "root": relative(output, "."),
+        "og_image": BASE + (image if image and (ROOT / image).exists() else "assets/og-cover.png"),
     }.items()}
     values.update(meta=meta, body=body)
     path = ROOT / output
@@ -209,13 +216,15 @@ def build():
             body += f'<a href="{newer["date"]}.html">Later: {escape(newer["title"])} →</a>'
         body += "</nav>"
         write_page(output, e["title"], e["summary"], f"Weekly journal · week of {week(day)}",
-                   f'<time datetime="{day}">{label(day)}</time> · Henry Tan · <a href="entries/{day}.md">Entry source</a>', body)
+                   f'<time datetime="{day}">{label(day)}</time> · Henry Tan · <a href="entries/{day}.md">Entry source</a>', body,
+                   image=entry_image(e))
     write_page("journal/index.html", "The Maestro journal",
                "Weekly notes on building Music Kitchen: the current state, changing positions, findings, experiments, and artifacts.",
                "Working in public", f'Latest entry: {label(latest["date"])} · <a href="feed.xml">Subscribe via Atom</a>',
                '<p>Each entry records what changed, what the evidence supports, what remains open, and what comes next. '
                'Dated artifact snapshots preserve the thinking behind each update.</p>'
-               + start_here(latest) + quick_links(latest) + entry_list(entries, "journal/index.html"))
+               + start_here(latest) + quick_links(latest) + entry_list(entries, "journal/index.html"),
+               image=entry_image(latest))
     homepage = ROOT / "index.html"
     html = homepage.read_text()
     if html.count(BEGIN) != 1 or html.count(END) != 1:

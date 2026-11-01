@@ -559,7 +559,8 @@
           "label": "A melody in ABC: the ten-bar theme as text",
           "url": "https://htansetiawan.github.io/maestro/artifacts/abc-melody/"
         }
-      ]
+      ],
+      "og_image": "artifacts/play-the-line/og.png"
     }
   ]
 }
