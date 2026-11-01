@@ -121,6 +121,15 @@ A hush that settles like a breeze</code></pre>
     <li><b>It checks the entries.</b> After singing, each line's first word is measured against the score. In this verse the voice comes in 89 ms late on <i>Morning</i>, 48 ms late on <i>Footsteps</i> and 24 ms early on <i>Windows</i>; <i>A hush</i> follows straight on from the note before.</li>
   </ul>
 
+  <h2>The same verse, other voices</h2>
+  <div class="note"><p><b>These are AI voice models, not the singers.</b> Each one is a singing-voice model given a few seconds of a commercial recording as a reference for its sound, then made to sing my words and melody. The singers did not record these lines, are not affiliated with this work and have not endorsed it. The clips are under 16 bars, made for research into how these models copy a voice. If you represent one of these artists and want a clip removed, open an issue on <a href="https://github.com/htansetiawan/maestro/issues">the project's GitHub</a> and it will be taken down.</p></div>
+  <div class="listen">
+    <div><span>My own voice, by voice conversion (Seed-VC) from 11 seconds of a vocal-only stem of my song <i>The Yard</i></span><audio controls preload="none" src="compare-own-seedvc.mp3"></audio></div>
+    <div><span>AI voice modelled on a short reference from a Josh Groban recording, sung from the score (SoulX-Singer), an octave below the written line</span><audio controls preload="none" src="compare-groban.mp3"></audio></div>
+    <div><span>AI voice modelled on a short reference from James Ingram's recording of <i>Whatever We Imagine</i>, by voice conversion (Seed-VC)</span><audio controls preload="none" src="compare-ingram.mp3"></audio></div>
+  </div>
+  <p>Two ways of making a voice are compared here. <b>Sung from the score:</b> the singing model reads the notes and words and copies the sound of a short reference clip; it decides the phrasing itself. <b>Voice conversion:</b> a verse already sung by the first method is re-voiced, keeping its notes and timing and swapping only the sound of the voice. Both keep every note in tune at its centre (97–100% of notes within a quarter tone on these lines). Neither reproduces what makes a famous singer recognisable, such as vibrato, power in the upper register or a particular attack: a few seconds of reference carry the colour of a voice more than its technique. Voices close to a plain, steady sound come through best.</p>
+
   <h2>What it is not yet</h2>
   <p>The voice is my own baritone: the model copies its sound from ten seconds of me singing another song of mine, <i>The Yard</i>, and sings this verse an octave below the written line. It follows the score, but it is not a finished vocal: the model does not phrase or breathe the way a person would, and a line with many short words still sounds stiff. The score, the timing and the words are the part this page is about. Only the first verse is fitted so far.</p>
 
