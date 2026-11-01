@@ -4,10 +4,18 @@
   <id>https://htansetiawan.github.io/maestro/journal/</id>
   <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
   <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-10-24T00:00:00-07:00</updated>
+  <updated>2026-11-01T00:00:00-07:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
+  <entry>
+    <title>Play the line: fitting words to a melody by playing it</title>
+    <id>https://htansetiawan.github.io/maestro/journal/2026-11-01.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-11-01.html" />
+    <updated>2026-11-01T00:00:00-07:00</updated>
+    <published>2026-11-01T00:00:00-07:00</published>
+    <summary>Four ways of fitting my own words to my own melody were tried on one verse; playing the line on the computer keyboard over my piano recording, tapping the beat, is the one that worked. The take comes back engraved with the words under the notes and is sung over the piano; with words split the way they are sung, every line's entry lands within a tenth of a second of the score.</summary>
+  </entry>
   <entry>
     <title>Four score readers on one ruler: the notes and the structure live in different engines</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-10-24.html</id>

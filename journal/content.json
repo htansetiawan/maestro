@@ -146,6 +146,13 @@
       "page": "artifacts/abc-melody/index.html",
       "description": "The owner's ten-bar line of the Color Purple theme as ABC text: how to read and write ABC, and how a clean melody becomes the note-by-note input of a singing-voice model.",
       "status": "Explainer · October 25, 2026"
+    },
+    {
+      "id": "play-the-line",
+      "title": "Play the line",
+      "page": "artifacts/play-the-line/index.html",
+      "description": "The first verse of a Color Purple song fitted by playing the melody on keys over the owner's piano recording: engraved with the words under the notes, sung over the piano, with a working score canvas.",
+      "status": "Listening page · November 1, 2026"
     }
   ],
   "entries": [
@@ -523,6 +530,36 @@
         "url": "https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/",
         "text": "This week's experiments on one page, with a 90-second video: reading printed scores, transcribing recordings, separating the piano from a band, and singing a written melody."
       }
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Play the line: fitting words to a melody by playing it",
+      "summary": "Four ways of fitting my own words to my own melody were tried on one verse; playing the line on the computer keyboard over my piano recording, tapping the beat, is the one that worked. The take comes back engraved with the words under the notes and is sung over the piano; with words split the way they are sung, every line's entry lands within a tenth of a second of the score.",
+      "stage": "Words fitted to the melody by playing it: first verse of the Color Purple song, four lines and 38 notes in bars 10 to 24, engraved and sung. Entries measured at +54, +83 and −71 ms.",
+      "focus": "The score as the place where fitting is checked: bar numbers from my taps, lines starting on the beat they are played, hyphenated words, note numbers, key-correct accidentals, colour by where each note came from.",
+      "next_step": "Fit the second verse the same way and time it against the earlier ways of fitting.",
+      "artifacts": [
+        "play-the-line"
+      ],
+      "published": true,
+      "links": [
+        {
+          "label": "Play the line: the first verse engraved and sung",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/play-the-line/"
+        },
+        {
+          "label": "The score canvas: click a note to hear it from there",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/play-the-line/canvas.html"
+        },
+        {
+          "label": "Read, Hear, Sing: the experiments in sixty seconds",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/read-hear-sing/"
+        },
+        {
+          "label": "A melody in ABC: the ten-bar theme as text",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/abc-melody/"
+        }
+      ]
     }
   ]
 }
