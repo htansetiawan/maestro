@@ -83,7 +83,7 @@ footer p{margin:0 0 8px}
     <figcaption>Bars 10 to 24, numbered from the first bar of the recording. Words under the notes, hyphens between the parts of a word, and the note's place in its line under that. Each line starts on the second beat.</figcaption>
   </figure>
   <div class="listen">
-    <div><span>Sung over the piano, from 23 seconds into the recording (46 seconds)</span><audio controls preload="none" src="verse-sung.mp3"></audio></div>
+    <div><span>Sung in my own baritone over the piano, from 23 seconds into the recording (46 seconds)</span><audio controls preload="none" src="verse-sung.mp3"></audio></div>
   </div>
   <p><a class="cta" href="canvas.html">Open the score canvas</a> &nbsp;Click any note to hear the piano and the voice from that point.</p>
   <p><a class="cta" href="recorder.html">Open the recorder</a> &nbsp;Play a line yourself over the same recording, on a MIDI keyboard or the computer keys.</p>
@@ -115,16 +115,16 @@ A hush that settles like a breeze</code></pre>
   <ul>
     <li><b>It removes your lead.</b> I play about 33 to 46 milliseconds ahead of my own taps. The tool measures that and takes it out before snapping notes to the grid.</li>
     <li><b>It cleans up the keyboard.</b> A key pressed twice within 120 ms counts once; in one take that was 18 notes. Two different keys within 80 ms are reported as a fumble instead of being kept silently.</li>
-    <li><b>It fits the words.</b> When a line has one more syllable than notes, a long note is split into two of the same pitch (<i>Foot-steps</i>). When it has more notes than syllables, the last word is held over them (<i>walls</i>). It never drops a word: notes without words stay grey on the score until I give them some.</li>
-    <li><b>It checks the entries.</b> After singing, each line's first word is measured against the score. In this verse the voice comes in 54 ms late on <i>Morning</i>, 83 ms late on <i>Footsteps</i> and 71 ms early on <i>Windows</i>; <i>A hush</i> follows straight on from the note before.</li>
+    <li><b>It fits the words.</b> When a line has one more syllable than notes, a long note is split into two of the same pitch (<i>Foot-steps</i>). When it has more notes than syllables, a word is held across them. It never drops a word: notes without words stay grey on the score until I give them some. Where the singer struggled, I changed the line itself: <i>the red brick walls</i> became <i>the</i> on F, <i>red</i> carried over A–G–A, <i>brick</i> on G and <i>walls</i> on F, fewer words moving over more notes.</li>
+    <li><b>It checks the entries.</b> After singing, each line's first word is measured against the score. In this verse the voice comes in 42 ms late on <i>Morning</i>, 25 ms late on <i>Footsteps</i> and 13 ms early on <i>Windows</i>; <i>A hush</i> follows straight on from the note before.</li>
   </ul>
 
   <h2>What it is not yet</h2>
-  <p>The singing voice here is the model's own built-in English singer. It follows the score, but it is not a finished vocal: the tone is thin next to a real singer, and the model does not phrase or breathe the way a person would. The score, the timing and the words are the part this page is about. Only the first verse is fitted so far.</p>
+  <p>The voice is my own baritone: the model copies its sound from ten seconds of me singing another song of mine, <i>The Yard</i>, and sings this verse an octave below the written line. It follows the score, but it is not a finished vocal: the model does not phrase or breathe the way a person would, and a line with many short words still sounds stiff. The score, the timing and the words are the part this page is about. Only the first verse is fitted so far.</p>
 
   <footer>
     <p>Theme from The Color Purple: music by Quincy Jones, Rod Temperton and Jeremy Lubbock; piano recording, vocal line and words by Henry Tan. Excerpts for research commentary only.</p>
-    <p>Voice by <a href="https://github.com/Soul-AILab/SoulX-Singer">SoulX-Singer</a> with its bundled English singer. Score engraved with <a href="https://www.verovio.org/">Verovio</a> from MusicXML written by <a href="https://www.music21.org/">music21</a>.</p>
+    <p>Voice by <a href="https://github.com/Soul-AILab/SoulX-Singer">SoulX-Singer</a> with my own voice as its reference. Score engraved with <a href="https://www.verovio.org/">Verovio</a> from MusicXML written by <a href="https://www.music21.org/">music21</a>.</p>
     <p><a href="canvas.html">Score canvas</a> · <a href="recorder.html">Recorder</a> · <a href="../abc-melody/">A melody in ABC</a> · <a href="../../journal/">Journal</a></p>
   </footer>
 </main>

@@ -535,7 +535,7 @@
       "date": "2026-11-01",
       "title": "Play the line: fitting words to a melody by playing it",
       "summary": "Four ways of fitting my own words to my own melody were tried on one verse; playing the line on the computer keyboard over my piano recording, tapping the beat, is the one that worked. The take comes back engraved with the words under the notes and is sung over the piano; with words split the way they are sung, every line's entry lands within a tenth of a second of the score.",
-      "stage": "Words fitted to the melody by playing it: first verse of the Color Purple song, four lines and 38 notes in bars 10 to 24, engraved and sung. Entries measured at +54, +83 and −71 ms.",
+      "stage": "Words fitted to the melody by playing it: first verse of the Color Purple song, four lines in bars 10 to 24, engraved and sung in my own baritone. Entries measured at +42, +25 and −13 ms.",
       "focus": "The score as the place where fitting is checked: bar numbers from my taps, lines starting on the beat they are played, hyphenated words, note numbers, key-correct accidentals, colour by where each note came from.",
       "next_step": "Fit the second verse the same way and time it against the earlier ways of fitting.",
       "artifacts": [
