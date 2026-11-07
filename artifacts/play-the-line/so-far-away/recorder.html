@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>So Far Away · recorder — Maestro</title>
+<meta name="description" content="Play a melody on a MIDI keyboard or the computer keys over the piano of Carole King&#x27;s live So Far Away, on its measured beat grid; save the take as a file.">
+<meta name="author" content="Henry Tan">
+<link rel="canonical" href="https://htansetiawan.github.io/maestro/artifacts/play-the-line/so-far-away/recorder.html">
+<meta property="og:site_name" content="Maestro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="So Far Away · recorder — Maestro">
+<meta property="og:description" content="Play a melody on a MIDI keyboard or the computer keys over the piano of Carole King&#x27;s live So Far Away, on its measured beat grid; save the take as a file.">
+<meta property="og:url" content="https://htansetiawan.github.io/maestro/artifacts/play-the-line/so-far-away/recorder.html">
+<meta property="og:image" content="https://htansetiawan.github.io/maestro/artifacts/play-the-line/so-far-away/og-square.png">
+<meta property="og:image:secure_url" content="https://htansetiawan.github.io/maestro/artifacts/play-the-line/so-far-away/og-square.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta property="og:image:alt" content="So Far Away: the piano part of the first 16 bars, engraved from a transcription of Carole King&#x27;s live recording.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="So Far Away · recorder — Maestro">
+<meta name="twitter:description" content="Play a melody on a MIDI keyboard or the computer keys over the piano of Carole King&#x27;s live So Far Away, on its measured beat grid; save the take as a file.">
+<meta name="twitter:image" content="https://htansetiawan.github.io/maestro/artifacts/play-the-line/so-far-away/og-square.png">
+<link rel="icon" href="../../../assets/favicon.ico">
+</head><body>
+<style>
+:root{--bg:#f7f5f0;--ink:#1d1c1a;--mute:#6f6a62;--line:#ddd7cc;--panel:#efebe3;--acc:#2f6f9f;--rec:#c0392b;--white:#fffdf8;--black:#222}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17171a;--ink:#ecebe6;--mute:#a09c93;--line:#2c2c31;--panel:#1f1f24;--acc:#6aa6d6;--rec:#ef6b5e;--white:#e9e6df;--black:#111;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#17171a;--ink:#ecebe6;--mute:#a09c93;--line:#2c2c31;--panel:#1f1f24;--acc:#6aa6d6;--rec:#ef6b5e;--white:#e9e6df;--black:#111;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#app{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px;max-width:1100px;margin:0 auto}
+h1{font-size:20px;margin:0 0 4px}.mute{color:var(--mute)}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
+button,select,input{font:inherit}button{padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);cursor:pointer}
+button.rec{background:var(--rec);color:#fff;border-color:var(--rec)}button.primary{background:var(--acc);color:#fff;border-color:var(--acc)}
+select,input[type=number]{padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
+#status{font-family:ui-monospace,Menlo,monospace;font-size:14px}
+.kb{position:relative;height:150px;user-select:none;touch-action:none;margin:8px 0;overflow-x:auto}.kbin{position:relative;height:100%}
+.w,.b{position:absolute;top:0;border:1px solid var(--line);border-radius:0 0 5px 5px;display:flex;align-items:flex-end;justify-content:center;font-size:11px;padding-bottom:6px;cursor:pointer}
+.w{background:var(--white);color:#555;height:100%;width:42px;z-index:1}.b{background:var(--black);color:#bbb;height:62%;width:28px;z-index:2}
+.w.on{background:#bcd7ee}.b.on{background:var(--acc)}
+#roll{width:100%;height:140px;background:var(--panel);border-radius:6px;display:block}
+pre{background:var(--panel);padding:10px;border-radius:6px;white-space:pre-wrap;word-break:break-word;font-size:14px}
+kbd{border:1px solid var(--line);border-radius:3px;padding:0 4px;font-size:12px;background:var(--panel)}
+</style>
+<div id="app"><h1>So Far Away · Play the Line</h1>
+<p class="mute">Piano: Carole King, <i>So Far Away</i>, from <i>Welcome To My Living Room</i> (live), with her voice separated out; a short research excerpt. Composition by Carole King. <a href="canvas.html">The piano part, engraved</a>.</p>
+<p class="mute">If the clicks don't sit on the piano, nudge them, or press <b>Tap the beat</b> and tap <kbd>T</kbd> on every beat while it plays: your taps become the grid for those bars. Pick a bar, press <b>Record</b>, listen to two bars of count-in, then play the line on the keys while the recording plays. Notes snap to sixteenths of your beat. Bars are the notated bars on the score canvas.</p>
+<div class="row">Start at bar <input type="number" id="bar" value="1" min="1" max="400" style="width:70px"> <label><input type="checkbox" id="click" checked> click on every beat</label>
+<label><input type="checkbox" id="pianoOn" checked> piano recording</label>
+<button class="rec" id="recBtn">● Record</button><button id="stopBtn">■ Stop</button><button id="playBtn">▶ Play back</button><button id="clearBtn">Clear</button></div>
+<div class="row"><b>Beat grid</b> <button id="nE50">◀◀ 50 ms earlier</button><button id="nE10">◀ 10 ms</button><span id="offs" style="font-family:ui-monospace,Menlo,monospace;min-width:70px;text-align:center">0 ms</span><button id="nL10">10 ms ▶</button><button id="nL50">50 ms later ▶▶</button>
+<button id="tapBtn">Tap the beat (T)</button><button id="tapClear">Use the measured grid</button><span id="tapInfo" class="mute"></span></div>
+<div class="row"><button id="midiBtn">Connect MIDI keyboard</button><span id="midi" class="mute">A MIDI keyboard plays the line; its pads (channel 10) tap the beat.</span></div>
+<div id="status" class="mute">ready</div>
+<div class="kb" id="kb"><div class="kbin" id="kbin"></div></div>
+<p class="mute" style="font-size:13px">Computer keys: <kbd>A</kbd>=C <kbd>W</kbd>=C# <kbd>S</kbd>=D <kbd>E</kbd>=Eb <kbd>D</kbd>=E <kbd>F</kbd>=F <kbd>T</kbd>=F# <kbd>G</kbd>=G <kbd>Y</kbd>=Ab <kbd>H</kbd>=A <kbd>U</kbd>=Bb <kbd>J</kbd>=B <kbd>K</kbd>=C <kbd>O</kbd>=C# <kbd>L</kbd>=D <kbd>P</kbd>=Eb <kbd>;</kbd>=E <kbd>'</kbd>=F · <kbd>Z</kbd>/<kbd>X</kbd> octave down/up (now <span id="oct">C4</span>)</p>
+<canvas id="roll" width="1060" height="140"></canvas>
+<h2 style="font-size:15px">Your line, as shorthand</h2>
+<pre id="out">nothing recorded yet</pre>
+<div class="row"><input id="words" placeholder="the words for this line (optional)" style="flex:1;min-width:200px;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)">
+<button class="primary" id="saveBtn">Save take</button><button id="copyBtn">Copy</button></div>
+<div id="msg" class="mute"></div></div>
+<audio id="piano" preload="auto" src="piano.mp3"></audio>
+<script>
+if (window.__playTheLineLoaded) { throw new Error('already loaded'); } window.__playTheLineLoaded = true;   // a live update must not add a second set of key listeners
+const DATA = {"grid": [{"t": 1.718, "bar": 1, "beat": 1, "on": 0}, {"t": 2.131, "bar": 1, "beat": 2, "on": 1}, {"t": 2.544, "bar": 1, "beat": 3, "on": 2}, {"t": 3.002, "bar": 1, "beat": 4, "on": 3}, {"t": 3.46, "bar": 2, "beat": 1, "on": 4}, {"t": 3.911, "bar": 2, "beat": 2, "on": 5}, {"t": 4.362, "bar": 2, "beat": 3, "on": 6}, {"t": 4.828, "bar": 2, "beat": 4, "on": 7}, {"t": 5.294, "bar": 3, "beat": 1, "on": 8}, {"t": 5.7565, "bar": 3, "beat": 2, "on": 9}, {"t": 6.219, "bar": 3, "beat": 3, "on": 10}, {"t": 6.6725, "bar": 3, "beat": 4, "on": 11}, {"t": 7.126, "bar": 4, "beat": 1, "on": 12}, {"t": 7.6045, "bar": 4, "beat": 2, "on": 13}, {"t": 8.083, "bar": 4, "beat": 3, "on": 14}, {"t": 8.556, "bar": 4, "beat": 4, "on": 15}, {"t": 9.029, "bar": 5, "beat": 1, "on": 16}, {"t": 9.497, "bar": 5, "beat": 2, "on": 17}, {"t": 9.965, "bar": 5, "beat": 3, "on": 18}, {"t": 10.3795, "bar": 5, "beat": 4, "on": 19}, {"t": 10.794, "bar": 6, "beat": 1, "on": 20}, {"t": 11.238, "bar": 6, "beat": 2, "on": 21}, {"t": 11.682, "bar": 6, "beat": 3, "on": 22}, {"t": 12.1345, "bar": 6, "beat": 4, "on": 23}, {"t": 12.587, "bar": 7, "beat": 1, "on": 24}, {"t": 13.0515, "bar": 7, "beat": 2, "on": 25}, {"t": 13.516, "bar": 7, "beat": 3, "on": 26}, {"t": 13.9955, "bar": 7, "beat": 4, "on": 27}, {"t": 14.475, "bar": 8, "beat": 1, "on": 28}, {"t": 14.934, "bar": 8, "beat": 2, "on": 29}, {"t": 15.393, "bar": 8, "beat": 3, "on": 30}, {"t": 15.8605, "bar": 8, "beat": 4, "on": 31}, {"t": 16.328, "bar": 9, "beat": 1, "on": 32}, {"t": 16.802, "bar": 9, "beat": 2, "on": 33}, {"t": 17.276, "bar": 9, "beat": 3, "on": 34}, {"t": 17.741, "bar": 9, "beat": 4, "on": 35}, {"t": 18.206, "bar": 10, "beat": 1, "on": 36}, {"t": 18.7045, "bar": 10, "beat": 2, "on": 37}, {"t": 19.203, "bar": 10, "beat": 3, "on": 38}, {"t": 19.69, "bar": 10, "beat": 4, "on": 39}, {"t": 20.177, "bar": 11, "beat": 1, "on": 40}, {"t": 20.6555, "bar": 11, "beat": 2, "on": 41}, {"t": 21.134, "bar": 11, "beat": 3, "on": 42}, {"t": 21.61, "bar": 11, "beat": 4, "on": 43}, {"t": 22.086, "bar": 12, "beat": 1, "on": 44}, {"t": 22.5605, "bar": 12, "beat": 2, "on": 45}, {"t": 23.035, "bar": 12, "beat": 3, "on": 46}, {"t": 23.5225, "bar": 12, "beat": 4, "on": 47}, {"t": 24.01, "bar": 13, "beat": 1, "on": 48}, {"t": 24.4925, "bar": 13, "beat": 2, "on": 49}, {"t": 24.975, "bar": 13, "beat": 3, "on": 50}, {"t": 25.458, "bar": 13, "beat": 4, "on": 51}, {"t": 25.941, "bar": 14, "beat": 1, "on": 52}, {"t": 26.426, "bar": 14, "beat": 2, "on": 53}, {"t": 26.911, "bar": 14, "beat": 3, "on": 54}, {"t": 27.371, "bar": 14, "beat": 4, "on": 55}, {"t": 27.831, "bar": 15, "beat": 1, "on": 56}, {"t": 28.3015, "bar": 15, "beat": 2, "on": 57}, {"t": 28.772, "bar": 15, "beat": 3, "on": 58}, {"t": 29.244, "bar": 15, "beat": 4, "on": 59}, {"t": 29.716, "bar": 16, "beat": 1, "on": 60}, {"t": 30.1485, "bar": 16, "beat": 2, "on": 61}, {"t": 30.581, "bar": 16, "beat": 3, "on": 62}, {"t": 31.0925, "bar": 16, "beat": 4, "on": 63}, {"t": 31.604, "bar": 17, "beat": 1, "on": 64}, {"t": 32.065, "bar": 17, "beat": 2, "on": 65}, {"t": 32.526, "bar": 17, "beat": 3, "on": 66}, {"t": 33.0045, "bar": 17, "beat": 4, "on": 67}, {"t": 33.483, "bar": 18, "beat": 1, "on": 68}, {"t": 33.9445, "bar": 18, "beat": 2, "on": 69}, {"t": 34.406, "bar": 18, "beat": 3, "on": 70}, {"t": 34.8955, "bar": 18, "beat": 4, "on": 71}, {"t": 35.385, "bar": 19, "beat": 1, "on": 72}, {"t": 35.8485, "bar": 19, "beat": 2, "on": 73}, {"t": 36.312, "bar": 19, "beat": 3, "on": 74}, {"t": 36.79, "bar": 19, "beat": 4, "on": 75}, {"t": 37.268, "bar": 20, "beat": 1, "on": 76}, {"t": 37.7445, "bar": 20, "beat": 2, "on": 77}, {"t": 38.221, "bar": 20, "beat": 3, "on": 78}, {"t": 38.6975, "bar": 20, "beat": 4, "on": 79}, {"t": 39.174, "bar": 21, "beat": 1, "on": 80}, {"t": 39.648, "bar": 21, "beat": 2, "on": 81}, {"t": 40.122, "bar": 21, "beat": 3, "on": 82}, {"t": 40.599, "bar": 21, "beat": 4, "on": 83}, {"t": 41.076, "bar": 22, "beat": 1, "on": 84}, {"t": 41.552, "bar": 22, "beat": 2, "on": 85}, {"t": 42.028, "bar": 22, "beat": 3, "on": 86}, {"t": 42.501, "bar": 22, "beat": 4, "on": 87}, {"t": 42.974, "bar": 23, "beat": 1, "on": 88}, {"t": 43.452, "bar": 23, "beat": 2, "on": 89}, {"t": 43.93, "bar": 23, "beat": 3, "on": 90}, {"t": 44.3975, "bar": 23, "beat": 4, "on": 91}, {"t": 44.865, "bar": 24, "beat": 1, "on": 92}, {"t": 45.3245, "bar": 24, "beat": 2, "on": 93}, {"t": 45.784, "bar": 24, "beat": 3, "on": 94}, {"t": 46.239, "bar": 24, "beat": 4, "on": 95}, {"t": 46.694, "bar": 25, "beat": 1, "on": 96}, {"t": 47.183, "bar": 25, "beat": 2, "on": 97}, {"t": 47.672, "bar": 25, "beat": 3, "on": 98}, {"t": 48.159, "bar": 25, "beat": 4, "on": 99}, {"t": 48.646, "bar": 26, "beat": 1, "on": 100}, {"t": 49.1095, "bar": 26, "beat": 2, "on": 101}, {"t": 49.573, "bar": 26, "beat": 3, "on": 102}, {"t": 50.0495, "bar": 26, "beat": 4, "on": 103}, {"t": 50.526, "bar": 27, "beat": 1, "on": 104}, {"t": 51.0025, "bar": 27, "beat": 2, "on": 105}, {"t": 51.479, "bar": 27, "beat": 3, "on": 106}, {"t": 51.9425, "bar": 27, "beat": 4, "on": 107}, {"t": 52.406, "bar": 28, "beat": 1, "on": 108}, {"t": 52.858, "bar": 28, "beat": 2, "on": 109}, {"t": 53.31, "bar": 28, "beat": 3, "on": 110}, {"t": 53.77, "bar": 28, "beat": 4, "on": 111}, {"t": 54.23, "bar": 29, "beat": 1, "on": 112}, {"t": 54.6985, "bar": 29, "beat": 2, "on": 113}, {"t": 55.167, "bar": 29, "beat": 3, "on": 114}, {"t": 55.6325, "bar": 29, "beat": 4, "on": 115}, {"t": 56.098, "bar": 30, "beat": 1, "on": 116}, {"t": 56.5755, "bar": 30, "beat": 2, "on": 117}, {"t": 57.053, "bar": 30, "beat": 3, "on": 118}, {"t": 57.5165, "bar": 30, "beat": 4, "on": 119}, {"t": 57.98, "bar": 31, "beat": 1, "on": 120}, {"t": 58.4605, "bar": 31, "beat": 2, "on": 121}, {"t": 58.941, "bar": 31, "beat": 3, "on": 122}, {"t": 59.4015, "bar": 31, "beat": 4, "on": 123}, {"t": 59.862, "bar": 32, "beat": 1, "on": 124}, {"t": 60.3125, "bar": 32, "beat": 2, "on": 125}, {"t": 60.763, "bar": 32, "beat": 3, "on": 126}, {"t": 61.2225, "bar": 32, "beat": 4, "on": 127}, {"t": 61.682, "bar": 33, "beat": 1, "on": 128}, {"t": 62.143, "bar": 33, "beat": 2, "on": 129}, {"t": 62.604, "bar": 33, "beat": 3, "on": 130}, {"t": 63.09, "bar": 33, "beat": 4, "on": 131}, {"t": 63.576, "bar": 34, "beat": 1, "on": 132}, {"t": 64.06, "bar": 34, "beat": 2, "on": 133}, {"t": 64.544, "bar": 34, "beat": 3, "on": 134}], "audio_start": 1.7, "bpb": 4, "ts": "4/4", "sub": 4}; const BPB = DATA.bpb || 4; const G0 = DATA.grid; let G = G0.map(g => ({...g}));
+let offsetMs = 0, taps = [], tapping = false, tapRange = null;
+function rebuild(){ G = G0.map(g => ({...g, t: g.t + offsetMs / 1000}));
+  if (taps.length >= 2) { // snap the first tap to the nearest beat of the grid, then each later tap is the next beat
+    let i = 0, best = 1e9; G.forEach((g, k) => { const d = Math.abs(g.t - taps[0]); if (d < best) { best = d; i = k; } });
+    taps.forEach((t, k) => { if (G[i + k]) G[i + k].t = t; });
+    // beats after the last tap keep their spacing, shifted by the last tap's change
+    const last = i + taps.length - 1, shift = G[last] ? taps[taps.length - 1] - (G0[last].t + offsetMs / 1000) : 0;
+    for (let k = last + 1; k < G.length; k++) G[k].t = G0[k].t + offsetMs / 1000 + shift;
+    tapRange = [G[i].bar, G[last].bar]; el('tapInfo').textContent = `your ${taps.length} taps set the beats of bars ${tapRange[0]}–${tapRange[1]}`; }
+  else { tapRange = null; el('tapInfo').textContent = ''; }
+  el('offs').textContent = (offsetMs > 0 ? '+' : '') + offsetMs + ' ms'; render(); }
+function persist(){ (async () => { try { const db = window.claude && claude.use ? await claude.use('db') : null; if (!db) return; await db.doc('grid/current').set({offset_ms: offsetMs, taps: taps.map(t => +t.toFixed(3)), saved_at: new Date().toISOString(), tapped_bars: tapRange}); } catch (e) {} })(); }
+const NAMES = ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'];
+const el = id => document.getElementById(id); const piano = el('piano');
+let ac = null, base = 60, notes = [], held = {}, recording = false, t0wall = 0, t0audio = 0, raf = null, stopAt = null;
+function ctx(){ if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume(); return ac; }
+function tone(m, dur = 0.6, gain = 0.25){ const c = ctx(); const t = c.currentTime; const f = 440 * Math.pow(2, (m - 69) / 12);
+  const o1 = c.createOscillator(), o2 = c.createOscillator(), g = c.createGain(); o1.type = 'triangle'; o2.type = 'sine'; o1.frequency.value = f; o2.frequency.value = f * 2;
+  const g2 = c.createGain(); g2.gain.value = 0.25; o2.connect(g2).connect(g); o1.connect(g); g.connect(c.destination);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(gain, t + 0.01); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+  o1.start(t); o2.start(t); o1.stop(t + dur + 0.05); o2.stop(t + dur + 0.05); return {g, o1, o2}; }
+function click(strong){ const c = ctx(); const t = c.currentTime; const o = c.createOscillator(), g = c.createGain(); o.frequency.value = strong ? 1500 : 1000; g.gain.setValueAtTime(strong ? 0.25 : 0.12, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.05); o.connect(g).connect(c.destination); o.start(t); o.stop(t + 0.06); }
+// keyboard
+const LOW = 55, HIGH = 81; const kbin = el('kbin'); const isBlack = m => [1,3,6,8,10].includes(m % 12); const keyEls = {};
+(function build(){ let x = 0; for (let m = LOW; m <= HIGH; m++) { if (isBlack(m)) continue; const d = document.createElement('div'); d.className = 'w'; d.style.left = x + 'px'; d.textContent = NAMES[m % 12] + (Math.floor(m / 12) - 1); d.dataset.m = m; kbin.appendChild(d); keyEls[m] = d;
+    if (isBlack(m + 1) && m + 1 <= HIGH) { const b = document.createElement('div'); b.className = 'b'; b.style.left = (x + 28) + 'px'; b.dataset.m = m + 1; kbin.appendChild(b); keyEls[m + 1] = b; } x += 42; } kbin.style.width = x + 'px'; })();
+function now(){ return recording ? (piano.paused ? (t0audio + (performance.now() - t0wall) / 1000) : piano.currentTime + DATA.audio_start) : null; }
+const lastDown = {};
+function down(m){ if (held[m]) return; const nowMs = performance.now(); if (lastDown[m] && nowMs - lastDown[m] < 60) return; lastDown[m] = nowMs; const v = tone(m, 1.2); held[m] = {v, t: now()}; if (keyEls[m]) keyEls[m].classList.add('on'); }
+function up(m){ const h = held[m]; if (!h) return; delete held[m]; if (keyEls[m]) keyEls[m].classList.remove('on'); const t = now(); if (h.t != null && t != null && t > h.t + 0.03) { notes.push({m, t: h.t, end: t}); render(); } }
+kbin.addEventListener('pointerdown', e => { const m = +e.target.dataset.m; if (m) { e.preventDefault(); down(m); const u = () => { up(m); window.removeEventListener('pointerup', u); }; window.addEventListener('pointerup', u); } });
+const KEYS = {a:0,w:1,s:2,e:3,d:4,f:5,t:6,g:7,y:8,h:9,u:10,j:11,k:12,o:13,l:14,p:15,';':16,"'":17};
+document.addEventListener('keydown', e => { if (e.target.tagName === 'INPUT') return; const k = e.key.toLowerCase(); if (e.repeat) return;
+  if (k === 't' && tapping) { e.preventDefault(); taps.push(piano.currentTime + DATA.audio_start); click(false); el('tapInfo').textContent = taps.length + ' taps'; return; }
+  if (k === 'z') { base = Math.max(48, base - 12); el('oct').textContent = 'C' + (base / 12 - 1); return; } if (k === 'x') { base = Math.min(72, base + 12); el('oct').textContent = 'C' + (base / 12 - 1); return; }
+  if (k in KEYS) { e.preventDefault(); down(base + KEYS[k]); } });
+document.addEventListener('keyup', e => { const k = e.key.toLowerCase(); if (k in KEYS) up(base + KEYS[k]); });
+// a MIDI keyboard through the browser (Web MIDI): keys play the line, drum pads (channel 10) tap the beat
+let midiAcc = null;
+function midiTap(){ if (!tapping) return; taps.push(piano.currentTime + DATA.audio_start); click(false); el('tapInfo').textContent = taps.length + ' taps'; }
+function onMidi(ev){ const st = ev.data[0], d1 = ev.data[1], d2 = ev.data[2]; const type = st & 0xf0, ch = st & 0x0f;
+  if (type === 0x90 && d2 > 0) { if (ch === 9) { midiTap(); return; } down(d1); }
+  else if (type === 0x80 || (type === 0x90 && d2 === 0)) { if (ch !== 9) up(d1); } }
+function midiAttach(){ const names = []; midiAcc.inputs.forEach(i => { i.onmidimessage = onMidi; names.push(i.name); });
+  el('midi').textContent = names.length ? 'MIDI connected: ' + names.join(', ') + '. Keys play the line; pads tap the beat while Tap the beat is on.' : 'MIDI is allowed, but no keyboard is connected. Plug it in; it is picked up automatically.'; }
+function midiConnect(){ if (!navigator.requestMIDIAccess) { el('midi').textContent = 'This browser has no MIDI support. Use Chrome or Edge.'; return; }
+  el('midi').textContent = 'asking the browser for MIDI...';
+  navigator.requestMIDIAccess().then(acc => { midiAcc = acc; midiAttach(); acc.onstatechange = midiAttach; },
+    err => { el('midi').textContent = 'MIDI was blocked here (' + ((err && (err.name || err.message)) || err) + '). The page frame may not allow MIDI; ask Fable for the standalone copy.'; }); }
+el('midiBtn').onclick = midiConnect;
+try { navigator.permissions && navigator.permissions.query({name: 'midi'}).then(st => { if (st.state === 'granted') midiConnect(); }).catch(() => {}); } catch (e) {}
+// grid helpers: his beats
+function onAt(t){ let i = 0; while (i + 1 < G.length && G[i + 1].t <= t) i++; const a = G[i], b = G[Math.min(i + 1, G.length - 1)]; const span = (b.t - a.t) || 1; return a.on + Math.max(0, Math.min(1, (t - a.t) / span)) * (b.on - a.on || 1); }
+function tAtBarBeat(bar){ const g = G.find(x => x.bar === bar && x.beat === 1); return g ? g.t : null; }
+const SUB = DATA.sub || 4; const q = x => Math.round(x * SUB) / SUB;
+function len(x){ if (Math.abs(x - 1) < 1e-6) return ''; if (Math.abs(x - 1/3) < 1e-6) return '/3'; if (Math.abs(x - 2/3) < 1e-6) return '*2/3'; if (Math.abs(x - 0.5) < 1e-6) return '/'; if (Math.abs(x - 0.25) < 1e-6) return '//'; return '*' + (+x.toFixed(2)); }
+function shorthand(){ if (!notes.length) return {text: 'nothing recorded yet', rows: []};
+  const ns = notes.slice().sort((a, b) => a.t - b.t).map(n => ({...n, on: q(onAt(n.t)), off: q(onAt(n.end))})).map(n => ({...n, off: Math.max(n.off, n.on + 0.25)}));
+  for (let i = 0; i + 1 < ns.length; i++) if (ns[i].off > ns[i + 1].on) ns[i].off = Math.max(ns[i].on + 0.25, ns[i + 1].on);
+  const startBar = Math.floor(ns[0].on / BPB) + 1; let pos = (startBar - 1) * BPB; const toks = []; let lastBar = startBar;
+  for (const n of ns) { const bar = Math.floor(n.on / BPB) + 1; if (bar !== lastBar) { toks.push('|'); lastBar = bar; } if (n.on > pos + 1e-6) toks.push('z' + len(n.on - pos)); toks.push(NAMES[n.m % 12] + (Math.floor(n.m / 12) - 1) + len(n.off - n.on)); pos = n.off; }
+  const s0 = G.find(g => Math.abs(g.on - (startBar - 1) * BPB) < 1e-6);
+  return {text: `bar ${startBar} (${s0 ? s0.t.toFixed(2) : '?'} s): ` + toks.join(' ').replace(/z\*(\d+(?:\.\d+)?)/g, 'z$1'), rows: ns, startBar, startT: s0 ? s0.t : null}; }
+function render(){ const sh = shorthand(); el('out').textContent = sh.text; const cv = el('roll'), c = cv.getContext('2d'); c.clearRect(0, 0, cv.width, cv.height);
+  if (!sh.rows.length) return; const lo = Math.min(...sh.rows.map(n => n.m)) - 2, hi = Math.max(...sh.rows.map(n => n.m)) + 2; const a0 = (sh.startBar - 1) * BPB, a1 = Math.max(...sh.rows.map(n => n.off)) + 1; const X = on => 10 + (on - a0) / (a1 - a0) * (cv.width - 20), Y = m => 10 + (hi - m) / (hi - lo) * (cv.height - 20);
+  c.strokeStyle = getComputedStyle(document.body).getPropertyValue('--line'); for (let b = a0; b <= a1; b++) { c.lineWidth = b % BPB === 0 ? 1.5 : 0.5; c.beginPath(); c.moveTo(X(b), 0); c.lineTo(X(b), cv.height); c.stroke(); if (b % BPB === 0) { c.fillStyle = '#888'; c.fillText('bar ' + (b / BPB + 1), X(b) + 3, 10); } }
+  c.fillStyle = getComputedStyle(document.body).getPropertyValue('--acc'); for (const n of sh.rows) { c.fillRect(X(n.on), Y(n.m) - 4, Math.max(3, X(n.off) - X(n.on) - 1), 8); c.fillText(NAMES[n.m % 12] + (Math.floor(n.m / 12) - 1), X(n.on), Y(n.m) - 6); } }
+// transport
+let lastBeat = -1;
+function loop(){ const t = recording ? now() : (piano.paused ? null : piano.currentTime + DATA.audio_start); if (t != null) { const i = G.findIndex(g => g.t > t) - 1; if (i >= 0 && i !== lastBeat) { lastBeat = i; if (el('click').checked) click(G[i].beat === 1); }
+    const g = G[Math.max(0, i)]; el('status').textContent = (recording ? '● recording · ' : '▶ ') + t.toFixed(2) + ' s · bar ' + g.bar + ' beat ' + g.beat; if (stopAt && t >= stopAt) stop(); }
+  raf = requestAnimationFrame(loop); }
+function start(record){ const bar = Math.max(1, +el('bar').value || 1); const tb = tAtBarBeat(bar); if (tb == null) { el('msg').textContent = 'That bar is outside the recording on this page (bars 1 to ' + G[G.length - 1].bar + ').'; return; }
+  const ci = tAtBarBeat(Math.max(1, bar - 2)) ?? 0; ctx(); piano.muted = !el('pianoOn').checked; piano.currentTime = Math.max(0, ci - DATA.audio_start); lastBeat = -1; stopAt = null;
+  recording = record; if (record) { t0audio = ci; t0wall = performance.now(); } piano.play().catch(() => {}); el('recBtn').textContent = record ? '● Recording…' : '● Record'; if (!raf) loop(); }
+function stop(){ recording = false; piano.pause(); stopAt = null; Object.keys(held).forEach(m => up(+m)); el('recBtn').textContent = '● Record'; el('status').textContent = 'stopped'; render(); }
+el('recBtn').onclick = () => start(true); el('stopBtn').onclick = () => { const wasTapping = tapping; tapping = false; el('tapBtn').textContent = 'Tap the beat (T)'; stop(); if (wasTapping) { rebuild(); persist(); } };
+[['nE50', -50], ['nE10', -10], ['nL10', 10], ['nL50', 50]].forEach(([id, d]) => el(id).onclick = () => { offsetMs += d; rebuild(); persist(); });
+el('tapBtn').onclick = () => { taps = []; tapping = true; el('tapBtn').textContent = 'Tapping… press T on every beat, Stop when done'; el('click').checked = false; start(false); };
+el('tapClear').onclick = () => { taps = []; offsetMs = 0; rebuild(); persist(); };
+function useSavedGrid(){ if (DATA.saved_grid && DATA.saved_grid.taps && DATA.saved_grid.taps.length) { offsetMs = DATA.saved_grid.offset_ms || 0; taps = DATA.saved_grid.taps.slice(); rebuild(); el('msg').textContent = 'Using your saved beat taps.'; } }
+(async () => { try { const db = window.claude && claude.use ? await claude.use('db') : null; if (!db) { useSavedGrid(); return; } const sn = await db.doc('grid/current').get(); if (sn.exists) { const d = sn.data(); offsetMs = d.offset_ms || 0; taps = d.taps || []; rebuild(); el('msg').textContent = 'Loaded your beat grid settings.'; } } catch (e) {} })();
+el('clearBtn').onclick = () => { notes = []; render(); el('msg').textContent = ''; };
+el('playBtn').onclick = () => { const sh = shorthand(); if (!sh.rows.length) return; const first = sh.rows[0].t; el('bar').value = sh.startBar; start(false); const lead = (first - (tAtBarBeat(Math.max(1, sh.startBar - 2)) ?? 0)); const t0 = performance.now();
+  sh.rows.forEach(n => setTimeout(() => tone(n.m, Math.min(2.5, n.end - n.t + 0.2), 0.3), (n.t - (tAtBarBeat(Math.max(1, sh.startBar - 2)) ?? 0)) * 1000)); stopAt = sh.rows[sh.rows.length - 1].end + 1.5; };
+el('copyBtn').onclick = async () => { const sh = shorthand(); const txt = sh.text + (el('words').value ? '  |  ' + el('words').value : ''); try { await navigator.clipboard.writeText(txt); el('msg').textContent = 'Copied. Paste it into the chat.'; } catch (e) { el('msg').textContent = 'Copy was refused; select the text above and copy it by hand.'; } };
+el('saveBtn').onclick = async () => { const sh = shorthand(); if (!sh.rows.length) { el('msg').textContent = 'Record something first.'; return; }
+  const id = 'take-' + new Date().toISOString().replace(/[:.]/g, '-');
+  const take = {saved_at: new Date().toISOString(), shorthand: sh.text, words: el('words').value, start_bar: sh.startBar, start_t: sh.startT,
+      notes: sh.rows.map(n => ({pitch: n.m, t: +n.t.toFixed(3), end: +n.end.toFixed(3), on: n.on, off: n.off})), grid_offset_ms: offsetMs, taps: taps.map(t => +t.toFixed(3))};
+  const db = window.claude && claude.use ? await claude.use('db') : null;
+  if (!db) {   // a standalone copy: hand the take over as a file (and on the clipboard)
+    const blob = new Blob([JSON.stringify({id, take}, null, 1)], {type: 'application/json'}); const aEl = document.createElement('a'); aEl.href = URL.createObjectURL(blob); aEl.download = id + '.json'; document.body.appendChild(aEl); aEl.click(); aEl.remove();
+    let copied = false; try { await navigator.clipboard.writeText('TAKE ' + JSON.stringify({id, take})); copied = true; } catch (e) {}
+    el('msg').textContent = 'Saved to your Downloads as ' + id + '.json' + (copied ? ' and copied' : '') + '. Drop the file into the chat' + (copied ? ' or paste it' : '') + ' and say "take saved".'; return; }
+  try { await db.collection('takes').doc(id).set(take); el('msg').textContent = 'Saved as ' + id + '. Tell Fable "take saved".'; }
+  catch (e) { el('msg').textContent = 'Save failed (' + (e.code || e.message) + '); use Copy instead.'; } };
+rebuild();
+</script></body></html>
