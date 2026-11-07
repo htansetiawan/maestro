@@ -1,0 +1,20 @@
+X:1
+T:So Far Away (piano part, bars 1-16)
+C:Carole King
+M:4/4
+L:1/16
+Q:1/4=64
+%%score {1 | 2}
+V:1 clef=treble name="R.H."
+V:2 clef=bass name="L.H."
+K:D
+V:1
+[CE]4 [CEA]4 [DF]4 [DF]4 | [CE] C3 [CEA]4 [DF]2 F2 [DFA]4 | [DFA]3 D [DFA]4 [DEG]4 [DEG]4 | D3 D D4 D4 D2 D2 | % 1
+[CEF] z [CEF] z [DG] z [CEF]4 A z3 D2 | [DF]2 D2 [CEA]4 D4 D2 D2 | [CE]4 [CEA]4 [DF]2 B A F E D2 | [CE]4 [CEA]4 [DF]4 [DFA]4 | % 5
+[DFA]4 [DFA]4 [DG]4 [DEG]4 | D4 D4 D4 D4 | [CF] z [CEF] z [DG] z [CEF]4 A2 A2 D D | [DF]4 [CEA]4 D4 D2 D2 | % 9
+[CE]2 z2 [CEA]4 [DF]2 D2 [DFA]4 | [CE]2 A2 [CEA]4 [DF]4 C4 | [DF]4 [DF]2 F2 [CFa']4 [CEFA]4 | [DG]4 [DG]4 [=CG]4 [DG]4 |] % 13
+V:2
+[D,,D,F,A,]4 A,3 A,, [D,A,B,]4 [A,B,]2 A, [A,,A,] | [D,,A,] A,3 A,2 A, A,, [D,,A,B,]2 B,2 [A,B,]2 A, D, | [G,,D,G,B,]4 [G,,B,]2 [G,,D,B,]2 [G,,D,B,]2 B,2 [G,B,]2 [F,,F,B,]2 | [E,,G,B,]2 G,2 [G,B,]2 G, [B,,G,] [A,,,A,,G,B,]4 [G,B,]2 [A,,,A,,G,A,] E, | % 1
+[D,,A,] z [D,,D,A,] z [A,,A,B,] z [D,,A,]4 A,2 A, B,2 A,, | [G,,D,B,]2 [G,,B,]2 [F,,A,]2 [F,,A,]2 [E,,G,B,]2 G, A,, [A,,,A,,G,B,]2 [E,G,B,] A,, | [D,,A,]4 A,2 A, D, [D,,A,B,]4 [A,,A,]3 D, | [D,,A,]4 A,2 [D,,D,A,] A,, [D,,A,B,]4 [A,B,]2 A, D, | % 5
+[G,,B,]4 [G,,B,]2 [G,,D,]2 [G,,D,G,B,]4 [G,,B,]2 [D,B,] G,, | [E,,G,B,]4 [E,,E,G,B,]2 [E,,G,] [A,,A,] [A,,,G,B,]4 [G,B,]2 [A,,,A,,G,A,]2 | [D,,A,,A,] z [A,,A,] z [A,,A,B,] z [D,,A,]4 A,2 A, B,2 D, | [G,,D,G,B,]2 B,2 [F,,A,]2 A, z [E,,G,B,]2 G, G,, [A,,,A,,G,B,]2 [G,B,] [A,,A,] | % 9
+[D,,A,]4 A,2 A, A,, [D,A,B,]2 A,2 [D,A,B,]2 A, A,, | [D,,D,A,]4 [D,,D,A,]2 [A,,A,] D, [D,,D,A,]2 A, D, [C,,C,A,]2 A, C,, | [B,,,B,,A,B,]2 A,2 [B,,,B,,A,B,]2 [B,,,B,,A,] B,,, [A,,,A,,A,]4 A,2 [A,,A,]2 | [G,,,G,,B,]4 [G,,,B,]2 [G,,,G,,D,B,] B, E, [D,B,] G,,2 [G,,B,]2 [F,,F,B,]2 |] % 13
