@@ -565,6 +565,28 @@
         }
       ],
       "og_image": "artifacts/play-the-line/og.png"
+    },
+    {
+      "date": "2026-11-24",
+      "title": "Chopin's nocturne, sung on the tune as I play it",
+      "summary": "Chopin's Nocturne in C-sharp minor over Bruce Liu's live recording, the theme (bars 5 to 20): the tune I played on a MIDI keyboard over his piano, 55 notes in one take, now carries the draft words and is sung by six AI voices. Where the words sit on the notes mattered more to the singer than the notes: a turn on the first syllable of burning made every voice sing the word twice, a gap inside a word split it, and a syllable stranded before a rest was lost.",
+      "stage": "Bars 5 to 20 of the nocturne sung on my played line by AI voices modelled on Josh Groban, Luciano Pavarotti, Michael Bolton, Bryan Adams, Ariana Grande and me; every take checked with Whisper: one missed word of 38 for four voices, two for mine, five for Pavarotti's voice conversion.",
+      "focus": "Fitting words to a played line so the singer can carry them: where the turns go, no gaps inside a word, no syllable left alone before a rest.",
+      "next_step": "Play the rest of the nocturne the same way, the 3/4 middle section and the return, and revise the words the singers struggle with (road, gar-den).",
+      "artifacts": [
+        "play-the-line"
+      ],
+      "published": true,
+      "links": [
+        {
+          "label": "Nocturne in C-sharp minor: my line over Bruce Liu's piano, sung by six AI voices",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/play-the-line/chopin-nocturne/canvas.html"
+        },
+        {
+          "label": "Play the line: every canvas made this way",
+          "url": "https://htansetiawan.github.io/maestro/artifacts/play-the-line/"
+        }
+      ]
     }
   ]
 }

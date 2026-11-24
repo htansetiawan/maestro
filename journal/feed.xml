@@ -4,10 +4,18 @@
   <id>https://htansetiawan.github.io/maestro/journal/</id>
   <link href="https://htansetiawan.github.io/maestro/journal/" rel="alternate" />
   <link href="https://htansetiawan.github.io/maestro/journal/feed.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-11-01T00:00:00-07:00</updated>
+  <updated>2026-11-24T00:00:00-08:00</updated>
   <author>
     <name>Henry Tan</name>
   </author>
+  <entry>
+    <title>Chopin's nocturne, sung on the tune as I play it</title>
+    <id>https://htansetiawan.github.io/maestro/journal/2026-11-24.html</id>
+    <link href="https://htansetiawan.github.io/maestro/journal/2026-11-24.html" />
+    <updated>2026-11-24T00:00:00-08:00</updated>
+    <published>2026-11-24T00:00:00-08:00</published>
+    <summary>Chopin's Nocturne in C-sharp minor over Bruce Liu's live recording, the theme (bars 5 to 20): the tune I played on a MIDI keyboard over his piano, 55 notes in one take, now carries the draft words and is sung by six AI voices. Where the words sit on the notes mattered more to the singer than the notes: a turn on the first syllable of burning made every voice sing the word twice, a gap inside a word split it, and a syllable stranded before a rest was lost.</summary>
+  </entry>
   <entry>
     <title>Play the line: fitting words to a melody by playing it</title>
     <id>https://htansetiawan.github.io/maestro/journal/2026-11-01.html</id>
